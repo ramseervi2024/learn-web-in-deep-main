@@ -12,6 +12,21 @@ export default function Homepage() {
     { id: 5, title: "InstagramApp", url: "instagram" },
     { id: 6, title: "Scroll 3D Website", url: "scroll-3d-website" },
     { id: 7, title: "LinkedIn", url: "LinkedIn" },
+    { id: 8, title: "JustDial", url: "JustDial" },
+    { id: 9, title: "OLXLayout", url: "OLXLayout" },
+    { id: 10, title: "CashifyLayout", url: "CashifyLayout" },
+    { id: 11, title: "MyntraLayout", url: "MyntraLayout" },
+    { id: 12, title: "ModelViewer", url: "ModelViewer" },
+    { id: 13, title: "GLTFModel", url: "GLTFModel" },
+    { id: 14, title: "ProgramizEditor", url: "ProgramizEditor" },
+    { id: 15, title: "BlogPage", url: "BlogPage" },
+    { id: 16, title: "DoctorProfileManager", url: "DoctorProfileManager" },
+    { id: 16, title: "WeddingInvitationGenerator", url: "WeddingInvitationGenerator" },
+    { id: 17, title: "ResumeGenerator", url: "ResumeGenerator" },
+    { id: 18, title: "BlogCreator", url: "BlogCreator" },
+    { id: 19, title: "WeddingAlbumGenerator", url: "WeddingAlbumGenerator" },
+    { id: 20, title: "KankotriGenerator", url: "KankotriGenerator" },
+    { id: 21, title: "WeddingCardGenerator", url: "WeddingCardGenerator" },
   ];
 
   return (
