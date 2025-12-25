@@ -27,6 +27,7 @@ export default function Homepage() {
     { id: 19, title: "WeddingAlbumGenerator", url: "WeddingAlbumGenerator" },
     { id: 20, title: "KankotriGenerator", url: "KankotriGenerator" },
     { id: 21, title: "WeddingCardGenerator", url: "WeddingCardGenerator" },
+    { id: 22, title: "VideoBackgroundSite", url: "VideoBackgroundSite" },
   ];
 
   return (

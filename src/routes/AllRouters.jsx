@@ -22,6 +22,7 @@ import BlogCreator from "../components/BlogCreator";
 import WeddingAlbumGenerator from "../components/WeddingAlbumGenerator";
 import KankotriGenerator from "../components/KankotriGenerator";
 import WeddingCardGenerator from "../components/WeddingCardGenerator";
+import VideoBackgroundSite from "../components/VideoBackgroundSite";
 
 export default function AllRouters() {
     return (
@@ -50,7 +51,8 @@ export default function AllRouters() {
                 <Route path="/WeddingAlbumGenerator" element={<WeddingAlbumGenerator />} />
                 <Route path="/KankotriGenerator" element={<KankotriGenerator />} />
                 <Route path="/WeddingCardGenerator" element={<WeddingCardGenerator />} />
-            </Routes>
+                <Route path="/VideoBackgroundSite" element={<VideoBackgroundSite />} />
+                </Routes>
         </BrowserRouter>
     );
 }
