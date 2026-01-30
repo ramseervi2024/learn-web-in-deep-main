@@ -22,6 +22,12 @@ import BlogCreator from "../components/BlogCreator";
 import WeddingAlbumGenerator from "../components/WeddingAlbumGenerator";
 import KankotriGenerator from "../components/KankotriGenerator";
 import WeddingCardGenerator from "../components/WeddingCardGenerator";
+import LabourConnectPlatform from "../components/LabourConnectPlatform";
+import CreativePlatformDocs from "../components/CreativePlatformDocs";
+import WhatsAppAlertSender from "../components/WhatsAppAlertSender";
+import CityCareHospital from "../components/CityCareHospital";
+import MarwadiDressApp from "../components/MarwadiDressApp";
+import MultipleInterviews from "../components/MultipleInterviews";
 import VideoBackgroundSite from "../components/VideoBackgroundSite";
 
 export default function AllRouters() {
@@ -51,6 +57,12 @@ export default function AllRouters() {
                 <Route path="/WeddingAlbumGenerator" element={<WeddingAlbumGenerator />} />
                 <Route path="/KankotriGenerator" element={<KankotriGenerator />} />
                 <Route path="/WeddingCardGenerator" element={<WeddingCardGenerator />} />
+                <Route path="/LabourConnectPlatform" element={<LabourConnectPlatform />} />
+                <Route path="/CreativePlatformDocs" element={<CreativePlatformDocs />} />
+                <Route path="/WhatsAppAlertSender" element={<WhatsAppAlertSender />} />
+                <Route path="/CityCareHospital" element={<CityCareHospital />} />
+                <Route path="/MarwadiDressApp" element={<MarwadiDressApp />} />
+                <Route path="/MultipleInterviews" element={<MultipleInterviews />} />
                 <Route path="/VideoBackgroundSite" element={<VideoBackgroundSite />} />
                 </Routes>
         </BrowserRouter>

@@ -1,10 +1,5 @@
 import React, { useState } from 'react';
-import { 
-  Camera, Heart, Download, Upload, X, Edit2, Save, RotateCw, 
-  Trash2, BookOpen, Layout, ZoomIn, Move, Maximize2, Minus, Plus, 
-  Crop, Square, Contrast, Sun, Droplets, Filter, Palette, 
-  RotateCcw, FlipHorizontal, FlipVertical, Layers 
-} from 'lucide-react';
+import { Camera, Heart, Download, Upload, X, Edit2, Save, RotateCw, Trash2, BookOpen, Layout } from 'lucide-react';
 
 const WeddingAlbumGenerator = () => {
   const dummyPhotos = [
@@ -33,27 +28,6 @@ const WeddingAlbumGenerator = () => {
   const [editingId, setEditingId] = useState(null);
   const [editCaption, setEditCaption] = useState('');
   const [showDownloadOptions, setShowDownloadOptions] = useState(false);
-  const [editingPhotoId, setEditingPhotoId] = useState(null);
-  const [photoAdjustments, setPhotoAdjustments] = useState(() => {
-    const initialAdjustments = {};
-    dummyPhotos.forEach(photo => {
-      initialAdjustments[photo.id] = { 
-        scale: 1, 
-        xOffset: 0, 
-        yOffset: 0, 
-        fit: 'contain',
-        brightness: 100,
-        contrast: 100,
-        saturation: 100,
-        hue: 0,
-        rotation: 0,
-        flipHorizontal: false,
-        flipVertical: false,
-        filter: 'none'
-      };
-    });
-    return initialAdjustments;
-  });
 
   const templates = [
     {
@@ -97,15 +71,6 @@ const WeddingAlbumGenerator = () => {
     { id: 'collage', name: 'Collage', icon: Layout, description: 'Creative mixed layout' }
   ];
 
-  const filters = [
-    { id: 'none', name: 'No Filter' },
-    { id: 'vintage', name: 'Vintage', style: 'sepia(0.5) contrast(1.1)' },
-    { id: 'blackwhite', name: 'Black & White', style: 'grayscale(100%)' },
-    { id: 'warm', name: 'Warm', style: 'sepia(0.3) saturate(1.2)' },
-    { id: 'cool', name: 'Cool', style: 'hue-rotate(180deg) contrast(1.1)' },
-    { id: 'dramatic', name: 'Dramatic', style: 'contrast(1.3) brightness(0.9)' },
-  ];
-
   const currentTemplate = templates.find(t => t.id === selectedTemplate);
 
   const handleImageUpload = (e) => {
@@ -113,26 +78,8 @@ const WeddingAlbumGenerator = () => {
     files.forEach(file => {
       const reader = new FileReader();
       reader.onload = (e) => {
-        const newId = Date.now() + Math.random();
-        setPhotoAdjustments(prev => ({
-          ...prev,
-          [newId]: { 
-            scale: 1,
-            xOffset: 0,
-            yOffset: 0,
-            fit: 'contain',
-            brightness: 100,
-            contrast: 100,
-            saturation: 100,
-            hue: 0,
-            rotation: 0,
-            flipHorizontal: false,
-            flipVertical: false,
-            filter: 'none'
-          }
-        }));
         setPhotos(prev => [...prev, {
-          id: newId,
+          id: Date.now() + Math.random(),
           url: e.target.result,
           caption: 'New Photo'
         }]);
@@ -143,11 +90,6 @@ const WeddingAlbumGenerator = () => {
 
   const removePhoto = (id) => {
     setPhotos(prev => prev.filter(photo => photo.id !== id));
-    setPhotoAdjustments(prev => {
-      const newAdjustments = { ...prev };
-      delete newAdjustments[id];
-      return newAdjustments;
-    });
   };
 
   const startEditing = (photo) => {
@@ -167,132 +109,6 @@ const WeddingAlbumGenerator = () => {
     setPhotos(dummyPhotos);
     setCoupleNames({ bride: 'Emily', groom: 'James' });
     setWeddingDate('2024-06-15');
-    const initialAdjustments = {};
-    dummyPhotos.forEach(photo => {
-      initialAdjustments[photo.id] = { 
-        scale: 1, 
-        xOffset: 0, 
-        yOffset: 0, 
-        fit: 'contain',
-        brightness: 100,
-        contrast: 100,
-        saturation: 100,
-        hue: 0,
-        rotation: 0,
-        flipHorizontal: false,
-        flipVertical: false,
-        filter: 'none'
-      };
-    });
-    setPhotoAdjustments(initialAdjustments);
-  };
-
-  const openImageEditor = (photoId) => {
-    setEditingPhotoId(photoId);
-    if (!photoAdjustments[photoId]) {
-      setPhotoAdjustments(prev => ({
-        ...prev,
-        [photoId]: { 
-          scale: 1,
-          xOffset: 0,
-          yOffset: 0,
-          fit: 'contain',
-          brightness: 100,
-          contrast: 100,
-          saturation: 100,
-          hue: 0,
-          rotation: 0,
-          flipHorizontal: false,
-          flipVertical: false,
-          filter: 'none'
-        }
-      }));
-    }
-  };
-
-  const closeImageEditor = () => {
-    setEditingPhotoId(null);
-  };
-
-  const updateAdjustment = (photoId, key, value) => {
-    setPhotoAdjustments(prev => ({
-      ...prev,
-      [photoId]: {
-        ...(prev[photoId] || {}),
-        [key]: typeof value === 'boolean' ? value : parseFloat(value)
-      }
-    }));
-  };
-
-  const resetAdjustment = (photoId) => {
-    setPhotoAdjustments(prev => ({
-      ...prev,
-      [photoId]: { 
-        scale: 1,
-        xOffset: 0,
-        yOffset: 0,
-        fit: 'contain',
-        brightness: 100,
-        contrast: 100,
-        saturation: 100,
-        hue: 0,
-        rotation: 0,
-        flipHorizontal: false,
-        flipVertical: false,
-        filter: 'none'
-      }
-    }));
-  };
-
-  const getAdjustment = (photoId) => {
-    return photoAdjustments[photoId] || { 
-      scale: 1, 
-      xOffset: 0, 
-      yOffset: 0, 
-      fit: 'contain',
-      brightness: 100,
-      contrast: 100,
-      saturation: 100,
-      hue: 0,
-      rotation: 0,
-      flipHorizontal: false,
-      flipVertical: false,
-      filter: 'none'
-    };
-  };
-
-  const applyFilter = (photoId, filterId) => {
-    updateAdjustment(photoId, 'filter', filterId);
-  };
-
-  const rotateImage = (photoId, degrees) => {
-    const currentRotation = getAdjustment(photoId).rotation;
-    updateAdjustment(photoId, 'rotation', currentRotation + degrees);
-  };
-
-  const getImageStyle = (photoId) => {
-    const adj = getAdjustment(photoId);
-    const selectedFilter = filters.find(f => f.id === adj.filter);
-    
-    return {
-      objectFit: adj.fit,
-      transform: `
-        scale(${adj.scale})
-        translate(${adj.xOffset}%, ${adj.yOffset}%)
-        rotate(${adj.rotation}deg)
-        scaleX(${adj.flipHorizontal ? -1 : 1})
-        scaleY(${adj.flipVertical ? -1 : 1})
-      `,
-      transformOrigin: 'center center',
-      filter: `
-        brightness(${adj.brightness}%)
-        contrast(${adj.contrast}%)
-        saturate(${adj.saturation}%)
-        hue-rotate(${adj.hue}deg)
-        ${selectedFilter?.style || ''}
-      `,
-      transition: 'transform 0.3s ease, filter 0.3s ease'
-    };
   };
 
   const generateHTMLContent = (layout) => {
@@ -305,35 +121,71 @@ const WeddingAlbumGenerator = () => {
     let layoutHTML = '';
 
     if (layout === 'book') {
+      // Book Style - Two columns like a book
       layoutHTML = `
         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 40px;">
+          ${photos.map((photo, index) => `
+            <div style="break-inside: avoid; margin-bottom: 40px;">
+              <img src="${photo.url}" alt="${photo.caption}" style="width: 100%; height: 400px; object-fit: cover; border-radius: 8px; border: 3px solid ${currentTemplate.border === 'border-rose-300' ? '#fda4af' : '#d1d5db'};">
+              <p style="text-align: center; margin-top: 15px; font-size: 16px; color: #4b5563; font-style: italic;">${photo.caption}</p>
+              <p style="text-align: center; margin-top: 5px; font-size: 14px; color: #9ca3af;">Page ${index + 1}</p>
+            </div>
+          `).join('')}
+        </div>
+      `;
+    } else if (layout === 'magazine') {
+      // Magazine Style - Mixed sizes
+      layoutHTML = `
+        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 40px;">
           ${photos.map((photo, index) => {
-            const adj = getAdjustment(photo.id);
-            const selectedFilter = filters.find(f => f.id === adj.filter);
+            const sizes = ['col-span-1', 'col-span-2', 'col-span-1'];
+            const size = sizes[index % 3];
+            const isLarge = size === 'col-span-2';
             return `
-              <div style="break-inside: avoid; margin-bottom: 40px; overflow: hidden;">
-                <div style="width: 100%; height: 400px; overflow: hidden; position: relative; border-radius: 8px; border: 3px solid ${currentTemplate.border === 'border-rose-300' ? '#fda4af' : '#d1d5db'};">
-                  <img src="${photo.url}" alt="${photo.caption}" 
-                    style="
-                      width: 100%;
-                      height: 100%;
-                      object-fit: ${adj.fit};
-                      transform: scale(${adj.scale}) translate(${adj.xOffset}%, ${adj.yOffset}%) rotate(${adj.rotation}deg) scaleX(${adj.flipHorizontal ? -1 : 1}) scaleY(${adj.flipVertical ? -1 : 1});
-                      transform-origin: center center;
-                      filter: brightness(${adj.brightness}%) contrast(${adj.contrast}%) saturate(${adj.saturation}%) hue-rotate(${adj.hue}deg) ${selectedFilter?.style || ''};
-                    "
-                  >
+              <div style="grid-column: ${isLarge ? 'span 2' : 'span 1'}; break-inside: avoid;">
+                <img src="${photo.url}" alt="${photo.caption}" style="width: 100%; height: ${isLarge ? '500px' : '350px'}; object-fit: cover; border-radius: 12px;">
+                <p style="text-align: left; margin-top: 10px; font-size: 16px; color: #1f2937; font-weight: 600;">${photo.caption}</p>
+              </div>
+            `;
+          }).join('')}
+        </div>
+      `;
+    } else if (layout === 'polaroid') {
+      // Polaroid Style
+      layoutHTML = `
+        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; margin-top: 40px;">
+          ${photos.map(photo => `
+            <div style="background: white; padding: 15px 15px 60px 15px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); transform: rotate(${Math.random() * 6 - 3}deg); break-inside: avoid;">
+              <img src="${photo.url}" alt="${photo.caption}" style="width: 100%; height: 300px; object-fit: cover;">
+              <p style="text-align: center; margin-top: 20px; font-family: 'Courier New', monospace; font-size: 14px; color: #374151;">${photo.caption}</p>
+            </div>
+          `).join('')}
+        </div>
+      `;
+    } else if (layout === 'collage') {
+      // Collage Style - Creative mixed layout
+      layoutHTML = `
+        <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; margin-top: 40px;">
+          ${photos.map((photo, index) => {
+            const patterns = [
+              { cols: 2, rows: 2 }, // Large
+              { cols: 1, rows: 1 }, // Small
+              { cols: 2, rows: 1 }, // Wide
+              { cols: 1, rows: 2 }, // Tall
+            ];
+            const pattern = patterns[index % 4];
+            return `
+              <div style="grid-column: span ${pattern.cols}; grid-row: span ${pattern.rows}; break-inside: avoid; position: relative;">
+                <img src="${photo.url}" alt="${photo.caption}" style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px;">
+                <div style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(transparent, rgba(0,0,0,0.8)); padding: 20px; color: white;">
+                  <p style="font-size: 14px; margin: 0;">${photo.caption}</p>
                 </div>
-                <p style="text-align: center; margin-top: 15px; font-size: 16px; color: #4b5563; font-style: italic;">${photo.caption}</p>
-                <p style="text-align: center; margin-top: 5px; font-size: 14px; color: #9ca3af;">Page ${index + 1}</p>
               </div>
             `;
           }).join('')}
         </div>
       `;
     }
-
-    // Similar updates for other layouts...
 
     return `
       <!DOCTYPE html>
@@ -473,7 +325,7 @@ const WeddingAlbumGenerator = () => {
                 className="flex items-center gap-2 bg-gray-500 text-white px-4 py-2 rounded-full hover:bg-gray-600 transition-all"
               >
                 <RotateCw className="w-4 h-4" />
-                Reset All
+                Reset
               </button>
               <button
                 onClick={() => setShowDownloadOptions(!showDownloadOptions)}
@@ -542,311 +394,6 @@ const WeddingAlbumGenerator = () => {
             <p className="text-sm text-gray-500 mt-4 text-center">
               Tip: Open the HTML file in your browser and use "Print to PDF" for a PDF version
             </p>
-          </div>
-        </div>
-      )}
-
-      {/* Image Editor Modal */}
-      {editingPhotoId && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4 overflow-y-auto">
-          <div className="bg-white rounded-2xl shadow-2xl max-w-6xl w-full my-8">
-            <div className="flex items-center justify-between p-6 border-b">
-              <h2 className="text-2xl font-bold text-gray-800">Edit Photo</h2>
-              <button
-                onClick={closeImageEditor}
-                className="text-gray-500 hover:text-gray-700"
-              >
-                <X className="w-6 h-6" />
-              </button>
-            </div>
-            
-            <div className="grid lg:grid-cols-3 gap-8 p-6">
-              {/* Preview Side - Full Width */}
-              <div className="lg:col-span-2">
-                <h3 className="text-lg font-semibold mb-4">Preview</h3>
-                <div className="bg-gray-100 rounded-xl p-4 h-[500px] flex items-center justify-center">
-                  <div className="relative w-full h-full overflow-hidden rounded-lg border-4 border-white shadow-lg">
-                    <img
-                      src={photos.find(p => p.id === editingPhotoId)?.url}
-                      alt="Preview"
-                      className="absolute inset-0 w-full h-full"
-                      style={getImageStyle(editingPhotoId)}
-                    />
-                    {/* Center crosshair */}
-                    <div className="absolute inset-0 pointer-events-none">
-                      <div className="absolute top-1/2 left-0 right-0 h-px bg-white bg-opacity-50"></div>
-                      <div className="absolute left-1/2 top-0 bottom-0 w-px bg-white bg-opacity-50"></div>
-                      <div className="absolute top-1/2 left-1/2 w-4 h-4 -ml-2 -mt-2 border-2 border-white rounded-full"></div>
-                    </div>
-                  </div>
-                </div>
-                <div className="grid grid-cols-3 gap-4 mt-4 text-sm text-gray-600">
-                  <div className="text-center p-2 bg-gray-50 rounded">
-                    <div className="font-semibold">Zoom</div>
-                    <div>{getAdjustment(editingPhotoId).scale.toFixed(1)}x</div>
-                  </div>
-                  <div className="text-center p-2 bg-gray-50 rounded">
-                    <div className="font-semibold">Position</div>
-                    <div>x:{getAdjustment(editingPhotoId).xOffset}, y:{getAdjustment(editingPhotoId).yOffset}</div>
-                  </div>
-                  <div className="text-center p-2 bg-gray-50 rounded">
-                    <div className="font-semibold">Rotation</div>
-                    <div>{getAdjustment(editingPhotoId).rotation}°</div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Controls Side */}
-              <div className="space-y-6">
-                {/* Transform Controls */}
-                <div className="bg-gray-50 rounded-xl p-4">
-                  <h3 className="font-semibold mb-3 flex items-center gap-2">
-                    <Maximize2 className="w-4 h-4" />
-                    Transform
-                  </h3>
-                  
-                  {/* Zoom Control */}
-                  <div className="mb-4">
-                    <div className="flex items-center justify-between mb-2">
-                      <label className="font-medium text-gray-700">Zoom</label>
-                      <div className="flex gap-2">
-                        <button
-                          onClick={() => updateAdjustment(editingPhotoId, 'scale', Math.max(0.5, getAdjustment(editingPhotoId).scale - 0.1))}
-                          className="p-2 bg-white rounded-lg hover:bg-gray-100"
-                        >
-                          <Minus className="w-4 h-4" />
-                        </button>
-                        <button
-                          onClick={() => updateAdjustment(editingPhotoId, 'scale', Math.min(3, getAdjustment(editingPhotoId).scale + 0.1))}
-                          className="p-2 bg-white rounded-lg hover:bg-gray-100"
-                        >
-                          <Plus className="w-4 h-4" />
-                        </button>
-                      </div>
-                    </div>
-                    <input
-                      type="range"
-                      min="0.5"
-                      max="3"
-                      step="0.1"
-                      value={getAdjustment(editingPhotoId).scale}
-                      onChange={(e) => updateAdjustment(editingPhotoId, 'scale', e.target.value)}
-                      className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:h-4 [&::-webkit-slider-thumb]:w-4 [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-pink-500"
-                    />
-                  </div>
-
-                  {/* Position Controls */}
-                  <div className="grid grid-cols-2 gap-3 mb-4">
-                    <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-1">Horizontal</label>
-                      <input
-                        type="range"
-                        min="-50"
-                        max="50"
-                        step="1"
-                        value={getAdjustment(editingPhotoId).xOffset}
-                        onChange={(e) => updateAdjustment(editingPhotoId, 'xOffset', e.target.value)}
-                        className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:h-4 [&::-webkit-slider-thumb]:w-4 [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-blue-500"
-                      />
-                    </div>
-                    <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-1">Vertical</label>
-                      <input
-                        type="range"
-                        min="-50"
-                        max="50"
-                        step="1"
-                        value={getAdjustment(editingPhotoId).yOffset}
-                        onChange={(e) => updateAdjustment(editingPhotoId, 'yOffset', e.target.value)}
-                        className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:h-4 [&::-webkit-slider-thumb]:w-4 [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-blue-500"
-                      />
-                    </div>
-                  </div>
-
-                  {/* Rotation & Flip */}
-                  <div className="grid grid-cols-2 gap-3">
-                    <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-1">Rotation</label>
-                      <div className="flex gap-2">
-                        <button
-                          onClick={() => rotateImage(editingPhotoId, -90)}
-                          className="flex-1 py-2 bg-white border rounded-lg hover:bg-gray-50"
-                        >
-                          ↺ 90°
-                        </button>
-                        <button
-                          onClick={() => rotateImage(editingPhotoId, 90)}
-                          className="flex-1 py-2 bg-white border rounded-lg hover:bg-gray-50"
-                        >
-                          ↻ 90°
-                        </button>
-                      </div>
-                    </div>
-                    <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-1">Flip</label>
-                      <div className="flex gap-2">
-                        <button
-                          onClick={() => updateAdjustment(editingPhotoId, 'flipHorizontal', !getAdjustment(editingPhotoId).flipHorizontal)}
-                          className={`flex-1 py-2 border rounded-lg ${
-                            getAdjustment(editingPhotoId).flipHorizontal
-                              ? 'bg-blue-100 border-blue-500'
-                              : 'bg-white hover:bg-gray-50'
-                          }`}
-                        >
-                          <FlipHorizontal className="w-4 h-4 mx-auto" />
-                        </button>
-                        <button
-                          onClick={() => updateAdjustment(editingPhotoId, 'flipVertical', !getAdjustment(editingPhotoId).flipVertical)}
-                          className={`flex-1 py-2 border rounded-lg ${
-                            getAdjustment(editingPhotoId).flipVertical
-                              ? 'bg-blue-100 border-blue-500'
-                              : 'bg-white hover:bg-gray-50'
-                          }`}
-                        >
-                          <FlipVertical className="w-4 h-4 mx-auto" />
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Fit Mode */}
-                <div className="bg-gray-50 rounded-xl p-4">
-                  <h3 className="font-semibold mb-3 flex items-center gap-2">
-                    <Layers className="w-4 h-4" />
-                    Fit Mode
-                  </h3>
-                  <div className="flex gap-2">
-                    <button
-                      onClick={() => updateAdjustment(editingPhotoId, 'fit', 'contain')}
-                      className={`flex-1 py-2 rounded-lg border transition-all ${
-                        getAdjustment(editingPhotoId).fit === 'contain'
-                          ? 'border-pink-500 bg-pink-50 text-pink-700'
-                          : 'border-gray-300 hover:border-gray-400'
-                      }`}
-                    >
-                      <Square className="w-4 h-4 inline mr-2" />
-                      Show Full
-                    </button>
-                    <button
-                      onClick={() => updateAdjustment(editingPhotoId, 'fit', 'cover')}
-                      className={`flex-1 py-2 rounded-lg border transition-all ${
-                        getAdjustment(editingPhotoId).fit === 'cover'
-                          ? 'border-pink-500 bg-pink-50 text-pink-700'
-                          : 'border-gray-300 hover:border-gray-400'
-                      }`}
-                    >
-                      <Crop className="w-4 h-4 inline mr-2" />
-                      Crop to Fit
-                    </button>
-                  </div>
-                </div>
-
-                {/* Color Adjustments */}
-                <div className="bg-gray-50 rounded-xl p-4">
-                  <h3 className="font-semibold mb-3 flex items-center gap-2">
-                    <Palette className="w-4 h-4" />
-                    Color Adjustments
-                  </h3>
-                  
-                  <div className="space-y-3">
-                    <div>
-                      <div className="flex items-center justify-between mb-1">
-                        <label className="text-sm font-medium text-gray-700 flex items-center gap-1">
-                          <Sun className="w-3 h-3" />
-                          Brightness: {getAdjustment(editingPhotoId).brightness}%
-                        </label>
-                      </div>
-                      <input
-                        type="range"
-                        min="0"
-                        max="200"
-                        step="1"
-                        value={getAdjustment(editingPhotoId).brightness}
-                        onChange={(e) => updateAdjustment(editingPhotoId, 'brightness', e.target.value)}
-                        className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:h-4 [&::-webkit-slider-thumb]:w-4 [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-yellow-500"
-                      />
-                    </div>
-
-                    <div>
-                      <div className="flex items-center justify-between mb-1">
-                        <label className="text-sm font-medium text-gray-700 flex items-center gap-1">
-                          <Contrast className="w-3 h-3" />
-                          Contrast: {getAdjustment(editingPhotoId).contrast}%
-                        </label>
-                      </div>
-                      <input
-                        type="range"
-                        min="0"
-                        max="200"
-                        step="1"
-                        value={getAdjustment(editingPhotoId).contrast}
-                        onChange={(e) => updateAdjustment(editingPhotoId, 'contrast', e.target.value)}
-                        className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:h-4 [&::-webkit-slider-thumb]:w-4 [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-purple-500"
-                      />
-                    </div>
-
-                    <div>
-                      <div className="flex items-center justify-between mb-1">
-                        <label className="text-sm font-medium text-gray-700 flex items-center gap-1">
-                          <Droplets className="w-3 h-3" />
-                          Saturation: {getAdjustment(editingPhotoId).saturation}%
-                        </label>
-                      </div>
-                      <input
-                        type="range"
-                        min="0"
-                        max="200"
-                        step="1"
-                        value={getAdjustment(editingPhotoId).saturation}
-                        onChange={(e) => updateAdjustment(editingPhotoId, 'saturation', e.target.value)}
-                        className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:h-4 [&::-webkit-slider-thumb]:w-4 [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-green-500"
-                      />
-                    </div>
-                  </div>
-                </div>
-
-                {/* Filters */}
-                <div className="bg-gray-50 rounded-xl p-4">
-                  <h3 className="font-semibold mb-3 flex items-center gap-2">
-                    <Filter className="w-4 h-4" />
-                    Filters
-                  </h3>
-                  <div className="grid grid-cols-3 gap-2">
-                    {filters.map(filter => (
-                      <button
-                        key={filter.id}
-                        onClick={() => applyFilter(editingPhotoId, filter.id)}
-                        className={`py-2 rounded-lg border text-sm ${
-                          getAdjustment(editingPhotoId).filter === filter.id
-                            ? 'border-pink-500 bg-pink-50 text-pink-700'
-                            : 'border-gray-300 hover:border-gray-400'
-                        }`}
-                      >
-                        {filter.name}
-                      </button>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Action Buttons */}
-                <div className="flex gap-3 pt-4 border-t">
-                  <button
-                    onClick={() => resetAdjustment(editingPhotoId)}
-                    className="flex-1 flex items-center justify-center gap-2 bg-gray-100 text-gray-700 py-3 rounded-lg hover:bg-gray-200 transition-all font-medium"
-                  >
-                    <RotateCw className="w-4 h-4" />
-                    Reset All
-                  </button>
-                  <button
-                    onClick={closeImageEditor}
-                    className="flex-1 bg-gradient-to-r from-pink-500 to-purple-600 text-white py-3 rounded-lg hover:shadow-lg transition-all font-semibold"
-                  >
-                    Save Changes
-                  </button>
-                </div>
-              </div>
-            </div>
           </div>
         </div>
       )}
@@ -977,99 +524,61 @@ const WeddingAlbumGenerator = () => {
 
               {/* Photo Grid */}
               <div className="grid grid-cols-2 gap-4">
-                {photos.map((photo) => {
-                  const adj = getAdjustment(photo.id);
-                  const hasAdjustments = 
-                    adj.scale !== 1 || 
-                    adj.xOffset !== 0 || 
-                    adj.yOffset !== 0 || 
-                    adj.fit !== 'contain' ||
-                    adj.brightness !== 100 ||
-                    adj.contrast !== 100 ||
-                    adj.saturation !== 100 ||
-                    adj.rotation !== 0 ||
-                    adj.flipHorizontal ||
-                    adj.flipVertical ||
-                    adj.filter !== 'none';
-
-                  return (
-                    <div
-                      key={photo.id}
-                      className={`relative bg-white p-3 rounded-lg shadow-md border-2 ${currentTemplate.border} group`}
-                    >
-                      {/* Image with adjustments applied */}
-                      <div className="relative w-full h-64 overflow-hidden rounded">
-                        <img
-                          src={photo.url}
-                          alt={photo.caption}
-                          className="w-full h-full"
-                          style={getImageStyle(photo.id)}
-                        />
-                        
-                        {/* Adjustment indicators */}
-                        {hasAdjustments && (
-                          <div className="absolute top-2 left-2 bg-black bg-opacity-70 text-white text-xs px-2 py-1 rounded-full flex items-center gap-1">
-                            <Maximize2 className="w-3 h-3" />
-                            <span>Edited</span>
-                            {adj.fit !== 'contain' && (
-                              <Crop className="w-3 h-3 ml-1" />
-                            )}
-                          </div>
-                        )}
-                      </div>
-                      
-                      {/* Caption */}
-                      <div className="mt-2">
-                        {editingId === photo.id ? (
-                          <div className="flex gap-2">
-                            <input
-                              type="text"
-                              value={editCaption}
-                              onChange={(e) => setEditCaption(e.target.value)}
-                              className="flex-1 px-2 py-1 text-sm border border-gray-300 rounded"
-                              autoFocus
-                            />
-                            <button
-                              onClick={() => saveCaption(photo.id)}
-                              className="bg-green-500 text-white p-1 rounded hover:bg-green-600"
-                            >
-                              <Save className="w-4 h-4" />
-                            </button>
-                          </div>
-                        ) : (
-                          <p className="text-sm text-gray-700 text-center font-medium">
-                            {photo.caption}
-                          </p>
-                        )}
-                      </div>
-
-                      {/* Action Buttons */}
-                      <div className="absolute top-5 right-5 flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
-                        <button
-                          onClick={() => openImageEditor(photo.id)}
-                          className="bg-indigo-500 text-white p-2 rounded-full hover:bg-indigo-600"
-                          title="Edit image"
-                        >
-                          <Edit2 className="w-4 h-4" />
-                        </button>
-                        <button
-                          onClick={() => startEditing(photo)}
-                          className="bg-blue-500 text-white p-2 rounded-full hover:bg-blue-600"
-                          title="Edit caption"
-                        >
-                          <Edit2 className="w-4 h-4" />
-                        </button>
-                        <button
-                          onClick={() => removePhoto(photo.id)}
-                          className="bg-red-500 text-white p-2 rounded-full hover:bg-red-600"
-                          title="Delete photo"
-                        >
-                          <Trash2 className="w-4 h-4" />
-                        </button>
-                      </div>
+                {photos.map((photo) => (
+                  <div
+                    key={photo.id}
+                    className={`relative bg-white p-3 rounded-lg shadow-md border-2 ${currentTemplate.border} group`}
+                  >
+                    <img
+                      src={photo.url}
+                      alt={photo.caption}
+                      className="w-full h-64 object-cover rounded"
+                    />
+                    
+                    {/* Caption */}
+                    <div className="mt-2">
+                      {editingId === photo.id ? (
+                        <div className="flex gap-2">
+                          <input
+                            type="text"
+                            value={editCaption}
+                            onChange={(e) => setEditCaption(e.target.value)}
+                            className="flex-1 px-2 py-1 text-sm border border-gray-300 rounded"
+                            autoFocus
+                          />
+                          <button
+                            onClick={() => saveCaption(photo.id)}
+                            className="bg-green-500 text-white p-1 rounded hover:bg-green-600"
+                          >
+                            <Save className="w-4 h-4" />
+                          </button>
+                        </div>
+                      ) : (
+                        <p className="text-sm text-gray-700 text-center font-medium">
+                          {photo.caption}
+                        </p>
+                      )}
                     </div>
-                  );
-                })}
+
+                    {/* Action Buttons */}
+                    <div className="absolute top-5 right-5 flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                      <button
+                        onClick={() => startEditing(photo)}
+                        className="bg-blue-500 text-white p-2 rounded-full hover:bg-blue-600"
+                        title="Edit caption"
+                      >
+                        <Edit2 className="w-4 h-4" />
+                      </button>
+                      <button
+                        onClick={() => removePhoto(photo.id)}
+                        className="bg-red-500 text-white p-2 rounded-full hover:bg-red-600"
+                        title="Delete photo"
+                      >
+                        <Trash2 className="w-4 h-4" />
+                      </button>
+                    </div>
+                  </div>
+                ))}
               </div>
 
               {/* Album Footer */}

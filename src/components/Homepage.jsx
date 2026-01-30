@@ -27,7 +27,13 @@ export default function Homepage() {
     { id: 19, title: "WeddingAlbumGenerator", url: "WeddingAlbumGenerator" },
     { id: 20, title: "KankotriGenerator", url: "KankotriGenerator" },
     { id: 21, title: "WeddingCardGenerator", url: "WeddingCardGenerator" },
-    { id: 22, title: "VideoBackgroundSite", url: "VideoBackgroundSite" },
+    { id: 22, title: "LabourConnectPlatform", url: "LabourConnectPlatform" },
+    { id: 23, title: "CreativePlatformDocs", url: "CreativePlatformDocs" },
+    { id: 24, title: "WhatsAppAlertSender", url: "WhatsAppAlertSender" },
+    { id: 25, title: "CityCareHospital", url: "CityCareHospital" },
+    { id: 26, title: "MarwadiDressApp", url: "MarwadiDressApp" },
+    { id: 27, title: "MultipleInterviews", url: "MultipleInterviews" },
+    { id: 28, title: "VideoBackgroundSite", url: "VideoBackgroundSite" },
   ];
 
   return (
