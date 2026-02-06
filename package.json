@@ -16,6 +16,7 @@
     "@react-three/fiber": "^9.4.2",
     "@types/three": "^0.181.0",
     "formik": "^2.4.9",
+    "framer-motion": "^12.33.0",
     "lucide-react": "^0.555.0",
     "mammoth": "^1.11.0",
     "react": "^19.2.0",
