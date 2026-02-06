@@ -6,9 +6,10 @@ import WhatsAppAlertSender from './components/WhatsAppAlertSender'
 import BreakTimeCaseSenario from './pages/BreakTimeCaseSenario'
 import Websites3D48K from './components/Websites3D48K'
 import FramerMotionProject from './components/FramerMotionProject'
+import MyPortpolio from './MyPortpolio/MyPortpolio'
 export default function App() {
   return (
-    <FramerMotionProject />
+    <MyPortpolio />
     // <BreakTimeCaseSenario />
   )
 }
