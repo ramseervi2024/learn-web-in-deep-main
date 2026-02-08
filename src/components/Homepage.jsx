@@ -35,6 +35,10 @@ export default function Homepage() {
     { id: 27, title: "MultipleInterviews", url: "MultipleInterviews" },
     { id: 28, title: "VideoBackgroundSite", url: "VideoBackgroundSite" },
     { id: 29, title: "ThreeDAnimation", url: "ThreeDAnimation" },
+    { id: 30, title: "VenturesPortfolio", url: "VenturesPortfolio" },
+    { id: 31, title: "SpeakSmart", url: "SpeakSmart" },
+    { id: 32, title: "CodeBuildAcademy", url: "CodeBuildAcademy" },
+    { id: 33, title: "MyPortpolio", url: "MyPortpolio" },
   ];
 
   return (

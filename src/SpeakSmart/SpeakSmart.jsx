@@ -22,7 +22,7 @@ export default function SpeakSmart() {
 
       <main className="flex-grow">
         <Suspense fallback={<div className="h-screen flex items-center justify-center">Loading...</div>}>
-          <Routes>
+          <Routes path="/SpeakSmart">
             <Route path="/" element={<Home />} />
             <Route path="/courses" element={<Courses />} />
             <Route path="/ai-practice" element={<AIPractice />} />

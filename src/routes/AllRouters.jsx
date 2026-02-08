@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import Homepage from "../components/Homepage";
 import CoachingManagementApp from "../components/CoachingManagementApp";
 import PhotoEditor from "../components/PhotoEditor";
@@ -30,45 +30,51 @@ import MarwadiDressApp from "../components/MarwadiDressApp";
 import MultipleInterviews from "../components/MultipleInterviews";
 import VideoBackgroundSite from "../components/VideoBackgroundSite";
 import ThreeDAnimation from "../ThreeDAnimation/ThreeDAnimation";
+import VenturesPortfolio from "../VenturesPortfolio/VenturesPortfolio";
+import SpeakSmart from "../SpeakSmart/SpeakSmart";
+import CodeBuildAcademy from "../CodeBuildAcademy/CodeBuildAcademy";
+import MyPortpolio from "../MyPortpolio/MyPortpolio";
 
 
 export default function AllRouters() {
     return (
-        <BrowserRouter>
-            <Routes>
-                <Route path="/" element={<Homepage />} />
-                <Route path="/coaching-management" element={<CoachingManagementApp />} />
-                <Route path="/photo-editor" element={<PhotoEditor />} />
-                <Route path="/formula-table" element={<FormulaTable />} />
-                <Route path="/interviewquestions-table" element={<InterviewQuestionsTable />} />
-                <Route path="/instagram" element={<InstagramApp />} />
-                <Route path="/scroll-3d-website" element={<Scroll3DWebsite />} />
-                <Route path="/LinkedIn" element={<LinkedInLayout />} />
-                <Route path="/JustDial" element={<JustDial />} />
-                <Route path="/OLXLayout" element={<OLXLayout />} />
-                <Route path="/CashifyLayout" element={<CashifyLayout />} />
-                <Route path="/MyntraLayout" element={<MyntraLayout />} />
-                <Route path="/ModelViewer" element={<ModelViewer />} />
-                <Route path="/ModelWrapper" element={<ModelWrapper />} />
-                <Route path="/ProgramizEditor" element={<ProgramizEditor />} />
-                <Route path="/BlogPage" element={<BlogPage />} />
-                <Route path="/DoctorProfileManager" element={<DoctorProfileManager />} />
-                <Route path="/WeddingInvitationGenerator" element={<WeddingInvitationGenerator />} />
-                <Route path="/ResumeGenerator" element={<ResumeGenerator />} />
-                <Route path="/BlogCreator" element={<BlogCreator />} />
-                <Route path="/WeddingAlbumGenerator" element={<WeddingAlbumGenerator />} />
-                <Route path="/KankotriGenerator" element={<KankotriGenerator />} />
-                <Route path="/WeddingCardGenerator" element={<WeddingCardGenerator />} />
-                <Route path="/LabourConnectPlatform" element={<LabourConnectPlatform />} />
-                <Route path="/CreativePlatformDocs" element={<CreativePlatformDocs />} />
-                <Route path="/WhatsAppAlertSender" element={<WhatsAppAlertSender />} />
-                <Route path="/CityCareHospital" element={<CityCareHospital />} />
-                <Route path="/MarwadiDressApp" element={<MarwadiDressApp />} />
-                <Route path="/MultipleInterviews" element={<MultipleInterviews />} />
-                <Route path="/VideoBackgroundSite" element={<VideoBackgroundSite />} />
-                <Route path="/ThreeDAnimation" element={<ThreeDAnimation />} />
-            </Routes>
-        </BrowserRouter>
+        <Routes>
+            <Route path="/" element={<Homepage />} />
+            <Route path="/coaching-management" element={<CoachingManagementApp />} />
+            <Route path="/photo-editor" element={<PhotoEditor />} />
+            <Route path="/formula-table" element={<FormulaTable />} />
+            <Route path="/interviewquestions-table" element={<InterviewQuestionsTable />} />
+            <Route path="/instagram" element={<InstagramApp />} />
+            <Route path="/scroll-3d-website" element={<Scroll3DWebsite />} />
+            <Route path="/LinkedIn" element={<LinkedInLayout />} />
+            <Route path="/JustDial" element={<JustDial />} />
+            <Route path="/OLXLayout" element={<OLXLayout />} />
+            <Route path="/CashifyLayout" element={<CashifyLayout />} />
+            <Route path="/MyntraLayout" element={<MyntraLayout />} />
+            <Route path="/ModelViewer" element={<ModelViewer />} />
+            <Route path="/ModelWrapper" element={<ModelWrapper />} />
+            <Route path="/ProgramizEditor" element={<ProgramizEditor />} />
+            <Route path="/BlogPage" element={<BlogPage />} />
+            <Route path="/DoctorProfileManager" element={<DoctorProfileManager />} />
+            <Route path="/WeddingInvitationGenerator" element={<WeddingInvitationGenerator />} />
+            <Route path="/ResumeGenerator" element={<ResumeGenerator />} />
+            <Route path="/BlogCreator" element={<BlogCreator />} />
+            <Route path="/WeddingAlbumGenerator" element={<WeddingAlbumGenerator />} />
+            <Route path="/KankotriGenerator" element={<KankotriGenerator />} />
+            <Route path="/WeddingCardGenerator" element={<WeddingCardGenerator />} />
+            <Route path="/LabourConnectPlatform" element={<LabourConnectPlatform />} />
+            <Route path="/CreativePlatformDocs" element={<CreativePlatformDocs />} />
+            <Route path="/WhatsAppAlertSender" element={<WhatsAppAlertSender />} />
+            <Route path="/CityCareHospital" element={<CityCareHospital />} />
+            <Route path="/MarwadiDressApp" element={<MarwadiDressApp />} />
+            <Route path="/MultipleInterviews" element={<MultipleInterviews />} />
+            <Route path="/VideoBackgroundSite" element={<VideoBackgroundSite />} />
+            <Route path="/ThreeDAnimation" element={<ThreeDAnimation />} />
+            <Route path="/VenturesPortfolio" element={<VenturesPortfolio />} />
+            <Route path="/SpeakSmart" element={<SpeakSmart />} />
+            <Route path="/CodeBuildAcademy" element={<CodeBuildAcademy />} />
+            <Route path="/MyPortpolio" element={<MyPortpolio />} />
+        </Routes>
     );
 }
 

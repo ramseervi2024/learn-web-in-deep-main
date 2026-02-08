@@ -13,11 +13,16 @@ import CodeBuildAcademy from './CodeBuildAcademy/CodeBuildAcademy'
 import VenturesPortfolio from './VenturesPortfolio/VenturesPortfolio'
 export default function App() {
   return (
-    // <ThreeDAnimation />
-    // <SpeakSmart />
-    // <CodeBuildAcademy />
-    <VenturesPortfolio />
-    // <SpeakSmart/>
-    // <BreakTimeCaseSenario />
+    <>
+      {/* <ThreeDAnimation />
+      <SpeakSmart />
+      <CodeBuildAcademy />
+      <SpeakSmart />
+      <BreakTimeCaseSenario /> */}
+      {/* <VenturesPortfolio /> */}
+      <AllRouters />
+
+    </>
+
   )
 }
