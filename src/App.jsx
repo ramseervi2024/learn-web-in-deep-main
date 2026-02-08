@@ -8,9 +8,12 @@ import Websites3D48K from './components/Websites3D48K'
 import FramerMotionProject from './components/FramerMotionProject'
 import MyPortpolio from './MyPortpolio/MyPortpolio'
 import ThreeDAnimation from './ThreeDAnimation/ThreeDAnimation'
+import SpeakSmart from './SpeakSmart/SpeakSmart'
 export default function App() {
   return (
-    <ThreeDAnimation />
+    // <ThreeDAnimation />
+    <SpeakSmart />
+    // <SpeakSmart/>
     // <BreakTimeCaseSenario />
   )
 }
