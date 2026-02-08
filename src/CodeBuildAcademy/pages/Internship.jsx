@@ -1,3 +1,5 @@
+import React from 'react';
+import { Link } from 'react-router-dom';
 import { Award, GraduationCap, Briefcase, FileText, Linkedin, Github, CheckCircle2, ArrowRight } from 'lucide-react';
 
 export default function Internship() {

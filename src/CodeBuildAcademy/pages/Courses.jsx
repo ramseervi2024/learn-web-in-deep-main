@@ -1,3 +1,5 @@
+import React from 'react';
+import { Link } from 'react-router-dom';
 import { Layers, Database, Globe, BarChart, CheckCircle2, BrainCircuit, ShieldCheck, Zap } from 'lucide-react';
 
 const CourseCard = ({ title, icon: Icon, topics, color, tag }) => (
