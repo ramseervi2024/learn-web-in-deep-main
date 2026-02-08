@@ -14,7 +14,7 @@ import MyntraLayout from "../components/MyntraLayout";
 import ModelViewer from "../pages/3DModel/ModelViewer";
 import ModelWrapper from "../pages/3DModel/GLTFModel";
 import ProgramizEditor from "../components/ProgramizEditor";
-import BlogPage from "../components/BlogPage"; 
+import BlogPage from "../components/BlogPage";
 import DoctorProfileManager from "../components/DoctorProfileManager";
 import WeddingInvitationGenerator from "../components/WeddingInvitationGenerator";
 import ResumeGenerator from "../components/ResumeGenerator";
@@ -29,6 +29,8 @@ import CityCareHospital from "../components/CityCareHospital";
 import MarwadiDressApp from "../components/MarwadiDressApp";
 import MultipleInterviews from "../components/MultipleInterviews";
 import VideoBackgroundSite from "../components/VideoBackgroundSite";
+import ThreeDAnimation from "../ThreeDAnimation/ThreeDAnimation";
+
 
 export default function AllRouters() {
     return (
@@ -64,7 +66,8 @@ export default function AllRouters() {
                 <Route path="/MarwadiDressApp" element={<MarwadiDressApp />} />
                 <Route path="/MultipleInterviews" element={<MultipleInterviews />} />
                 <Route path="/VideoBackgroundSite" element={<VideoBackgroundSite />} />
-                </Routes>
+                <Route path="/ThreeDAnimation" element={<ThreeDAnimation />} />
+            </Routes>
         </BrowserRouter>
     );
 }

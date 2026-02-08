@@ -34,6 +34,7 @@ export default function Homepage() {
     { id: 26, title: "MarwadiDressApp", url: "MarwadiDressApp" },
     { id: 27, title: "MultipleInterviews", url: "MultipleInterviews" },
     { id: 28, title: "VideoBackgroundSite", url: "VideoBackgroundSite" },
+    { id: 29, title: "ThreeDAnimation", url: "ThreeDAnimation" },
   ];
 
   return (

@@ -7,9 +7,10 @@ import BreakTimeCaseSenario from './pages/BreakTimeCaseSenario'
 import Websites3D48K from './components/Websites3D48K'
 import FramerMotionProject from './components/FramerMotionProject'
 import MyPortpolio from './MyPortpolio/MyPortpolio'
+import ThreeDAnimation from './ThreeDAnimation/ThreeDAnimation'
 export default function App() {
   return (
-    <MyPortpolio />
+    <ThreeDAnimation />
     // <BreakTimeCaseSenario />
   )
 }
