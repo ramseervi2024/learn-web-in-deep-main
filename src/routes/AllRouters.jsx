@@ -71,8 +71,8 @@ export default function AllRouters() {
             <Route path="/VideoBackgroundSite" element={<VideoBackgroundSite />} />
             <Route path="/ThreeDAnimation" element={<ThreeDAnimation />} />
             <Route path="/VenturesPortfolio" element={<VenturesPortfolio />} />
-            <Route path="/SpeakSmart" element={<SpeakSmart />} />
-            <Route path="/CodeBuildAcademy" element={<CodeBuildAcademy />} />
+            <Route path="/SpeakSmart/*" element={<SpeakSmart />} />
+            <Route path="/CodeBuildAcademy/*" element={<CodeBuildAcademy />} />
             <Route path="/MyPortpolio" element={<MyPortpolio />} />
         </Routes>
     );

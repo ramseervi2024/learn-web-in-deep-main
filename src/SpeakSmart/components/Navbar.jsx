@@ -7,13 +7,13 @@ const Navbar = () => {
     const location = useLocation();
 
     const navLinks = [
-        { name: 'Home', path: '/', icon: <Home size={20} /> },
-        { name: 'Courses', path: '/courses', icon: <BookOpen size={20} /> },
-        { name: 'Solutions', path: '/solutions', icon: <Lightbulb size={20} /> },
-        { name: 'AI Practice', path: '/ai-practice', icon: <Mic size={20} /> },
-        { name: 'Resources', path: '/resources', icon: <Gift size={20} /> },
-        { name: 'About', path: '/about', icon: <Info size={20} /> },
-        { name: 'Contact', path: '/contact', icon: <Phone size={20} /> },
+        { name: 'Home', path: '/SpeakSmart', icon: <Home size={20} /> },
+        { name: 'Courses', path: '/SpeakSmart/courses', icon: <BookOpen size={20} /> },
+        { name: 'Solutions', path: '/SpeakSmart/solutions', icon: <Lightbulb size={20} /> },
+        { name: 'AI Practice', path: '/SpeakSmart/ai-practice', icon: <Mic size={20} /> },
+        { name: 'Resources', path: '/SpeakSmart/resources', icon: <Gift size={20} /> },
+        { name: 'About', path: '/SpeakSmart/about', icon: <Info size={20} /> },
+        { name: 'Contact', path: '/SpeakSmart/contact', icon: <Phone size={20} /> },
     ];
 
     return (

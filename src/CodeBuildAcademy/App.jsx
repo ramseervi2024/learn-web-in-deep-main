@@ -25,19 +25,19 @@ export default function App() {
             <main>
                 <Routes>
                     <Route path="/" element={<Home />} />
-                    <Route path="/courses" element={<Courses />} />
-                    <Route path="/training" element={<ProjectTraining />} />
-                    <Route path="/services" element={<Services />} />
-                    <Route path="/admission" element={<Admission />} />
-                    <Route path="/about" element={<About />} />
-                    <Route path="/contact" element={<Contact />} />
+                    <Route path="courses" element={<Courses />} />
+                    <Route path="training" element={<ProjectTraining />} />
+                    <Route path="services" element={<Services />} />
+                    <Route path="admission" element={<Admission />} />
+                    <Route path="about" element={<About />} />
+                    <Route path="contact" element={<Contact />} />
 
                     {/* Advanced Routes */}
-                    <Route path="/freelance" element={<FreelanceHub />} />
-                    <Route path="/devops" element={<DevOpsLab />} />
-                    <Route path="/publishing" element={<AppPublishing />} />
-                    <Route path="/internship" element={<Internship />} />
-                    <Route path="/confidence" element={<Communication />} />
+                    <Route path="freelance" element={<FreelanceHub />} />
+                    <Route path="devops" element={<DevOpsLab />} />
+                    <Route path="publishing" element={<AppPublishing />} />
+                    <Route path="internship" element={<Internship />} />
+                    <Route path="confidence" element={<Communication />} />
                 </Routes>
             </main>
             <Footer />

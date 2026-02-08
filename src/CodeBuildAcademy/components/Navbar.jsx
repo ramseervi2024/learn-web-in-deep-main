@@ -7,18 +7,18 @@ export default function Navbar() {
     const [isLabsOpen, setIsLabsOpen] = useState(false);
 
     const navLinks = [
-        { title: 'Home', path: '/' },
-        { title: 'Courses', path: '/courses' },
-        { title: 'Freelance Hub', path: '/freelance' },
-        { title: 'About', path: '/about' },
-        { title: 'Contact', path: '/contact' },
+        { title: 'Home', path: '/CodeBuildAcademy' },
+        { title: 'Courses', path: '/CodeBuildAcademy/courses' },
+        { title: 'Freelance Hub', path: '/CodeBuildAcademy/freelance' },
+        { title: 'About', path: '/CodeBuildAcademy/about' },
+        { title: 'Contact', path: '/CodeBuildAcademy/contact' },
     ];
 
     const labsLinks = [
-        { title: 'DevOps Lab', path: '/devops' },
-        { title: 'App Publishing', path: '/publishing' },
-        { title: 'Internship', path: '/internship' },
-        { title: 'Confidence Training', path: '/confidence' },
+        { title: 'DevOps Lab', path: '/CodeBuildAcademy/devops' },
+        { title: 'App Publishing', path: '/CodeBuildAcademy/publishing' },
+        { title: 'Internship', path: '/CodeBuildAcademy/internship' },
+        { title: 'Confidence Training', path: '/CodeBuildAcademy/confidence' },
     ];
 
     return (
@@ -74,7 +74,7 @@ export default function Navbar() {
                         </div>
 
                         <Link
-                            to="/admission"
+                            to="/CodeBuildAcademy/admission"
                             className="bg-blue-600 text-white px-6 py-2.5 rounded-full font-bold hover:bg-blue-700 transition-all shadow-lg shadow-blue-100 text-xs uppercase tracking-widest"
                         >
                             Join Academy
@@ -122,7 +122,7 @@ export default function Navbar() {
                         </div>
                         <div className="pt-6">
                             <Link
-                                to="/admission"
+                                to="/CodeBuildAcademy/admission"
                                 onClick={() => setIsOpen(false)}
                                 className="block w-full text-center bg-blue-600 text-white px-6 py-4 rounded-xl font-bold hover:bg-blue-700 shadow-lg"
                             >
