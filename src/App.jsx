@@ -9,10 +9,12 @@ import FramerMotionProject from './components/FramerMotionProject'
 import MyPortpolio from './MyPortpolio/MyPortpolio'
 import ThreeDAnimation from './ThreeDAnimation/ThreeDAnimation'
 import SpeakSmart from './SpeakSmart/SpeakSmart'
+import CodeBuildAcademy from './CodeBuildAcademy/CodeBuildAcademy'
 export default function App() {
   return (
     // <ThreeDAnimation />
-    <SpeakSmart />
+    // <SpeakSmart />
+    <CodeBuildAcademy />
     // <SpeakSmart/>
     // <BreakTimeCaseSenario />
   )
