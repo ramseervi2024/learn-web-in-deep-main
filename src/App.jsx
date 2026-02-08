@@ -10,11 +10,13 @@ import MyPortpolio from './MyPortpolio/MyPortpolio'
 import ThreeDAnimation from './ThreeDAnimation/ThreeDAnimation'
 import SpeakSmart from './SpeakSmart/SpeakSmart'
 import CodeBuildAcademy from './CodeBuildAcademy/CodeBuildAcademy'
+import VenturesPortfolio from './VenturesPortfolio/VenturesPortfolio'
 export default function App() {
   return (
     // <ThreeDAnimation />
     // <SpeakSmart />
-    <CodeBuildAcademy />
+    // <CodeBuildAcademy />
+    <VenturesPortfolio />
     // <SpeakSmart/>
     // <BreakTimeCaseSenario />
   )
