@@ -1,5 +1,5 @@
 import React from 'react';
-import { CheckCircle, ArrowRight, Play, Star } from 'lucide-react';
+import { CheckCircle, ArrowRight, Play, Star, Lightbulb } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
 const Home = () => {
@@ -73,6 +73,41 @@ const Home = () => {
                                 </div>
                                 <h3 className="text-2xl font-bold text-gray-900 mb-3">{feature.title}</h3>
                                 <p className="text-gray-600 text-lg">{feature.desc}</p>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            {/* Best Solutions Section */}
+            <section className="py-20 px-6 bg-blue-900 text-white rounded-[3rem] mx-4 my-20">
+                <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-12">
+                    <div className="md:w-1/2 space-y-6">
+                        <div className="bg-yellow-400 text-blue-900 w-16 h-16 rounded-2xl flex items-center justify-center shadow-lg">
+                            <Lightbulb size={32} />
+                        </div>
+                        <h2 className="text-3xl md:text-5xl font-bold leading-tight">Expert Solutions for Common Problems</h2>
+                        <p className="text-xl text-blue-100 leading-relaxed font-medium">
+                            Struggling with grammar? Thinking in Hindi? Fear of judged by others?
+                            Humne in sabka solution examples ke sath banaya hai.
+                        </p>
+                        <button
+                            onClick={() => navigate('/solutions')}
+                            className="bg-yellow-400 text-blue-900 px-10 py-5 rounded-2xl text-xl font-bold shadow-xl hover:bg-yellow-300 transition-all transform hover:scale-105 active:scale-95 leading-none flex items-center gap-2"
+                        >
+                            See Best Solutions <ArrowRight size={22} />
+                        </button>
+                    </div>
+                    <div className="md:w-1/2 grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        {[
+                            "Grammar Fear Removal",
+                            "Direct English Thinking",
+                            "Public Speaking Tips",
+                            "1:1 Talk Examples"
+                        ].map((tip, idx) => (
+                            <div key={idx} className="bg-blue-800/50 p-6 rounded-2xl border border-blue-700/50 hover:bg-blue-800 transition">
+                                <h4 className="font-bold text-lg mb-2 text-yellow-400">{idx + 1}. {tip}</h4>
+                                <p className="text-sm text-blue-200">Real-life examples ke sath seekhein.</p>
                             </div>
                         ))}
                     </div>

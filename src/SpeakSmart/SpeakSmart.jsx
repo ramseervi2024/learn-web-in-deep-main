@@ -12,6 +12,8 @@ const AIPractice = lazy(() => import('./pages/AIPractice'));
 const Resources = lazy(() => import('./pages/Resources'));
 const About = lazy(() => import('./pages/About'));
 const Contact = lazy(() => import('./pages/Contact'));
+const ResourceReader = lazy(() => import('./pages/ResourceReader'));
+const Solutions = lazy(() => import('./pages/Solutions'));
 
 export default function SpeakSmart() {
   return (
@@ -27,6 +29,8 @@ export default function SpeakSmart() {
             <Route path="/resources" element={<Resources />} />
             <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/solutions" element={<Solutions />} />
+            <Route path="/resource/:id" element={<ResourceReader />} />
           </Routes>
         </Suspense>
       </main>

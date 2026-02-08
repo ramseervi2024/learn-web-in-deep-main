@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Menu, X, Phone, User, BookOpen, Mic, Home, Info, Gift } from 'lucide-react';
+import { Menu, X, Phone, User, BookOpen, Mic, Home, Info, Gift, Lightbulb } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
 
 const Navbar = () => {
@@ -9,6 +9,7 @@ const Navbar = () => {
     const navLinks = [
         { name: 'Home', path: '/', icon: <Home size={20} /> },
         { name: 'Courses', path: '/courses', icon: <BookOpen size={20} /> },
+        { name: 'Solutions', path: '/solutions', icon: <Lightbulb size={20} /> },
         { name: 'AI Practice', path: '/ai-practice', icon: <Mic size={20} /> },
         { name: 'Resources', path: '/resources', icon: <Gift size={20} /> },
         { name: 'About', path: '/about', icon: <Info size={20} /> },

@@ -1,9 +1,11 @@
 import React from 'react';
-import { Download, FileText, PlayCircle, Clock, CheckCircle2 } from 'lucide-react';
+import { BookOpen, FileText, PlayCircle, Clock, CheckCircle2, Eye } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const Resources = () => {
     const resources = [
         {
+            id: "100-sentences",
             type: "PDF Notes",
             title: "100 Daily Used Sentences (Hindi-English)",
             icon: <FileText className="text-red-500" />,
@@ -11,6 +13,7 @@ const Resources = () => {
             color: "bg-red-50"
         },
         {
+            id: "restaurant-script",
             type: "Practice Script",
             title: "Restaurant Conversation Practice Script",
             icon: <CheckCircle2 className="text-green-500" />,
@@ -18,6 +21,7 @@ const Resources = () => {
             color: "bg-green-50"
         },
         {
+            id: "morning-drill",
             type: "Speaking Challenge",
             title: "10-Minute Morning Mirror Drill",
             icon: <Clock className="text-blue-500" />,
@@ -25,6 +29,7 @@ const Resources = () => {
             color: "bg-blue-50"
         },
         {
+            id: "intro-lesson",
             type: "Audio Lesson",
             title: "The Art of Introduction (Hinglish)",
             icon: <PlayCircle className="text-purple-500" />,
@@ -38,25 +43,28 @@ const Resources = () => {
             <div className="max-w-6xl mx-auto">
                 <div className="text-center mb-16">
                     <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">Free Study Resources</h1>
-                    <p className="text-xl text-gray-600">Download notes, scripts and listen to audio lessons anywhere.</p>
+                    <p className="text-xl text-gray-600">Ab PDF download karne ki zaroorat nahi, yahin padhein aur seekhein!</p>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
                     {resources.map((item, idx) => (
                         <div key={idx} className={`${item.color} p-8 rounded-3xl border border-white shadow-sm flex items-center justify-between hover:shadow-md transition group`}>
                             <div className="flex items-center gap-6">
-                                <div className="bg-white p-4 rounded-2xl shadow-sm group-hover:scale-110 transition">
+                                <div className="bg-white p-4 rounded-2xl shadow-sm group-hover:scale-110 transition leading-none flex items-center justify-center">
                                     {item.icon}
                                 </div>
-                                <div>
+                                <div className="leading-tight">
                                     <span className="text-xs font-bold text-gray-400 uppercase tracking-widest">{item.type}</span>
-                                    <h3 className="text-xl font-bold text-gray-800">{item.title}</h3>
+                                    <h3 className="text-xl font-bold text-gray-800 my-1">{item.title}</h3>
                                     <span className="text-sm text-gray-500">{item.size}</span>
                                 </div>
                             </div>
-                            <button className="bg-white p-3 rounded-full text-blue-600 shadow-sm hover:bg-blue-600 hover:text-white transition">
-                                <Download size={24} />
-                            </button>
+                            <Link
+                                to={`/resource/${item.id}`}
+                                className="bg-white text-blue-600 px-4 py-2 rounded-xl text-sm font-bold shadow-sm hover:bg-blue-600 hover:text-white transition flex items-center gap-2"
+                            >
+                                <Eye size={18} /> Read Online
+                            </Link>
                         </div>
                     ))}
                 </div>
