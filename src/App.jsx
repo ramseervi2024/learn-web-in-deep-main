@@ -11,6 +11,7 @@ import ThreeDAnimation from './ThreeDAnimation/ThreeDAnimation'
 import SpeakSmart from './SpeakSmart/SpeakSmart'
 import CodeBuildAcademy from './CodeBuildAcademy/CodeBuildAcademy'
 import VenturesPortfolio from './VenturesPortfolio/VenturesPortfolio'
+import BackendLearning from './BackendLearning/BackendLearning'
 export default function App() {
   return (
     <>
@@ -20,7 +21,8 @@ export default function App() {
       <SpeakSmart />
       <BreakTimeCaseSenario /> */}
       {/* <VenturesPortfolio /> */}
-      <AllRouters />
+      {/* <AllRouters /> */}
+      <BackendLearning />
 
     </>
 
