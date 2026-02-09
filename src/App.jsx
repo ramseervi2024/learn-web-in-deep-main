@@ -12,6 +12,7 @@ import SpeakSmart from './SpeakSmart/SpeakSmart'
 import CodeBuildAcademy from './CodeBuildAcademy/CodeBuildAcademy'
 import VenturesPortfolio from './VenturesPortfolio/VenturesPortfolio'
 import BackendLearning from './BackendLearning/BackendLearning'
+import SkillCareerRoadmap from './SkillCareerRoadmap/SkillCareerRoadmap'
 export default function App() {
   return (
     <>
@@ -22,7 +23,8 @@ export default function App() {
       <BreakTimeCaseSenario /> */}
       {/* <VenturesPortfolio /> */}
       {/* <AllRouters /> */}
-      <BackendLearning />
+      {/* <BackendLearning /> */}
+      <SkillCareerRoadmap />
 
     </>
 
