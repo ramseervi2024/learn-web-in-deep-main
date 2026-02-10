@@ -39,6 +39,9 @@ export default function Homepage() {
     { id: 31, title: "SpeakSmart", url: "SpeakSmart" },
     { id: 32, title: "CodeBuildAcademy", url: "CodeBuildAcademy" },
     { id: 33, title: "MyPortpolio", url: "MyPortpolio" },
+    { id: 33, title: "BackendLearning", url: "BackendLearning" },
+    { id: 33, title: "SkillCareerRoadmap", url: "SkillCareerRoadmap" },
+    { id: 33, title: "InterviewCrackRoadmap", url: "InterviewCrackRoadmap" },
   ];
 
   return (
