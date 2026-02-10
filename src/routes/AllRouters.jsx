@@ -34,7 +34,7 @@ import VenturesPortfolio from "../VenturesPortfolio/VenturesPortfolio";
 import SpeakSmart from "../SpeakSmart/SpeakSmart";
 import CodeBuildAcademy from "../CodeBuildAcademy/CodeBuildAcademy";
 import MyPortpolio from "../MyPortpolio/MyPortpolio";
-import InterviewCrackRoadmap from "../InterviewCrackRoadmap/InterviewCrackRoadmap";
+import InterviewCrackRoadmap from "../SkillCareerRoadmap/InterviewCrackRoadmap";
 import SkillCareerRoadmap from "../SkillCareerRoadmap/SkillCareerRoadmap";
 import BackendLearning from "../BackendLearning/BackendLearning";
 
@@ -80,7 +80,7 @@ export default function AllRouters() {
             <Route path="/BackendLearning" element={<BackendLearning />} />
             <Route path="/SkillCareerRoadmap" element={<SkillCareerRoadmap />} />
             <Route path="/InterviewCrackRoadmap" element={<InterviewCrackRoadmap />} />
-            </Routes>
+        </Routes>
     );
 }
 

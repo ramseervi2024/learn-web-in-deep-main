@@ -13,7 +13,7 @@ import CodeBuildAcademy from './CodeBuildAcademy/CodeBuildAcademy'
 import VenturesPortfolio from './VenturesPortfolio/VenturesPortfolio'
 import BackendLearning from './BackendLearning/BackendLearning'
 import SkillCareerRoadmap from './SkillCareerRoadmap/SkillCareerRoadmap'
-import InterviewCrackRoadmap from './InterviewCrackRoadmap/InterviewCrackRoadmap'
+import InterviewCrackRoadmap from './SkillCareerRoadmap/InterviewCrackRoadmap'
 export default function App() {
   return (
     <>
@@ -25,8 +25,8 @@ export default function App() {
       {/* <VenturesPortfolio /> */}
       {/* <AllRouters /> */}
       {/* <BackendLearning /> */}
-      {/* <SkillCareerRoadmap /> */}
-      <InterviewCrackRoadmap />
+      <SkillCareerRoadmap />
+      {/* <InterviewCrackRoadmap /> */}
 
     </>
 
