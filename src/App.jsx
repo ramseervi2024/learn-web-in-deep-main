@@ -23,9 +23,9 @@ export default function App() {
       <SpeakSmart />
       <BreakTimeCaseSenario /> */}
       {/* <VenturesPortfolio /> */}
-      {/* <AllRouters /> */}
+      <AllRouters />
       {/* <BackendLearning /> */}
-      <SkillCareerRoadmap />
+      {/* <SkillCareerRoadmap /> */}
       {/* <InterviewCrackRoadmap /> */}
 
     </>
