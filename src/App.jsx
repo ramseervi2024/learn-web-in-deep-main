@@ -14,6 +14,7 @@ import VenturesPortfolio from './VenturesPortfolio/VenturesPortfolio'
 import BackendLearning from './BackendLearning/BackendLearning'
 import SkillCareerRoadmap from './SkillCareerRoadmap/SkillCareerRoadmap'
 import InterviewCrackRoadmap from './SkillCareerRoadmap/InterviewCrackRoadmap'
+import ColorfullIndia from './ColorfullIndia/ColorfullIndia'
 export default function App() {
   return (
     <>
@@ -27,6 +28,7 @@ export default function App() {
       {/* <BackendLearning /> */}
       {/* <SkillCareerRoadmap /> */}
       {/* <InterviewCrackRoadmap /> */}
+      {/* <ColorfullIndia /> */}
 
     </>
 
