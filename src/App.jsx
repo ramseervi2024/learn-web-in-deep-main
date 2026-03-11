@@ -15,6 +15,8 @@ import BackendLearning from './BackendLearning/BackendLearning'
 import SkillCareerRoadmap from './SkillCareerRoadmap/SkillCareerRoadmap'
 import InterviewCrackRoadmap from './SkillCareerRoadmap/InterviewCrackRoadmap'
 import ColorfullIndia from './ColorfullIndia/ColorfullIndia'
+import TentHouseApp from './TentHouseApp'
+import ClaudeAIStudio from './ClaudeAIStudio'
 export default function App() {
   return (
     <>
@@ -24,12 +26,13 @@ export default function App() {
       <SpeakSmart />
       <BreakTimeCaseSenario /> */}
       {/* <VenturesPortfolio /> */}
-      <AllRouters />
+      {/* <AllRouters /> */}
       {/* <BackendLearning /> */}
       {/* <SkillCareerRoadmap /> */}
       {/* <InterviewCrackRoadmap /> */}
       {/* <ColorfullIndia /> */}
-
+      {/* <TentHouseApp /> */}
+      <ClaudeAIStudio />
     </>
 
   )
