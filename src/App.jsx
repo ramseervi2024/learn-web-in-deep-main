@@ -26,13 +26,13 @@ export default function App() {
       <SpeakSmart />
       <BreakTimeCaseSenario /> */}
       {/* <VenturesPortfolio /> */}
-      {/* <AllRouters /> */}
+      <AllRouters />
       {/* <BackendLearning /> */}
       {/* <SkillCareerRoadmap /> */}
       {/* <InterviewCrackRoadmap /> */}
       {/* <ColorfullIndia /> */}
       {/* <TentHouseApp /> */}
-      <ClaudeAIStudio />
+      {/* <ClaudeAIStudio /> */}
     </>
 
   )

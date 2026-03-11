@@ -17,57 +17,165 @@ const FEATURES = [
 
 const LANGUAGES = ["Spanish","French","German","Japanese","Chinese","Arabic","Hindi","Portuguese","Korean","Italian","Russian","Dutch"];
 
+// ── Mock AI Engine (no API key required) ────────────────────────────────────
+
+function delay(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+function getMockResponse(messages, system = "") {
+  const lastMsg = messages[messages.length - 1];
+  const content = typeof lastMsg.content === "string"
+    ? lastMsg.content.toLowerCase()
+    : JSON.stringify(lastMsg.content).toLowerCase();
+
+  // Sentiment / JSON detection
+  if (content.includes("sentiment") && content.includes("json")) {
+    const sentiments = ["positive", "negative", "neutral", "mixed"];
+    const s = sentiments[Math.floor(Math.random() * sentiments.length)];
+    const score = (0.55 + Math.random() * 0.4).toFixed(2);
+    const emotionSets = {
+      positive: ["joy", "enthusiasm", "optimism"],
+      negative: ["frustration", "disappointment", "concern"],
+      neutral:  ["indifference", "calmness", "objectivity"],
+      mixed:    ["ambivalence", "curiosity", "uncertainty"],
+    };
+    return JSON.stringify({
+      sentiment: s,
+      score: parseFloat(score),
+      emotions: emotionSets[s],
+      tone: ["formal", "informal", "friendly", "analytical"][Math.floor(Math.random() * 4)],
+      summary: `The text expresses a ${s} tone with noticeable emotional undertones.`,
+    });
+  }
+
+  // Classify / JSON detection
+  if (content.includes("classify") && content.includes("json")) {
+    const cats = content.match(/categories:\s*([^\n.]+)/)?.[1]?.split(",").map(c => c.trim()) ||
+      ["Technology", "Business", "Science"];
+    const chosen = cats[Math.floor(Math.random() * cats.length)];
+    return JSON.stringify({
+      category: chosen,
+      confidence: parseFloat((0.7 + Math.random() * 0.28).toFixed(2)),
+      reasoning: `The content aligns with ${chosen} based on key topic signals and vocabulary patterns.`,
+    });
+  }
+
+  // JSON Extract
+  if (content.includes("extract structured data") || content.includes("json schema")) {
+    return `{"name": "John Doe", "email": "john@example.com", "date": "2025-01-15", "amount": 249.99}`;
+  }
+
+  // Summarize
+  if (content.includes("summarize")) {
+    return `**Summary:**\n\nThe provided text discusses key points related to its subject matter. The main themes include the central topic, supporting arguments, and relevant context. Overall, the content presents a structured overview with actionable insights and concludes with a clear takeaway for the reader.`;
+  }
+
+  // Translate
+  const translateMatch = content.match(/translate the following text to (\w+)/);
+  if (translateMatch) {
+    const lang = translateMatch[1];
+    const samples = {
+      spanish: "Hola, esto es una traducción de ejemplo al español. El texto ha sido convertido correctamente.",
+      french: "Bonjour, ceci est un exemple de traduction en français. Le texte a été converti correctement.",
+      german: "Hallo, dies ist eine Beispielübersetzung auf Deutsch. Der Text wurde korrekt übersetzt.",
+      japanese: "こんにちは、これは日本語へのサンプル翻訳です。テキストが正しく変換されました。",
+      chinese: "你好，这是中文的示例翻译。文本已正确转换。",
+      arabic: "مرحبا، هذه ترجمة نموذجية إلى العربية. تم تحويل النص بشكل صحيح.",
+      hindi: "नमस्ते, यह हिंदी में एक नमूना अनुवाद है। पाठ को सही ढंग से परिवर्तित किया गया है।",
+    };
+    return samples[lang.toLowerCase()] ||
+      `[${lang} Translation] — This is a simulated translation of your input text into ${lang}.`;
+  }
+
+  // Code generation / explanation
+  if (content.includes("write clean") || content.includes("code for")) {
+    return `\`\`\`javascript
+// Solution: Fibonacci sequence generator
+function fibonacci(n) {
+  if (n <= 1) return n;
+  let prev = 0, curr = 1;
+  for (let i = 2; i <= n; i++) {
+    [prev, curr] = [curr, prev + curr];
+  }
+  return curr;
+}
+
+// Usage example
+for (let i = 0; i < 10; i++) {
+  console.log(\`fib(\${i}) = \${fibonacci(i)}\`);
+}
+\`\`\`
+
+**Explanation:**
+- Uses an iterative approach instead of recursion for O(n) time and O(1) space
+- Destructuring assignment swaps \`prev\` and \`curr\` cleanly
+- Works for any non-negative integer input`;
+  }
+
+  if (content.includes("explain this code")) {
+    return `**Code Explanation:**\n\n1. **Initialization** — Variables and state are set up at the top\n2. **Core Logic** — The main algorithm processes input step by step\n3. **Iteration** — A loop handles repeated operations efficiently\n4. **Output** — Results are returned or rendered to the UI\n\nThis code follows clean code principles with clear naming and single responsibility per function.`;
+  }
+
+  // Rewrite
+  if (content.includes("rewrite the following text")) {
+    const styleMatch = content.match(/rewrite the following text in a (\w+) style/);
+    const style = styleMatch ? styleMatch[1] : "professional";
+    return `**Rewritten (${style} style):**\n\nThis refined version of your content maintains the original meaning while adopting a ${style} tone. The structure has been improved for clarity, the vocabulary adjusted to suit the ${style} register, and transitions smoothed to enhance overall readability and flow.`;
+  }
+
+  // Brainstorm
+  if (content.includes("generate") && content.includes("ideas")) {
+    const countMatch = content.match(/generate (\d+)/);
+    const count = parseInt(countMatch?.[1] || "5");
+    const ideas = [
+      "**Build a micro-SaaS product** — Identify a niche problem and build a focused solution with a subscription model.",
+      "**Launch a content series** — Create weekly deep-dive content that establishes authority in your target domain.",
+      "**Create an open-source tool** — Solve a developer pain point publicly to gain visibility and community traction.",
+      "**Start a community** — Build a Discord/Slack for like-minded people and monetize via premium membership.",
+      "**Offer a productized service** — Package your expertise into a fixed-scope, fixed-price repeatable offering.",
+      "**Build a curated newsletter** — Aggregate the best resources in a niche and grow a loyal subscriber base.",
+      "**Create an online course** — Teach what you know through video modules and sell it on Gumroad or Teachable.",
+      "**Develop a Chrome extension** — Automate a repetitive browser task for a specific audience.",
+      "**Host live workshops** — Run interactive sessions that teach skills and build your personal brand.",
+      "**Partner on a joint venture** — Collaborate with a complementary creator to co-launch a product or event.",
+      "**Build an AI wrapper app** — Combine AI capabilities with a focused UX to serve a specific use case.",
+      "**Launch a physical product** — Design a niche product that solves a specific lifestyle or hobby problem.",
+      "**Freelance in a new area** — Offer services in a high-demand skill you're developing to gain experience.",
+      "**Start a podcast** — Interview experts in your field and build an audience while learning from the best.",
+      "**Build a comparison website** — Help people make decisions with curated, unbiased comparisons and earn via affiliate.",
+    ];
+    return ideas.slice(0, count).map((idea, i) => `${i + 1}. ${idea}`).join("\n\n");
+  }
+
+  // Q&A / RAG
+  if (system.includes("Q&A") || content.includes("based on the provided context")) {
+    return `Based on the provided context, here is a precise answer to your question:\n\nThe context discusses relevant information that directly addresses your query. The key point is that the subject in question operates according to the principles outlined in the source material. Specifically, the answer lies in understanding the relationship between the concepts described.\n\n*Note: This answer is grounded solely in the provided context.*`;
+  }
+
+  // Chat fallback
+  const chatReplies = [
+    "That's a fascinating question! Let me think through this carefully.\n\nFrom what I understand, the concept you're exploring touches on several interconnected ideas. The key insight is that these elements work together in a system where each part influences the others.\n\nWould you like me to explore any specific aspect in more depth?",
+    "Great point! Here's my perspective:\n\nThis is a topic with significant depth. The most important thing to consider is the underlying principle, which suggests that context always shapes meaning. Breaking it down into smaller components often reveals surprising clarity.\n\nWhat aspect would you like to focus on next?",
+    "I appreciate you bringing this up! Here's what I think:\n\nThe answer isn't immediately obvious, but if we approach it systematically, we can see that the core issue relates to how we frame the problem. A different perspective often unlocks new solutions.\n\nFeel free to push back or ask follow-up questions!",
+    "Excellent question! Let me walk you through my reasoning:\n\n1. **First**, consider the foundational premise\n2. **Then**, examine how it interacts with related concepts\n3. **Finally**, synthesize these into a coherent conclusion\n\nThe result is a nuanced understanding that goes beyond the surface level. What do you think?",
+  ];
+  return chatReplies[Math.floor(Math.random() * chatReplies.length)];
+}
+
 async function callClaude(messages, system = "") {
-  const body = {
-    model: "claude-sonnet-4-20250514",
-    max_tokens: 1000,
-    messages,
-  };
-  if (system) body.system = system;
-  const res = await fetch("https://api.anthropic.com/v1/messages", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(body),
-  });
-  const data = await res.json();
-  if (data.error) throw new Error(data.error.message);
-  return data.content.map(b => b.text || "").join("");
+  // Simulate network delay
+  await delay(900 + Math.random() * 800);
+  return getMockResponse(messages, system);
 }
 
 async function* streamClaude(messages, system = "") {
-  const body = {
-    model: "claude-sonnet-4-20250514",
-    max_tokens: 1000,
-    stream: true,
-    messages,
-  };
-  if (system) body.system = system;
-  const res = await fetch("https://api.anthropic.com/v1/messages", {
-    method: "POST",
-    headers: { "Content-Type": "application/json", "anthropic-version": "2023-06-01" },
-    body: JSON.stringify(body),
-  });
-  const reader = res.body.getReader();
-  const decoder = new TextDecoder();
-  let buffer = "";
-  while (true) {
-    const { done, value } = await reader.read();
-    if (done) break;
-    buffer += decoder.decode(value, { stream: true });
-    const lines = buffer.split("\n");
-    buffer = lines.pop();
-    for (const line of lines) {
-      if (line.startsWith("data: ")) {
-        const raw = line.slice(6).trim();
-        if (raw === "[DONE]") return;
-        try {
-          const ev = JSON.parse(raw);
-          if (ev.type === "content_block_delta" && ev.delta?.text) {
-            yield ev.delta.text;
-          }
-        } catch {}
-      }
-    }
+  const fullResponse = getMockResponse(messages, system);
+  const words = fullResponse.split(" ");
+  for (let i = 0; i < words.length; i++) {
+    const chunk = i === 0 ? words[i] : " " + words[i];
+    yield chunk;
+    await delay(30 + Math.random() * 40);
   }
 }
 
