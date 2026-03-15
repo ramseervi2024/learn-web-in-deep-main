@@ -30,7 +30,7 @@ import MarwadiDressApp from "../components/MarwadiDressApp";
 import MultipleInterviews from "../components/MultipleInterviews";
 import VideoBackgroundSite from "../components/VideoBackgroundSite";
 import ThreeDAnimation from "../ThreeDAnimation/ThreeDAnimation";
-import VenturesPortfolio from "../VenturesPortfolio/VenturesPortfolio";
+// import VenturesPortfolio from "../VenturesPortfolio/VenturesPortfolio";
 import SpeakSmart from "../SpeakSmart/SpeakSmart";
 import CodeBuildAcademy from "../CodeBuildAcademy/CodeBuildAcademy";
 import MyPortpolio from "../MyPortpolio/MyPortpolio";
@@ -73,7 +73,7 @@ export default function AllRouters() {
             <Route path="/MultipleInterviews" element={<MultipleInterviews />} />
             <Route path="/VideoBackgroundSite" element={<VideoBackgroundSite />} />
             <Route path="/ThreeDAnimation" element={<ThreeDAnimation />} />
-            <Route path="/VenturesPortfolio" element={<VenturesPortfolio />} />
+            {/* <Route path="/VenturesPortfolio" element={<VenturesPortfolio />} /> */}
             <Route path="/SpeakSmart/*" element={<SpeakSmart />} />
             <Route path="/CodeBuildAcademy/*" element={<CodeBuildAcademy />} />
             <Route path="/MyPortpolio" element={<MyPortpolio />} />
