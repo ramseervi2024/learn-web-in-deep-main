@@ -18,6 +18,7 @@ import ColorfullIndia from './ColorfullIndia/ColorfullIndia'
 import TentHouseApp from './TentHouseApp'
 import ClaudeAIStudio from './ClaudeAIStudio'
 import FacelessReels from './FacelessReels/FacelessReels'
+import Devroadmap from './components/Devroadmap'
 export default function App() {
   return (
     <>
@@ -34,8 +35,9 @@ export default function App() {
       {/* <ColorfullIndia /> */}
       {/* <TentHouseApp /> */}
       {/* <ClaudeAIStudio /> */}
-      <FacelessReels />
-    </>
+      {/* <FacelessReels /> */}
+      <Devroadmap />
+      </>
 
   )
 }
