@@ -19,6 +19,7 @@ import TentHouseApp from './TentHouseApp'
 import ClaudeAIStudio from './ClaudeAIStudio'
 import FacelessReels from './FacelessReels/FacelessReels'
 import Devroadmap from './components/Devroadmap'
+import Newsfeed from './Newsfeed/Newsfeed'
 export default function App() {
   return (
     <>
@@ -36,7 +37,8 @@ export default function App() {
       {/* <TentHouseApp /> */}
       {/* <ClaudeAIStudio /> */}
       {/* <FacelessReels /> */}
-      <Devroadmap />
+      {/* <Devroadmap /> */}
+      <Newsfeed />
       </>
 
   )
