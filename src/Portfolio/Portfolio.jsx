@@ -7,10 +7,10 @@ import Portfolio4 from './Portfolio4'
 export default function Portfolio() {
     return (
         <>
-            <Portfolio1 />
-            {/* <Portfolio2 />
+            {/* <Portfolio1 /> */}
+            {/* <Portfolio2 /> */}
             <Portfolio3 />
-            <Portfolio4 /> */}
+            {/* <Portfolio4 />  */}
         </>
     )
 }
