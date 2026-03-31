@@ -20,6 +20,7 @@ import ClaudeAIStudio from './ClaudeAIStudio'
 import FacelessReels from './FacelessReels/FacelessReels'
 import Devroadmap from './components/Devroadmap'
 import Newsfeed from './Newsfeed/Newsfeed'
+import Portfolio from './Portfolio/Portfolio'
 export default function App() {
   return (
     <>
@@ -38,8 +39,9 @@ export default function App() {
       {/* <ClaudeAIStudio /> */}
       {/* <FacelessReels /> */}
       {/* <Devroadmap /> */}
-      <Newsfeed />
-      </>
+      {/* <Newsfeed /> */}
+      <Portfolio />
+    </>
 
   )
 }
