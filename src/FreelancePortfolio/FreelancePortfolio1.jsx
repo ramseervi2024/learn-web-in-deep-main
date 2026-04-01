@@ -92,13 +92,23 @@ export default function FreelancePortfolio1() {
           </motion.div>
         </section>
 
-        {/* LOGO MARQUEE (Pseudo) */}
-        <div className="py-10 border-y border-white/5 overflow-hidden bg-white/[0.01]">
-          <div className="flex gap-16 animate-[pulse_4s_ease-in-out_infinite] justify-center opacity-40">
-            {data.technology_stack.frontend.concat(data.technology_stack.backend).map((tech, i) => (
+        {/* LOGO MARQUEE */}
+        <div className="py-10 border-y border-white/5 overflow-hidden bg-white/[0.01] relative flex">
+          {/* Gradient Fades for Smooth Entry/Exit */}
+          <div className="absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-[#030712] to-transparent z-10 pointer-events-none"></div>
+          <div className="absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-[#030712] to-transparent z-10 pointer-events-none"></div>
+          
+          <div className="flex gap-16 animate-[marquee_40s_linear_infinite] opacity-40 whitespace-nowrap hover:[animation-play-state:paused] cursor-default px-8">
+            {[...data.technology_stack.frontend, ...data.technology_stack.backend, ...data.technology_stack.cloud, ...data.technology_stack.frontend, ...data.technology_stack.backend, ...data.technology_stack.cloud].map((tech, i) => (
               <div key={i} className="text-xl font-bold uppercase tracking-widest text-slate-500">{tech}</div>
             ))}
           </div>
+          <style>{`
+             @keyframes marquee {
+               0% { transform: translateX(0); }
+               100% { transform: translateX(-50%); }
+             }
+          `}</style>
         </div>
 
         {/* STATS */}
@@ -245,37 +255,39 @@ export default function FreelancePortfolio1() {
         </section>
 
         {/* TESTIMONIALS */}
-        <section className="py-32 px-6">
-          <div className="max-w-7xl mx-auto">
-            <div className="text-center mb-20">
-               <h2 className="text-5xl md:text-6xl font-black mb-6 tracking-tight">Client Trust <span className="text-emerald-400">.</span></h2>
-            </div>
-            <div className="grid md:grid-cols-2 gap-8">
-              {data.testimonials.map((test, i) => (
-                <motion.div 
+        <section className="py-32 overflow-hidden relative">
+          <div className="max-w-7xl mx-auto px-6 mb-20 relative z-20 text-center">
+             <h2 className="text-5xl md:text-6xl font-black mb-6 tracking-tight">Client Trust <span className="text-emerald-400">.</span></h2>
+          </div>
+          
+          <div className="relative flex">
+            {/* Edge fade gradients */}
+            <div className="absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-[#030712] to-transparent z-10 pointer-events-none"></div>
+            <div className="absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-[#030712] to-transparent z-10 pointer-events-none"></div>
+            
+            <div className="flex gap-8 animate-[marquee_50s_linear_infinite] px-4 hover:[animation-play-state:paused] cursor-default whitespace-nowrap">
+              {[...data.testimonials, ...data.testimonials, ...data.testimonials, ...data.testimonials].map((test, i) => (
+                <div 
                   key={i}
-                  initial={{ opacity: 0, scale: 0.95 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  viewport={{ once: true }}
-                  className="p-10 rounded-3xl bg-slate-900/50 border border-slate-800 relative group"
+                  className="w-[450px] shrink-0 p-10 rounded-3xl bg-slate-900/50 border border-slate-800 relative group whitespace-normal flex flex-col"
                 >
                   <div className="absolute -top-4 -left-4 text-7xl text-slate-800 font-serif leading-none opacity-50 select-none group-hover:text-blue-500/20 transition-colors">"</div>
                   <div className="flex gap-1 text-yellow-500 mb-8 mt-2 relative z-10">
                     {[...Array(test.rating)].map((_, idx) => <Star key={idx} fill="currentColor" size={20} />)}
                   </div>
-                  <p className="text-xl md:text-2xl font-light text-slate-300 mb-8 leading-relaxed">
+                  <p className="text-xl md:text-2xl font-light text-slate-300 mb-8 leading-relaxed flex-1">
                     {test.feedback}
                   </p>
-                  <div className="flex items-center gap-4">
+                  <div className="flex items-center gap-4 mt-auto">
                     <div className="w-12 h-12 rounded-full bg-slate-800 border-2 border-slate-700 flex items-center justify-center font-bold text-slate-400 text-sm">
                       {test.name.charAt(0)}
                     </div>
                     <div>
-                      <div className="font-bold text-white text-lg">{test.name}</div>
-                      <div className="text-blue-400 text-sm">{data.brand.name} Client</div>
+                      <div className="font-bold text-white text-lg">{test.name.split(',')[0]}</div>
+                      <div className="text-blue-400 text-sm">{test.name.split(',')[1] ? test.name.split(',')[1].trim() : `${data.brand.name} Client`}</div>
                     </div>
                   </div>
-                </motion.div>
+                </div>
               ))}
             </div>
           </div>

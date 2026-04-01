@@ -324,22 +324,22 @@ export default function FreelancePortfolio2() {
 
         {/* TESTIMONIALS */}
         <section className="py-32 border-y border-zinc-200 bg-white overflow-hidden relative">
-           <div className="absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-white to-transparent z-10"></div>
-           <div className="absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-white to-transparent z-10"></div>
-           <div className="flex gap-8 animate-[marquee_50s_linear_infinite] whitespace-nowrap px-4">
+           <div className="absolute inset-y-0 left-0 w-16 md:w-32 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none"></div>
+           <div className="absolute inset-y-0 right-0 w-16 md:w-32 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none"></div>
+           <div className="flex gap-6 md:gap-8 animate-[marquee_50s_linear_infinite] px-4 hover:[animation-play-state:paused] cursor-default whitespace-nowrap">
               {[...data.testimonials, ...data.testimonials, ...data.testimonials, ...data.testimonials].map((test, i) => (
-                 <div key={i} className="inline-block w-[450px] whitespace-normal bg-[#FAF9F6] p-12 rounded-[2.5rem] border border-zinc-200 shadow-sm shrink-0">
+                 <div key={i} className="inline-block w-[85vw] md:w-[450px] whitespace-normal bg-[#FAF9F6] p-8 md:p-12 rounded-[2.5rem] border border-zinc-200 shadow-sm shrink-0 flex flex-col">
                     <div className="flex gap-1 text-zinc-900 mb-8">
                        {[...Array(test.rating)].map((_, idx) => <Star key={idx} fill="currentColor" size={20} />)}
                     </div>
-                    <p className="text-xl font-light text-zinc-600 mb-10 leading-relaxed italic">"{test.feedback}"</p>
-                    <div className="flex items-center gap-4">
-                       <div className="w-12 h-12 bg-white rounded-full border border-zinc-200 flex items-center justify-center font-bold text-zinc-400">
+                    <p className="text-lg md:text-xl font-light text-zinc-600 mb-10 leading-relaxed italic flex-1">"{test.feedback}"</p>
+                    <div className="flex items-center gap-4 mt-auto">
+                       <div className="w-12 h-12 bg-white rounded-full border border-zinc-200 flex items-center justify-center font-bold text-zinc-400 shrink-0">
                          {test.name.charAt(0)}
                        </div>
                        <div>
-                         <div className="font-medium text-zinc-900">{test.name}</div>
-                         <div className="text-sm text-zinc-500 font-light">Verified Client</div>
+                         <div className="font-bold text-zinc-900 text-lg">{test.name.split(',')[0]}</div>
+                         <div className="text-sm text-zinc-500 font-medium">{test.name.split(',')[1] ? test.name.split(',')[1].trim() : "Verified Client"}</div>
                        </div>
                     </div>
                  </div>
