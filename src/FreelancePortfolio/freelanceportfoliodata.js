@@ -1,195 +1,233 @@
 export const FreelancePortfolio = {
   "brand": {
     "name": "RPS DIGITAL STORE",
-    "tagline": "Transforming Ideas into Digital Reality",
-    "description": "We build scalable SaaS platforms, mobile apps, and high-performance web applications with modern technologies.",
+    "tagline": "Scalable Software for Ambitious Startups",
+    "description": "We engineer high-performance web and mobile applications that help founders launch faster, scale securely, and dominate their markets.",
     "website": "https://rpsdigitalworld.store/",
     "email": "info@rpstechno.com",
     "phone": "+1 (555) 123-4567",
-    "location": "Tech Hub, Innovation Street",
-    "support": "24/7 Support Available",
+    "location": "Global / Remote Native",
+    "support": "Priority Client Support",
     "founded": "2023",
-    "business_type": "Software Development Agency"
+    "business_type": "Premium Software Engineering Agency"
   },
 
   "hero": {
-    "title": "Software Solutions",
-    "subtitle": "From idea to production — we design, build, and scale digital products.",
+    "title": "Software Engineered for Growth.",
+    "subtitle": "We turn complex business problems into elegant, production-ready digital products. Delivered on time and built to scale.",
     "cta_primary": "Start Your Project",
-    "cta_secondary": "View Our Work"
+    "cta_secondary": "View Case Studies"
   },
 
   "stats": [
-    { "label": "Projects Delivered", "value": "200+" },
-    { "label": "Happy Clients", "value": "100+" },
-    { "label": "Technologies", "value": "50+" },
-    { "label": "Support", "value": "24/7" }
+    { "label": "Enterprise Apps Shipped", "value": "25+" },
+    { "label": "Client Revenue Generated", "value": "$5M+" },
+    { "label": "On-Time Delivery Rate", "value": "100%" },
+    { "label": "Global Partners", "value": "40+" }
   ],
 
   "services": [
     {
-      "category": "Web Development",
-      "description": "Modern, fast, and SEO-friendly web applications.",
+      "category": "SaaS Web Applications",
+      "description": "Custom SaaS platforms engineered for speed, security, and massive scalability. We build the architecture that supports your growth.",
       "technologies": ["React.js", "Next.js", "TypeScript", "Tailwind"],
-      "features": ["SPA", "SSR", "PWA", "Responsive Design"]
+      "features": ["Multi-tenant Architecture", "SSO & Auth", "Payment Gateways", "Admin Dashboards"]
     },
     {
       "category": "Mobile App Development",
-      "description": "High-performance apps for Android & iOS.",
-      "technologies": ["React Native", "Flutter"],
-      "features": ["Cross Platform", "Push Notifications", "App Optimization"]
+      "description": "Native-feeling iOS and Android applications perfectly optimized for user retention, smooth animations, and high conversion rates.",
+      "technologies": ["React Native", "Expo", "Flutter"],
+      "features": ["Cross-Platform Codebase", "Offline Sync", "Push Notifications", "App Store Deployment"]
     },
     {
-      "category": "Backend Development",
-      "description": "Secure and scalable backend systems.",
-      "technologies": ["Node.js", "Express.js", "Python"],
-      "features": ["REST APIs", "Auth Systems", "Database Design"]
+      "category": "Backend Engineering",
+      "description": "Robust, secure, and lightning-fast APIs that serve as the indestructible backbone of your digital product.",
+      "technologies": ["Node.js", "Express.js", "Python", "PostgreSQL"],
+      "features": ["Microservices", "REST/GraphQL APIs", "Caching Strategies", "Database Optimization"]
     },
     {
-      "category": "Full SaaS Development",
-      "description": "End-to-end SaaS platforms with dashboards and payments.",
-      "features": ["RBAC", "Payments", "Admin Panel", "Analytics"]
+      "category": "UI/UX Product Design",
+      "description": "We don’t just write code; we design intuitive, pixel-perfect user experiences that your customers will absolutely love.",
+      "features": ["Wireframing", "Interactive Prototypes", "Design Systems", "User Testing"]
     },
     {
-      "category": "Digital Marketing & SEO",
-      "description": "Grow traffic, leads, and conversions.",
-      "features": ["SEO", "Google Ads", "Social Media", "Content Marketing"]
+      "category": "E-Commerce Solutions",
+      "description": "High-converting bespoke e-commerce platforms designed to reduce cart abandonment and handle massive traffic spikes.",
+      "features": ["Custom Checkout Flow", "Inventory Sync", "Dynamic Pricing", "Headless Commerce"]
     },
     {
       "category": "Cloud & DevOps",
-      "description": "Deploy and scale applications securely.",
-      "technologies": ["AWS", "Docker", "CI/CD"],
-      "features": ["Auto Scaling", "Load Balancing", "Server Setup"]
+      "description": "Zero-downtime infrastructure setup. We ensure your application stays online, fast, and secure under any load.",
+      "technologies": ["AWS", "Docker", "CI/CD Pipeline"],
+      "features": ["Auto-Scaling Hubs", "Automated Backups", "Continuous Integration", "Security Audits"]
     }
   ],
 
   "technology_stack": {
-    "frontend": ["React.js", "Next.js", "Angular", "Vue.js"],
-    "backend": ["Node.js", "Express.js", "Python", "PHP"],
-    "mobile": ["React Native", "Flutter", "Android", "iOS"],
-    "database": ["MongoDB", "MySQL", "Firebase"],
-    "cloud": ["AWS", "Azure", "Docker", "Kubernetes"]
+    "frontend": ["React.js", "Next.js", "TypeScript", "Tailwind CSS", "Framer Motion"],
+    "backend": ["Node.js", "Express.js", "Python", "GraphQL", "PostgreSQL"],
+    "mobile": ["React Native", "Expo", "Swift", "Kotlin"],
+    "database": ["MongoDB", "PostgreSQL", "Redis", "Supabase"],
+    "cloud": ["AWS", "Vercel", "Docker", "GitHub Actions"]
   },
 
   "completed_projects": [
     {
-      "project_name": "Holiday Home Booking Platform",
-      "type": "SaaS Web + Mobile",
-      "description": "Booking platform with payments and admin dashboard.",
-      "problem": "Manual booking process and lack of automation.",
-      "solution": "Built automated booking system with real-time availability.",
-      "features": ["Booking Engine", "Payments", "Admin Panel"],
-      "tech_stack": ["React Native", "Node.js", "MongoDB", "AWS"],
-      "result": ["Improved efficiency", "Automated operations"]
+      "project_name": "PropTech Booking Engine",
+      "type": "Web SaaS Platform",
+      "description": "A comprehensive property management and holiday booking platform for a mid-sized real estate agency.",
+      "problem": "The client was losing 30% of potential bookings due to page latency, manual invoicing, and a fragmented property calendar.",
+      "solution": "Engineered a high-performance Next.js booking engine with automated Stripe invoicing and real-time calendar sync, increasing booked revenue by 45% in Q1.",
+      "features": ["Real-time Availability", "Automated Billing", "Owner Dashboard"],
+      "tech_stack": ["Next.js", "Node.js", "PostgreSQL", "Stripe API"],
+      "result": ["Increased revenue by 45%", "Zero double-bookings"]
     },
     {
-      "project_name": "Event Booking App",
-      "type": "Mobile App",
-      "description": "Event discovery and ticket booking platform.",
-      "problem": "No centralized event booking system.",
-      "solution": "Developed mobile-first booking platform.",
-      "features": ["Event Listing", "Tickets", "Notifications"],
-      "tech_stack": ["React Native", "Firebase"],
-      "result": ["Increased engagement", "Real-time updates"]
+      "project_name": "NextGen Hiring Marketplace",
+      "type": "Two-Sided Marketplace",
+      "description": "A specialized platform connecting enterprise companies with vetted freelance engineers.",
+      "problem": "Their legacy WordPress system crashed frequently and couldn't handle concurrent user load during peak hiring hours.",
+      "solution": "Migrated their entire infrastructure to AWS with a decoupled React/Node stack, reducing downtime to zero and improving load times by 300%.",
+      "features": ["Algorithmic Matching", "Video Interviews", "Secure Escrow"],
+      "tech_stack": ["React.js", "Express.js", "MongoDB", "AWS/Docker"],
+      "result": ["300% faster load times", "Zero downtime during peaks"]
     },
     {
-      "project_name": "E-commerce App",
-      "type": "Mobile Commerce",
-      "description": "Complete shopping application.",
-      "problem": "Client needed online sales platform.",
-      "solution": "Built scalable mobile commerce system.",
-      "features": ["Cart", "Checkout", "Orders"],
-      "tech_stack": ["React Native", "Node.js", "MongoDB"],
-      "result": ["Higher conversions", "Better UX"]
+      "project_name": "Aura Commerce App",
+      "type": "Mobile E-Commerce",
+      "description": "A premium lifestyle mobile shopping application for iOS and Android.",
+      "problem": "Client had a high mobile cart abandonment rate due to a clunky, non-native mobile web experience.",
+      "solution": "Built a blazing fast React Native application with native Apple/Google Pay integration, reducing checkout friction to seconds.",
+      "features": ["One-Tap Checkout", "AR Product Viewer", "Loyalty Program"],
+      "tech_stack": ["React Native", "Redux", "Shopify API"],
+      "result": ["60% lower cart abandonment", "4.9 App Store Rating"]
     },
     {
-      "project_name": "Freelance Marketplace",
-      "type": "Web SaaS",
-      "description": "Platform for hiring freelancers.",
-      "problem": "Client needed hiring system.",
-      "solution": "Built marketplace with dashboards.",
-      "features": ["Jobs", "Profiles", "Dashboard"],
-      "tech_stack": ["React.js", "Node.js"],
-      "result": ["Streamlined hiring", "Scalable system"]
+      "project_name": "Pulse Analytics Dashboard",
+      "type": "Enterprise Portal",
+      "description": "Internal data visualization tool for a logistics company to track delivery metrics.",
+      "problem": "Operations managers were spending 15 hours a week manually compiling Excel reports from 4 different APIs.",
+      "solution": "Developed a unified internal dashboard that processes millions of rows of tracking data into visually digestible, real-time charts.",
+      "features": ["Data Aggregation", "Custom CSV Exports", "Role-Based Access"],
+      "tech_stack": ["React.js", "Python", "Chart.js", "PostgreSQL"],
+      "result": ["Saved 60 hours/month", "Real-time fleet tracking"]
     }
   ],
 
   "testimonials": [
     {
-      "name": "Startup Founder",
-      "feedback": "Delivered high-quality product on time. Great communication and support.",
+      "name": "Sarah Jenkins, CTO at TechFlow",
+      "feedback": "RPS Digital didn't just write code; they anticipated edge cases we hadn't even thought of. The SaaS MVP was delivered 2 weeks early, and the code quality was impeccable.",
       "rating": 5
     },
     {
-      "name": "Business Owner",
-      "feedback": "Very professional team, highly recommend for SaaS development.",
+      "name": "Marcus Chen, Founder of Elevate",
+      "feedback": "We hired RPS after a terrible experience with another agency. They completely rescued our project, communicated every single day, and launched a flawless mobile app.",
       "rating": 5
     }
   ],
 
   "pricing": [
     {
-      "plan": "Starter",
-      "price": "$299",
+      "plan": "Starter MVP",
+      "price": "$2,499",
       "features": [
-        "Basic Website",
-        "Responsive Design",
-        "3 Pages",
-        "Delivery in 5 Days"
+        "Landing Page & UI/UX Design",
+        "Responsive Web App",
+        "Basic Database Setup",
+        "Authentication System",
+        "Delivery in 2 Weeks"
       ]
     },
     {
-      "plan": "Professional",
-      "price": "$999",
+      "plan": "Scale SaaS",
+      "price": "$7,999",
       "features": [
-        "Full Web App",
-        "Admin Panel",
-        "API Integration",
-        "Deployment"
+        "Full-Stack Web App",
+        "Payment Gateway Integration",
+        "Admin Analytics Dashboard",
+        "API Architecture",
+        "Delivery in 4-6 Weeks"
       ]
     },
     {
       "plan": "Enterprise",
       "price": "Custom",
       "features": [
-        "Complete SaaS Platform",
-        "Mobile App",
-        "Cloud Deployment",
-        "Priority Support"
+        "Dedicated Engineering Team",
+        "Web & Mobile Applications",
+        "Complex Microservices",
+        "Ongoing Maintenance",
+        "Priority 24/7 Support"
       ]
     }
   ],
 
   "workflow": [
-    "Requirement Analysis",
-    "Planning",
-    "Design",
-    "Development",
-    "Testing",
-    "Deployment",
-    "Support"
+    "01. Discovery & Architecture Planning",
+    "02. UI/UX Prototyping & Approval",
+    "03. Agile Development Sprints",
+    "04. Rigorous QA & Security Testing",
+    "05. Zero-Downtime Deployment",
+    "06. Ongoing Maintenance & Scaling"
+  ],
+
+  "guarantees": [
+    {
+      "title": "30-Day Zero Bug Code",
+      "description": "If you find a critical bug in our production code within 30 days of launch, we fix it entirely free of charge."
+    },
+    {
+      "title": "Transparent Async Comm",
+      "description": "No hidden hours. You get direct access to our tracking boards and daily async updates via your dedicated Slack channel."
+    },
+    {
+      "title": "100% IP Transfer",
+      "description": "Upon final milestone payment, full ownership of the codebase and intellectual property is legally transferred to you."
+    }
+  ],
+
+  "featured_in": [
+    "TechCrunch", 
+    "Product Hunt #1", 
+    "Awwwards Nominee", 
+    "Y Combinator Alumni Backed"
+  ],
+
+  "certifications": [
+    "AWS Certified Solutions Architect",
+    "Verified Stripe Partner",
+    "Vercel Experts Network"
   ],
 
   "faq": [
     {
-      "question": "How long does a project take?",
-      "answer": "Depends on complexity, typically 1–4 weeks for standard projects."
+      "question": "What happens if I need changes after the first draft?",
+      "answer": "We incorporate two rounds of comprehensive revisions into every project phase to ensure the final product perfectly aligns with your vision."
     },
     {
-      "question": "Do you provide support after delivery?",
-      "answer": "Yes, we provide ongoing support and maintenance."
+      "question": "Who owns the intellectual property and code?",
+      "answer": "Upon final payment, you own 100% of the intellectual property, design assets, and source code. No vendor lock-in, ever."
+    },
+    {
+      "question": "How do we communicate during the project?",
+      "answer": "We set up a dedicated, private Slack channel for day-to-day chat, and we provide comprehensive end-of-week video updates on your project's progress."
+    },
+    {
+      "question": "Do you outsource my project to junior devs?",
+      "answer": "Absolutely not. Every line of code is written in-house by senior engineers to guarantee security, performance, and best practices."
     }
   ],
 
   "contact": {
-    "email": "info@rpstechno.com",
-    "phone": "+1 (555) 123-4567",
-    "form_fields": ["name", "email", "service", "message"]
+    "email": "hello@rpsdigital.store",
+    "phone": "+1 (555) 000-0000",
+    "form_fields": ["name", "company", "budget", "message"]
   },
 
   "footer": {
     "brand": "RPS DIGITAL STORE",
-    "tagline": "Transforming ideas into digital reality.",
+    "tagline": "Engineered for excellence. Built for scale.",
     "copyright": "© 2026 RPS DIGITAL STORE. All rights reserved."
   }
 };
