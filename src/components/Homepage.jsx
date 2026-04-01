@@ -43,7 +43,8 @@ export default function Homepage() {
     { id: 35, title: "SkillCareerRoadmap", url: "SkillCareerRoadmap" },
     { id: 36, title: "InterviewCrackRoadmap", url: "InterviewCrackRoadmap" },
     { id: 37, title: "PersonalPortfolio", url: "PersonalPortfolio" },
-    { id: 38, title: "Newsfeed", url: "Newsfeed" },
+    { id: 38, title: "FreelancePortfolio", url: "FreelancePortfolio" },
+    { id: 39, title: "Newsfeed", url: "Newsfeed" },
   ];
 
   return (
