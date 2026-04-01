@@ -38,6 +38,7 @@ import InterviewCrackRoadmap from "../SkillCareerRoadmap/InterviewCrackRoadmap";
 import SkillCareerRoadmap from "../SkillCareerRoadmap/SkillCareerRoadmap";
 import BackendLearning from "../BackendLearning/BackendLearning";
 import Portfolio from "../Portfolio/Portfolio";
+import NewsFeed from "../Newsfeed/Newsfeed";
 
 
 export default function AllRouters() {
@@ -82,6 +83,7 @@ export default function AllRouters() {
             <Route path="/SkillCareerRoadmap" element={<SkillCareerRoadmap />} />
             <Route path="/InterviewCrackRoadmap" element={<InterviewCrackRoadmap />} />
             <Route path="/Portfolio/*" element={<Portfolio />} />
+            <Route path="/Newsfeed" element={<NewsFeed />} />
         </Routes>
     );
 }
