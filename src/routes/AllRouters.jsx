@@ -37,6 +37,7 @@ import MyPortpolio from "../MyPortpolio/MyPortpolio";
 import InterviewCrackRoadmap from "../SkillCareerRoadmap/InterviewCrackRoadmap";
 import SkillCareerRoadmap from "../SkillCareerRoadmap/SkillCareerRoadmap";
 import BackendLearning from "../BackendLearning/BackendLearning";
+import Portfolio from "../Portfolio/Portfolio";
 
 
 export default function AllRouters() {
@@ -80,6 +81,7 @@ export default function AllRouters() {
             <Route path="/BackendLearning" element={<BackendLearning />} />
             <Route path="/SkillCareerRoadmap" element={<SkillCareerRoadmap />} />
             <Route path="/InterviewCrackRoadmap" element={<InterviewCrackRoadmap />} />
+            <Route path="/Portfolio" element={<Portfolio />} />
         </Routes>
     );
 }

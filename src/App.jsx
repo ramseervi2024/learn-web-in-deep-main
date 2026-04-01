@@ -30,7 +30,7 @@ export default function App() {
       <SpeakSmart />
       <BreakTimeCaseSenario /> */}
       {/* <VenturesPortfolio /> */}
-      {/* <AllRouters /> */}
+      <AllRouters />
       {/* <BackendLearning /> */}
       {/* <SkillCareerRoadmap /> */}
       {/* <InterviewCrackRoadmap /> */}
@@ -40,7 +40,7 @@ export default function App() {
       {/* <FacelessReels /> */}
       {/* <Devroadmap /> */}
       {/* <Newsfeed /> */}
-      <Portfolio />
+      {/* <Portfolio /> */}
     </>
 
   )
