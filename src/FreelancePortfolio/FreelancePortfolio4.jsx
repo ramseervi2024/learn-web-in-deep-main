@@ -38,7 +38,7 @@ export default function FreelancePortfolio4() {
              <a href="#work" className="px-8 py-5 border-r-[4px] border-zinc-900 font-bold uppercase hover:bg-[#FF90E8] transition-colors">Work</a>
              <a href="#pricing" className="px-8 py-5 font-bold uppercase hover:bg-[#B4F8C8] transition-colors">Pricing</a>
           </div>
-          <a href="#contact" className="px-4 py-4 md:px-8 md:py-5 font-black uppercase text-white bg-zinc-900 hover:bg-zinc-800 transition-colors flex items-center gap-2 text-sm md:text-base">
+          <a href="#contact" className="px-4 py-4 md:px-8 md:py-5 font-black uppercase text-white bg-zinc-900 border-l-[4px] border-zinc-900 hover:bg-zinc-800 transition-colors flex items-center gap-2 text-sm md:text-base">
             <span className="hidden sm:inline">Let's </span>Talk <ArrowRight size={20} className="hidden sm:inline" />
           </a>
         </div>
@@ -54,14 +54,18 @@ export default function FreelancePortfolio4() {
           
           <div className="relative z-10 max-w-5xl mx-auto bg-white p-6 md:p-12 lg:p-20 border-[4px] border-zinc-900 shadow-[8px_8px_0px_0px_rgba(24,24,27,1)] md:shadow-[16px_16px_0px_0px_rgba(24,24,27,1)] mt-10 w-full">
              <div className="inline-flex items-center gap-2 px-3 py-1.5 md:px-4 md:py-2 bg-zinc-900 text-white font-bold uppercase text-[10px] md:text-xs tracking-widest mb-6 md:mb-8 border-[2px] border-zinc-900 shadow-[4px_4px_0px_0px_rgba(24,24,27,1)]">
-               <Zap size={14} className="text-[#00E5FF]" /> {data.hero.subtitle.split('.')[0]}
+               <Zap size={14} className="text-[#00E5FF]" /> {data.brand.business_type}
              </div>
              
-             <h1 className="text-[12vw] sm:text-7xl md:text-8xl lg:text-[120px] font-black tracking-tighter leading-[0.9] uppercase mb-8 md:mb-10 break-words">
+             <h1 className="text-[12vw] sm:text-7xl md:text-8xl lg:text-[120px] font-black tracking-tighter leading-[0.9] uppercase mb-6 break-words text-zinc-900">
                {data.hero.title}
              </h1>
              
-             <p className="text-lg md:text-3xl font-bold mb-10 md:mb-12 max-w-3xl mx-auto leading-tight">
+             <p className="text-lg md:text-3xl font-bold mb-4 max-w-3xl mx-auto leading-tight text-[#FF6B6B]">
+               {data.hero.subtitle}
+             </p>
+             
+             <p className="text-base md:text-xl font-bold mb-10 md:mb-12 max-w-3xl mx-auto leading-relaxed text-zinc-600">
                {data.brand.description}
              </p>
 
@@ -108,7 +112,7 @@ export default function FreelancePortfolio4() {
         {/* SERVICES / BENTO */}
         <section id="services" className="py-24 px-6 max-w-7xl mx-auto relative z-10">
           <div className="mb-16">
-            <h2 className="text-6xl font-black uppercase tracking-tighter mb-4">Our Services</h2>
+            <h2 className="text-6xl font-black uppercase tracking-tighter mb-4 text-zinc-900">Our Services</h2>
             <div className="w-32 h-4 bg-[#FF90E8] border-[3px] border-zinc-900 shadow-[4px_4px_0px_0px_rgba(24,24,27,1)]"></div>
           </div>
           
@@ -118,7 +122,7 @@ export default function FreelancePortfolio4() {
                    <div className={`w-16 h-16 ${brutalColors[i % brutalColors.length]} border-[3px] border-zinc-900 flex items-center justify-center mb-6 shadow-[4px_4px_0px_0px_rgba(24,24,27,1)] group-hover:rotate-12 transition-transform`}>
                       <LayoutGrid size={32} className="text-zinc-900" />
                    </div>
-                   <h3 className="text-2xl font-black uppercase mb-4 leading-tight">{service.category}</h3>
+                   <h3 className="text-2xl font-black uppercase mb-4 leading-tight text-zinc-900">{service.category}</h3>
                    <p className="text-zinc-600 font-bold mb-6 flex-1">{service.description}</p>
                    <div className="flex flex-wrap gap-2 mt-auto">
                      {service.features.map((feat, idx) => (
@@ -166,7 +170,7 @@ export default function FreelancePortfolio4() {
                           <div className="inline-flex px-4 py-1.5 bg-zinc-900 text-white font-black uppercase text-sm border-[3px] border-zinc-900 shadow-[4px_4px_0px_0px_rgba(24,24,27,1)] mb-8">
                              {proj.type}
                           </div>
-                          <h3 className="text-5xl font-black uppercase mb-6 leading-none">{proj.project_name}</h3>
+                          <h3 className="text-5xl font-black uppercase mb-6 leading-none text-zinc-900">{proj.project_name}</h3>
                           <p className="text-xl font-bold mb-10">{proj.description}</p>
                           
                           <div className="space-y-6 mb-10">
@@ -196,7 +200,7 @@ export default function FreelancePortfolio4() {
         {data.guarantees && (
            <section className="py-24 px-6 max-w-7xl mx-auto">
               <div className="mb-20 text-center">
-                <h2 className="text-6xl font-black uppercase tracking-tighter mb-4">No Bullshit.</h2>
+                <h2 className="text-6xl font-black uppercase tracking-tighter mb-4 text-zinc-900">No Bullshit.</h2>
                 <div className="w-32 h-4 bg-[#00E5FF] border-[3px] border-zinc-900 shadow-[4px_4px_0px_0px_rgba(24,24,27,1)] mx-auto"></div>
               </div>
               <div className="grid md:grid-cols-3 gap-8">
@@ -205,7 +209,7 @@ export default function FreelancePortfolio4() {
                        <div className={`w-16 h-16 ${brutalColors[(i+2) % brutalColors.length]} border-[3px] border-zinc-900 shadow-[4px_4px_0px_0px_rgba(24,24,27,1)] flex items-center justify-center mb-6`}>
                           <ShieldCheck size={32} />
                        </div>
-                       <h3 className="text-2xl font-black uppercase mb-4">{guarantee.title}</h3>
+                       <h3 className="text-2xl font-black uppercase mb-4 text-zinc-900">{guarantee.title}</h3>
                        <p className="font-bold text-zinc-700">{guarantee.description}</p>
                     </div>
                  ))}
@@ -255,7 +259,7 @@ export default function FreelancePortfolio4() {
         {/* PRICING (THE RECEIPTS) */}
         <section id="pricing" className="py-24 px-6 max-w-7xl mx-auto">
            <div className="text-center mb-20">
-             <h2 className="text-6xl font-black uppercase tracking-tighter mb-4">Pricing</h2>
+             <h2 className="text-6xl font-black uppercase tracking-tighter mb-4 text-zinc-900">Pricing</h2>
              <div className="w-32 h-4 bg-[#B4F8C8] border-[3px] border-zinc-900 shadow-[4px_4px_0px_0px_rgba(24,24,27,1)] mx-auto"></div>
            </div>
            
@@ -265,7 +269,7 @@ export default function FreelancePortfolio4() {
                     
                     {i === 1 && <div className="absolute top-0 right-0 px-4 py-2 bg-[#FF6B6B] border-b-[4px] border-l-[4px] border-zinc-900 font-black uppercase text-white shadow-[-4px_4px_0px_0px_rgba(24,24,27,1)]">Hot Choice</div>}
 
-                    <h3 className="text-3xl font-black uppercase mb-4">{tier.plan}</h3>
+                    <h3 className="text-3xl font-black uppercase mb-4 text-zinc-900">{tier.plan}</h3>
                     <div className="text-6xl font-black mb-10">{tier.price}</div>
                     
                     <ul className="space-y-4 mb-14 flex-1">
