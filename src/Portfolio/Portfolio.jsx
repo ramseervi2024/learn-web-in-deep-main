@@ -9,8 +9,8 @@ export default function Portfolio() {
         <>
             {/* <Portfolio1 /> */}
             {/* <Portfolio2 /> */}
-            <Portfolio3 />
-            {/* <Portfolio4 />  */}
+            {/* <Portfolio3 /> */}
+            <Portfolio4 />
         </>
     )
 }
