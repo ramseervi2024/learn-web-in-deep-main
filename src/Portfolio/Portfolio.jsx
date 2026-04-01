@@ -39,7 +39,7 @@ function PortfolioDirectory() {
                     {portfolios.map((portfolio) => (
                         <Link
                             key={portfolio.id}
-                            to={`/portfolio/${portfolio.id}`}
+                            to={`${portfolio.id}`}
                             className="group relative flex flex-col justify-between p-6 bg-slate-900 border border-slate-800 rounded-2xl hover:bg-slate-800 transition-all duration-300 hover:scale-[1.02] hover:shadow-2xl hover:shadow-blue-500/10 overflow-hidden"
                         >
                             <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-100 transition-opacity">
@@ -72,7 +72,7 @@ function PortfolioDirectory() {
 
 const BackButton = () => (
     <Link
-        to="/"
+        to="/Portfolio"
         className="fixed bottom-6 left-6 z-50 bg-slate-900/80 backdrop-blur-md border border-slate-700 text-white p-3 rounded-full hover:bg-slate-800 hover:scale-105 transition-all duration-300 shadow-2xl flex items-center gap-2 group"
         title="Back to All Portfolios"
     >
@@ -87,14 +87,14 @@ export default function Portfolio() {
     return (
         <Routes>
             <Route path="/" element={<PortfolioDirectory />} />
-            <Route path="/portfolio/1" element={<><BackButton /><Portfolio1 /></>} />
-            <Route path="/portfolio/2" element={<><BackButton /><Portfolio2 /></>} />
-            <Route path="/portfolio/3" element={<><BackButton /><Portfolio3 /></>} />
-            <Route path="/portfolio/4" element={<><BackButton /><Portfolio4 /></>} />
-            <Route path="/portfolio/5" element={<><BackButton /><Portfolio5 /></>} />
-            <Route path="/portfolio/6" element={<><BackButton /><Portfolio6 /></>} />
-            <Route path="/portfolio/7" element={<><BackButton /><Portfolio7 /></>} />
-            <Route path="/portfolio/8" element={<><BackButton /><Portfolio8 /></>} />
+            <Route path="1" element={<><BackButton /><Portfolio1 /></>} />
+            <Route path="2" element={<><BackButton /><Portfolio2 /></>} />
+            <Route path="3" element={<><BackButton /><Portfolio3 /></>} />
+            <Route path="4" element={<><BackButton /><Portfolio4 /></>} />
+            <Route path="5" element={<><BackButton /><Portfolio5 /></>} />
+            <Route path="6" element={<><BackButton /><Portfolio6 /></>} />
+            <Route path="7" element={<><BackButton /><Portfolio7 /></>} />
+            <Route path="8" element={<><BackButton /><Portfolio8 /></>} />
         </Routes>
     );
 }

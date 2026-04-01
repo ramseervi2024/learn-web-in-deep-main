@@ -81,7 +81,7 @@ export default function AllRouters() {
             <Route path="/BackendLearning" element={<BackendLearning />} />
             <Route path="/SkillCareerRoadmap" element={<SkillCareerRoadmap />} />
             <Route path="/InterviewCrackRoadmap" element={<InterviewCrackRoadmap />} />
-            <Route path="/Portfolio" element={<Portfolio />} />
+            <Route path="/Portfolio/*" element={<Portfolio />} />
         </Routes>
     );
 }
