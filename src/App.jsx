@@ -20,7 +20,7 @@ import ClaudeAIStudio from './ClaudeAIStudio'
 import FacelessReels from './FacelessReels/FacelessReels'
 import Devroadmap from './components/Devroadmap'
 import Newsfeed from './Newsfeed/Newsfeed'
-import Portfolio from './Portfolio/Portfolio'
+import Portfolio from './PersonalPortfolio/Portfolio'
 export default function App() {
   return (
     <>

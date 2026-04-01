@@ -42,7 +42,7 @@ export default function Homepage() {
     { id: 34, title: "BackendLearning", url: "BackendLearning" },
     { id: 35, title: "SkillCareerRoadmap", url: "SkillCareerRoadmap" },
     { id: 36, title: "InterviewCrackRoadmap", url: "InterviewCrackRoadmap" },
-    { id: 37, title: "Portfolio", url: "Portfolio" },
+    { id: 37, title: "PersonalPortfolio", url: "PersonalPortfolio" },
     { id: 38, title: "Newsfeed", url: "Newsfeed" },
   ];
 

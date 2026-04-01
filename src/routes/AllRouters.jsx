@@ -37,7 +37,7 @@ import MyPortpolio from "../MyPortpolio/MyPortpolio";
 import InterviewCrackRoadmap from "../SkillCareerRoadmap/InterviewCrackRoadmap";
 import SkillCareerRoadmap from "../SkillCareerRoadmap/SkillCareerRoadmap";
 import BackendLearning from "../BackendLearning/BackendLearning";
-import Portfolio from "../Portfolio/Portfolio";
+import PersonalPortfolio from "../PersonalPortfolio/Portfolio";
 import NewsFeed from "../Newsfeed/Newsfeed";
 
 
@@ -82,7 +82,7 @@ export default function AllRouters() {
             <Route path="/BackendLearning" element={<BackendLearning />} />
             <Route path="/SkillCareerRoadmap" element={<SkillCareerRoadmap />} />
             <Route path="/InterviewCrackRoadmap" element={<InterviewCrackRoadmap />} />
-            <Route path="/Portfolio/*" element={<Portfolio />} />
+            <Route path="/PersonalPortfolio/*" element={<PersonalPortfolio />} />
             <Route path="/Newsfeed" element={<NewsFeed />} />
         </Routes>
     );
