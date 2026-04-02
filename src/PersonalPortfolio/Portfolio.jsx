@@ -8,6 +8,14 @@ import Portfolio5 from './Portfolio5';
 import Portfolio6 from './Portfolio6';
 import Portfolio7 from './Portfolio7';
 import Portfolio8 from './Portfolio8';
+import Portfolio9 from './Portfolio9';
+import Portfolio10 from './Portfolio10';
+import Portfolio11 from './Portfolio11';
+import Portfolio12 from './Portfolio12';
+import Portfolio13 from './Portfolio13';
+import Portfolio14 from './Portfolio14';
+import Portfolio15 from './Portfolio15';
+import Portfolio16 from './Portfolio16';
 
 function PortfolioDirectory() {
     const portfolios = [
@@ -19,6 +27,14 @@ function PortfolioDirectory() {
         { id: 6, title: 'Bento Grid', desc: 'Trendy grid-based layout for quick access.' },
         { id: 7, title: 'Deep Space', desc: 'Immersive, dark space-themed experience.' },
         { id: 8, title: 'Cinematic 3D', desc: 'High-end, glassmorphic WebGL experience.' },
+        { id: 9, title: 'AI Futuristic', desc: 'Neon-glow UI with animated particle backgrounds.' },
+        { id: 10, title: '3D Interactive', desc: 'High-performance WebGL experience with React Three Fiber.' },
+        { id: 11, title: 'Glassmorphism Pro', desc: 'Sleek glass-based design with liquid backgrounds.' },
+        { id: 12, title: 'Storytelling', desc: 'Immersive horizontal scrolling narrative experience.' },
+        { id: 13, title: 'Editorial Strategy', desc: 'Bold typography and grid-based strategic layout.' },
+        { id: 14, title: 'Developer OS', desc: 'Dashboard UI with terminal and system monitoring feel.' },
+        { id: 15, title: 'Zen Minimalist', desc: 'Stark, foundation-focused design with crimson accents.' },
+        { id: 16, title: 'Liquid Agency', desc: 'Fluid, high-end agency style with refractive elements.' },
     ];
 
     return (
@@ -31,7 +47,7 @@ function PortfolioDirectory() {
                         </span>
                     </h1>
                     <p className="text-lg md:text-xl text-slate-400 max-w-2xl mx-auto">
-                        Explore 8 unique, high-end portfolio designs crafted with React, Tailwind CSS, and advanced animations.
+                        Explore 16 unique, high-end portfolio designs crafted with React, Tailwind CSS, and advanced animations.
                     </p>
                 </header>
 
@@ -95,6 +111,14 @@ export default function Portfolio() {
             <Route path="6" element={<><BackButton /><Portfolio6 /></>} />
             <Route path="7" element={<><BackButton /><Portfolio7 /></>} />
             <Route path="8" element={<><BackButton /><Portfolio8 /></>} />
+            <Route path="9" element={<><BackButton /><Portfolio9 /></>} />
+            <Route path="10" element={<><BackButton /><Portfolio10 /></>} />
+            <Route path="11" element={<><BackButton /><Portfolio11 /></>} />
+            <Route path="12" element={<><BackButton /><Portfolio12 /></>} />
+            <Route path="13" element={<><BackButton /><Portfolio13 /></>} />
+            <Route path="14" element={<><BackButton /><Portfolio14 /></>} />
+            <Route path="15" element={<><BackButton /><Portfolio15 /></>} />
+            <Route path="16" element={<><BackButton /><Portfolio16 /></>} />
         </Routes>
     );
 }

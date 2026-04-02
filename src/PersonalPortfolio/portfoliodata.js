@@ -25,6 +25,13 @@ export const portfolioprofile = {
     ]
   },
 
+  "hero": {
+    "title": "Engineering Mobile Excellence.",
+    "subtitle": "Specializing in high-performance React Native ecosystems, seamless UI/UX implementation, and robust cross-platform architectures.",
+    "cta_primary": "Start Project",
+    "cta_secondary": "View Portfolio"
+  },
+
   "summary": "Experienced Mobile Application Developer with 3.5+ years of strong expertise in building cross-platform, scalable, and high-performance mobile applications using React Native, iOS, and Android platforms. Built and maintained 5+ production React Native apps. Adept at creating user-focused digital products featuring real-time data handling, complex API integration via Axios/Postman, and robust state management with Redux. Converted complex Figma designs into pixel-perfect UI. Proven track record of end-to-end mobile app delivery—from architecture to App Store & Google Play deployments. Specialized in Hybrid App Development, Performance Optimization (Memoization & FlatList optimization), and OTA updates.",
 
   "roles": [
@@ -337,5 +344,93 @@ export const portfolioprofile = {
     "field": "Software Engineering",
     "institution": "Bangalore Institute Of Technology (BIT)",
     "year": "2018-2022"
-  }
+  },
+
+  "stats": [
+    { "label": "Full-Stack Projects", "value": "15+" },
+    { "label": "Years Experience", "value": "3.5+" },
+    { "label": "Retention Rate", "value": "98%" },
+    { "label": "UI/UX Precision", "value": "100%" }
+  ],
+
+  "testimonials": [
+    {
+      "name": "Arjun Sharma",
+      "feedback": "Ramesh's deep understanding of React Native helped us launch our event platform on schedule. His code is clean, efficient, and well-documented.",
+      "role": "Project Manager at Imcrinox"
+    },
+    {
+      "name": "Priya Nair",
+      "feedback": "An exceptional developer who doesn't just build features but thinks about the user experience. Highly recommended for complex mobile solutions.",
+      "role": "Lead Architect"
+    }
+  ],
+
+  "pricing": [
+    {
+      "plan": "Consultation",
+      "price": "Free",
+      "features": [
+        "Project Architecture Audit",
+        "Performance Analysis",
+        "Tech Stack Recommendation",
+        "30-Min Strategy Call"
+      ]
+    },
+    {
+      "plan": "Project Based",
+      "price": "$50/hr",
+      "features": [
+        "End-to-End Development",
+        "Production Deployment",
+        "30-Day Support",
+        "Source Code Ownership"
+      ]
+    },
+    {
+      "plan": "Retainer",
+      "price": "Custom",
+      "features": [
+        "Dedicated Weekly Hours",
+        "SLA-based Response",
+        "Ongoing Maintenance",
+        "Priority Scaling"
+      ]
+    }
+  ],
+
+  "workflow": [
+    "01. Technical Requirements Gathering",
+    "02. Architecture & Design Prototyping",
+    "03. Scalable Feature Development",
+    "04. Performance Tuning & Optimization",
+    "05. App Store & Google Play Launch",
+    "06. Continuous OTA Maintenance"
+  ],
+
+  "guarantees": [
+    {
+      "title": "Pixel Perfection",
+      "description": "I ensure every screen perfectly matches your Figma or wireframe designs down to the last pixel."
+    },
+    {
+      "title": "Performance First",
+      "description": "All apps are optimized for 60FPS animations and minimized bundle sizes for low-end device support."
+    }
+  ],
+
+  "faq": [
+    {
+      "question": "What is your primary tech stack?",
+      "answer": "I specialize in React Native and React.js for frontend, with strong expertise in Redux, Node.js, and RESTful API integrations."
+    },
+    {
+      "question": "Do you handle App Store submissions?",
+      "answer": "Yes, I manage the end-to-end deployment process on both Apple App Store Connect and Google Play Console."
+    },
+    {
+      "question": "How do you ensure app performance?",
+      "answer": "I use advanced memoization, FlatList optimization, and native bridges where necessary to ensure high frame rates and smooth UX."
+    }
+  ]
 }
