@@ -312,10 +312,10 @@ const Portfolio5 = () => {
             <motion.div variants={fadeUp} className={`md:col-span-6 p-8 md:p-12 rounded-[2.5rem] border ${theme.cardBg} ${theme.glassFilter} ${theme.cardHover} transition-all duration-500`}>
                <div className="flex items-center gap-4 mb-6">
                  <Server className={theme.iconColor} size={28} />
-                 <h3 className="text-2xl font-bold">Backend & Cloud</h3>
+                 <h3 className="text-2xl font-bold">Mobile & Backend</h3>
                </div>
                <div className="flex flex-wrap gap-2">
-                 {[...technical_stack.backend, ...technical_stack.cloud_and_deployment].slice(0, 9).map(tech => (
+                 {[...technical_stack.mobile, ...technical_stack.backend_integration].slice(0, 9).map(tech => (
                    <span key={tech} className={`px-4 py-2 rounded-xl text-xs font-bold uppercase tracking-widest border ${theme.tagBg} ${theme.glassFilter}`}>
                      {tech}
                    </span>

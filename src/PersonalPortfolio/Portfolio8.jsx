@@ -310,7 +310,7 @@ const HtmlLayer = () => {
                Core <br className="hidden md:block"/> Vector.
             </h2>
             <div className="flex flex-wrap md:justify-end gap-3 md:gap-4">
-               {[...technical_stack.frontend, ...technical_stack.backend].map((tech) => (
+               {[...technical_stack.frontend, ...technical_stack.mobile, ...technical_stack.backend_integration].map((tech) => (
                  <span key={tech} className="px-4 md:px-6 py-2 md:py-3 border border-purple-500/30 bg-purple-900/10 backdrop-blur-md text-[10px] md:text-xs font-bold tracking-[0.1em] uppercase text-purple-200 rounded-full shadow-[0_0_15px_rgba(168,85,247,0.15)] hover:bg-purple-500/30 hover:shadow-[0_0_25px_rgba(168,85,247,0.4)] transition-all cursor-default">
                    {tech}
                  </span>

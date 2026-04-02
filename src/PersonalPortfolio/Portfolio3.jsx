@@ -307,7 +307,7 @@ const Portfolio3 = () => {
                      <div>
                        <div className="text-xs font-bold text-white/30 uppercase tracking-widest mb-4">Server Layer</div>
                        <div className="flex flex-wrap gap-2">
-                         {[...technical_stack.backend, ...technical_stack.database].slice(0,6).map(tech => (
+                         {[...technical_stack.mobile, ...technical_stack.backend_integration].slice(0,6).map(tech => (
                            <div key={tech} className="px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-white/80 text-xs tracking-wider">{tech}</div>
                          ))}
                        </div>
@@ -328,7 +328,7 @@ const Portfolio3 = () => {
                   </p>
 
                   <div className="flex flex-col gap-4 mt-auto">
-                     {technical_stack.cloud_and_deployment.map(tech => (
+                     {technical_stack.tools.map(tech => (
                        <div key={tech} className="w-full px-5 py-4 rounded-2xl bg-white/5 border border-white/10 flex items-center gap-4 group hover:bg-white/10 transition-colors">
                           <Layers size={18} className="text-white/40 group-hover:text-fuchsia-300 transition-colors" />
                           <span className="text-sm font-medium text-white/80 tracking-wide">{tech}</span>

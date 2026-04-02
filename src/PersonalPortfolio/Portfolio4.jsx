@@ -371,9 +371,9 @@ const Portfolio4 = () => {
                <div className={`w-14 h-14 rounded-2xl ${theme.iconBg} ${theme.iconColor} flex items-center justify-center mb-8`}>
                 <Server size={28} />
               </div>
-              <h3 className={`text-2xl font-bold mb-6 ${theme.text}`}>Backend & DB</h3>
+              <h3 className={`text-2xl font-bold mb-6 ${theme.text}`}>Mobile & Backend</h3>
               <div className="flex flex-wrap gap-2">
-                {[...technical_stack.backend, ...technical_stack.database].slice(0,8).map(tech => (
+                {[...technical_stack.mobile, ...technical_stack.backend_integration].slice(0,8).map(tech => (
                   <span key={tech} className={`px-3 py-1.5 rounded-xl text-xs font-bold uppercase tracking-wider ${theme.tagBg}`}>
                     {tech}
                   </span>
@@ -386,9 +386,9 @@ const Portfolio4 = () => {
                <div className={`w-14 h-14 rounded-2xl ${theme.iconBg} ${theme.iconColor} flex items-center justify-center mb-8`}>
                 <Cloud size={28} />
               </div>
-              <h3 className={`text-2xl font-bold mb-6 ${theme.text}`}>Cloud & Infra</h3>
+              <h3 className={`text-2xl font-bold mb-6 ${theme.text}`}>Tools & Build</h3>
               <div className="flex flex-wrap gap-2">
-                {technical_stack.cloud_and_deployment.map(tech => (
+                {technical_stack.tools.map(tech => (
                   <span key={tech} className={`px-3 py-1.5 rounded-xl text-xs font-bold uppercase tracking-wider ${theme.tagBg}`}>
                     {tech}
                   </span>

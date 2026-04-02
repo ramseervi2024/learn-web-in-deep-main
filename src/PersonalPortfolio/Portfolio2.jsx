@@ -302,7 +302,7 @@ const Portfolio2 = () => {
                    <h3 className="text-2xl md:text-3xl font-black text-white mb-6 uppercase tracking-tight">Database & <br/> Microservices</h3>
                    
                    <div className="flex flex-wrap gap-2 mt-auto">
-                     {[...technical_stack.backend, ...technical_stack.database].slice(0, 5).map(tech => (
+                     {[...technical_stack.mobile, ...technical_stack.backend_integration].slice(0, 5).map(tech => (
                        <span key={tech} className="px-4 py-2 bg-zinc-800 border border-zinc-700 rounded-full text-xs font-bold text-zinc-300 uppercase tracking-widest shadow-inner">
                          {tech}
                        </span>
@@ -320,7 +320,7 @@ const Portfolio2 = () => {
                    <h3 className="text-2xl md:text-3xl font-black text-zinc-900 mb-6 uppercase tracking-tight">Deployment & <br/> CI/CD</h3>
                    
                    <div className="flex flex-wrap gap-2 mt-auto">
-                     {technical_stack.cloud_and_deployment.map(tech => (
+                     {technical_stack.tools.map(tech => (
                        <span key={tech} className="px-4 py-2 bg-zinc-100 border border-zinc-200 rounded-full text-xs font-bold text-zinc-600 uppercase tracking-widest shadow-sm">
                          {tech}
                        </span>

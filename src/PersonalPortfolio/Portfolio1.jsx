@@ -299,9 +299,9 @@ const Portfolio1 = () => {
               <div className="w-14 h-14 bg-emerald-500/10 text-emerald-400 rounded-2xl flex items-center justify-center mb-8 border border-emerald-500/20">
                 <Database size={28} />
               </div>
-              <h3 className="text-2xl md:text-3xl font-bold text-white mb-6">Backend & DB</h3>
+              <h3 className="text-2xl md:text-3xl font-bold text-white mb-6">Native & Backend</h3>
               <div className="flex flex-wrap gap-2 md:gap-3 relative z-10">
-                {[...technical_stack.backend, ...technical_stack.database].map(tech => (
+                {[...technical_stack.mobile, ...technical_stack.backend_integration].map(tech => (
                   <span key={tech} className="px-3 md:px-4 py-1.5 md:py-2 bg-black border border-white/10 rounded-xl text-xs font-bold text-zinc-200 uppercase tracking-widest shadow-xl">
                     {tech}
                   </span>
@@ -309,14 +309,14 @@ const Portfolio1 = () => {
               </div>
             </motion.div>
 
-            {/* Cloud Card */}
+            {/* Tools Card */}
             <motion.div variants={fadeUp} className="md:col-span-4 bg-[#0A0A0A] border border-white/10 rounded-[2rem] p-8 md:p-12 group hover:border-purple-500/30 transition-colors">
               <div className="w-14 h-14 bg-purple-500/10 text-purple-400 rounded-2xl flex items-center justify-center mb-8 border border-purple-500/20">
                 <Cloud size={28} />
               </div>
-              <h3 className="text-2xl font-bold text-white mb-6">Cloud & Scale</h3>
+              <h3 className="text-2xl font-bold text-white mb-6">Tools & Build</h3>
               <div className="flex flex-wrap gap-2">
-                {technical_stack.cloud_and_deployment.map(tech => (
+                {technical_stack.tools.map(tech => (
                   <span key={tech} className="px-3 py-1.5 bg-black border border-white/10 rounded-lg text-xs font-bold text-zinc-300 uppercase tracking-widest">
                     {tech}
                   </span>

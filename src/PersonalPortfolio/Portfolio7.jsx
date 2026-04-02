@@ -194,10 +194,10 @@ const Portfolio7 = () => {
                 <div>
                   <div className="flex items-center gap-3 mb-4 sm:mb-6">
                     <Terminal size={20} className={theme.text} />
-                    <h4 className={`text-sm sm:text-xl font-bold uppercase tracking-widest ${theme.text}`}>Backend Core</h4>
+                    <h4 className={`text-sm sm:text-xl font-bold uppercase tracking-widest ${theme.text}`}>Mobile & Backend</h4>
                   </div>
                   <div className="flex flex-wrap gap-2">
-                    {[...technical_stack.backend, ...technical_stack.cloud_and_deployment].slice(0, 10).map(tech => (
+                    {[...technical_stack.mobile, ...technical_stack.backend_integration].slice(0, 10).map(tech => (
                       <span key={tech} className={`px-2 sm:px-4 py-1.5 sm:py-2 text-[9px] sm:text-[10px] font-bold uppercase tracking-widest border border-white/10 bg-white/5 ${theme.text} shadow-inner rounded`}>
                         {tech}
                       </span>
