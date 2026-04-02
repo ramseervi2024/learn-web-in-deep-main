@@ -8,6 +8,14 @@ import FreelancePortfolio5 from './FreelancePortfolio5';
 import FreelancePortfolio6 from './FreelancePortfolio6';
 import FreelancePortfolio7 from './FreelancePortfolio7';
 import FreelancePortfolio8 from './FreelancePortfolio8';
+import FreelancePortfolio9 from './FreelancePortfolio9';
+import FreelancePortfolio10 from './FreelancePortfolio10';
+import FreelancePortfolio11 from './FreelancePortfolio11';
+import FreelancePortfolio12 from './FreelancePortfolio12';
+import FreelancePortfolio13 from './FreelancePortfolio13';
+import FreelancePortfolio14 from './FreelancePortfolio14';
+import FreelancePortfolio15 from './FreelancePortfolio15';
+import FreelancePortfolio16 from './FreelancePortfolio16';
 
 function FreelancePortfolioDirectory() {
     const FreelancePortfolios = [
@@ -19,6 +27,14 @@ function FreelancePortfolioDirectory() {
         { id: 6, title: 'Bento Grid', desc: 'Trendy grid-based layout for quick access.' },
         { id: 7, title: 'Deep Space', desc: 'Immersive, dark space-themed experience.' },
         { id: 8, title: 'Cinematic 3D', desc: 'High-end, glassmorphic WebGL experience.' },
+        { id: 9, title: 'AI Futuristic', desc: 'Neon glow UI with AI assistant style intro.' },
+        { id: 10, title: '3D Interactive', desc: 'WebGL models with scroll-triggered camera movement.' },
+        { id: 11, title: 'Glassmorphism Pro', desc: 'Frosted cards with glowing borders and soft gradients.' },
+        { id: 12, title: 'Storytelling', desc: 'Presentation-style sections with deep scroll narrative.' },
+        { id: 13, title: 'Developer OS', desc: 'Dashboard UI with terminal and file explorer.' },
+        { id: 14, title: 'Mobile App Style', desc: 'iOS/Android transitions with bottom navigation.' },
+        { id: 15, title: 'Bento Grid v2', desc: 'Advanced grid with hover previews and dynamic stats.' },
+        { id: 16, title: 'Premium Agency', desc: 'Minimal black and gold theme with big typography.' },
     ];
 
     return (
@@ -31,7 +47,7 @@ function FreelancePortfolioDirectory() {
                         </span>
                     </h1>
                     <p className="text-lg md:text-xl text-slate-400 max-w-2xl mx-auto">
-                        Explore 8 unique, high-end FreelancePortfolio designs crafted with React, Tailwind CSS, and advanced animations.
+                        Explore 16 unique, high-end FreelancePortfolio designs crafted with React, Tailwind CSS, and advanced animations.
                     </p>
                 </header>
 
@@ -95,6 +111,14 @@ export default function FreelancePortfolio() {
             <Route path="6" element={<><BackButton /><FreelancePortfolio6 /></>} />
             <Route path="7" element={<><BackButton /><FreelancePortfolio7 /></>} />
             <Route path="8" element={<><BackButton /><FreelancePortfolio8 /></>} />
+            <Route path="9" element={<><BackButton /><FreelancePortfolio9 /></>} />
+            <Route path="10" element={<><BackButton /><FreelancePortfolio10 /></>} />
+            <Route path="11" element={<><BackButton /><FreelancePortfolio11 /></>} />
+            <Route path="12" element={<><BackButton /><FreelancePortfolio12 /></>} />
+            <Route path="13" element={<><BackButton /><FreelancePortfolio13 /></>} />
+            <Route path="14" element={<><BackButton /><FreelancePortfolio14 /></>} />
+            <Route path="15" element={<><BackButton /><FreelancePortfolio15 /></>} />
+            <Route path="16" element={<><BackButton /><FreelancePortfolio16 /></>} />
         </Routes>
     );
 }
