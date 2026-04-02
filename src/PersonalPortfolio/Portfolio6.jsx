@@ -219,28 +219,44 @@ export default function Portfolio6() {
             <p className="text-slate-500 font-medium max-w-xl mx-auto">Academic and commercial grounding for enterprise collaboration.</p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-4 md:gap-8 max-w-5xl mx-auto">
+          <div className="grid lg:grid-cols-3 md:grid-cols-2 gap-4 md:gap-8 max-w-7xl mx-auto">
                 <div className={`${bentoCardColored} bg-gradient-to-br from-indigo-500 to-indigo-700 flex flex-col`}>
-                   <div className="absolute top-6 right-6 px-3 py-1 bg-white/20 backdrop-blur-md border border-white/30 text-white rounded-full text-xs font-bold uppercase tracking-widest">
+                   <div className="absolute top-6 right-6 px-3 py-1 bg-white/20 backdrop-blur-md border border-white/30 text-white rounded-full text-[10px] font-bold uppercase tracking-widest leading-none">
                      Academic
                    </div>
-                   <div className={`text-sm font-bold tracking-widest uppercase mb-4 text-indigo-100`}>{data.education.degree}</div>
+                   <div className={`text-[10px] font-bold tracking-widest uppercase mb-4 text-indigo-100`}>{data.education.degree}</div>
                    <div className={`text-4xl md:text-5xl font-black tracking-tighter mb-8 text-white`}>{data.education.year}</div>
-                   <p className={`font-medium mb-10 text-indigo-200`}>
+                   <p className={`font-medium mb-10 text-indigo-200 text-sm`}>
                      Specialized in {data.education.field} at {data.education.institution}.
                    </p>
                 </div>
 
-                <div className={`${bentoCard} border border-slate-100 flex flex-col`}>
-                   <div className={`text-sm font-bold tracking-widest uppercase mb-4 text-slate-400`}>Career Goal</div>
+                <div className={`${bentoCard} border border-slate-100 flex flex-col relative bg-white`}>
+                   <div className="absolute top-6 right-6 px-3 py-1 bg-slate-100 border border-slate-200 text-slate-400 rounded-full text-[10px] font-bold uppercase tracking-widest leading-none">
+                     Professional
+                   </div>
+                   <div className={`text-[10px] font-bold tracking-widest uppercase mb-4 text-slate-400`}>{data.employment[0].company}</div>
+                   <div className={`text-4xl md:text-5xl font-black tracking-tighter mb-8 ${textHeading}`}>{data.employment[0].duration.split(' ')[0]}</div>
+                   <p className={`font-medium mb-8 text-slate-500 text-sm line-clamp-3`}>
+                     {data.employment[0].role} — {data.employment[0].description}
+                   </p>
+                   <div className="mt-auto flex flex-wrap gap-2">
+                     {data.employment[0].key_skills.slice(0, 3).map((skill, i) => (
+                       <span key={i} className="px-2 py-1 bg-slate-50 border border-slate-100 text-[9px] font-bold uppercase tracking-widest text-slate-400 rounded">{skill}</span>
+                     ))}
+                   </div>
+                </div>
+
+                <div className={`${bentoCard} border border-slate-100 flex flex-col bg-slate-50/50`}>
+                   <div className={`text-[10px] font-bold tracking-widest uppercase mb-4 text-slate-400`}>Career Goal</div>
                    <div className={`text-4xl md:text-5xl font-black tracking-tighter mb-8 ${textHeading}`}>{data.personal_info.expected_salary}</div>
                    <ul className="flex-1 space-y-4 mb-4">
-                     <li className="flex items-start gap-3 font-semibold text-slate-600">
-                       <CheckCircle2 size={20} className="text-indigo-600 mt-0.5" />
+                     <li className="flex items-start gap-3 font-semibold text-slate-600 text-sm">
+                       <CheckCircle2 size={16} className="text-indigo-600 mt-0.5" />
                        {data.personal_info.current_salary}
                      </li>
-                     <li className="flex items-start gap-3 font-semibold text-slate-600">
-                       <CheckCircle2 size={20} className="text-indigo-600 mt-0.5" />
+                     <li className="flex items-start gap-3 font-semibold text-slate-600 text-sm">
+                       <CheckCircle2 size={16} className="text-indigo-600 mt-0.5" />
                        {data.personal_info.notice_period}
                      </li>
                    </ul>

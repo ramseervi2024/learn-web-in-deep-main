@@ -207,20 +207,27 @@ export default function Portfolio7() {
         <section id="credentials" className="border-b border-white/10 p-6 md:p-12 bg-[#0A0A0A]">
             <h2 className={`text-4xl md:text-5xl font-black mb-12 text-center tracking-tight ${textHeading}`}>System Credentials</h2>
             
-            <div className="grid md:grid-cols-2 border border-white/10 divide-y md:divide-y-0 md:divide-x divide-white/10 bg-black max-w-5xl mx-auto">
+            <div className="grid md:grid-cols-3 border border-white/10 divide-y md:divide-y-0 md:divide-x divide-white/10 bg-black max-w-[1200px] mx-auto">
                 <div className={`p-8 relative flex flex-col hover:bg-white/[0.02] transition-colors bg-white/[0.03]`}>
                   <div className="absolute top-0 inset-x-0 h-[2px] bg-emerald-500 filter drop-shadow-[0_0_8px_rgba(16,185,129,0.8)]"></div>
                   <div className={monoLabel + " mb-4"}>&gt; ACADEMIC_BACKBONE</div>
-                  <div className={`text-3xl md:text-4xl font-black tracking-tighter mb-8 text-white`}>{data.education.degree}</div>
-                  <p className="font-mono text-xs text-neutral-400 mb-8">{data.education.institution} - Class of {data.education.year}</p>
+                  <div className={`text-2xl md:text-3xl font-black tracking-tighter mb-8 text-white`}>{data.education.degree}</div>
+                  <p className="font-mono text-[10px] text-neutral-400 mb-8">{data.education.institution} - {data.education.year}</p>
                   <div className="font-mono text-[10px] text-emerald-500 bg-emerald-500/10 px-2 py-1 border border-emerald-500/20 w-max">{data.education.field.toUpperCase()}</div>
+                </div>
+
+                <div className={`p-8 relative flex flex-col hover:bg-white/[0.02] transition-colors border-l border-white/10`}>
+                  <div className={monoLabel + " mb-4"}>&gt; PROFESSIONAL_TENURE</div>
+                  <div className={`text-2xl md:text-3xl font-black tracking-tighter mb-8 text-emerald-400`}>{data.employment[0].company}</div>
+                  <p className="font-mono text-[10px] text-neutral-400 mb-8">{data.employment[0].role} | {data.employment[0].duration}</p>
+                  <div className="font-mono text-[10px] text-emerald-500/50 bg-white/5 px-2 py-1 border border-white/10 w-max truncate max-w-full">ENV: REACT_NATIVE</div>
                 </div>
 
                 <div className={`p-8 relative flex flex-col hover:bg-white/[0.02] transition-colors`}>
                   <div className={monoLabel + " mb-4"}>&gt; CAREER_VISION</div>
-                  <div className={`text-3xl md:text-4xl font-black tracking-tighter mb-8 text-white`}>{data.personal_info.expected_salary}</div>
-                  <p className="font-mono text-xs text-neutral-400 mb-8 truncate">{data.personal_info.current_salary} | {data.personal_info.notice_period}</p>
-                  <div className="font-mono text-[10px] text-emerald-500 bg-emerald-500/10 px-2 py-1 border border-emerald-500/20 w-max">REMOTE OPTIMIZED</div>
+                  <div className={`text-2xl md:text-3xl font-black tracking-tighter mb-8 text-white`}>{data.personal_info.expected_salary}</div>
+                  <p className="font-mono text-[10px] text-neutral-400 mb-8 truncate">{data.personal_info.current_salary} | {data.personal_info.notice_period}</p>
+                  <div className="font-mono text-[10px] text-emerald-500 bg-emerald-500/10 px-2 py-1 border border-emerald-500/20 w-max uppercase whitespace-nowrap">Remote Tracking enabled</div>
                 </div>
             </div>
         </section>

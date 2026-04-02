@@ -252,7 +252,7 @@ export default function Portfolio8() {
               </h2>
            </div>
            
-           <div className="grid lg:grid-cols-2 gap-8 max-w-5xl mx-auto">
+           <div className="grid lg:grid-cols-3 md:grid-cols-2 gap-8 max-w-7xl mx-auto">
                   <div className={`p-10 border transition-all duration-500 hover:-translate-y-2 flex flex-col border-white/30 bg-white/[0.03] shadow-[0_0_40px_rgba(255,255,255,0.05)]`}>
                     <div className={`${labelText} mb-8 text-white`}>Academic</div>
                     <div className={`text-4xl md:text-5xl mb-10 ${textHeading}`}>{data.education.year}</div>
@@ -260,8 +260,15 @@ export default function Portfolio8() {
                     <div className="text-[10px] uppercase tracking-widest text-neutral-500">{data.education.institution}</div>
                  </div>
 
+                 <div className={`p-10 border transition-all duration-500 hover:-translate-y-2 flex flex-col border-white/20 bg-[#111] shadow-[0_0_40px_rgba(0,0,0,0.5)]`}>
+                    <div className={`${labelText} mb-8 text-white`}>Professional</div>
+                    <div className={`text-4xl md:text-5xl mb-10 ${textHeading}`}>{data.employment[0].company}</div>
+                    <p className="text-xl font-light text-neutral-400 mb-8">{data.employment[0].role}</p>
+                    <div className="text-[10px] uppercase tracking-widest text-neutral-500">{data.employment[0].duration}</div>
+                 </div>
+
                  <div className={`p-10 border transition-all duration-500 hover:-translate-y-2 border-white/10 bg-black hover:border-white/20`}>
-                    <div className={`${labelText} mb-8`}>Career Goal</div>
+                    <div className={`${labelText} mb-8 text-white/50`}>Career Goal</div>
                     <div className={`text-4xl md:text-5xl mb-10 ${textHeading}`}>{data.personal_info.expected_salary}</div>
                     <ul className="space-y-4 mb-4">
                          <li className="text-sm tracking-wide text-neutral-300 flex items-center gap-2">

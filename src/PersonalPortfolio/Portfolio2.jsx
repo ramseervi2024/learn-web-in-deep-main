@@ -405,6 +405,51 @@ const Portfolio2 = () => {
           </div>
         </section>
 
+        {/* Professional Background Section */}
+        <section id="experience" className="w-full py-24 md:py-48 px-6 md:px-12 bg-zinc-50 border-y border-zinc-200 relative z-10">
+          <div className="max-w-7xl mx-auto">
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="mb-20 md:mb-32"
+            >
+              <h2 className="text-6xl md:text-8xl font-black tracking-tighter text-zinc-900 mb-6 uppercase">
+                Professional <br/>
+                <span className="text-zinc-300">Background.</span>
+              </h2>
+            </motion.div>
+
+            <div className="space-y-24">
+              {data.employment.map((job, i) => (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, scale: 0.98 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
+                  className="grid lg:grid-cols-12 gap-12 items-start"
+                >
+                  <div className="lg:col-span-4 border-l-4 border-zinc-900 pl-8">
+                    <div className="text-sm font-black uppercase tracking-widest text-zinc-400 mb-4">{job.duration}</div>
+                    <h3 className="text-4xl font-black text-zinc-900 mb-2 uppercase tracking-tighter">{job.company}</h3>
+                    <div className="text-zinc-500 font-bold text-xl mb-6">{job.role}</div>
+                    <div className="flex flex-wrap gap-2">
+                       {job.key_skills.map((skill, idx) => (
+                         <span key={idx} className="px-3 py-1 bg-zinc-200 text-[10px] font-black text-zinc-600 uppercase tracking-widest">{skill}</span>
+                       ))}
+                    </div>
+                  </div>
+                  <div className="lg:col-span-8">
+                    <p className="text-xl md:text-3xl text-zinc-500 font-light leading-snug">
+                      {job.description}
+                    </p>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </section>
+
         {/* Ultra Minimal Contact */}
         <section id="contact" className="w-full p-6 md:p-10 relative">
           <motion.div 

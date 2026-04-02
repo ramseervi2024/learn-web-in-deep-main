@@ -1,17 +1,37 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { portfolioprofile as data } from './portfoliodata';
 import { 
   Code2, Smartphone, Server, Cloud, 
   ArrowRight, CheckCircle2, 
-  Mail, Phone, ExternalLink, Globe
+  Mail, Phone, ExternalLink, Globe,
+  Menu, X, Briefcase, MapPin, LayoutGrid, Database, ArrowUpRight
 } from 'lucide-react';
 
 const Portfolio1 = () => {
+  const [scrolled, setScrolled] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  const { personal_info, summary, roles, technical_stack, saas_capabilities, projects } = data;
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 50);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const fadeIn = {
     hidden: { opacity: 0, y: 30 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } }
+  };
+
+  const fadeUp = {
+    initial: { opacity: 0, y: 30 },
+    whileInView: { opacity: 1, y: 0 },
+    viewport: { once: true },
+    transition: { duration: 0.6, ease: "easeOut" }
   };
 
   const staggerContainer = {
@@ -386,6 +406,52 @@ const Portfolio1 = () => {
                 </div>
               </motion.div>
             ))}
+          </div>
+        </section>
+
+        {/* Professional Experience Section */}
+        <section id="experience" className="w-full py-24 md:py-48 px-6 md:px-12 relative z-10">
+          <div className="max-w-7xl mx-auto">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="mb-16 md:mb-24"
+            >
+              <h2 className="text-4xl md:text-6xl font-black tracking-tighter text-white mb-6">
+                Professional <span className="text-zinc-600">Tenure.</span>
+              </h2>
+              <div className="h-[2px] w-24 bg-white/20" />
+            </motion.div>
+
+            <div className="space-y-12">
+              {data.employment.map((job, i) => (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.1 }}
+                  className="group relative grid lg:grid-cols-12 gap-8 p-8 md:p-12 bg-white/5 border border-white/10 rounded-3xl hover:bg-white/[0.08] transition-colors"
+                >
+                  <div className="lg:col-span-4">
+                    <div className="text-sm font-bold uppercase tracking-widest text-zinc-500 mb-2">{job.duration}</div>
+                    <h3 className="text-3xl font-bold text-white mb-2">{job.company}</h3>
+                    <div className="text-zinc-400 font-medium mb-4">{job.role}</div>
+                    <div className="flex flex-wrap gap-2">
+                       {job.key_skills.map((skill, idx) => (
+                         <span key={idx} className="px-3 py-1 rounded-full bg-white/10 text-[10px] font-bold text-white uppercase tracking-widest">{skill}</span>
+                       ))}
+                    </div>
+                  </div>
+                  <div className="lg:col-span-8">
+                    <p className="text-lg md:text-xl text-zinc-400 font-light leading-relaxed">
+                      {job.description}
+                    </p>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
           </div>
         </section>
 

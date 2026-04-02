@@ -244,39 +244,44 @@ export default function Portfolio4() {
              <div className="w-32 h-4 bg-[#B4F8C8] border-[3px] border-zinc-900 shadow-[4px_4px_0px_0px_rgba(24,24,27,1)] mx-auto"></div>
            </div>
            
-           <div className="grid lg:grid-cols-2 gap-8 max-w-4xl mx-auto">
-                <div className={`p-10 bg-white border-[4px] border-zinc-900 flex flex-col relative shadow-[16px_16px_0px_0px_rgba(255,107,107,1)]`}>
+            <div className="grid lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+                <div className={`p-10 bg-white border-[4px] border-zinc-900 flex flex-col relative shadow-[12px_12px_0px_0px_#FF6B6B]`}>
                     <div className="absolute top-0 right-0 px-4 py-2 bg-[#FF6B6B] border-b-[4px] border-l-[4px] border-zinc-900 font-black uppercase text-white">Academic</div>
                     <h3 className="text-3xl font-black uppercase mb-4 text-zinc-900">{data.education.degree}</h3>
                     <div className="text-4xl font-black mb-6 text-[#FF6B6B] truncate">{data.education.field}</div>
-                    <ul className="space-y-4 mb-10">
-                        <li className="flex items-center gap-4 font-bold text-lg">
-                            <CheckSquare size={24} className="text-zinc-900" fill="#FFC900" />
-                            {data.education.institution}
-                        </li>
-                        <li className="flex items-center gap-4 font-bold text-lg">
-                            <CheckSquare size={24} className="text-zinc-900" fill="#FFC900" />
-                            {data.education.year}
-                        </li>
-                    </ul>
+                    <p className="font-bold text-zinc-600 mb-8">{data.education.institution}</p>
+                    <div className="mt-auto font-black text-2xl uppercase border-t-4 border-zinc-900 pt-4">{data.education.year}</div>
                 </div>
 
-                <div className={`p-10 bg-white border-[4px] border-zinc-900 flex flex-col relative shadow-[12px_12px_0px_0px_rgba(24,24,27,1)]`}>
+                <div className={`p-10 bg-white border-[4px] border-zinc-900 flex flex-col relative shadow-[12px_12px_0px_0px_#FFC900]`}>
+                    <div className="absolute top-0 right-0 px-4 py-2 bg-[#FFC900] border-b-[4px] border-l-[4px] border-zinc-900 font-black uppercase text-zinc-900">Professional</div>
+                    <h3 className="text-3xl font-black uppercase mb-4 text-zinc-900">{data.employment[0].company}</h3>
+                    <div className="text-4xl font-black mb-6 text-[#FFC900] truncate">{data.employment[0].role}</div>
+                    <p className="font-bold text-zinc-600 mb-8 line-clamp-3">{data.employment[0].description}</p>
+                    <div className="mt-auto font-black text-2xl uppercase border-t-4 border-zinc-900 pt-4 truncate">{data.employment[0].duration}</div>
+                </div>
+
+                <div className={`p-10 bg-white border-[4px] border-zinc-900 flex flex-col relative shadow-[12px_12px_0px_0px_#00E5FF]`}>
                      <div className="absolute top-0 right-0 px-4 py-2 bg-zinc-900 border-b-[4px] border-l-[4px] border-zinc-900 font-black uppercase text-white">Career Goal</div>
                      <h3 className="text-3xl font-black uppercase mb-4 text-zinc-900">Career Focus</h3>
                     <div className="text-4xl font-black mb-6 text-[#00E5FF] truncate">{data.personal_info.expected_salary}</div>
-                    <ul className="space-y-4 mb-10">
-                        <li className="flex items-center gap-4 font-bold text-lg">
-                            <CheckSquare size={24} className="text-zinc-900" fill="#B4F8C8" />
+                    <ul className="space-y-4 mb-4">
+                        <li className="flex items-center gap-4 font-bold text-lg text-zinc-900">
+                            <div className="w-3 h-3 bg-[#B4F8C8] border-2 border-zinc-900 shadow-[2px_2px_0px_0px_rgba(24,24,27,1)]"></div>
                             {data.personal_info.current_salary}
                         </li>
                         <li className="flex items-center gap-4 text-zinc-600 font-bold uppercase tracking-widest text-xs">
                             <div className="w-2 h-2 bg-black rounded-full"></div>
                             {data.personal_info.notice_period}
                         </li>
+                        <li className="flex items-center gap-4 text-zinc-600 font-bold uppercase tracking-widest text-xs">
+                            <div className="w-2 h-2 bg-black rounded-full"></div>
+                            Remote Friendly
+                        </li>
                     </ul>
+                    <div className="mt-auto font-black text-2xl uppercase border-t-4 border-zinc-900 pt-4 text-[#00E5FF]">Active Search</div>
                 </div>
-           </div>
+            </div>
         </section>
 
         {/* FOOTER CALL TO ACTION */}

@@ -233,52 +233,69 @@ export default function Portfolio3() {
              <p className="text-xl text-slate-400 font-light">Academic foundation. Professional roadmap.</p>
            </div>
            
-           <div className="grid lg:grid-cols-2 gap-8 max-w-5xl mx-auto">
-                  <div className={`p-10 md:p-12 rounded-[3.5rem] border backdrop-blur-3xl flex flex-col relative overflow-hidden group bg-gradient-to-b from-purple-900/40 to-white/[0.04] border-purple-500/40 shadow-[0_0_80px_rgba(168,85,247,0.2)] z-10`}>
-                    <div className="absolute top-0 inset-x-0 h-1.5 bg-gradient-to-r from-blue-500 to-purple-500"></div>
-                    <div className="text-xs font-bold uppercase tracking-[0.2em] text-purple-400 mb-8 flex items-center gap-2 relative z-10"><div className="w-2 h-2 rounded-full bg-purple-500 animate-pulse"></div> Academic Foundation</div>
-                    
-                    <h3 className="text-2xl font-black text-white tracking-tight mb-4 relative z-10">{data.education.degree}</h3>
-                    <div className="text-4xl font-light tracking-tighter text-white mb-8 relative z-10">{data.education.field}</div>
-                    
-                    <div className="space-y-4 mb-14 flex-1 relative z-10 text-slate-300">
-                       <div className="flex items-center gap-4">
-                          <CheckCircle size={20} className="text-purple-400" />
-                          {data.education.institution}
-                       </div>
-                       <div className="flex items-center gap-4">
-                          <CheckCircle size={20} className="text-purple-400" />
-                          Class of {data.education.year}
-                       </div>
-                    </div>
-                    
-                    <div className="absolute top-0 left-0 w-full h-[60%] bg-gradient-to-b from-white/[0.05] to-transparent pointer-events-none transition-opacity duration-1000 group-hover:opacity-100 opacity-50"></div>
-                  </div>
+           <div className="grid lg:grid-cols-3 md:grid-cols-2 gap-8 md:gap-12 max-w-7xl mx-auto">
+                   <div className={`p-10 md:p-12 rounded-[3.5rem] border backdrop-blur-3xl flex flex-col relative overflow-hidden group bg-white/[0.04] border-white/20 shadow-2xl`}>
+                     <div className="text-xs font-bold uppercase tracking-[0.2em] text-slate-400 mb-8 flex items-center gap-2 relative z-10">Academic Foundation</div>
+                     
+                     <h3 className="text-2xl font-black text-white tracking-tight mb-4 relative z-10">{data.education.degree}</h3>
+                     <div className="text-4xl font-light tracking-tighter text-white mb-8 relative z-10 truncate">{data.education.field.split(' ')[0]}</div>
+                     
+                     <div className="space-y-4 mb-14 flex-1 relative z-10 text-slate-300">
+                        <div className="flex items-center gap-4 text-sm whitespace-nowrap">
+                           <CheckCircle size={16} className="text-purple-400" />
+                           {data.education.institution}
+                        </div>
+                        <div className="flex items-center gap-4 text-sm">
+                           <CheckCircle size={16} className="text-purple-400" />
+                           Class of {data.education.year}
+                        </div>
+                     </div>
+                     
+                     <div className="absolute top-0 left-0 w-full h-[60%] bg-gradient-to-b from-white/[0.05] to-transparent pointer-events-none transition-opacity duration-1000 group-hover:opacity-100 opacity-50"></div>
+                   </div>
 
-                  <div className={`p-10 md:p-12 rounded-[3.5rem] border backdrop-blur-3xl flex flex-col relative overflow-hidden group bg-white/[0.02] border-white/10`}>
-                    <div className="text-xs font-bold uppercase tracking-[0.2em] text-slate-400 mb-8 flex items-center gap-2 relative z-10">Compensation Modeling</div>
-                    
-                    <h3 className="text-3xl font-black text-white tracking-tight mb-4 relative z-10">Contractual Access</h3>
-                    <div className="text-5xl font-light tracking-tighter text-white mb-12 relative z-10">{data.personal_info.expected_salary} <span className="text-xl text-slate-500 tracking-normal">/ annum</span></div>
-                    
-                    <ul className="space-y-5 mb-14 flex-1 relative z-10">
-                        <li className="flex items-center gap-4 text-slate-300 font-light">
-                            <CheckCircle size={20} className="text-slate-600" />
-                            {data.personal_info.current_salary}
-                        </li>
-                        <li className="flex items-center gap-4 text-zinc-600 font-bold uppercase tracking-widest text-xs">
-                            <div className="w-2 h-2 bg-black rounded-full"></div>
-                            {data.personal_info.notice_period}
-                        </li>
-                        <li className="flex items-center gap-4 text-slate-300 font-light">
-                            <CheckCircle size={20} className="text-slate-600" />
-                            Global Collaboration
-                        </li>
-                    </ul>
-                    
-                    <div className="absolute top-0 left-0 w-full h-[60%] bg-gradient-to-b from-white/[0.05] to-transparent pointer-events-none transition-opacity duration-1000 group-hover:opacity-100 opacity-50"></div>
-                  </div>
-           </div>
+                   <div className={`p-10 md:p-12 rounded-[3.5rem] border backdrop-blur-3xl flex flex-col relative overflow-hidden group bg-white/[0.08] border-white/30 shadow-[0_0_80px_rgba(255,255,255,0.05)]`}>
+                     <div className="text-xs font-bold uppercase tracking-[0.2em] text-purple-400 mb-8 flex items-center gap-2 relative z-10">Professional Infrastructure</div>
+                     
+                     <h3 className="text-2xl font-black text-white tracking-tight mb-4 relative z-10">{data.employment[0].company}</h3>
+                     <div className="text-4xl font-light tracking-tighter text-white mb-8 relative z-10">{data.employment[0].role.split(' ')[0]}</div>
+                     
+                     <div className="space-y-4 mb-14 flex-1 relative z-10 text-slate-300">
+                        <p className="text-sm font-light leading-relaxed mb-6 line-clamp-3 italic opacity-70">
+                          {data.employment[0].description}
+                        </p>
+                        <div className="flex items-center gap-4 text-sm font-bold tracking-widest text-white/50 uppercase">
+                           {data.employment[0].duration}
+                        </div>
+                     </div>
+                     
+                     <div className="absolute top-0 left-0 w-full h-[60%] bg-gradient-to-b from-purple-500/[0.1] to-transparent pointer-events-none transition-opacity duration-1000 group-hover:opacity-100 opacity-50"></div>
+                   </div>
+
+                   <div className={`p-10 md:p-12 rounded-[3.5rem] border backdrop-blur-3xl flex flex-col relative overflow-hidden group bg-white/[0.02] border-white/10`}>
+                     <div className="text-xs font-bold uppercase tracking-[0.2em] text-slate-400 mb-8 flex items-center gap-2 relative z-10">Compensation Modeling</div>
+                     
+                     <h3 className="text-3xl font-black text-white tracking-tight mb-4 relative z-10">Contractual Access</h3>
+                     <div className="text-5xl font-light tracking-tighter text-white mb-12 relative z-10">{data.personal_info.expected_salary}</div>
+                     
+                     <ul className="space-y-5 mb-14 flex-1 relative z-10">
+                         <li className="flex items-center gap-4 text-slate-300 font-light text-sm">
+                             <CheckCircle size={16} className="text-slate-600" />
+                             {data.personal_info.current_salary}
+                         </li>
+                         <li className="flex items-center gap-4 text-slate-300 font-light text-sm">
+                             <CheckCircle size={16} className="text-slate-600" />
+                             {data.personal_info.notice_period}
+                         </li>
+                         <li className="flex items-center gap-4 text-slate-300 font-light text-sm">
+                             <CheckCircle size={16} className="text-slate-600" />
+                             Global Collaboration
+                         </li>
+                     </ul>
+                     
+                     <div className="absolute top-0 left-0 w-full h-[60%] bg-gradient-to-b from-white/[0.05] to-transparent pointer-events-none transition-opacity duration-1000 group-hover:opacity-100 opacity-50"></div>
+                   </div>
+                </div>
         </section>
 
         {/* FOOTER */}

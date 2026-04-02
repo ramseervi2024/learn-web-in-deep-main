@@ -265,13 +265,13 @@ export default function Portfolio5() {
             <div className={`w-[1px] h-16 bg-[#1A1A1A]/20 mx-auto mt-12`}></div>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-12 md:gap-8 max-w-5xl mx-auto">
-                <div className={`flex flex-col p-8 md:p-12 border-[0.5px] ${borderThin} hover:shadow-2xl transition-shadow duration-500 bg-white`}>
+          <div className="grid lg:grid-cols-3 md:grid-cols-2 gap-12 md:gap-8 max-w-7xl mx-auto">
+                <div className={`flex flex-col p-8 md:p-12 border-[0.5px] ${borderThin} hover:shadow-2xl transition-all duration-500 bg-white`}>
                     <div className={`text-[10px] uppercase tracking-[0.3em] ${textMuted} mb-6`}>Academic Tier</div>
                     <h3 className={`font-serif text-3xl mb-4 ${textMain}`}>{data.education.degree}</h3>
                     <div className={`font-light text-sm ${textMuted} mb-12`}>{data.education.institution}</div>
                     <div className={`font-serif text-5xl mb-12 ${textMain} italic`}>{data.education.year}</div>
-                    <ul className="flex-1 space-y-4 mb-16">
+                    <ul className="flex-1 space-y-4">
                         <li className={`flex items-start gap-4 border-b-[0.5px] ${borderThin} pb-4`}>
                           <ArrowUpRight size={14} strokeWidth={1} className={`${textMain} shrink-0 mt-1`} />
                           <span className={`text-xs uppercase tracking-[0.1em] ${textMuted} leading-relaxed`}>{data.education.field}</span>
@@ -279,7 +279,23 @@ export default function Portfolio5() {
                     </ul>
                 </div>
 
-                <div className={`flex flex-col p-8 md:p-12 border-[0.5px] ${borderThin} hover:shadow-2xl transition-shadow duration-500 bg-white`}>
+                <div className={`flex flex-col p-8 md:p-12 border-[0.5px] ${borderThin} hover:shadow-2xl transition-all duration-500 bg-white`}>
+                    <div className="flex justify-between items-start mb-6">
+                      <div className={`text-[10px] uppercase tracking-[0.3em] ${textMuted}`}>Professional Tier</div>
+                      <div className={`px-2 py-1 bg-[#1A1A1A]/5 border border-[#1A1A1A]/10 text-[9px] font-bold uppercase tracking-widest ${textMain}`}>Web. & Mobile Dev</div>
+                    </div>
+                    <h3 className={`font-serif text-3xl mb-4 ${textMain}`}>{data.employment[0].company}</h3>
+                    <div className={`font-light text-sm ${textMuted} mb-12`}>{data.employment[0].role}</div>
+                    <div className={`font-serif text-5xl mb-12 ${textMain} italic`}>2022&mdash;Present</div>
+                    <ul className="flex-1 space-y-4">
+                        <li className={`flex items-start gap-4 border-b-[0.5px] ${borderThin} pb-4`}>
+                          <ArrowUpRight size={14} strokeWidth={1} className={`${textMain} shrink-0 mt-1`} />
+                          <span className={`text-xs uppercase tracking-[0.1em] ${textMuted} leading-relaxed line-clamp-4`}>{data.employment[0].description}</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div className={`flex flex-col p-8 md:p-12 border-[0.5px] ${borderThin} hover:shadow-2xl transition-all duration-500 bg-white`}>
                     <div className={`text-[10px] uppercase tracking-[0.3em] ${textMuted} mb-6`}>Career Focus</div>
                     <h3 className={`font-serif text-3xl mb-4 ${textMain}`}>Future Direction</h3>
                     <div className={`font-light text-sm ${textMuted} mb-12`}>Strategic Growth Path</div>
