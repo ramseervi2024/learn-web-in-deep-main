@@ -406,7 +406,7 @@ const Portfolio3 = () => {
                             </div>
 
                             {/* Tech Stack Footer float */}
-                            <div className="w-full flex flex-wrap gap-2 transition-transform duration-500 ease-out group-hover:translate-z-8 mt-auto pt-8">
+                            <div className="w-full flex flex-wrap justify-center gap-2 transition-transform duration-500 ease-out group-hover:translate-z-8 mt-auto pt-8">
                                {project.technologies.slice(0, 5).map(tech => (
                                  <span key={tech} className="px-3 py-1.5 rounded-full bg-white/10 border border-white/10 backdrop-blur-md text-white/90 text-xs tracking-wider">
                                    {tech}
