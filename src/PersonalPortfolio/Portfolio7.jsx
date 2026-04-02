@@ -1,294 +1,285 @@
-import React, { useState, useEffect } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
-import Spline from '@splinetool/react-spline';
-import { portfolioprofile } from './portfoliodata';
-import {
-  ArrowDown, ExternalLink, Activity,
-  Terminal, Sparkles, CheckCircle2, ChevronRight, Code2
-} from 'lucide-react';
+import React from 'react';
+import { motion } from 'framer-motion';
+import { portfolioprofile as data } from './portfoliodata';
+import { Terminal, Database, Shield, Zap, Code, ChevronRight, Minimize2, Maximize2, X, Smartphone, Code2 } from 'lucide-react';
 
-const themeConfigs = {
-  abyssal: {
-    id: 'abyssal',
-    label: 'Abyssal Onyx',
-    bg: 'bg-[#000000]',
-    text: 'text-zinc-50',
-    textMuted: 'text-zinc-500',
-    accent: 'bg-white text-black shadow-[0_0_30px_rgba(255,255,255,0.3)]',
-    accentText: 'text-white',
-    border: 'border-white/10',
-    navBg: 'bg-black/80 backdrop-blur-xl border-b border-white/5',
-    card: 'bg-zinc-950 border border-white/5 hover:border-white/20 transition-all',
-    splineBase: 'grayscale brightness-150 contrast-125 mix-blend-screen opacity-90',
-    morphOverlay: 'from-black via-zinc-900/50 to-black'
-  },
-  crimson: {
-    id: 'crimson',
-    label: 'Imperial Crimson',
-    bg: 'bg-[#0a0002]',
-    text: 'text-red-50',
-    textMuted: 'text-red-900',
-    accent: 'bg-gradient-to-r from-red-600 to-rose-900 text-white shadow-[0_0_30px_rgba(220,38,38,0.3)]',
-    accentText: 'text-red-500',
-    border: 'border-red-900/30',
-    navBg: 'bg-[#0a0002]/80 backdrop-blur-xl border-b border-red-900/20',
-    card: 'bg-[#120101] border border-red-900/20 hover:border-red-600/50 transition-all',
-    splineBase: 'hue-rotate-180 saturate-[3] brightness-125 mix-blend-screen opacity-80',
-    morphOverlay: 'from-[#0a0002] via-red-900/10 to-[#0a0002]'
-  },
-  sapphire: {
-    id: 'sapphire',
-    label: 'Sapphire Deep',
-    bg: 'bg-[#020512]',
-    text: 'text-blue-50',
-    textMuted: 'text-indigo-900',
-    accent: 'bg-gradient-to-r from-blue-600 to-indigo-900 text-white shadow-[0_0_30px_rgba(37,99,235,0.3)]',
-    accentText: 'text-blue-500',
-    border: 'border-blue-900/30',
-    navBg: 'bg-[#020512]/80 backdrop-blur-xl border-b border-blue-900/20',
-    card: 'bg-[#050b1f] border border-indigo-900/30 hover:border-blue-500/50 transition-all',
-    splineBase: 'hue-rotate-[240deg] saturate-[3] brightness-150 mix-blend-screen opacity-80',
-    morphOverlay: 'from-[#020512] via-blue-900/10 to-[#020512]'
-  }
-};
+export default function Portfolio7() {
+  
+  // Terminal Design Tokens
+  const cardFrame = "border border-white/10 bg-black/50 backdrop-blur-sm p-8 hover:border-white/20 transition-colors relative group";
+  const monoLabel = "font-mono text-[10px] md:text-[11px] uppercase tracking-[0.2em] text-neutral-500";
+  const textHeading = "font-sans tracking-tight text-white";
 
-const Portfolio7 = () => {
-  const [activeTheme, setActiveTheme] = useState('abyssal');
-  const [splineLoaded, setSplineLoaded] = useState(false);
-  const theme = themeConfigs[activeTheme];
-
-  const { personal_info, summary, technical_stack, projects } = portfolioprofile;
-
-  const { scrollYProgress } = useScroll();
-
-  // MAGIC KINETIC MORPHING SYSTEM
-  // As the user scrolls through the 4 sections [0, 0.33, 0.66, 1], the SINGLE sticky Spline manipulates its physical position
-  const splineScale = useTransform(scrollYProgress, [0, 0.33, 0.66, 1], [1.2, 2.5, 1.8, 3.5]);
-  const splineRotate = useTransform(scrollYProgress, [0, 0.33, 0.66, 1], [0, -35, 45, 180]);
-  const splineX = useTransform(scrollYProgress, [0, 0.33, 0.66, 1], ["0%", "20%", "-20%", "0%"]);
-  const splineY = useTransform(scrollYProgress, [0, 0.33, 0.66, 1], ["0%", "10%", "-10%", "20%"]);
-  const hueShift = useTransform(scrollYProgress, [0, 0.33, 0.66, 1], ["0deg", "90deg", "-45deg", "180deg"]);
-
-  // Crossfade opacity of color overlay to make it look like different lighting
-  const overlayOpacity = useTransform(scrollYProgress, [0, 0.15, 0.33, 0.5, 0.66, 0.85, 1], [0.8, 0, 0.8, 0, 0.8, 0, 0.9]);
-
-  // Framer config
-  const fadeUp = {
-    initial: { opacity: 0, y: 100 },
-    whileInView: { opacity: 1, y: 0 },
-    viewport: { once: true, margin: "-10%" },
-    transition: { duration: 1, ease: [0.16, 1, 0.3, 1] }
-  };
-
-  const SAFE_SPLINE = "https://prod.spline.design/6Wq1Q7YGyM-iab9i/scene.splinecode";
+  const stats = [
+    { label: 'Years of Experience', value: `${data.personal_info.experience_years}+` },
+    { label: 'Production Apps Built', value: `${data.projects.length}+` },
+    { label: 'Core Technical Domains', value: `${data.core_expertise.length}` },
+    { label: 'Current Availability', value: data.personal_info.availability.split(' ')[0].toUpperCase() }
+  ];
 
   return (
-    <div className={`w-full h-screen overflow-y-scroll snap-y snap-mandatory scroll-smooth transition-colors duration-1000 ${theme.bg} ${theme.text} font-sans selection:bg-white/20 selection:${theme.text}`}>
+    <div className="min-h-screen bg-[#050505] text-neutral-400 font-sans selection:bg-emerald-500/30 selection:text-emerald-200 overflow-x-hidden">
+      
+      {/* Background Drafting Grid */}
+      <div className="fixed inset-0 pointer-events-none bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:64px_64px] z-0"></div>
 
-      {/* --- KINETIC STICKY 3D BACKGROUND ENGINE --- */}
-      <div className="fixed inset-0 w-full h-[100vh] z-0 pointer-events-none flex items-center justify-center overflow-hidden">
-        <motion.div
-          style={{
-            scale: splineScale,
-            rotateZ: splineRotate,
-            x: splineX,
-            y: splineY,
-            filter: `hue-rotate(${hueShift.get()})`
-          }}
-          className="w-[120vw] h-[120vh] origin-center transition-all duration-75"
-        >
-          <Spline
-            scene={SAFE_SPLINE}
-            onLoad={() => setSplineLoaded(true)}
-            className={`w-full h-full transition-all duration-[2000ms] ${splineLoaded ? theme.splineBase : 'opacity-0 scale-50 blur-2xl'}`}
-            style={{ pointerEvents: 'auto' }}
-          />
-        </motion.div>
-        {/* Morphing color gradient overlay tied to scroll */}
-        <motion.div
-          style={{ opacity: overlayOpacity }}
-          className={`absolute inset-0 bg-gradient-to-tr ${theme.morphOverlay} mix-blend-multiply`}
-        />
-      </div>
-
-      {/* FLOATING NAVIGATION */}
-      <nav className={`fixed top-0 left-0 right-0 z-50 ${theme.navBg} transition-all duration-500`}>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 h-auto min-h-[3.5rem] sm:min-h-[5rem] py-2 sm:py-4 flex flex-row items-center justify-between gap-2 sm:gap-4">
-          <div className={`text-lg sm:text-2xl font-black tracking-tighter uppercase shrink-0 ${theme.text}`}>
-            {personal_info.name.split(' ')[0]}<span className={theme.accentText}>.</span>
+      {/* TERMINAL HEADER */}
+      <nav className="fixed top-0 inset-x-0 z-50 bg-[#050505]/90 backdrop-blur-md border-b border-white/10">
+        <div className="max-w-[1400px] mx-auto px-6 h-14 flex items-center justify-between">
+          <div className="flex items-center gap-4">
+            <Terminal size={16} className="text-emerald-500" />
+            <span className={`font-mono text-xs font-bold text-white tracking-widest`}>~/{data.personal_info.name.toLowerCase().replace(' ', '_')}</span>
           </div>
-          <div className="flex flex-row flex-wrap justify-end gap-1.5 sm:gap-3">
-            {Object.values(themeConfigs).map(t => (
-              <button
-                key={t.id}
-                onClick={() => setActiveTheme(t.id)}
-                className={`px-2 sm:px-4 py-1 sm:py-2 text-[8px] sm:text-[10px] md:text-xs font-bold tracking-widest uppercase transition-all whitespace-nowrap ${activeTheme === t.id ? theme.accent : `bg-transparent border ${theme.border} ${theme.textMuted} hover:${theme.text} hover:${theme.border}`
-                  }`}
-              >
-                <span className="hidden md:inline">{t.label}</span>
-                <span className="md:hidden">{t.label.split(' ')[0]}</span>
-              </button>
-            ))}
+          <div className="hidden md:flex items-center gap-8 font-mono text-[10px] uppercase tracking-widest">
+            <a href="#expertise" className="text-neutral-500 hover:text-white transition-colors">./expertise</a>
+            <a href="#projects" className="text-neutral-500 hover:text-white transition-colors">./projects</a>
+            <a href="#credentials" className="text-neutral-500 hover:text-white transition-colors">./credentials</a>
+          </div>
+          <div className="flex items-center gap-3">
+             <div className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></div>
+             <span className="font-mono text-[10px] text-emerald-500 tracking-widest hidden sm:block">SYSTEM._ONLINE</span>
           </div>
         </div>
       </nav>
 
-      <main className="w-full relative z-10">
-
-        {/* --- SECTION 1: HERO (SNAP 1) --- */}
-        <section className="w-full min-h-[100svh] shrink-0 snap-start snap-always flex flex-col justify-center pt-24 pb-12 sm:py-20 px-4 sm:px-6 relative z-10">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1.5, delay: 0.5 }}
-            className="max-w-7xl mx-auto w-full"
-          >
-            <div className={`inline-flex items-center gap-2 sm:gap-3 px-3 sm:px-6 py-1.5 sm:py-3 border ${theme.border} backdrop-blur-md bg-white/[0.02] text-[9px] sm:text-xs font-bold tracking-widest uppercase mb-6 sm:mb-12 shadow-2xl rounded-full`}>
-              <Activity size={14} className={`sm:w-4 sm:h-4 ${theme.accentText} animate-pulse`} />
-              <span className={theme.text}>STATUS: {personal_info.availability}</span>
-            </div>
-
-            <h1 className={`text-[2.8rem] leading-[1] sm:leading-[0.9] sm:text-[6rem] lg:text-[10rem] font-black tracking-tighter uppercase ${theme.text} drop-shadow-[0_20px_50px_rgba(0,0,0,1)]`}>
-              Cinematic <br /> <span className={theme.accentText}>Engineer.</span>
+      <main className="max-w-[1400px] mx-auto pt-14 border-x border-white/10 min-h-screen relative z-10 flex flex-col">
+        
+        {/* THE IDE HERO */}
+        <section className="px-6 py-24 md:py-32 grid grid-cols-1 md:grid-cols-12 gap-12 border-b border-white/10">
+          
+          <div className="md:col-span-7 flex flex-col justify-center">
+            <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} className="mb-6">
+               <span className="font-mono text-emerald-500 text-xs tracking-widest bg-emerald-500/10 px-3 py-1 rounded inline-block border border-emerald-500/20">
+                 [ STATUS: {data.personal_info.availability.toUpperCase()} ]
+               </span>
+            </motion.div>
+            
+            <h1 className={`text-5xl md:text-7xl lg:text-8xl font-black leading-[1.05] tracking-tighter mb-8 ${textHeading}`}>
+              Vision.<br/>Engineered.
+              <span className="animate-pulse text-emerald-500">_</span>
             </h1>
-
-            <div className="flex flex-col md:flex-row items-start md:items-end justify-between mt-6 sm:mt-12 gap-5 sm:gap-8">
-              <p className={`text-sm sm:text-xl md:text-3xl ${theme.textMuted} max-w-2xl font-light tracking-wide leading-relaxed drop-shadow-xl`}>
-                {personal_info.title} specializing in top-tier scalable systems and immersive web experiences.
-              </p>
-              <div className={`flex items-center gap-2 sm:gap-3 ${theme.textMuted} text-[9px] sm:text-[10px] tracking-widest uppercase animate-bounce mt-2 sm:mt-0`}>
-                SCROLL TO INITIATE <ArrowDown size={14} className={`sm:w-4 sm:h-4 ${theme.accentText}`} />
-              </div>
-            </div>
-          </motion.div>
-        </section>
-
-        {/* --- SECTION 2: ARCHITECTURE (SNAP 2) --- */}
-        <section className="w-full min-h-[100svh] shrink-0 snap-start snap-always flex flex-col justify-center pt-24 pb-12 sm:py-20 px-4 sm:px-6 relative z-10">
-          <motion.div variants={fadeUp} initial="initial" whileInView="whileInView" className="max-w-7xl mx-auto w-full">
-            <div className={`p-5 sm:p-10 md:p-16 ${theme.card} backdrop-blur-3xl relative overflow-hidden rounded-2xl`}>
-              <div className={`absolute top-0 right-0 w-32 sm:w-64 h-32 sm:h-64 bg-gradient-to-bl from-white/10 to-transparent pointer-events-none`} />
-
-              <h2 className={`text-[9px] sm:text-xs font-bold uppercase tracking-widest ${theme.accentText} mb-3 sm:mb-6`}>01 // Technology Matrix</h2>
-              <h3 className={`text-3xl sm:text-5xl lg:text-7xl font-black uppercase tracking-tighter mb-4 sm:mb-12 leading-[1.1] sm:leading-[0.9] ${theme.text} drop-shadow-md`}>
-                System <br className="hidden sm:block" /> Architecture.
-              </h3>
-
-              <p className={`text-sm sm:text-lg leading-relaxed ${theme.textMuted} mb-8 sm:mb-12`}>
-                {summary}
-              </p>
-
-              <div className="flex flex-col gap-6 sm:gap-10">
-                <div>
-                  <div className="flex items-center gap-3 mb-4 sm:mb-6">
-                    <Code2 size={20} className={theme.text} />
-                    <h4 className={`text-sm sm:text-xl font-bold uppercase tracking-widest ${theme.text}`}>Frontend Ecosystem</h4>
-                  </div>
-                  <div className="flex flex-wrap gap-2">
-                    {technical_stack.frontend.map(tech => (
-                      <span key={tech} className={`px-2 sm:px-4 py-1.5 sm:py-2 text-[9px] sm:text-[10px] font-bold uppercase tracking-widest border border-white/10 bg-white/5 ${theme.text} shadow-inner rounded`}>
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-
-                <div>
-                  <div className="flex items-center gap-3 mb-4 sm:mb-6">
-                    <Terminal size={20} className={theme.text} />
-                    <h4 className={`text-sm sm:text-xl font-bold uppercase tracking-widest ${theme.text}`}>Mobile & Backend</h4>
-                  </div>
-                  <div className="flex flex-wrap gap-2">
-                    {[...technical_stack.mobile, ...technical_stack.backend_integration].slice(0, 10).map(tech => (
-                      <span key={tech} className={`px-2 sm:px-4 py-1.5 sm:py-2 text-[9px] sm:text-[10px] font-bold uppercase tracking-widest border border-white/10 bg-white/5 ${theme.text} shadow-inner rounded`}>
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            </div>
-          </motion.div>
-        </section>
-
-        {/* --- SECTION 3: DEPLOYMENTS (SNAP 3) --- */}
-        <section className="w-full min-h-[100svh] shrink-0 snap-start snap-always flex flex-col justify-center pt-24 pb-12 sm:py-20 px-4 sm:px-6 relative z-10">
-          <motion.div variants={fadeUp} initial="initial" whileInView="whileInView" className="max-w-7xl mx-auto w-full flex flex-col lg:items-end">
-
-            <div className="text-left lg:text-right mt-0 mb-6 sm:mb-16">
-              <h2 className={`text-[9px] sm:text-xs font-bold uppercase tracking-widest ${theme.accentText} mb-2 sm:mb-6`}>02 // Selected Works</h2>
-              <h3 className={`text-[2rem] leading-[1.1] sm:text-5xl lg:text-8xl font-black uppercase tracking-tighter ${theme.text} drop-shadow-[0_10px_30px_rgba(0,0,0,1)]`}>
-                Production <br className="hidden sm:block" /> Deployments.
-              </h3>
-            </div>
-
-            <div className="w-full lg:w-3/4 flex flex-col gap-4 sm:gap-6 max-h-[60vh] sm:max-h-[60vh] overflow-y-auto pr-2 sm:pr-4 custom-scrollbar">
-              {projects.map((project, idx) => (
-                <div
-                  key={project.name}
-                  className={`p-6 sm:p-10 ${theme.card} backdrop-blur-2xl group border-l-4 ${activeTheme === 'abyssal' ? 'border-l-white' : activeTheme === 'crimson' ? 'border-l-red-500' : 'border-l-blue-500'} transition-all rounded-xl`}
-                >
-                  <div className="flex flex-row items-center justify-between gap-4 sm:gap-6 mb-4 sm:mb-6">
-                    <div>
-                      <div className={`text-[9px] sm:text-[10px] font-bold uppercase tracking-widest ${theme.textMuted} mb-1 sm:mb-2`}>Module 0{idx + 1} // {project.type}</div>
-                      <h4 className={`text-2xl sm:text-4xl lg:text-5xl font-black tracking-tight uppercase ${theme.text}`}>{project.name}</h4>
-                    </div>
-                    <span className={`p-2 sm:p-4 shrink-0 rounded-full border border-white/10 ${theme.textMuted} group-hover:${theme.accentText} transition-colors group-hover:scale-110`}>
-                      <ExternalLink size={20} className="sm:hidden" />
-                      <ExternalLink size={24} className="hidden sm:block" />
-                    </span>
-                  </div>
-
-                  <p className={`text-xs sm:text-sm md:text-base leading-relaxed ${theme.textMuted} mb-6 sm:mb-8 max-w-2xl`}>
-                    {project.description}
-                  </p>
-
-                  <div className={`pt-4 sm:pt-6 border-t ${theme.border} flex flex-wrap gap-2`}>
-                    {project.technologies.slice(0, 6).map(tech => (
-                      <span key={tech} className={`px-2 sm:px-3 py-1 sm:py-1.5 text-[8px] sm:text-[9px] font-bold uppercase tracking-widest bg-transparent border border-white/10 ${theme.textMuted} transition-colors rounded`}>
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              ))}
-            </div>
-
-          </motion.div>
-        </section>
-
-        {/* --- SECTION 4: COMMS (SNAP 4) --- */}
-        <section className="w-full min-h-[100svh] shrink-0 snap-start snap-always flex flex-col items-center justify-center text-center px-4 sm:px-6 relative overflow-hidden z-10 pt-24 pb-12 sm:py-20">
-          <motion.div variants={fadeUp} initial="initial" whileInView="whileInView" className={`max-w-4xl w-full p-6 sm:p-16 md:p-24 ${theme.card} backdrop-blur-3xl z-10 relative rounded-2xl`}>
-            {/* Targeting brackets */}
-            <div className={`absolute top-0 left-0 w-6 h-6 sm:w-12 sm:h-12 border-t-2 sm:border-t-4 border-l-2 sm:border-l-4 ${theme.border} opacity-50`} />
-            <div className={`absolute bottom-0 right-0 w-6 h-6 sm:w-12 sm:h-12 border-b-2 sm:border-b-4 border-r-2 sm:border-r-4 ${theme.border} opacity-50`} />
-
-            <h2 className={`text-4xl sm:text-6xl md:text-8xl font-black uppercase tracking-tighter mb-4 sm:mb-8 leading-[1.1] sm:leading-[0.9] ${theme.text}`}>
-              Enter The <br /><span className={theme.accentText}>Network.</span>
-            </h2>
-            <p className={`text-xs sm:text-lg font-light tracking-wide ${theme.textMuted} mb-8 sm:mb-16`}>
-              Encrypted channels are currently open for freelance inquiries, contract deployments, and full-time architecture roles.
+            
+            <p className="font-mono text-sm md:text-base leading-relaxed text-neutral-400 mb-12 max-w-xl">
+              &gt; {data.personal_info.headline}
             </p>
-            <a href={`mailto:${personal_info.email}`} className={`px-6 sm:px-12 py-3 sm:py-6 text-[10px] sm:text-sm font-black uppercase tracking-[0.2em] transition-transform hover:scale-105 inline-block rounded-full ${theme.accent}`}>
-              Establish Comms
-            </a>
-          </motion.div>
 
-          <div className={`absolute bottom-4 sm:bottom-8 w-full text-center px-4 text-[8px] sm:text-[10px] font-bold uppercase tracking-widest ${theme.textMuted} z-10`}>
-            © {new Date().getFullYear()} {personal_info.name} // ALL SYSTEMS OPERATIONAL
+            <div className="flex flex-col sm:flex-row gap-4">
+              <a href={`mailto:${data.personal_info.email}`} className="font-mono text-xs font-bold tracking-widest uppercase bg-white text-black px-8 py-4 hover:bg-neutral-200 transition-colors inline-block text-center shadow-[0_0_20px_rgba(255,255,255,0.2)]">
+                INITIALIZE_CONTACT
+              </a>
+              <a href="#projects" className="font-mono text-xs font-bold tracking-widest uppercase border border-white/20 text-white px-8 py-4 hover:bg-white/5 transition-colors inline-block text-center flex items-center justify-center gap-2">
+                VIEW_SYSLOG <ChevronRight size={14} />
+              </a>
+            </div>
+          </div>
+
+          <div className="md:col-span-5 hidden md:flex flex-col">
+             {/* IDE Editor Window */}
+             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }} className="w-full bg-[#0A0A0A] border border-white/10 rounded-lg overflow-hidden shadow-2xl flex-1 max-h-[400px]">
+                <div className="h-8 border-b border-white/10 flex items-center px-4 gap-2 bg-[#111]">
+                   <div className="w-2.5 h-2.5 rounded-full bg-rose-500/50"></div>
+                   <div className="w-2.5 h-2.5 rounded-full bg-amber-500/50"></div>
+                   <div className="w-2.5 h-2.5 rounded-full bg-emerald-500/50"></div>
+                   <span className="ml-auto font-mono text-[9px] text-neutral-600">profile.json</span>
+                </div>
+                <div className="p-6 font-mono text-xs md:text-sm leading-relaxed text-neutral-300">
+                  <span className="text-purple-400">const</span><span className="text-yellow-200"> architect</span> = {'{'}<br/>
+                  &nbsp;&nbsp;<span className="text-blue-400">"name"</span>: <span className="text-emerald-400">"{data.personal_info.name}"</span>,<br/>
+                  &nbsp;&nbsp;<span className="text-blue-400">"role"</span>: <span className="text-emerald-400">"{data.personal_info.title}"</span>,<br/>
+                  &nbsp;&nbsp;<span className="text-blue-400">"exp"</span>: <span className="text-amber-400">{data.personal_info.experience_years}</span>,<br/>
+                  &nbsp;&nbsp;<span className="text-blue-400">"stack"</span>: [<span className="text-emerald-400">"React Native"</span>, <span className="text-emerald-400">"Redux"</span>, <span className="text-emerald-400">"Firebase"</span>],<br/>
+                  &nbsp;&nbsp;<span className="text-blue-400">"origin"</span>: <span className="text-emerald-400">"{data.personal_info.location}"</span><br/>
+                  {'}'};<br/>
+                  <br/>
+                  <span className="text-purple-400">export default</span> architect;<span className="animate-pulse">_</span>
+                </div>
+             </motion.div>
           </div>
         </section>
 
+        {/* TERMINAL STATS */}
+        <section className="grid grid-cols-2 md:grid-cols-4 border-b border-white/10 divide-x divide-y md:divide-y-0 divide-white/10">
+          {stats.map((stat, i) => (
+             <div key={i} className="p-8 md:p-12 hover:bg-white/[0.02] transition-colors relative overflow-hidden group">
+               <div className="absolute top-4 right-4 text-white/5 opacity-0 group-hover:opacity-100 transition-opacity">
+                 <Database size={48} strokeWidth={1} />
+               </div>
+               <div className={`text-4xl md:text-5xl font-black mb-2 ${textHeading}`}>{stat.value}</div>
+               <div className={monoLabel}>{stat.label}</div>
+             </div>
+          ))}
+        </section>
+
+        {/* 360 TERMINAL TICKER */}
+        <section id="stack" className="py-8 bg-black border-b border-emerald-500/20 overflow-hidden relative">
+           <div className="absolute inset-x-0 top-1/2 h-[1px] bg-emerald-500/20 shadow-[0_0_10px_rgba(16,185,129,0.5)] z-20 pointer-events-none"></div>
+           
+           <div className="relative flex">
+              <div className="absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-black to-transparent z-10 pointer-events-none"></div>
+              <div className="absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-black to-transparent z-10 pointer-events-none"></div>
+              
+              <div className="flex gap-16 animate-[marquee_45s_linear_infinite] px-8 hover:[animation-play-state:paused] whitespace-nowrap items-center font-mono text-emerald-500/70 text-sm md:text-md uppercase tracking-widest cursor-default">
+                {[...data.technical_stack.mobile, ...data.technical_stack.frontend, ...data.technical_stack.backend_integration].map((tech, i) => (
+                   <div key={i} className="flex items-center gap-16">
+                      <span className="opacity-50">&gt;&gt;</span>
+                      <span className="hover:text-emerald-300 hover:text-shadow-[0_0_8px_rgba(110,231,183,0.8)] transition-all">{tech}</span>
+                   </div>
+                ))}
+              </div>
+           </div>
+        </section>
+
+        {/* EXPERTISE (API ENDPOINTS) */}
+        <section id="expertise" className="border-b border-white/10">
+           <div className="px-6 py-8 border-b border-white/10 bg-[#0A0A0A]">
+             <h2 className={`text-2xl font-bold tracking-tight ${textHeading} flex items-center gap-3`}>
+               <Code size={20} className="text-emerald-500" /> ./core_expertise
+             </h2>
+           </div>
+           
+           <div className="flex flex-col divide-y divide-white/10">
+             {data.core_expertise.map((skill, i) => (
+               <div key={i} className="grid md:grid-cols-12 hover:bg-white/[0.02] transition-colors group">
+                 <div className="md:col-span-4 lg:col-span-3 p-6 md:p-8 flex flex-col justify-start border-b md:border-b-0 md:border-r border-white/10">
+                    <span className="font-mono text-[9px] md:text-[10px] text-white bg-white/10 px-2 py-1 inline-block w-full break-all group-hover:bg-emerald-500/20 group-hover:text-emerald-400 group-hover:border-emerald-500/30 border border-transparent transition-all">
+                      GET /v1/expertise/{skill.toLowerCase().replace(/[^a-z0-9]/g, '_')}
+                    </span>
+                 </div>
+                 
+                 <div className="md:col-span-8 lg:col-span-9 p-6 md:p-8 flex flex-col justify-center">
+                    <h3 className={`text-2xl md:text-3xl font-bold mb-3 ${textHeading}`}>{skill}</h3>
+                    <p className="font-mono text-sm leading-relaxed text-neutral-400 max-w-2xl mb-6">
+                      // Production-level implementation of {skill} with architectural focus on scalability and mobile parity.
+                    </p>
+                    <div className="flex items-center gap-2 font-mono text-[10px] text-neutral-300 uppercase tracking-widest">
+                        <span className="text-emerald-500/50">+</span> Enterprise Standards
+                        <span className="text-emerald-500/50 ml-4">+</span> Cross-Platform Parity
+                    </div>
+                 </div>
+               </div>
+             ))}
+           </div>
+        </section>
+
+        {/* PROJECTS (SYSTEM LOGS) */}
+        <section id="projects" className="border-b border-white/10">
+           <div className="px-6 py-8 border-b border-white/10 bg-[#0A0A0A]">
+             <h2 className={`text-2xl font-bold tracking-tight ${textHeading} flex items-center gap-3`}>
+               <Shield size={20} className="text-emerald-500" /> ./production_logs
+             </h2>
+           </div>
+
+           <div className="grid md:grid-cols-2 divide-y md:divide-y-0 md:divide-x divide-white/10">
+              {data.projects.map((proj, i) => (
+                 <div key={i} className={`p-8 md:p-12 hover:bg-white/[0.02] transition-all group ${i > 1 && 'border-t border-white/10'}`}>
+                    <div className="flex justify-between items-start mb-12">
+                       <h3 className={`text-3xl font-bold tracking-tight ${textHeading}`}>{proj.name}</h3>
+                       <div className="font-mono text-[10px] text-emerald-400 border border-emerald-500/20 bg-emerald-500/10 px-2 py-1 uppercase tracking-widest shrink-0">
+                         {proj.type}
+                       </div>
+                    </div>
+
+                    <div className="bg-[#050505] border border-white/10 p-6 font-mono text-xs md:text-sm leading-relaxed mb-8 flex flex-col gap-4">
+                       <div>
+                         <span className="text-amber-400">Focus:</span> <span className="text-neutral-300">{proj.category}</span>
+                       </div>
+                       <div>
+                         <span className="text-emerald-400">Feature:</span> <span className="text-neutral-300">{proj.features[0]}</span>
+                       </div>
+                       <div className="mt-4 pt-4 border-t border-white/5 text-[10px] text-neutral-500 break-words whitespace-normal">
+                         Stack: [{proj.technologies.slice(0, 3).join(', ')}]
+                       </div>
+                    </div>
+                    
+                    <p className="font-mono text-xs text-neutral-400 leading-relaxed mb-8">
+                      {proj.description}
+                    </p>
+
+                    <button className="font-mono text-[10px] uppercase tracking-widest text-white border-b border-white/30 pb-1 hover:border-emerald-500 hover:text-emerald-400 transition-colors flex items-center gap-2">
+                       EXECUTE_TRACE() <ChevronRight size={12} />
+                     </button>
+                 </div>
+              ))}
+           </div>
+        </section>
+
+        {/* CREDENTIALS */}
+        <section id="credentials" className="border-b border-white/10 p-6 md:p-12 bg-[#0A0A0A]">
+            <h2 className={`text-4xl md:text-5xl font-black mb-12 text-center tracking-tight ${textHeading}`}>System Credentials</h2>
+            
+            <div className="grid md:grid-cols-2 border border-white/10 divide-y md:divide-y-0 md:divide-x divide-white/10 bg-black max-w-5xl mx-auto">
+                <div className={`p-8 relative flex flex-col hover:bg-white/[0.02] transition-colors bg-white/[0.03]`}>
+                  <div className="absolute top-0 inset-x-0 h-[2px] bg-emerald-500 filter drop-shadow-[0_0_8px_rgba(16,185,129,0.8)]"></div>
+                  <div className={monoLabel + " mb-4"}>&gt; ACADEMIC_BACKBONE</div>
+                  <div className={`text-3xl md:text-4xl font-black tracking-tighter mb-8 text-white`}>{data.education.degree}</div>
+                  <p className="font-mono text-xs text-neutral-400 mb-8">{data.education.institution} - Class of {data.education.year}</p>
+                  <div className="font-mono text-[10px] text-emerald-500 bg-emerald-500/10 px-2 py-1 border border-emerald-500/20 w-max">{data.education.field.toUpperCase()}</div>
+                </div>
+
+                <div className={`p-8 relative flex flex-col hover:bg-white/[0.02] transition-colors`}>
+                  <div className={monoLabel + " mb-4"}>&gt; CAREER_VISION</div>
+                  <div className={`text-3xl md:text-4xl font-black tracking-tighter mb-8 text-white`}>{data.personal_info.expected_salary}</div>
+                  <p className="font-mono text-xs text-neutral-400 mb-8 truncate">{data.personal_info.current_salary} | {data.personal_info.notice_period}</p>
+                  <div className="font-mono text-[10px] text-emerald-500 bg-emerald-500/10 px-2 py-1 border border-emerald-500/20 w-max">REMOTE OPTIMIZED</div>
+                </div>
+            </div>
+        </section>
+
+        {/* ACHIEVEMENTS (IDE LOGS) */}
+        <section className="border-b border-white/10 bg-black py-16 overflow-hidden">
+           <div className="px-6 mb-8 flex items-center justify-between pointer-events-none">
+              <span className={monoLabel}>// _EXECUTION_METRICS_LOGS</span>
+           </div>
+
+           <div className="relative flex border-y border-white/10 bg-[#0A0A0A] py-8">
+              <div className="absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-black to-transparent z-10 pointer-events-none"></div>
+              <div className="absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-black to-transparent z-10 pointer-events-none"></div>
+
+              <div className="flex gap-16 animate-[marquee_45s_linear_infinite] px-8 hover:[animation-play-state:paused] whitespace-nowrap">
+                  {[...data.achievements, ...data.achievements].map((ach, i) => (
+                    <div key={i} className="w-[85vw] md:w-[500px] shrink-0 font-mono flex flex-col hover:bg-white/5 transition-colors p-6 border border-white/10 justify-center">
+                      <div className="text-xs text-neutral-400 whitespace-normal leading-relaxed">
+                        "<span className="text-emerald-400/80">{ach}</span>"
+                      </div>
+                    </div>
+                  ))}
+              </div>
+           </div>
+        </section>
+
+        {/* FOOTER */}
+        <footer className="p-8 md:p-16 flex flex-col items-center justify-center text-center">
+           <div className="font-mono text-xs md:text-sm text-neutral-500 mb-8 max-w-lg leading-relaxed">
+             // Awaiting architectural instructions for your next high-performance production build.
+           </div>
+           
+           <h2 className={`text-5xl md:text-7xl font-black tracking-tighter mb-12 ${textHeading}`}>
+             System.run()
+           </h2>
+
+           <a href={`mailto:${data.personal_info.email}`} className="font-mono text-sm tracking-widest text-emerald-400 bg-emerald-500/10 border border-emerald-500/30 hover:bg-emerald-500/20 px-8 py-4 uppercase font-bold transition-all hover:scale-105 mb-16 shadow-[0_0_20px_rgba(16,185,129,0.15)] ring-emerald-500/30">
+             &gt; EXECUTE_COMMUNICATION
+           </a>
+
+           <div className="w-full border-t border-white/10 flex flex-col md:flex-row items-center justify-between pt-8 px-6 font-mono text-[10px] uppercase tracking-widest text-neutral-600">
+             <div>{data.personal_info.name} _V2.0</div>
+             <div className="flex gap-4">
+               <span>TEL: {data.personal_info.phone}</span>
+               <span>{data.personal_info.location}</span>
+             </div>
+             <div>© {new Date().getFullYear()} ALL RIGHTS RESERVED</div>
+           </div>
+        </footer>
+
       </main>
 
-      <style dangerouslySetInnerHTML={{
-        __html: `
-        .custom-scrollbar::-webkit-scrollbar { width: 6px; }
-        .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
-        .custom-scrollbar::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); }
-        .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.4); }
-      `}} />
+      <style>{`
+        @keyframes marquee {
+          0% { transform: translateX(0); }
+          100% { transform: translateX(-50%); }
+        }
+      `}</style>
+
     </div>
   );
-};
-
-export default Portfolio7;
+}

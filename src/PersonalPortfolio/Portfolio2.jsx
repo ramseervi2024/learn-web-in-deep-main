@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence, useMotionValue, useTransform, useSpring } from 'framer-motion';
-import { portfolioprofile } from './portfoliodata';
+import { portfolioprofile as data } from './portfoliodata';
 import { 
   ArrowUpRight, Mail, MapPin, Code2, 
   Database, Layout, Cloud, Briefcase, 
@@ -80,7 +80,7 @@ const Portfolio2 = () => {
   const { 
     personal_info, summary, core_expertise, 
     technical_stack, projects 
-  } = portfolioprofile;
+  } = data;
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 40);
@@ -190,7 +190,8 @@ const Portfolio2 = () => {
           )}
         </AnimatePresence>
 
-        {/* Editorial 3D Hero Section */}
+        <main className="w-full flex-1">
+          {/* Editorial 3D Hero Section */}
         <section id="hero" className="w-full min-h-[100svh] flex flex-col justify-center pt-32 pb-24 px-6 md:px-10 max-w-7xl mx-auto relative">
           
           <div className="w-full grid lg:grid-cols-12 gap-12 lg:gap-8 items-center h-full">
@@ -431,18 +432,50 @@ const Portfolio2 = () => {
           </motion.div>
         </section>
 
-        {/* Thick Border Footer */}
-        <footer className="w-full py-16 px-6 md:px-12 border-t-[8px] md:border-t-[16px] border-zinc-900 bg-zinc-50 flex flex-col md:flex-row justify-between items-center gap-10">
-          <div className="text-zinc-900 text-3xl md:text-5xl font-black tracking-tighter uppercase">
-            {personal_info.name} <span className="text-zinc-300">© {new Date().getFullYear()}</span>
-          </div>
-          <div className="flex gap-8 md:gap-12">
-             <a href={`tel:${personal_info.phone}`} className="text-sm md:text-base font-bold text-zinc-500 hover:text-zinc-900 transition-colors uppercase tracking-widest">Call</a>
-             <a href={`mailto:${personal_info.email}`} className="text-sm md:text-base font-bold text-zinc-500 hover:text-zinc-900 transition-colors uppercase tracking-widest">Mail</a>
-             <a href="#" onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); }} className="text-sm md:text-base font-bold text-zinc-500 hover:text-zinc-900 transition-colors uppercase tracking-widest">Up</a>
-          </div>
-        </footer>
+        {/* ACHIEVEMENTS */}
+        <section className="py-32 border-y border-zinc-200 bg-white overflow-hidden relative">
+           <div className="absolute inset-y-0 left-0 w-16 md:w-32 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none"></div>
+           <div className="absolute inset-y-0 right-0 w-16 md:w-32 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none"></div>
+           <div className="flex gap-6 md:gap-8 animate-[marquee_40s_linear_infinite] px-4 hover:[animation-play-state:paused] cursor-default whitespace-nowrap">
+              {[...data.achievements, ...data.achievements, ...data.achievements].map((ach, i) => (
+                 <div key={i} className="inline-block w-[85vw] md:w-[450px] whitespace-normal bg-[#FAF9F6] p-8 md:p-12 rounded-[2.5rem] border border-zinc-200 shadow-sm shrink-0 flex flex-col justify-center">
+                    <p className="text-lg md:text-xl font-light text-zinc-600 leading-relaxed text-center">"{ach}"</p>
+                 </div>
+              ))}
+           </div>
+        </section>
 
+        {/* CTA (CONTACT) */}
+        <section id="contact" className="py-32 px-6 max-w-5xl mx-auto text-center">
+           <motion.div initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }} className="bg-zinc-900 text-white rounded-[3rem] p-12 md:p-24 relative overflow-hidden shadow-2xl">
+              <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-white opacity-5 blur-[120px] rounded-full pointer-events-none translate-x-1/2 -translate-y-1/2"></div>
+              <h2 className="text-6xl md:text-[5rem] font-medium tracking-tighter mb-8 relative z-10 leading-[0.9]">Start your <br/> next project.</h2>
+              <p className="text-xl text-zinc-400 font-light mb-12 relative z-10 max-w-xl mx-auto">Available: {data.personal_info.availability}. Reach out directly via email or phone.</p>
+              
+              <div className="flex flex-col sm:flex-row gap-6 justify-center relative z-10">
+                 <a href={`mailto:${data.personal_info.email}`} className="px-8 py-5 rounded-full bg-white text-zinc-900 font-bold hover:bg-zinc-200 transition-all flex items-center justify-center gap-3 active:scale-95 shadow-lg">
+                   {data.personal_info.email} <ArrowUpRight size={20} />
+                 </a>
+                 <a href={`tel:${data.personal_info.phone}`} className="px-8 py-5 rounded-full border border-zinc-700 bg-zinc-800/50 backdrop-blur text-white font-bold flex items-center justify-center gap-3 hover:bg-zinc-800 transition-colors">
+                   {data.personal_info.phone}
+                 </a>
+              </div>
+           </motion.div>
+        </section>
+      </main>
+
+      {/* FOOTER */}
+      <footer className="py-12 px-6 border-t border-zinc-200 bg-white">
+         <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8 text-center md:text-left">
+            <div>
+               <div className="text-2xl font-bold tracking-tight text-zinc-900 mb-2">{data.personal_info.name}.</div>
+               <div className="text-zinc-500 text-sm">{data.personal_info.location}</div>
+            </div>
+            <div className="text-zinc-400 text-sm font-medium tracking-widest uppercase">
+               © {new Date().getFullYear()} All Rights Reserved.
+            </div>
+         </div>
+      </footer>
       </div>
     </div>
   );

@@ -1,407 +1,348 @@
-import React, { useState, useEffect, Suspense } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import Spline from '@splinetool/react-spline';
-import { portfolioprofile } from './portfoliodata';
-import {
-  Mail, Phone, ExternalLink, Database, 
-  LayoutGrid, Cloud, Terminal, CheckCircle2, 
-  Menu, X, Server, Monitor, CircleDashed, 
-  ChevronDown, Layers, Component, Sparkles
-} from 'lucide-react';
+import React, { useState } from 'react';
+import { motion } from 'framer-motion';
+import { portfolioprofile as data } from './portfoliodata';
+import { ArrowRight, ArrowUpRight, Plus, MapPin, Mail, Phone, Smartphone, Code2, Terminal } from 'lucide-react';
 
-const themeConfigs = {
-  obsidian: {
-    id: 'obsidian',
-    name: 'Obsidian Glass',
-    bg: 'bg-[#050505]',
-    text: 'text-white',
-    textMuted: 'text-zinc-400',
-    accentText: 'text-zinc-100',
-    navBg: 'bg-black/40 border-white/10 shadow-[0_4px_30px_rgba(0,0,0,0.5)]',
-    cardBg: 'bg-black/40 border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.5)]',
-    cardHover: 'hover:border-white/30 hover:bg-black/60',
-    tagBg: 'bg-white/10 text-white border-white/10',
-    iconColor: 'text-white',
-    buttonPrimary: 'bg-white text-black hover:bg-zinc-200 shadow-[0_0_20px_rgba(255,255,255,0.2)]',
-    glassFilter: 'backdrop-blur-xl',
-    selection: 'selection:bg-white/20 selection:text-white',
-  },
-  frost: {
-    id: 'frost',
-    name: 'Arctic Frost',
-    bg: 'bg-[#fafafa]',
-    text: 'text-zinc-900',
-    textMuted: 'text-zinc-600',
-    accentText: 'text-blue-600',
-    navBg: 'bg-white/40 border-white/50 shadow-[0_4px_30px_rgba(0,0,0,0.05)]',
-    cardBg: 'bg-white/40 border-white/50 shadow-[0_8px_32px_rgba(0,0,0,0.05)]',
-    cardHover: 'hover:border-blue-200 hover:bg-white/60',
-    tagBg: 'bg-black/5 text-zinc-800 border-black/5',
-    iconColor: 'text-blue-600',
-    buttonPrimary: 'bg-zinc-900 text-white hover:bg-black shadow-[0_0_20px_rgba(0,0,0,0.1)]',
-    glassFilter: 'backdrop-blur-2xl',
-    selection: 'selection:bg-blue-500/20 selection:text-blue-900',
-  },
-  neon: {
-    id: 'neon',
-    name: 'Holo Neon',
-    bg: 'bg-[#0a0014]',
-    text: 'text-cyan-50',
-    textMuted: 'text-cyan-200/70',
-    accentText: 'text-fuchsia-400',
-    navBg: 'bg-[#1a0b2e]/50 border-fuchsia-500/30 shadow-[0_0_30px_rgba(217,70,239,0.15)]',
-    cardBg: 'bg-[#1a0b2e]/40 border-fuchsia-500/20 shadow-[0_8px_32px_rgba(217,70,239,0.1)]',
-    cardHover: 'hover:border-cyan-400/50 hover:bg-[#1a0b2e]/60',
-    tagBg: 'bg-fuchsia-900/30 text-fuchsia-200 border-fuchsia-500/30',
-    iconColor: 'text-fuchsia-400',
-    buttonPrimary: 'bg-gradient-to-r from-fuchsia-600 to-cyan-500 text-white hover:opacity-90 shadow-[0_0_25px_rgba(217,70,239,0.4)]',
-    glassFilter: 'backdrop-blur-lg',
-    selection: 'selection:bg-fuchsia-500/40 selection:text-white',
-  }
-};
+export default function Portfolio5() {
+  const [hoveredProject, setHoveredProject] = useState(null);
 
-const Portfolio5 = () => {
-  const [activeTheme, setActiveTheme] = useState('obsidian');
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
-  const [isThemeMenuOpen, setIsThemeMenuOpen] = useState(false);
-  const [splineLoaded, setSplineLoaded] = useState(false);
-
-  const theme = themeConfigs[activeTheme];
-
-  const {
-    personal_info, summary, roles, technical_stack, projects
-  } = portfolioprofile;
-
-  useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 50);
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  useEffect(() => {
-    if (isMobileMenuOpen) document.body.style.overflow = 'hidden';
-    else document.body.style.overflow = 'unset';
-    return () => { document.body.style.overflow = 'unset'; };
-  }, [isMobileMenuOpen]);
-
+  // Animation Variants
   const fadeUp = {
-    initial: { opacity: 0, y: 40 },
-    whileInView: { opacity: 1, y: 0 },
-    viewport: { once: true, margin: "-50px" },
-    transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] }
+    hidden: { opacity: 0, y: 40 },
+    visible: { opacity: 1, y: 0, transition: { duration: 1.2, ease: [0.16, 1, 0.3, 1] } }
   };
 
   const staggerContainer = {
-    initial: { opacity: 0 },
-    whileInView: { opacity: 1 },
-    viewport: { once: true, margin: "-50px" },
-    transition: { staggerChildren: 0.15 }
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: { staggerChildren: 0.2 }
+    }
   };
 
-  const ThemeSwitcher = () => (
-    <div className="relative z-[120]">
-      <div 
-        className={`flex items-center gap-2 px-4 py-2 rounded-full cursor-pointer transition-all ${theme.navBg} ${theme.glassFilter} border-opacity-50 hover:scale-105 border`}
-        onClick={() => setIsThemeMenuOpen(!isThemeMenuOpen)}
-      >
-        <Sparkles size={16} className={theme.iconColor} />
-        <span className={`text-xs font-bold uppercase tracking-widest hidden sm:block ${theme.text}`}>
-          {theme.name}
-        </span>
-      </div>
+  // Aesthetic Tokens
+  const bgMain = "bg-[#F5F4EE]";
+  const textMain = "text-[#1A1A1A]";
+  const textMuted = "text-[#4A4A4A]";
+  const borderThin = "border-[#1A1A1A]/20";
+  
+  const abstractColors = ['bg-[#D5D3C8]', 'bg-[#A3B19B]', 'bg-[#1A1A1A]'];
 
-      <AnimatePresence>
-        {isThemeMenuOpen && (
-          <motion.div
-            initial={{ opacity: 0, y: 10, scale: 0.95 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: 10, scale: 0.95 }}
-            transition={{ duration: 0.2 }}
-            className={`absolute top-full right-0 mt-3 p-2 rounded-2xl ${theme.cardBg} ${theme.glassFilter} border ${theme.border} min-w-[200px] z-[120]`}
-          >
-            {Object.values(themeConfigs).map((t) => (
-              <div
-                key={t.id}
-                onClick={() => { setActiveTheme(t.id); setIsThemeMenuOpen(false); }}
-                className={`flex items-center gap-3 px-4 py-3 rounded-xl cursor-pointer transition-colors ${
-                  activeTheme === t.id ? 'bg-white/10' : 'hover:bg-white/5'
-                }`}
-              >
-                <div className={`w-3 h-3 rounded-full ${t.id === 'obsidian' ? 'bg-zinc-800' : t.id === 'frost' ? 'bg-white' : 'bg-fuchsia-500'} border border-white/20`} />
-                <span className={`text-sm font-semibold tracking-wide ${activeTheme === t.id ? theme.text : theme.textMuted}`}>
-                  {t.name}
-                </span>
-                {activeTheme === t.id && <CheckCircle2 size={14} className={`ml-auto ${theme.accentText}`} />}
-              </div>
-            ))}
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </div>
-  );
+  const stats = [
+    { label: 'Years of Experience', value: `${data.personal_info.experience_years}+` },
+    { label: 'Production Ready Apps', value: `${data.projects.length}+` },
+    { label: 'Technical Domains', value: `${data.core_expertise.length}` },
+    { label: 'Global Availability', value: 'IMMEDIATE' }
+  ];
 
   return (
-    <div className={`w-full min-h-screen transition-colors duration-1000 ease-in-out ${theme.bg} ${theme.text} ${theme.selection} overflow-x-hidden font-sans relative`}>
-
-      {/* 3D SPLINE BACKGROUND */}
-      <div className="fixed inset-0 z-0 h-[110vh] pointer-events-auto">
-        {/* Fallback Loader */}
-        <AnimatePresence>
-          {!splineLoaded && (
-            <motion.div 
-              exit={{ opacity: 0 }} 
-              className="absolute inset-0 flex items-center justify-center bg-transparent z-10"
-            >
-              <CircleDashed className={`animate-spin ${theme.iconColor}`} size={40} />
-            </motion.div>
-          )}
-        </AnimatePresence>
-
-        <Spline 
-          scene="https://prod.spline.design/6Wq1Q7YGyM-iab9i/scene.splinecode" 
-          onLoad={() => setSplineLoaded(true)}
-          className="w-full h-full object-cover transition-opacity duration-1000"
-          style={{ opacity: splineLoaded ? (activeTheme === 'frost' ? 0.7 : 1) : 0 }}
-        />
-        
-        {/* Overlay gradient to ensure text readability */}
-        <div className={`absolute inset-0 pointer-events-none transition-colors duration-1000
-          ${activeTheme === 'obsidian' ? 'bg-gradient-to-b from-black/40 via-transparent to-[#050505]' : 
-            activeTheme === 'frost' ? 'bg-gradient-to-b from-white/30 via-transparent to-[#fafafa]' : 
-            'bg-gradient-to-b from-[#0a0014]/60 via-transparent to-[#0a0014]'}
-        `} />
-      </div>
-
-      {/* UI OVERLAY CONTAINER */}
-      <div className="relative z-10 w-full flex flex-col items-center pointer-events-none">
-        
-        {/* Floating Navigation */}
-        <motion.nav
-          initial={{ y: -100, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ type: "spring", stiffness: 100, damping: 20 }}
-          className={`fixed top-4 md:top-8 z-[100] w-[92%] md:w-[80%] max-w-5xl rounded-full transition-all duration-300 border pointer-events-auto
-            ${scrolled ? `${theme.navBg} ${theme.glassFilter}` : 'bg-transparent border-transparent'}
-          `}
-        >
-          <div className="px-5 md:px-8 py-3 md:py-4 flex items-center justify-between w-full">
-            <a href="#" className={`text-xl md:text-2xl font-black tracking-tighter ${theme.text}`}>
-              {personal_info.name.split(' ')[0]}<span className={theme.accentText}>.</span>
-            </a>
-
-            <div className="hidden md:flex items-center gap-8">
-              {['Expertise', 'Projects'].map((item) => (
-                <a key={item} href={`#${item.toLowerCase()}`} className={`text-sm font-semibold tracking-wide ${theme.textMuted} hover:${theme.text} transition-colors`}>
-                  {item}
-                </a>
-              ))}
-            </div>
-
-            <div className="flex items-center gap-3">
-              <ThemeSwitcher />
-              
-              <button
-                className={`md:hidden flex items-center justify-center w-10 h-10 rounded-full ${theme.navBg} ${theme.glassFilter} border`}
-                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              >
-                {isMobileMenuOpen ? <X size={18} /> : <Menu size={18} />}
-              </button>
-            </div>
+    <div className={`min-h-screen ${bgMain} ${textMain} font-sans selection:bg-[#1A1A1A] selection:text-[#F5F4EE] overflow-x-hidden relative`}>
+      
+      {/* NAVBAR */}
+      <nav className={`fixed top-0 inset-x-0 z-50 ${bgMain}/80 backdrop-blur-md border-b-[0.5px] ${borderThin}`}>
+        <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+          <div className="flex flex-col">
+            <span className={`font-serif text-2xl font-medium tracking-tight ${textMain}`}>{data.personal_info.name.split(' ')[0]}</span>
+            <span className={`text-[8px] uppercase tracking-[0.3em] ${textMuted}`}>{data.personal_info.name.split(' ').slice(1).join(' ')}</span>
           </div>
-        </motion.nav>
+          
+          <div className="hidden md:flex gap-12">
+            {['Expertise', 'Exhibitions', 'Credentials', 'Inquire'].map((item) => (
+              <a key={item} href={`#${item.toLowerCase()}`} className={`text-xs uppercase tracking-[0.2em] font-medium ${textMuted} hover:${textMain} transition-colors`}>
+                {item}
+              </a>
+            ))}
+          </div>
 
-        {/* HERO SECTION */}
-        <section className="w-full h-screen flex flex-col items-center justify-center px-4 relative">
-          <motion.div
-            initial={{ opacity: 0, y: 50, scale: 0.95 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            transition={{ duration: 1, delay: 0.2 }}
-            className={`w-full max-w-4xl p-8 md:p-16 rounded-[2.5rem] md:rounded-[4rem] text-center border ${theme.cardBg} ${theme.glassFilter} pointer-events-auto shadow-2xl origin-center`}
-          >
-            <div className={`inline-flex items-center gap-2 px-4 py-2 rounded-full border ${theme.tagBg} ${theme.glassFilter} mb-8`}>
-              <span className={`w-2 h-2 rounded-full ${theme.accentText} bg-current animate-pulse`} />
-              <span className="text-xs font-bold uppercase tracking-wider">{personal_info.availability}</span>
+          <a href={`mailto:${data.personal_info.email}`} className="group flex items-center gap-3">
+            <span className={`hidden sm:block text-xs uppercase tracking-[0.2em] font-medium ${textMain}`}>Inquire</span>
+            <div className={`w-10 h-10 rounded-full border-[0.5px] border-[#1A1A1A] flex items-center justify-center group-hover:bg-[#1A1A1A] group-hover:text-[#F5F4EE] transition-all duration-500`}>
+              <ArrowRight size={16} strokeWidth={1} />
             </div>
+          </a>
+        </div>
+      </nav>
 
-            <h1 className="text-5xl sm:text-7xl md:text-8xl lg:text-[7rem] font-black tracking-tighter leading-[0.9] mb-8">
-              Digital<br/>
-              <span className={`text-transparent bg-clip-text bg-gradient-to-r ${theme.accentText} from-current to-current/50`}>
-                Architect.
+      <main className="pt-32 md:pt-48">
+        
+        {/* HERO */}
+        <section className="px-6 max-w-7xl mx-auto mb-32 md:mb-48 relative z-10">
+          <motion.div initial="hidden" animate="visible" variants={staggerContainer} className="max-w-5xl">
+            <motion.div variants={fadeUp} className="flex items-center gap-4 mb-12">
+              <div className="w-12 h-[1px] bg-[#1A1A1A]"></div>
+              <span className={`text-[10px] uppercase tracking-[0.3em] font-medium ${textMain}`}>
+                {data.personal_info.availability}
               </span>
-            </h1>
+            </motion.div>
 
-            <p className={`text-lg md:text-2xl ${theme.textMuted} max-w-2xl mx-auto leading-relaxed font-medium mb-12`}>
-              {summary.split('.')[0]}.
-            </p>
+            <motion.h1 variants={fadeUp} className={`font-serif text-[12vw] sm:text-7xl md:text-8xl lg:text-[110px] leading-[0.9] tracking-tighter mb-12 ${textMain} italic pr-4`}>
+              Vision.<br/>Engineered.
+            </motion.h1>
 
-            <a href="#projects" className={`inline-flex items-center justify-center gap-3 px-8 py-4 rounded-full font-black text-sm md:text-base uppercase tracking-widest transition-transform hover:scale-105 ${theme.buttonPrimary}`}>
-              Explore Dimensions
-            </a>
-          </motion.div>
-
-          <motion.div 
-            animate={{ y: [0, 10, 0] }}
-            transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
-            className={`absolute bottom-10 ${theme.textMuted}`}
-          >
-            <ChevronDown size={32} />
-          </motion.div>
-        </section>
-
-        {/* BENTO GRID (ABOUT & EXPERTISE) */}
-        <section id="expertise" className="w-full px-4 py-24 md:py-32 max-w-7xl mx-auto pointer-events-auto">
-          <motion.div
-            variants={staggerContainer}
-            initial="initial"
-            whileInView="whileInView"
-            className="grid grid-cols-1 md:grid-cols-12 gap-6"
-          >
-            {/* Massive Stats Block - Col 8 */}
-            <motion.div variants={fadeUp} className={`md:col-span-8 p-10 md:p-14 rounded-[2.5rem] border ${theme.cardBg} ${theme.glassFilter} ${theme.cardHover} transition-all duration-500 flex flex-col justify-center`}>
-              <h2 className="text-4xl md:text-6xl font-black mb-8 leading-tight tracking-tighter">
-                Engineering <br/> <span className={theme.accentText}>Excellence.</span>
-              </h2>
-              <p className={`text-base md:text-xl ${theme.textMuted} max-w-2xl leading-relaxed`}>
-                {summary}
+            <motion.div variants={fadeUp} className="grid md:grid-cols-2 gap-12 md:gap-24">
+              <p className={`text-lg md:text-2xl font-light leading-relaxed ${textMuted} max-w-xl`}>
+                {data.personal_info.headline}
               </p>
-              
-              <div className="flex flex-wrap gap-4 mt-8">
-                <div className={`px-6 py-4 rounded-2xl border ${theme.tagBg} ${theme.glassFilter}`}>
-                  <div className={`text-3xl font-black ${theme.accentText}`}>{personal_info.experience_years}+</div>
-                  <div className="text-xs font-bold uppercase tracking-widest mt-1 opacity-70">Years Exp</div>
-                </div>
-                <div className={`px-6 py-4 rounded-2xl border ${theme.tagBg} ${theme.glassFilter}`}>
-                  <div className={`text-3xl font-black ${theme.accentText}`}>{projects.length}</div>
-                  <div className="text-xs font-bold uppercase tracking-widest mt-1 opacity-70">Major Projects</div>
-                </div>
+              <div className="flex flex-col gap-6 justify-start items-start">
+                <a href={`mailto:${data.personal_info.email}`} className={`text-xs uppercase tracking-[0.2em] font-medium ${textMain} border-b border-[#1A1A1A] pb-1 hover:opacity-50 transition-opacity flex items-center gap-2`}>
+                   Initialize Collaboration <ArrowUpRight size={14} />
+                </a>
+                <a href="#exhibitions" className={`text-xs uppercase tracking-[0.2em] font-medium ${textMuted} hover:${textMain} transition-colors flex items-center gap-2`}>
+                   View Portfolio
+                </a>
               </div>
             </motion.div>
-
-            {/* Roles Block - Col 4 */}
-            <motion.div variants={fadeUp} className={`md:col-span-4 p-10 md:p-14 rounded-[2.5rem] border ${theme.cardBg} ${theme.glassFilter} ${theme.cardHover} transition-all duration-500`}>
-              <div className={`w-14 h-14 rounded-2xl border ${theme.tagBg} flex items-center justify-center mb-8`}>
-                <Layers className={theme.iconColor} size={24} />
-              </div>
-              <h3 className="text-xl font-bold mb-6">Core Focus</h3>
-              <div className="flex flex-col gap-4">
-                {roles.slice(0, 4).map((role, i) => (
-                  <div key={i} className="flex items-center gap-3">
-                     <span className={`w-1.5 h-1.5 rounded-full ${theme.accentText} bg-current`} />
-                     <span className={`text-sm md:text-base font-semibold ${theme.textMuted}`}>{role}</span>
-                  </div>
-                ))}
-              </div>
-            </motion.div>
-
-            {/* Stack Blocks */}
-            <motion.div variants={fadeUp} className={`md:col-span-6 p-8 md:p-12 rounded-[2.5rem] border ${theme.cardBg} ${theme.glassFilter} ${theme.cardHover} transition-all duration-500`}>
-               <div className="flex items-center gap-4 mb-6">
-                 <Monitor className={theme.iconColor} size={28} />
-                 <h3 className="text-2xl font-bold">Frontend Matrix</h3>
-               </div>
-               <div className="flex flex-wrap gap-2">
-                 {technical_stack.frontend.map(tech => (
-                   <span key={tech} className={`px-4 py-2 rounded-xl text-xs font-bold uppercase tracking-widest border ${theme.tagBg} ${theme.glassFilter}`}>
-                     {tech}
-                   </span>
-                 ))}
-               </div>
-            </motion.div>
-
-            <motion.div variants={fadeUp} className={`md:col-span-6 p-8 md:p-12 rounded-[2.5rem] border ${theme.cardBg} ${theme.glassFilter} ${theme.cardHover} transition-all duration-500`}>
-               <div className="flex items-center gap-4 mb-6">
-                 <Server className={theme.iconColor} size={28} />
-                 <h3 className="text-2xl font-bold">Mobile & Backend</h3>
-               </div>
-               <div className="flex flex-wrap gap-2">
-                 {[...technical_stack.mobile, ...technical_stack.backend_integration].slice(0, 9).map(tech => (
-                   <span key={tech} className={`px-4 py-2 rounded-xl text-xs font-bold uppercase tracking-widest border ${theme.tagBg} ${theme.glassFilter}`}>
-                     {tech}
-                   </span>
-                 ))}
-               </div>
-            </motion.div>
-
           </motion.div>
         </section>
 
-        {/* PROJECTS SECTION */}
-        <section id="projects" className="w-full px-4 py-24 md:py-32 max-w-7xl mx-auto pointer-events-auto">
-          <motion.div {...fadeUp} className="mb-20 text-center">
-            <h2 className="text-5xl md:text-7xl font-black tracking-tighter mb-6">Selected <span className={theme.accentText}>Works.</span></h2>
-          </motion.div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
-            {projects.map((project, idx) => (
-              <motion.div 
-                key={project.name}
-                initial={{ opacity: 0, scale: 0.95, y: 30 }}
-                whileInView={{ opacity: 1, scale: 1, y: 0 }}
-                viewport={{ once: true, margin: "-50px" }}
-                transition={{ duration: 0.7, delay: idx * 0.1 }}
-                className={`flex flex-col p-8 md:p-12 rounded-[2.5rem] border ${theme.cardBg} ${theme.glassFilter} ${theme.cardHover} transition-all duration-500 group relative overflow-hidden`}
-              >
-                {/* Decorative subtle background icon */}
-                <Component className={`absolute -right-10 -bottom-10 opacity-5 w-64 h-64 ${theme.iconColor} group-hover:scale-110 transition-transform duration-700`} />
-
-                <div className="relative z-10 flex-1 flex flex-col">
-                  <div className="flex justify-between items-start mb-8">
-                    <div className={`px-4 py-1.5 rounded-full border ${theme.tagBg} text-xs font-bold uppercase tracking-widest`}>
-                      {project.type}
-                    </div>
-                    <ExternalLink className={`${theme.iconColor} opacity-50 group-hover:opacity-100 transition-opacity`} size={24} />
-                  </div>
-                  
-                  <h3 className="text-3xl md:text-4xl font-black mb-4 tracking-tight leading-tight">
-                    {project.name}
-                  </h3>
-                  
-                  <p className={`text-sm md:text-base ${theme.textMuted} mb-8 leading-relaxed font-medium`}>
-                    {project.description}
-                  </p>
-
-                  <div className="mt-auto pt-8 border-t border-white/5">
-                    <div className="flex flex-wrap gap-2">
-                      {project.technologies.slice(0,4).map(tech => (
-                        <span key={tech} className={`px-3 py-1.5 rounded-lg border ${theme.tagBg} text-[10px] font-bold uppercase tracking-widest`}>
-                          {tech}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              </motion.div>
+        {/* STATS STRIP */}
+        <section className={`border-y-[0.5px] ${borderThin} py-16 md:py-24`}>
+          <div className="max-w-7xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-12 md:gap-8">
+            {stats.map((stat, i) => (
+              <div key={i} className="flex flex-col gap-4">
+                <div className={`font-serif text-5xl md:text-6xl tracking-tighter ${textMain}`}>{stat.value}</div>
+                <div className={`text-[9px] md:text-[10px] uppercase tracking-[0.3em] ${textMuted} max-w-[120px]`}>{stat.label}</div>
+              </div>
             ))}
           </div>
         </section>
 
-        {/* FOOTER / CONTACT */}
-        <section className="w-full px-4 py-32 pointer-events-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className={`max-w-4xl mx-auto p-12 md:p-20 rounded-[3rem] border ${theme.cardBg} ${theme.glassFilter} text-center`}
-          >
-            <h2 className="text-4xl md:text-6xl font-black tracking-tight mb-8">
-              Start a <span className={theme.accentText}>Project.</span>
-            </h2>
-            <a href={`mailto:${personal_info.email}`} className={`inline-flex px-10 py-5 rounded-full font-black text-lg uppercase tracking-widest transition-transform hover:scale-105 ${theme.buttonPrimary}`}>
-              Let's Connect
-            </a>
-          </motion.div>
+        {/* VISION / DESCRIPTION QUOTE */}
+        <section id="vision" className="py-32 md:py-48 px-6 max-w-4xl mx-auto text-center">
+          <p className={`font-serif text-3xl md:text-5xl leading-tight md:leading-snug ${textMain} italic mb-12`}>
+            "{data.summary}"
+          </p>
+          <div className="flex items-center justify-center gap-4">
+            <div className="w-8 h-[1px] bg-[#1A1A1A]/40"></div>
+            <span className={`text-[10px] uppercase tracking-[0.3em] ${textMuted}`}>2018 - Present</span>
+            <div className="w-8 h-[1px] bg-[#1A1A1A]/40"></div>
+          </div>
         </section>
 
-        <footer className="w-full py-10 text-center pointer-events-auto z-10">
-          <p className={`text-xs font-bold uppercase tracking-widest ${theme.textMuted}`}>
-            © {new Date().getFullYear()} {personal_info.name} • Crafted with 3D React
-          </p>
-        </footer>
+        {/* EXPERTISE hairline list */}
+        <section id="expertise" className={`py-32 bg-[#EBE9DE] px-6 border-y-[0.5px] ${borderThin}`}>
+          <div className="max-w-7xl mx-auto">
+            <div className="mb-20 flex flex-col md:flex-row md:items-end justify-between gap-8">
+              <h2 className={`font-serif text-5xl md:text-7xl tracking-tighter ${textMain}`}>Disciplines</h2>
+              <span className={`text-[10px] uppercase tracking-[0.3em] ${textMuted} max-w-xs`}>
+                Specialized engineering and design practices tailored for scale.
+              </span>
+            </div>
 
-      </div>
+            <div className="flex flex-col">
+              {data.services.map((service, i) => (
+                <div key={i} className={`group py-10 md:py-16 border-t-[0.5px] ${borderThin} grid md:grid-cols-12 gap-8 md:gap-12 hover:bg-[#F5F4EE] transition-colors -mx-6 px-6`}>
+                  
+                  <div className="md:col-span-1">
+                    <span className={`text-[10px] uppercase tracking-[0.3em] ${textMuted}`}>0{i + 1}</span>
+                  </div>
+                  
+                  <div className="md:col-span-5">
+                    <h3 className={`font-serif text-3xl md:text-4xl tracking-tight ${textMain} mb-4`}>{service}</h3>
+                    <p className={`font-light text-sm md:text-base leading-relaxed ${textMuted} max-w-md`}>Enterprise-grade implementation of {service} modules.</p>
+                  </div>
+                  
+                  <div className="md:col-span-6 flex flex-col justify-end">
+                    <div className="flex flex-wrap gap-x-6 gap-y-3">
+                        <div className="flex items-center gap-2">
+                          <Plus size={10} strokeWidth={1} className={textMuted} />
+                          <span className={`text-[10px] uppercase tracking-[0.2em] ${textMain}`}>Architecture</span>
+                        </div>
+                        <div className="flex items-center gap-2">
+                          <Plus size={10} strokeWidth={1} className={textMuted} />
+                          <span className={`text-[10px] uppercase tracking-[0.2em] ${textMain}`}>Deployment</span>
+                        </div>
+                        <div className="flex items-center gap-2">
+                          <Plus size={10} strokeWidth={1} className={textMuted} />
+                          <span className={`text-[10px] uppercase tracking-[0.2em] ${textMain}`}>Optimization</span>
+                        </div>
+                    </div>
+                  </div>
+
+                </div>
+              ))}
+              <div className={`border-t-[0.5px] ${borderThin}`}></div>
+            </div>
+          </div>
+        </section>
+
+        {/* EDITORIAL MARQUEE */}
+        <div className="py-24 overflow-hidden bg-[#1A1A1A]">
+          <div className="flex gap-16 animate-[marquee_40s_linear_infinite] whitespace-nowrap">
+            {[...data.technical_stack.mobile, ...data.technical_stack.frontend, ...data.technical_stack.backend_integration].map((tech, i) => (
+               <div key={i} className="font-serif text-5xl md:text-7xl tracking-tighter italic text-[#F5F4EE] opacity-80 mix-blend-screen">
+                  {tech}
+               </div>
+            ))}
+          </div>
+        </div>
+
+        {/* EXHIBITIONS (GALLERY) */}
+        <section id="exhibitions" className="py-32 md:py-48 px-6 max-w-7xl mx-auto">
+          <div className="mb-24 flex flex-col items-center text-center">
+            <span className={`text-[10px] uppercase tracking-[0.3em] ${textMuted} mb-6`}>Selected Works</span>
+            <h2 className={`font-serif text-5xl md:text-7xl tracking-tighter ${textMain} italic`}>Exhibitions</h2>
+          </div>
+
+          <div className="space-y-32 md:space-y-48">
+            {data.projects.map((proj, i) => (
+              <div 
+                key={i} 
+                className={`grid md:grid-cols-12 gap-12 md:gap-24 items-center`}
+                onMouseEnter={() => setHoveredProject(i)}
+                onMouseLeave={() => setHoveredProject(null)}
+              >
+                {/* Abstract Image Space */}
+                <div className={`md:col-span-7 ${i % 2 !== 0 ? 'md:order-2' : ''}`}>
+                  <div className={`aspect-[4/3] ${abstractColors[i % abstractColors.length]} relative overflow-hidden flex items-center justify-center p-12 transition-transform duration-1000 ${hoveredProject === i ? 'scale-[1.02]' : 'scale-100'}`}>
+                    <div className="absolute inset-0 bg-[radial-gradient(circle_at_1px_1px,rgba(255,255,255,0.1)_1px,transparent_0)] bg-[length:24px_24px]"></div>
+                    <div className="absolute top-8 left-8 text-[#F5F4EE] font-serif text-2xl italic opacity-50">No. {i + 1}</div>
+                    
+                    <h4 className="font-serif text-3xl md:text-5xl text-[#F5F4EE] tracking-tight text-center z-10 leading-tight break-words text-balance uppercase">
+                      {proj.category}
+                    </h4>
+                  </div>
+                </div>
+
+                {/* Typography / Copy */}
+                <div className={`md:col-span-5 flex flex-col ${i % 2 !== 0 ? 'md:order-1' : ''}`}>
+                  <div className={`text-[10px] uppercase tracking-[0.3em] ${textMuted} mb-8 border-b-[0.5px] ${borderThin} pb-4 inline-block max-w-max`}>
+                    {proj.type}
+                  </div>
+                  <h3 className={`font-serif text-4xl mb-6 ${textMain}`}>{proj.name}</h3>
+                  <p className={`font-light leading-relaxed ${textMuted} mb-12`}>{proj.description}</p>
+                  
+                  <div className={`grid grid-cols-2 gap-8 mb-12 border-l-[0.5px] ${borderThin} pl-6`}>
+                    <div>
+                      <div className={`text-[9px] uppercase tracking-[0.2em] ${textMuted} mb-2`}>Focus</div>
+                      <div className={`text-sm ${textMain} truncate`}>{proj.features[0]}</div>
+                    </div>
+                    <div>
+                      <div className={`text-[9px] uppercase tracking-[0.2em] ${textMuted} mb-2`}>Stack</div>
+                      <div className={`text-sm font-medium ${textMain} truncate`}>{proj.technologies[0]}</div>
+                    </div>
+                  </div>
+
+                  <a href="#" className={`group flex items-center gap-4 text-xs uppercase tracking-[0.2em] font-medium ${textMain}`}>
+                    Analyze Documentation
+                    <span className="w-8 h-[1px] bg-[#1A1A1A] group-hover:w-16 transition-all duration-500"></span>
+                  </a>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* PRAISE (ACHIEVEMENTS) */}
+        <section className={`py-32 bg-[#1A1A1A] text-[#F5F4EE] overflow-hidden relative`}>
+          <div className="text-center mb-24 relative z-20">
+             <span className="text-[10px] uppercase tracking-[0.3em] text-white/40 block mb-6">Execution Metrics</span>
+             <h2 className="font-serif text-5xl md:text-7xl tracking-tighter text-[#F5F4EE] italic">Praise</h2>
+          </div>
+          
+          <div className="relative flex">
+            <div className="flex gap-16 md:gap-32 animate-[marquee_40s_linear_infinite] px-8 hover:[animation-play-state:paused] whitespace-nowrap">
+              {[...data.achievements, ...data.achievements].map((ach, i) => (
+                <div key={i} className="w-[85vw] md:w-[600px] shrink-0 flex flex-col items-center text-center">
+                  <p className="font-serif text-2xl md:text-4xl leading-relaxed italic mb-12 whitespace-normal text-white/90">
+                    "{ach}"
+                  </p>
+                  <div className="w-[1px] h-12 bg-white/20 mb-8"></div>
+                  <div className="text-[10px] uppercase tracking-[0.2em] font-medium text-white/80">Authorized Achievement</div>
+                </div>
+              ))}
+            </div>
+            
+            <div className="absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-[#1A1A1A] to-transparent pointer-events-none"></div>
+            <div className="absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-[#1A1A1A] to-transparent pointer-events-none"></div>
+          </div>
+        </section>
+
+        {/* CREDENTIALS */}
+        <section id="credentials" className="py-32 md:py-48 px-6 max-w-7xl mx-auto">
+          <div className="text-center mb-24">
+            <h2 className={`font-serif text-5xl md:text-7xl tracking-tighter ${textMain}`}>Engagements</h2>
+            <div className={`w-[1px] h-16 bg-[#1A1A1A]/20 mx-auto mt-12`}></div>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-12 md:gap-8 max-w-5xl mx-auto">
+                <div className={`flex flex-col p-8 md:p-12 border-[0.5px] ${borderThin} hover:shadow-2xl transition-shadow duration-500 bg-white`}>
+                    <div className={`text-[10px] uppercase tracking-[0.3em] ${textMuted} mb-6`}>Academic Tier</div>
+                    <h3 className={`font-serif text-3xl mb-4 ${textMain}`}>{data.education.degree}</h3>
+                    <div className={`font-light text-sm ${textMuted} mb-12`}>{data.education.institution}</div>
+                    <div className={`font-serif text-5xl mb-12 ${textMain} italic`}>{data.education.year}</div>
+                    <ul className="flex-1 space-y-4 mb-16">
+                        <li className={`flex items-start gap-4 border-b-[0.5px] ${borderThin} pb-4`}>
+                          <ArrowUpRight size={14} strokeWidth={1} className={`${textMain} shrink-0 mt-1`} />
+                          <span className={`text-xs uppercase tracking-[0.1em] ${textMuted} leading-relaxed`}>{data.education.field}</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div className={`flex flex-col p-8 md:p-12 border-[0.5px] ${borderThin} hover:shadow-2xl transition-shadow duration-500 bg-white`}>
+                    <div className={`text-[10px] uppercase tracking-[0.3em] ${textMuted} mb-6`}>Career Focus</div>
+                    <h3 className={`font-serif text-3xl mb-4 ${textMain}`}>Future Direction</h3>
+                    <div className={`font-light text-sm ${textMuted} mb-12`}>Strategic Growth Path</div>
+                    <div className={`font-serif text-5xl mb-12 ${textMain} italic`}>{data.personal_info.expected_salary}</div>
+                    <ul className="flex-1 space-y-4 mb-16">
+                        <li className={`flex items-start gap-4 border-b-[0.5px] ${borderThin} pb-4`}>
+                          <ArrowUpRight size={14} strokeWidth={1} className={`${textMain} shrink-0 mt-1`} />
+                          <span className={`text-xs uppercase tracking-[0.1em] ${textMuted} leading-relaxed`}>{data.personal_info.current_salary}</span>
+                        </li>
+                        <li className={`flex items-start gap-4 border-b-[0.5px] ${borderThin} pb-4`}>
+                          <ArrowUpRight size={14} strokeWidth={1} className={`${textMain} shrink-0 mt-1`} />
+                          <span className={`text-xs uppercase tracking-[0.1em] ${textMuted} leading-relaxed`}>{data.personal_info.notice_period}</span>
+                        </li>
+                    </ul>
+                </div>
+          </div>
+        </section>
+
+        {/* GUARANTEES (Quiet Text) */}
+        <section className={`py-24 border-t-[0.5px] ${borderThin} px-6`}>
+           <div className="max-w-7xl mx-auto grid md:grid-cols-3 gap-16 md:gap-12">
+              {data.saas_capabilities.slice(0, 3).map((capability, i) => (
+                 <div key={i}>
+                    <h4 className={`text-xs uppercase tracking-[0.2em] font-medium ${textMain} mb-4`}>{capability.split('(')[0]}</h4>
+                    <p className={`text-sm font-light leading-relaxed ${textMuted}`}>Robust engineering protocol for {capability}. Ensures maximum system uptime and architectural integrity.</p>
+                 </div>
+              ))}
+           </div>
+        </section>
+
+        {/* FINAL CTA / FOOTER */}
+        <section id="inquire" className="py-32 md:py-48 px-6 text-center border-t-[0.5px] border-[#1A1A1A]/10">
+           <div className={`text-[10px] uppercase tracking-[0.3em] ${textMuted} mb-8`}>Final Step</div>
+           <h2 className={`font-serif text-6xl md:text-8xl tracking-tighter ${textMain} mb-12 italic`}>
+             Begin <br/> The Dialogue.
+           </h2>
+           
+           <div className="flex flex-col sm:flex-row gap-8 justify-center items-center mb-32">
+              <a href={`mailto:${data.personal_info.email}`} className={`flex items-center gap-3 text-sm uppercase tracking-[0.2em] font-medium ${textMain} border-b border-[#1A1A1A] pb-2 hover:opacity-50 transition-opacity`}>
+                 <Mail size={16} strokeWidth={1} /> Email Studio
+              </a>
+              <div className={`flex items-center gap-3 text-sm uppercase tracking-[0.2em] font-medium ${textMuted}`}>
+                 <Phone size={16} strokeWidth={1} /> {data.personal_info.phone}
+              </div>
+           </div>
+
+           <div className="flex flex-col items-center gap-6">
+              <div className="w-[1px] h-24 bg-[#1A1A1A]/20"></div>
+              <div className={`font-serif text-2xl ${textMain}`}>{data.personal_info.name}</div>
+              <div className={`text-[9px] uppercase tracking-[0.2em] ${textMuted}`}>
+                © {new Date().getFullYear()} All Rights Reserved. &mdash; Built in 2022
+              </div>
+           </div>
+        </section>
+
+      </main>
+      
+      <style>{`
+        @keyframes marquee {
+          0% { transform: translateX(0); }
+          100% { transform: translateX(-50%); }
+        }
+      `}</style>
     </div>
   );
-};
-
-export default Portfolio5;
+}

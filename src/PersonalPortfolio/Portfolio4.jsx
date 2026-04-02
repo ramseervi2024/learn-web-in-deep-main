@@ -1,526 +1,308 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { portfolioprofile } from './portfoliodata';
-import {
-  Mail, Phone, MapPin, Calendar, ExternalLink,
-  Code2, Database, LayoutGrid, Cloud, Shield,
-  Smartphone, Terminal, Briefcase, ChevronRight,
-  Globe, Award, CheckCircle2, Menu, X, Monitor,
-  Cpu, Zap, Layers, Server, Palette, Moon, Sun, Hexagon
+import { portfolioprofile as data } from './portfoliodata';
+import { 
+  ArrowRight, ShieldCheck, Mail, Phone, ExternalLink, Zap, Star, LayoutGrid, CheckSquare, Smartphone, Code2, Terminal
 } from 'lucide-react';
 
-// === THEME CONFIGURATIONS ===
-const themeConfigs = {
-  dark: {
-    id: 'dark',
-    name: 'Abyssal Dark',
-    icon: Moon,
-    bg: 'bg-[#030303]',
-    text: 'text-white',
-    textMuted: 'text-zinc-400',
-    accentText: 'text-emerald-400',
-    navBg: 'bg-white/5 border-white/10 backdrop-blur-2xl',
-    cardBg: 'bg-[#0a0a0a]/80 border-white/5 backdrop-blur-xl',
-    cardHover: 'hover:border-emerald-500/30 hover:bg-[#111]/90',
-    glowPrimary: 'bg-emerald-500/15',
-    glowSecondary: 'bg-blue-600/10',
-    gradientText: 'from-emerald-400 to-cyan-500',
-    buttonBg: 'bg-white text-black hover:scale-105',
-    buttonOutline: 'bg-white/5 border-white/10 text-white hover:bg-white/10',
-    tagBg: 'bg-black/50 border-white/10 text-zinc-300',
-    border: 'border-white/5',
-    iconColor: 'text-emerald-400',
-    iconBg: 'bg-emerald-500/10',
-    selection: 'selection:bg-emerald-500/30 selection:text-white',
-    grid: 'bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)]'
-  },
-  light: {
-    id: 'light',
-    name: 'Ethereal Light',
-    icon: Sun,
-    bg: 'bg-[#F8F9FA]',
-    text: 'text-zinc-900',
-    textMuted: 'text-zinc-500',
-    accentText: 'text-indigo-600',
-    navBg: 'bg-white/60 border-black/5 backdrop-blur-2xl shadow-sm',
-    cardBg: 'bg-white/90 border-white shadow-xl shadow-black/5 backdrop-blur-xl',
-    cardHover: 'hover:border-indigo-400/40 hover:shadow-indigo-500/10',
-    glowPrimary: 'bg-indigo-500/10',
-    glowSecondary: 'bg-rose-400/10',
-    gradientText: 'from-indigo-600 to-violet-600',
-    buttonBg: 'bg-zinc-900 text-white hover:bg-black hover:scale-105 shadow-lg',
-    buttonOutline: 'bg-white border-black/10 text-zinc-800 hover:bg-zinc-50 shadow-sm',
-    tagBg: 'bg-white border-black/5 text-zinc-600 shadow-sm',
-    border: 'border-black/5',
-    iconColor: 'text-indigo-600',
-    iconBg: 'bg-indigo-500/10',
-    selection: 'selection:bg-indigo-500/20 selection:text-indigo-900',
-    grid: 'bg-[linear-gradient(rgba(0,0,0,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(0,0,0,0.03)_1px,transparent_1px)]'
-  },
-  cyber: {
-    id: 'cyber',
-    name: 'Cyber Neon',
-    icon: Hexagon,
-    bg: 'bg-[#090014]',
-    text: 'text-fuchsia-50',
-    textMuted: 'text-fuchsia-200/60',
-    accentText: 'text-yellow-400',
-    navBg: 'bg-fuchsia-950/30 border-fuchsia-500/20 backdrop-blur-xl shadow-[0_0_15px_rgba(217,70,239,0.1)]',
-    cardBg: 'bg-[#120024]/80 border-fuchsia-500/20 backdrop-blur-md',
-    cardHover: 'hover:border-yellow-400/50 hover:shadow-[0_0_30px_rgba(250,204,21,0.15)] hover:bg-[#1a0033]/90',
-    glowPrimary: 'bg-fuchsia-600/20',
-    glowSecondary: 'bg-cyan-500/15',
-    gradientText: 'from-yellow-400 via-fuchsia-500 to-cyan-400',
-    buttonBg: 'bg-yellow-400 text-black hover:bg-yellow-300 shadow-[0_0_20px_rgba(250,204,21,0.3)] hover:scale-105',
-    buttonOutline: 'bg-fuchsia-950/40 border-fuchsia-500/40 text-fuchsia-100 hover:bg-fuchsia-900/40 hover:shadow-[0_0_15px_rgba(217,70,239,0.2)]',
-    tagBg: 'bg-fuchsia-950/50 border-fuchsia-500/30 text-fuchsia-200',
-    border: 'border-fuchsia-500/20',
-    iconColor: 'text-yellow-400',
-    iconBg: 'bg-yellow-400/10',
-    selection: 'selection:bg-fuchsia-500/40 selection:text-white',
-    grid: 'bg-[linear-gradient(rgba(217,70,239,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(217,70,239,0.05)_1px,transparent_1px)]'
-  }
-};
+// Bold, High-Contrast Neo-Brutalist Colors
+const brutalColors = [
+  'bg-[#FF90E8]', // Hot Pink
+  'bg-[#FFC900]', // Cyber Yellow
+  'bg-[#00E5FF]', // Bright Cyan
+  'bg-[#B4F8C8]', // Mint Green
+  'bg-[#FF6B6B]', // Punch Red
+  'bg-[#A8E6CF]'  // Pale Lime
+];
 
-const Portfolio4 = () => {
-  const [activeTheme, setActiveTheme] = useState('dark');
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
-  const [isThemeMenuOpen, setIsThemeMenuOpen] = useState(false);
+const brutalShadow = "border-[3px] border-zinc-900 shadow-[8px_8px_0px_0px_rgba(24,24,27,1)]";
+const brutalButtonHover = "hover:translate-x-[4px] hover:translate-y-[4px] hover:shadow-[4px_4px_0px_0px_rgba(24,24,27,1)] active:translate-x-[8px] active:translate-y-[8px] active:shadow-[0px_0px_0px_0px_rgba(24,24,27,1)] transition-all";
 
-  const theme = themeConfigs[activeTheme];
+export default function Portfolio4() {
+  const [openFaq, setOpenFaq] = useState(null);
 
-  const {
-    personal_info, summary, roles, core_expertise,
-    technical_stack, saas_capabilities, projects
-  } = portfolioprofile;
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  useEffect(() => {
-    if (isMobileMenuOpen) document.body.style.overflow = 'hidden';
-    else document.body.style.overflow = 'unset';
-    return () => { document.body.style.overflow = 'unset'; };
-  }, [isMobileMenuOpen]);
-
-  // Framer motion variants
-  const fadeUp = {
-    initial: { opacity: 0, y: 30 },
-    whileInView: { opacity: 1, y: 0 },
-    viewport: { once: true, margin: "-50px" },
-    transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] }
-  };
-
-  const staggerContainer = {
-    initial: { opacity: 0 },
-    whileInView: { opacity: 1 },
-    viewport: { once: true, margin: "-50px" },
-    transition: { staggerChildren: 0.1 }
-  };
-
-  // Theme Switcher Component
-  const ThemeSwitcher = () => (
-    <div className="relative z-[120]">
-      <div 
-        className={`flex items-center gap-2 px-3 py-1.5 rounded-full cursor-pointer transition-all ${theme.navBg} border-opacity-50 hover:scale-105`}
-        onClick={() => setIsThemeMenuOpen(!isThemeMenuOpen)}
-      >
-        {React.createElement(theme.icon, { size: 16, className: theme.text })}
-        <span className={`text-xs font-bold uppercase tracking-wider hidden sm:block ${theme.text}`}>
-          {theme.name}
-        </span>
-      </div>
-
-      <AnimatePresence>
-        {isThemeMenuOpen && (
-          <motion.div
-            initial={{ opacity: 0, y: 10, scale: 0.95 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: 10, scale: 0.95 }}
-            transition={{ duration: 0.2 }}
-            className={`absolute top-full right-0 mt-2 p-2 rounded-2xl ${theme.cardBg} border shadow-2xl min-w-[180px] z-[120]`}
-          >
-            {Object.values(themeConfigs).map((t) => (
-              <div
-                key={t.id}
-                onClick={() => { setActiveTheme(t.id); setIsThemeMenuOpen(false); }}
-                className={`flex items-center gap-3 px-3 py-2.5 rounded-xl cursor-pointer transition-colors ${
-                  activeTheme === t.id ? theme.glowPrimary : 'hover:bg-black/5 dark:hover:bg-white/5'
-                }`}
-              >
-                {React.createElement(t.icon, { size: 16, className: activeTheme === t.id ? theme.accentText : theme.textMuted })}
-                <span className={`text-sm font-medium ${activeTheme === t.id ? theme.text : theme.textMuted}`}>
-                  {t.name}
-                </span>
-                {activeTheme === t.id && (
-                  <CheckCircle2 size={14} className={`ml-auto ${theme.accentText}`} />
-                )}
-              </div>
-            ))}
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </div>
-  );
+  const stats = [
+    { label: 'Years Exp', value: `${data.personal_info.experience_years}+` },
+    { label: 'Apps Built', value: `${data.projects.length}+` },
+    { label: 'Core Skills', value: `${data.core_expertise.length}` },
+    { label: 'Availability', value: 'NOW' }
+  ];
 
   return (
-    <div className={`w-full min-h-screen transition-colors duration-700 ease-in-out ${theme.bg} ${theme.text} ${theme.selection} overflow-x-hidden relative font-sans`}>
+    <div className="min-h-screen bg-[#F4F0EA] text-zinc-900 font-sans selection:bg-[#FF90E8] overflow-x-hidden relative">
+      
+      {/* DOT GRID BACKGROUND */}
+      <div className="fixed inset-0 pointer-events-none z-0 bg-[radial-gradient(circle_at_2px_2px,rgba(24,24,27,0.15)_1px,transparent_0)] bg-[length:32px_32px]"></div>
 
-      {/* Dynamic Backgrounds */}
-      <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden transition-opacity duration-700">
-        <div className={`absolute top-[-10%] left-[-10%] w-[60vw] h-[60vw] rounded-full ${theme.glowPrimary} blur-[120px] mix-blend-screen transition-all duration-[2000ms]`} />
-        <div className={`absolute bottom-[-10%] right-[-10%] w-[50vw] h-[50vw] rounded-full ${theme.glowSecondary} blur-[120px] mix-blend-screen transition-all duration-[2000ms]`} />
-        <div className={`absolute inset-0 ${theme.grid} bg-[size:30px_30px] opacity-50`} />
-      </div>
-
-      <div className="relative z-10 w-full flex flex-col items-center">
-
-        {/* Floating Navigation */}
-        <motion.nav
-          initial={{ y: -100, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ type: "spring", stiffness: 100, damping: 20, delay: 0.1 }}
-          className={`fixed top-4 md:top-6 z-[100] w-[95%] md:w-[85%] max-w-6xl rounded-full transition-all duration-300 ${scrolled ? `${theme.navBg} border shadow-2xl py-3` : 'bg-transparent py-4'}`}
-        >
-          <div className="px-4 md:px-8 flex items-center justify-between w-full">
-            <a href="#" className={`text-xl md:text-2xl font-black tracking-tighter ${theme.text}`}>
-              RS<span className={theme.accentText}>.</span>
-            </a>
-
-            {/* Desktop Links */}
-            <div className="hidden md:flex items-center gap-8 absolute left-1/2 -translate-x-1/2">
-              {['Expertise', 'Projects', 'Contact'].map((item) => (
-                <a key={item} href={`#${item.toLowerCase()}`} className={`text-sm font-medium ${theme.textMuted} hover:${theme.text} transition-colors duration-300`}>
-                  {item}
-                </a>
-              ))}
-            </div>
-
-            <div className="flex items-center gap-3 md:gap-4">
-              <ThemeSwitcher />
-              
-              {/* Mobile Toggle Button */}
-              <button
-                className={`md:hidden relative z-[110] w-10 h-10 flex items-center justify-center rounded-full ${theme.buttonOutline}`}
-                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              >
-                <AnimatePresence mode="wait">
-                  {isMobileMenuOpen ? (
-                    <motion.div key="close" initial={{ opacity: 0, rotate: -90 }} animate={{ opacity: 1, rotate: 0 }} exit={{ opacity: 0, rotate: 90 }}>
-                      <X size={20} />
-                    </motion.div>
-                  ) : (
-                    <motion.div key="menu" initial={{ opacity: 0, rotate: 90 }} animate={{ opacity: 1, rotate: 0 }} exit={{ opacity: 0, rotate: -90 }}>
-                      <Menu size={20} />
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </button>
-            </div>
+      {/* STACKED NAV */}
+      <nav className="fixed top-0 inset-x-0 z-50 bg-[#F4F0EA] border-b-[4px] border-zinc-900">
+        <div className="max-w-7xl mx-auto flex justify-between items-stretch">
+          <div className="px-4 md:px-6 py-4 border-r-[4px] border-zinc-900 font-black text-xl md:text-2xl uppercase tracking-tighter self-center bg-[#00E5FF] truncate max-w-[50vw]">
+            {data.personal_info.name}
           </div>
-        </motion.nav>
+          <div className="hidden md:flex border-r-[4px] border-zinc-900">
+             <a href="#expertise" className="px-8 py-5 border-r-[4px] border-zinc-900 font-bold uppercase hover:bg-[#FFC900] transition-colors">Expertise</a>
+             <a href="#work" className="px-8 py-5 border-r-[4px] border-zinc-900 font-bold uppercase hover:bg-[#FF90E8] transition-colors">Work</a>
+             <a href="#credentials" className="px-8 py-5 font-bold uppercase hover:bg-[#B4F8C8] transition-colors">Credentials</a>
+          </div>
+          <a href={`mailto:${data.personal_info.email}`} className="px-4 py-4 md:px-8 md:py-5 font-black uppercase text-white bg-zinc-900 border-l-[4px] border-zinc-900 hover:bg-zinc-800 transition-colors flex items-center gap-2 text-sm md:text-base">
+            <span className="hidden sm:inline">Hire </span>Me <ArrowRight size={20} className="hidden sm:inline" />
+          </a>
+        </div>
+      </nav>
 
-        {/* Mobile Menu */}
-        <AnimatePresence>
-          {isMobileMenuOpen && (
-            <motion.div
-              initial={{ opacity: 0, backdropFilter: "blur(0px)" }}
-              animate={{ opacity: 1, backdropFilter: "blur(24px)" }}
-              exit={{ opacity: 0, backdropFilter: "blur(0px)", transition: { duration: 0.3 } }}
-              className={`fixed inset-0 z-[90] ${theme.bg} bg-opacity-95 flex flex-col items-center justify-center gap-8`}
-            >
-              {['Expertise', 'Projects', 'Contact'].map((item, i) => (
-                <motion.a
-                  key={item}
-                  href={`#${item.toLowerCase()}`}
-                  onClick={() => setIsMobileMenuOpen(false)}
-                  initial={{ opacity: 0, y: 30 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.1 + (i * 0.1), type: "spring" }}
-                  className={`text-4xl sm:text-5xl font-black tracking-tight ${theme.text} transition-colors`}
-                >
-                  {item}
-                </motion.a>
-              ))}
-            </motion.div>
-          )}
-        </AnimatePresence>
+      <main className="relative z-10 pt-20">
+        
+        {/* HERO */}
+        <section className="relative min-h-[90vh] flex flex-col items-center justify-center text-center px-6 border-b-[4px] border-zinc-900 bg-[#FFC900] overflow-hidden">
+          {/* Decorative floating shapes */}
+          <motion.div animate={{ rotate: 360 }} transition={{ duration: 20, repeat: Infinity, ease: "linear" }} className="absolute -top-10 -left-10 w-40 h-40 bg-[#FF90E8] border-[4px] border-zinc-900 rounded-full" />
+          <motion.div animate={{ rotate: -360 }} transition={{ duration: 25, repeat: Infinity, ease: "linear" }} className="absolute bottom-20 -right-20 w-64 h-64 bg-[#00E5FF] border-[4px] border-zinc-900 rounded-[2rem]" />
+          
+          <div className="relative z-10 max-w-5xl mx-auto bg-white p-6 md:p-12 lg:p-20 border-[4px] border-zinc-900 shadow-[8px_8px_0px_0px_rgba(24,24,27,1)] md:shadow-[16px_16px_0px_0px_rgba(24,24,27,1)] mt-10 w-full">
+             <div className="inline-flex items-center gap-2 px-3 py-1.5 md:px-4 md:py-2 bg-zinc-900 text-white font-bold uppercase text-[10px] md:text-xs tracking-widest mb-6 md:mb-8 border-[2px] border-zinc-900 shadow-[4px_4px_0px_0px_rgba(24,24,27,1)]">
+               <Zap size={14} className="text-[#00E5FF]" /> {data.personal_info.availability}
+             </div>
+             
+             <h1 className="text-[12vw] sm:text-7xl md:text-8xl lg:text-[120px] font-black tracking-tighter leading-[0.9] uppercase mb-6 break-words text-zinc-900">
+               {data.personal_info.name.split(' ')[0]}<br/>Architecture.
+             </h1>
+             
+             <p className="text-lg md:text-3xl font-bold mb-4 max-w-3xl mx-auto leading-tight text-[#FF6B6B]">
+               {data.personal_info.headline}
+             </p>
+             
+             <p className="text-base md:text-xl font-bold mb-10 md:mb-12 max-w-3xl mx-auto leading-relaxed text-zinc-600">
+               {data.summary}
+             </p>
 
-        {/* HERO SECTION */}
-        <section id="hero" className="w-full min-h-[100svh] flex flex-col items-center justify-center pt-32 pb-20 px-4 md:px-8 max-w-6xl mx-auto relative z-10">
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-            className="w-full flex flex-col items-center text-center"
-          >
-            <div className={`mb-8 px-5 py-2.5 rounded-full border ${theme.border} ${theme.cardBg} flex items-center justify-center gap-3 shadow-sm`}>
-              <span className={`w-2 h-2 rounded-full ${theme.accentText} bg-current animate-ping opacity-75 absolute`}></span>
-              <span className={`w-2 h-2 rounded-full ${theme.accentText} bg-current relative`}></span>
-              <span className={`text-xs md:text-sm font-semibold tracking-wide ${theme.text}`}>
-                {personal_info.availability} <span className={theme.textMuted}>• {personal_info.location}</span>
-              </span>
-            </div>
-
-            <h1 className="text-[3.5rem] sm:text-7xl md:text-8xl lg:text-[7rem] font-black tracking-tighter leading-[1.05] mb-6 w-full max-w-5xl">
-              Building <span className={`text-transparent bg-clip-text bg-gradient-to-r ${theme.gradientText}`}>SaaS Systems</span><br className="hidden sm:block"/> that Scale.
-            </h1>
-
-            <p className={`text-lg md:text-2xl ${theme.textMuted} max-w-3xl mx-auto leading-relaxed font-normal mb-10`}>
-              I'm <strong className={`font-bold ${theme.text}`}>{personal_info.name}</strong>, a {personal_info.title} obsessed with pixel-perfect UI, robust scalable backends, and flawless user experiences.
-            </p>
-
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 w-full sm:w-auto">
-              <a href="#projects" className={`w-full sm:w-auto px-8 py-4 rounded-full font-bold text-base md:text-lg transition-all flex items-center justify-center gap-2 ${theme.buttonBg}`}>
-                <LayoutGrid size={18} />
-                View Projects
-              </a>
-              <a href="#contact" className={`w-full sm:w-auto px-8 py-4 rounded-full font-bold text-base md:text-lg transition-all flex items-center justify-center gap-2 ${theme.buttonOutline}`}>
-                <Mail size={18} />
-                Contact Me
-              </a>
-            </div>
-          </motion.div>
+             <div className="flex flex-col sm:flex-row gap-4 md:gap-6 justify-center">
+                <a href="#contact" className={`px-6 py-4 md:px-10 md:py-5 bg-[#FF6B6B] text-white font-black text-lg md:text-xl uppercase ${brutalShadow} ${brutalButtonHover} flex items-center justify-center gap-2`}>
+                  Start Building <ArrowRight size={20} />
+                </a>
+                <a href="#work" className={`px-6 py-4 md:px-10 md:py-5 bg-white text-zinc-900 font-black text-lg md:text-xl uppercase ${brutalShadow} ${brutalButtonHover} flex items-center justify-center gap-2`}>
+                  See The Work
+                </a>
+             </div>
+          </div>
         </section>
 
-        {/* BENTO STATS & ABOUT SECTION */}
-        <section className="w-full px-4 md:px-8 py-16 md:py-24 max-w-7xl mx-auto relative z-10">
-          <motion.div
-            variants={staggerContainer}
-            initial="initial"
-            whileInView="whileInView"
-            className="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6"
-          >
-            {/* Bio Card */}
-            <motion.div variants={fadeUp} className={`sm:col-span-2 lg:col-span-2 ${theme.cardBg} border ${theme.border} ${theme.cardHover} rounded-[2rem] p-8 md:p-10 flex flex-col justify-center relative overflow-hidden transition-all duration-500`}>
-              <div className={`w-12 h-12 rounded-2xl ${theme.iconBg} ${theme.iconColor} flex items-center justify-center mb-6`}>
-                <Terminal size={24} />
-              </div>
-              <h2 className={`text-2xl font-bold mb-4 ${theme.text}`}>My Journey</h2>
-              <p className={`text-sm md:text-base leading-relaxed ${theme.textMuted}`}>
-                {summary}
-              </p>
-            </motion.div>
+        {/* STATS STRIP */}
+        <section className="border-b-[4px] border-zinc-900 bg-white">
+          <div className="grid grid-cols-2 md:grid-cols-4 divide-x-[4px] divide-zinc-900 border-t-[4px] md:border-t-0 border-zinc-900 max-w-7xl mx-auto">
+             {stats.map((stat, i) => (
+                <div key={i} className={`p-6 md:p-10 text-center ${brutalColors[i % brutalColors.length]} group border-b-[4px] md:border-b-0 border-zinc-900 flex flex-col justify-center`}>
+                   <div className="text-4xl md:text-6xl font-black mb-1 md:mb-2 group-hover:scale-110 transition-transform">{stat.value}</div>
+                   <div className="text-[10px] md:text-xs font-bold uppercase tracking-widest text-zinc-800">{stat.label}</div>
+                </div>
+             ))}
+          </div>
+        </section>
 
-            {/* Experience Card */}
-            <motion.div variants={fadeUp} className={`${theme.cardBg} border ${theme.border} ${theme.cardHover} rounded-[2rem] p-8 md:p-10 flex flex-col items-center justify-center text-center transition-all duration-500`}>
-               <div className={`text-6xl md:text-7xl font-black text-transparent bg-clip-text bg-gradient-to-br ${theme.gradientText} mb-2`}>
-                {personal_info.experience_years}<span className={theme.accentText}>+</span>
-              </div>
-              <div className={`text-xs font-bold uppercase tracking-widest ${theme.textMuted}`}>
-                Years Experience
-              </div>
-            </motion.div>
+        {/* HAZARD TAPE MARQUEE */}
+        <div className="border-b-[4px] border-zinc-900 bg-zinc-900 text-[#FFC900] py-4 overflow-hidden -rotate-2 scale-110 my-10 shadow-2xl">
+          <div className="flex gap-10 animate-[marquee_15s_linear_infinite] whitespace-nowrap">
+             {[...data.technical_stack.mobile, ...data.technical_stack.frontend, ...data.technical_stack.backend_integration].map((tech, i) => (
+                <div key={i} className="text-2xl font-black uppercase tracking-widest flex items-center gap-10">
+                   {tech} <span className="text-white">///</span>
+                </div>
+             ))}
+          </div>
+        </div>
 
-            {/* Roles Card */}
-            <motion.div variants={fadeUp} className={`${theme.cardBg} border ${theme.border} ${theme.cardHover} rounded-[2rem] p-8 md:p-10 flex flex-col justify-center transition-all duration-500 group overflow-hidden relative`}>
-               <div className={`absolute -right-6 -bottom-6 opacity-10 ${theme.iconColor} group-hover:scale-110 transition-transform duration-700`}>
-                 <Globe size={180} />
-               </div>
-               <h3 className={`text-lg font-bold mb-4 ${theme.text} relative z-10`}>Current Focus</h3>
-               <div className="flex flex-col gap-2 relative z-10">
-                 {roles.slice(0, 3).map((role, idx) => (
-                   <div key={idx} className={`flex items-center gap-2 text-sm font-medium ${theme.textMuted}`}>
-                     <div className={`w-1.5 h-1.5 rounded-full ${theme.accentText} bg-current`} />
-                     {role}
+        {/* EXPERTISE / BENTO */}
+        <section id="expertise" className="py-24 px-6 max-w-7xl mx-auto relative z-10">
+          <div className="mb-16">
+            <h2 className="text-6xl font-black uppercase tracking-tighter mb-4 text-zinc-900">Expertise</h2>
+            <div className="w-32 h-4 bg-[#FF90E8] border-[3px] border-zinc-900 shadow-[4px_4px_0px_0px_rgba(24,24,27,1)]"></div>
+          </div>
+          
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+             {data.core_expertise.map((skill, i) => (
+                <div key={i} className={`p-8 bg-white ${brutalShadow} group ${brutalButtonHover} flex flex-col h-full`}>
+                   <div className={`w-16 h-16 ${brutalColors[i % brutalColors.length]} border-[3px] border-zinc-900 shadow-[4px_4px_0px_0px_rgba(24,24,27,1)] group-hover:rotate-12 transition-transform flex items-center justify-center mb-6`}>
+                      <LayoutGrid size={32} className="text-zinc-900" />
                    </div>
+                   <h3 className="text-2xl font-black uppercase mb-4 leading-tight text-zinc-900">{skill}</h3>
+                   <p className="text-zinc-600 font-bold mb-6 flex-1">Enterprise-grade {skill} architecture focused on high performance and clean UI/UX standards.</p>
+                   <div className="flex flex-wrap gap-2 mt-auto">
+                        <span className="px-3 py-1 bg-zinc-100 border-[2px] border-zinc-900 text-xs font-bold uppercase shadow-[2px_2px_0px_0px_rgba(24,24,27,1)]">Production Ready</span>
+                   </div>
+                </div>
+             ))}
+          </div>
+        </section>
+
+        {/* PORTFOLIO (THE CARDS) */}
+        <section id="work" className="py-20 md:py-24 px-4 md:px-6 bg-zinc-900 border-y-[4px] border-zinc-900 text-white relative">
+           <div className="absolute top-0 right-0 w-32 h-32 md:w-64 md:h-64 bg-[#00E5FF] border-[4px] border-zinc-900 rounded-bl-[50px] md:rounded-bl-[100px] z-0"></div>
+           
+           <div className="max-w-7xl mx-auto relative z-10">
+              <div className="mb-16 md:mb-20">
+                <h2 className="text-5xl md:text-6xl font-black uppercase tracking-tighter mb-4 text-[#B4F8C8]">Production Apps</h2>
+                <div className="w-32 h-4 bg-[#FF6B6B] border-[3px] border-zinc-900 shadow-[4px_4px_0px_0px_rgba(255,255,255,1)]"></div>
+              </div>
+
+              <div className="space-y-12 md:space-y-16">
+                 {data.projects.map((proj, i) => (
+                    <div key={i} className={`p-6 md:p-12 ${brutalColors[i % brutalColors.length]} text-zinc-900 border-[4px] border-zinc-900 shadow-[8px_8px_0px_0px_rgba(255,255,255,1)] md:shadow-[16px_16px_0px_0px_rgba(255,255,255,1)] grid lg:grid-cols-2 gap-8 md:gap-12 items-center`}>
+                       
+                       {/* Abstract Graphic */}
+                       <div className="aspect-square md:aspect-video lg:aspect-square bg-white border-[4px] border-zinc-900 shadow-[8px_8px_0px_0px_rgba(24,24,27,1)] flex flex-col relative overflow-hidden group min-h-[300px]">
+                          <div className="h-12 border-b-[4px] border-zinc-900 bg-zinc-200 flex items-center px-4 gap-3 shrink-0">
+                             <div className="w-4 h-4 rounded-full bg-[#FF6B6B] border-[2px] border-zinc-900"></div>
+                             <div className="w-4 h-4 rounded-full bg-[#FFC900] border-[2px] border-zinc-900"></div>
+                             <div className="w-4 h-4 rounded-full bg-[#B4F8C8] border-[2px] border-zinc-900"></div>
+                          </div>
+                          <div className={`flex-1 flex items-center justify-center p-8 bg-[radial-gradient(circle_at_2px_2px,rgba(24,24,27,0.1)_1px,transparent_0)] bg-[length:24px_24px]`}>
+                             <h4 className="text-4xl md:text-6xl font-black uppercase text-center group-hover:scale-110 transition-transform break-words text-balance text-zinc-900">{proj.category}</h4>
+                          </div>
+                       </div>
+
+                       {/* Project Specs */}
+                       <div>
+                          <div className="inline-flex px-4 py-1.5 bg-zinc-900 text-white font-black uppercase text-sm border-[3px] border-zinc-900 shadow-[4px_4px_0px_0px_rgba(24,24,27,1)] mb-8">
+                             {proj.type}
+                          </div>
+                          <h3 className="text-5xl font-black uppercase mb-6 leading-none text-zinc-900">{proj.name}</h3>
+                          <p className="text-xl font-bold mb-10 text-zinc-900/80">{proj.description}</p>
+                          
+                          <div className="space-y-6 mb-10">
+                             <div className="bg-white p-6 border-[3px] border-zinc-900 shadow-[6px_6px_0px_0px_rgba(24,24,27,1)] text-zinc-900">
+                                <div className="font-black uppercase text-sm mb-2 text-[#FF6B6B]">Stack Feature</div>
+                                <div className="font-bold">{proj.features[0]}</div>
+                             </div>
+                             <div className="bg-zinc-900 text-white p-6 border-[3px] border-zinc-900 shadow-[6px_6px_0px_0px_rgba(255,255,255,1)] text-right relative active:scale-[0.98] transition-transform">
+                                <div className="font-black uppercase text-sm mb-2 text-[#00E5FF]">Optimization</div>
+                                <div className="font-bold">{proj.features[1] || 'Performance Optimized'}</div>
+                             </div>
+                          </div>
+
+                          <div className="flex flex-wrap gap-2 text-balance lg:justify-start justify-center">
+                             {proj.technologies.slice(0, 5).map((tech, idx) => (
+                                <span key={idx} className="px-4 py-2 bg-white border-[3px] border-zinc-900 font-bold uppercase text-sm shadow-[4px_4px_0px_0px_rgba(24,24,27,1)] text-zinc-900">{tech}</span>
+                             ))}
+                          </div>
+                       </div>
+                    </div>
                  ))}
-               </div>
-            </motion.div>
-          </motion.div>
+              </div>
+           </div>
         </section>
 
-        {/* EXPERTISE SECTION */}
-        <section id="expertise" className="w-full px-4 md:px-8 py-20 md:py-32 max-w-7xl mx-auto relative z-10">
-          <motion.div {...fadeUp} className="mb-12 md:mb-16">
-            <h2 className={`text-4xl md:text-6xl font-black tracking-tight ${theme.text} mb-4`}>
-              Technical <span className={`text-transparent bg-clip-text bg-gradient-to-r ${theme.gradientText}`}>Arsenal.</span>
-            </h2>
-            <p className={`text-lg ${theme.textMuted} max-w-2xl`}>Specialized in end-to-end product development using modern, scalable technologies.</p>
-          </motion.div>
-
-          <motion.div
-            variants={staggerContainer}
-            initial="initial"
-            whileInView="whileInView"
-            className="grid grid-cols-1 md:grid-cols-3 gap-6"
-          >
-            {/* Frontend */}
-            <motion.div variants={fadeUp} className={`${theme.cardBg} border ${theme.border} ${theme.cardHover} rounded-[2rem] p-8 transition-all duration-500`}>
-               <div className={`w-14 h-14 rounded-2xl ${theme.iconBg} ${theme.iconColor} flex items-center justify-center mb-8`}>
-                <Monitor size={28} />
-              </div>
-              <h3 className={`text-2xl font-bold mb-6 ${theme.text}`}>Frontend</h3>
-              <div className="flex flex-wrap gap-2">
-                {technical_stack.frontend.map(tech => (
-                  <span key={tech} className={`px-3 py-1.5 rounded-xl text-xs font-bold uppercase tracking-wider ${theme.tagBg}`}>
-                    {tech}
-                  </span>
-                ))}
-              </div>
-            </motion.div>
-
-            {/* Backend */}
-            <motion.div variants={fadeUp} className={`${theme.cardBg} border ${theme.border} ${theme.cardHover} rounded-[2rem] p-8 transition-all duration-500`}>
-               <div className={`w-14 h-14 rounded-2xl ${theme.iconBg} ${theme.iconColor} flex items-center justify-center mb-8`}>
-                <Server size={28} />
-              </div>
-              <h3 className={`text-2xl font-bold mb-6 ${theme.text}`}>Mobile & Backend</h3>
-              <div className="flex flex-wrap gap-2">
-                {[...technical_stack.mobile, ...technical_stack.backend_integration].slice(0,8).map(tech => (
-                  <span key={tech} className={`px-3 py-1.5 rounded-xl text-xs font-bold uppercase tracking-wider ${theme.tagBg}`}>
-                    {tech}
-                  </span>
-                ))}
-              </div>
-            </motion.div>
-
-            {/* Cloud */}
-            <motion.div variants={fadeUp} className={`${theme.cardBg} border ${theme.border} ${theme.cardHover} rounded-[2rem] p-8 transition-all duration-500`}>
-               <div className={`w-14 h-14 rounded-2xl ${theme.iconBg} ${theme.iconColor} flex items-center justify-center mb-8`}>
-                <Cloud size={28} />
-              </div>
-              <h3 className={`text-2xl font-bold mb-6 ${theme.text}`}>Tools & Build</h3>
-              <div className="flex flex-wrap gap-2">
-                {technical_stack.tools.map(tech => (
-                  <span key={tech} className={`px-3 py-1.5 rounded-xl text-xs font-bold uppercase tracking-wider ${theme.tagBg}`}>
-                    {tech}
-                  </span>
-                ))}
-              </div>
-            </motion.div>
-          </motion.div>
-        </section>
-
-        {/* PROJECTS SECTION */}
-        <section id="projects" className="w-full px-4 md:px-8 py-20 md:py-32 max-w-7xl mx-auto relative z-10">
-          <motion.div {...fadeUp} className="mb-16 md:mb-24 flex flex-col md:flex-row md:items-end justify-between gap-6">
-            <div>
-              <h2 className={`text-4xl md:text-6xl font-black tracking-tight ${theme.text} mb-4`}>
-                Selected <span className={`text-transparent bg-clip-text bg-gradient-to-r ${theme.gradientText}`}>Works.</span>
-              </h2>
-              <p className={`text-lg ${theme.textMuted} max-w-2xl`}>Production-ready SaaS platforms built for scale right from day one.</p>
+        {/* GUARANTEES (SaaS Capabilities) */}
+        <section className="py-24 px-6 max-w-7xl mx-auto">
+            <div className="mb-20 text-center">
+              <h2 className="text-6xl font-black uppercase tracking-tighter mb-4 text-zinc-900">Capabilities.</h2>
+              <div className="w-32 h-4 bg-[#00E5FF] border-[3px] border-zinc-900 shadow-[4px_4px_0px_0px_rgba(24,24,27,1)] mx-auto"></div>
             </div>
-          </motion.div>
-
-          <div className="grid grid-cols-1 gap-12 md:gap-24 w-full">
-            {projects.slice(0, 4).map((project, idx) => (
-              <motion.div
-                key={project.name}
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-100px" }}
-                transition={{ duration: 0.6 }}
-                className={`flex flex-col ${idx % 2 !== 0 ? 'lg:flex-row-reverse' : 'lg:flex-row'} gap-8 lg:gap-16 items-center w-full group`}
-              >
-                {/* Visual Side */}
-                <div className={`w-full lg:w-1/2 aspect-[4/3] rounded-[2rem] p-2 md:p-4 border ${theme.border} ${theme.cardBg} relative overflow-hidden transition-all duration-500 group-hover:border-opacity-100 shadow-2xl`}>
-                   <div className={`absolute inset-0 bg-gradient-to-br ${theme.gradientText} opacity-[0.03] group-hover:opacity-10 transition-opacity duration-500`} />
-                   
-                   <div className={`w-full h-full rounded-[1.5rem] bg-black/10 border ${theme.border} flex flex-col items-center justify-center p-8 relative overflow-hidden z-10`}>
-                     {/* Window Controls */}
-                     <div className="absolute top-4 left-4 flex gap-2">
-                       <div className="w-3 h-3 rounded-full bg-rose-500/80" />
-                       <div className="w-3 h-3 rounded-full bg-amber-500/80" />
-                       <div className="w-3 h-3 rounded-full bg-emerald-500/80" />
+            <div className="grid md:grid-cols-3 gap-8">
+               {data.saas_capabilities.slice(0, 6).map((capability, i) => (
+                  <div key={i} className={`p-8 bg-white border-[4px] border-zinc-900 shadow-[8px_8px_0px_0px_rgba(24,24,27,1)] hover:-translate-y-2 transition-transform`}>
+                     <div className={`w-16 h-16 ${brutalColors[(i+2) % brutalColors.length]} border-[3px] border-zinc-900 shadow-[4px_4px_0px_0px_rgba(24,24,27,1)] flex items-center justify-center mb-6`}>
+                        <ShieldCheck size={32} />
                      </div>
-
-                     <div className={`text-4xl md:text-5xl lg:text-6xl font-black text-center ${theme.text} opacity-80 mb-4`}>
-                        {project.name.substring(0,2).toUpperCase()}
-                     </div>
-                     <div className={`px-4 py-1.5 rounded-full ${theme.tagBg} text-xs font-bold uppercase tracking-wider`}>
-                       {project.category}
-                     </div>
-                   </div>
-                </div>
-
-                {/* Content Side */}
-                <div className="w-full lg:w-1/2 flex flex-col">
-                  <div className={`text-sm font-bold uppercase tracking-widest ${theme.accentText} mb-4`}>
-                    0{idx + 1} // {project.type}
+                     <h3 className="text-2xl font-black uppercase mb-4 text-zinc-900 break-words">{capability.split('(')[0]}</h3>
+                     <p className="font-bold text-zinc-700">Robust implementation for {capability}.</p>
                   </div>
-                  <h3 className={`text-3xl md:text-5xl font-black ${theme.text} mb-6 tracking-tight`}>
-                    {project.name}
-                  </h3>
-                  <p className={`text-base md:text-lg leading-relaxed ${theme.textMuted} mb-8`}>
-                    {project.description}
+               ))}
+            </div>
+        </section>
+
+        {/* ACHIEVEMENTS (360 CAROUSEL) */}
+        <section className="py-24 bg-[#FF90E8] border-y-[4px] border-zinc-900 overflow-hidden relative shadow-[inset_0px_10px_0px_0px_rgba(0,0,0,0.1)]">
+          <div className="text-center mb-16 relative z-20">
+             <h2 className="text-4xl md:text-7xl font-black uppercase drop-shadow-[4px_4px_0px_rgba(24,24,27,1)] text-white px-6">Proven Metrics</h2>
+          </div>
+          <div className="relative flex">
+            <div className="flex gap-8 animate-[marquee_40s_linear_infinite] px-4 hover:[animation-play-state:paused] cursor-default whitespace-nowrap">
+              {[...data.achievements, ...data.achievements].map((ach, i) => (
+                <div key={i} className={`w-[85vw] md:w-[450px] shrink-0 p-8 md:p-10 bg-white border-[4px] border-zinc-900 shadow-[12px_12px_0px_0px_rgba(24,24,27,1)] relative flex flex-col transform hover:-rotate-2 transition-transform justify-center min-h-[200px]`}>
+                  <div className="flex justify-between items-start mb-8">
+                     <div className="flex gap-1">
+                       <Star fill="#FFC900" stroke="#18181b" strokeWidth={2} size={28} />
+                       <Star fill="#FFC900" stroke="#18181b" strokeWidth={2} size={28} />
+                       <Star fill="#FFC900" stroke="#18181b" strokeWidth={2} size={28} />
+                       <Star fill="#FFC900" stroke="#18181b" strokeWidth={2} size={28} />
+                       <Star fill="#FFC900" stroke="#18181b" strokeWidth={2} size={28} />
+                     </div>
+                     <div className="text-7xl font-black text-[#A8E6CF] leading-none drop-shadow-[2px_2px_0px_rgba(24,24,27,1)]">"</div>
+                  </div>
+                  <p className="text-xl md:text-2xl font-bold leading-relaxed whitespace-normal text-zinc-900">
+                    {ach}
                   </p>
-                  
-                  <div className="flex flex-wrap gap-2 mb-8">
-                    {project.technologies.map(tech => (
-                      <span key={tech} className={`px-3 py-1.5 rounded-lg text-xs font-bold ${theme.tagBg}`}>
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
-
-                  <ul className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                     {project.features.slice(0,4).map((feature, i) => (
-                       <li key={i} className={`flex items-start gap-3 text-sm font-medium ${theme.text}`}>
-                         <CheckCircle2 size={18} className={`shrink-0 ${theme.accentText}`} />
-                         {feature}
-                       </li>
-                     ))}
-                  </ul>
                 </div>
-              </motion.div>
-            ))}
-          </div>
-        </section>
-
-        {/* CTA / CONTACT SECTION */}
-        <section id="contact" className="w-full py-24 md:py-40 px-4 relative z-10">
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className={`max-w-5xl mx-auto ${theme.cardBg} border ${theme.border} rounded-[3rem] p-10 md:p-20 text-center relative overflow-hidden shadow-2xl`}
-          >
-            {/* Glow background */}
-            <div className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[150%] h-[150%] ${theme.glowPrimary} blur-[100px] pointer-events-none rounded-full`} />
-
-            <div className="relative z-10">
-              <h2 className={`text-4xl md:text-6xl lg:text-7xl font-black tracking-tight ${theme.text} mb-8`}>
-                Ready to Ship?
-              </h2>
-              <p className={`text-lg md:text-xl ${theme.textMuted} mb-12 max-w-2xl mx-auto`}>
-                Currently available for freelance projects and full-time opportunities. Let's build something exceptional together.
-              </p>
-              
-              <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                <a href={`mailto:${personal_info.email}`} className={`w-full sm:w-auto px-10 py-5 rounded-full font-bold text-lg flex items-center justify-center gap-3 transition-all ${theme.buttonBg}`}>
-                  <Mail size={20} />
-                  {personal_info.email}
-                </a>
-                <a href={`tel:${personal_info.phone}`} className={`w-full sm:w-auto px-10 py-5 rounded-full font-bold text-lg flex items-center justify-center gap-3 transition-all ${theme.buttonOutline}`}>
-                  <Phone size={20} />
-                  Book a Call
-                </a>
-              </div>
+              ))}
             </div>
-          </motion.div>
+          </div>
         </section>
 
-        {/* FOOTER */}
-        <footer className={`w-full py-8 px-6 md:px-12 border-t ${theme.border} flex flex-col justify-center items-center relative z-10`}>
-          <div className={`text-sm font-bold uppercase tracking-widest ${theme.textMuted} mb-2`}>
-            © {new Date().getFullYear()} {personal_info.name}
-          </div>
-          <div className={`text-xs ${theme.textMuted} opacity-60`}>
-            Engineered with React & Tailwind
-          </div>
-        </footer>
+        {/* CREDENTIALS */}
+        <section id="credentials" className="py-24 px-6 max-w-7xl mx-auto text-balance">
+           <div className="text-center mb-20 text-balance">
+             <h2 className="text-6xl font-black uppercase tracking-tighter mb-4 text-zinc-900">Credentials</h2>
+             <div className="w-32 h-4 bg-[#B4F8C8] border-[3px] border-zinc-900 shadow-[4px_4px_0px_0px_rgba(24,24,27,1)] mx-auto"></div>
+           </div>
+           
+           <div className="grid lg:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                <div className={`p-10 bg-white border-[4px] border-zinc-900 flex flex-col relative shadow-[16px_16px_0px_0px_rgba(255,107,107,1)]`}>
+                    <div className="absolute top-0 right-0 px-4 py-2 bg-[#FF6B6B] border-b-[4px] border-l-[4px] border-zinc-900 font-black uppercase text-white">Academic</div>
+                    <h3 className="text-3xl font-black uppercase mb-4 text-zinc-900">{data.education.degree}</h3>
+                    <div className="text-4xl font-black mb-6 text-[#FF6B6B] truncate">{data.education.field}</div>
+                    <ul className="space-y-4 mb-10">
+                        <li className="flex items-center gap-4 font-bold text-lg">
+                            <CheckSquare size={24} className="text-zinc-900" fill="#FFC900" />
+                            {data.education.institution}
+                        </li>
+                        <li className="flex items-center gap-4 font-bold text-lg">
+                            <CheckSquare size={24} className="text-zinc-900" fill="#FFC900" />
+                            {data.education.year}
+                        </li>
+                    </ul>
+                </div>
 
-      </div>
+                <div className={`p-10 bg-white border-[4px] border-zinc-900 flex flex-col relative shadow-[12px_12px_0px_0px_rgba(24,24,27,1)]`}>
+                     <div className="absolute top-0 right-0 px-4 py-2 bg-zinc-900 border-b-[4px] border-l-[4px] border-zinc-900 font-black uppercase text-white">Career Goal</div>
+                     <h3 className="text-3xl font-black uppercase mb-4 text-zinc-900">Career Focus</h3>
+                    <div className="text-4xl font-black mb-6 text-[#00E5FF] truncate">{data.personal_info.expected_salary}</div>
+                    <ul className="space-y-4 mb-10">
+                        <li className="flex items-center gap-4 font-bold text-lg">
+                            <CheckSquare size={24} className="text-zinc-900" fill="#B4F8C8" />
+                            {data.personal_info.current_salary}
+                        </li>
+                        <li className="flex items-center gap-4 text-zinc-600 font-bold uppercase tracking-widest text-xs">
+                            <div className="w-2 h-2 bg-black rounded-full"></div>
+                            {data.personal_info.notice_period}
+                        </li>
+                    </ul>
+                </div>
+           </div>
+        </section>
+
+        {/* FOOTER CALL TO ACTION */}
+        <section id="contact" className="bg-[#B4F8C8] border-t-[4px] border-zinc-900 pt-32 pb-10 text-center relative">
+           <div className="absolute top-0 inset-x-0 h-[4px] bg-zinc-900 border-b-[8px] border-white drop-shadow-[0_8px_0_#FFF]"></div>
+           <div className="max-w-4xl mx-auto px-6">
+              <h2 className="text-6xl md:text-8xl font-black uppercase tracking-tighter mb-8 leading-none drop-shadow-[4px_4px_0px_rgba(255,255,255,1)]">Ready to Build?</h2>
+              <p className="text-2xl font-bold mb-16 text-zinc-800">Ditch the boring layouts. Let's make internet history.</p>
+              
+              <div className="flex flex-col sm:flex-row gap-8 justify-center items-center mb-32">
+                 <a href={`mailto:${data.personal_info.email}`} className={`px-10 py-6 bg-zinc-900 text-[#00E5FF] font-black uppercase text-2xl ${brutalShadow} ${brutalButtonHover} flex items-center justify-center gap-4 w-full sm:w-auto`}>
+                    <Mail size={24} /> Email Me
+                 </a>
+                 <a href={`tel:${data.personal_info.phone}`} className={`px-10 py-6 bg-white text-zinc-900 font-black uppercase text-2xl ${brutalShadow} ${brutalButtonHover} flex items-center justify-center gap-4 w-full sm:w-auto`}>
+                    <Phone size={24} /> Call Me
+                 </a>
+              </div>
+           </div>
+           
+           <div className="flex flex-col md:flex-row justify-between items-center gap-6 border-t-[4px] border-zinc-900 px-10 pt-10">
+              <div className="font-black text-2xl uppercase tracking-tighter bg-white px-4 py-2 border-[3px] border-zinc-900">{data.personal_info.name}</div>
+              <div className="font-bold text-zinc-800">© {new Date().getFullYear()} All Rights Reserved.</div>
+           </div>
+        </section>
+
+      </main>
     </div>
   );
-};
-
-export default Portfolio4;
+}

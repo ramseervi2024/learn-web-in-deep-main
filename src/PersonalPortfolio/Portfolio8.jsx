@@ -1,411 +1,313 @@
-import React, { useRef, useMemo } from 'react';
-import { Canvas, useFrame, useThree } from '@react-three/fiber';
-import { 
-  ScrollControls, Scroll, useScroll, Float, 
-  RoundedBox, Sphere, Cylinder, Box, Points, PointMaterial, 
-  Environment, Torus, Octahedron, Sparkles, Backdrop
-} from '@react-three/drei';
-import * as THREE from 'three';
-import { portfolioprofile } from './portfoliodata';
+import React, { useRef, useState, useEffect } from 'react';
+import { motion } from 'framer-motion';
+import { portfolioprofile as data } from './portfoliodata';
+import { Canvas, useFrame } from '@react-three/fiber';
+import { Environment, Float, ContactShadows } from '@react-three/drei';
+import { ArrowUpRight, Play, CircleDot, Smartphone, Code2, Terminal } from 'lucide-react';
 
-// --- PREMIUM SHADERS & MATERIALS ---
-const luxuryGlass = new THREE.MeshPhysicalMaterial({
-  color: '#000000',
-  metalness: 0.1,
-  roughness: 0.05,
-  transmission: 0.98,
-  ior: 1.6,
-  thickness: 3.0,
-  clearcoat: 1.0,
-  clearcoatRoughness: 0.1
-});
+// Cinematic 3D Mesh
+function CinematicMesh() {
+  const meshRef = useRef();
+  
+  useFrame((state) => {
+    if(!meshRef.current) return;
+    meshRef.current.rotation.y += 0.002;
+    meshRef.current.rotation.x += 0.001;
+    meshRef.current.position.y = Math.sin(state.clock.elapsedTime * 0.5) * 0.2;
+  });
 
-const glowingBlue = new THREE.MeshBasicMaterial({ color: new THREE.Color('#3b82f6').multiplyScalar(4), toneMapped: false });
-const glowingPurple = new THREE.MeshBasicMaterial({ color: new THREE.Color('#a855f7').multiplyScalar(4), toneMapped: false });
-const glowingCyan = new THREE.MeshBasicMaterial({ color: new THREE.Color('#22d3ee').multiplyScalar(5), toneMapped: false });
-const darkMetal = new THREE.MeshStandardMaterial({ color: '#050505', metalness: 0.9, roughness: 0.4 });
-
-// --- BACKGROUND NEBULAS (For Glass Refraction) ---
-// These sit far back in the canvas to give the clear glass something beautiful to refract!
-const NebulaBackground = () => {
-   return (
-      <group position={[0, -10, -15]}>
-         <Sphere args={[15, 64, 64]} position={[-10, 10, -10]}>
-            <meshBasicMaterial color="#3b82f6" transparent opacity={0.15} toneMapped={false} />
-         </Sphere>
-         <Sphere args={[20, 64, 64]} position={[10, -5, -15]}>
-            <meshBasicMaterial color="#a855f7" transparent opacity={0.1} toneMapped={false} />
-         </Sphere>
-      </group>
-   )
+  return (
+    <Float speed={2} rotationIntensity={1.5} floatIntensity={2}>
+      <mesh ref={meshRef} position={[0, 0, 0]} scale={1.2}>
+        <torusKnotGeometry args={[1.8, 0.5, 256, 64]} />
+        <meshPhysicalMaterial 
+           color="#1a1a1a"
+           metalness={0.9}
+           roughness={0.1}
+           clearcoat={1}
+           clearcoatRoughness={0.1}
+           envMapIntensity={2}
+        />
+      </mesh>
+    </Float>
+  );
 }
 
-// --- SCENE 1: LAPTOP ---
-const MacScene = () => {
-  return (
-    <Float floatIntensity={3} rotationIntensity={1} speed={1.5}>
-      <group position={[0, -0.5, 0]} rotation={[0.2, -0.5, 0]}>
-        <RoundedBox args={[5.2, 0.2, 3.6]} radius={0.1} material={luxuryGlass} />
-        {/* Keyboard Area */}
-        <RoundedBox args={[4.8, 0.1, 1.6]} radius={0.05} position={[0, 0.08, -0.6]} material={darkMetal} />
-        <RoundedBox args={[1.8, 0.1, 1.1]} radius={0.05} position={[0, 0.08, 0.9]} material={darkMetal} />
-        
-        {/* Glowing trim */}
-        <Box args={[5.1, 0.05, 0.05]} position={[0, -0.1, 1.8]} material={glowingCyan} />
-        
-        {/* Screen Group */}
-        <group position={[0, 0.1, -1.8]} rotation={[-0.2, 0, 0]}>
-          <RoundedBox args={[5.2, 3.8, 0.1]} position={[0, 1.9, 0]} radius={0.1} material={luxuryGlass} />
-          {/* Active Display Panel */}
-          <Box args={[4.9, 3.5, 0.05]} position={[0, 1.9, 0.05]}>
-             <meshStandardMaterial color="#000" metalness={0.8} roughness={0.2} />
-          </Box>
-          {/* Holographic UI Projections popping OUT of screen */}
-          <Box args={[1.5, 0.6, 0.02]} position={[-1.2, 2.5, 0.3]} material={glowingBlue} />
-          <RoundedBox args={[1.2, 1.2, 0.02]} position={[1.2, 2.2, 0.5]} radius={0.1} material={luxuryGlass} />
-          <Box args={[0.5, 0.5, 0.02]} position={[1.2, 2.2, 0.55]} material={glowingPurple} />
-          <Box args={[3.5, 0.4, 0.02]} position={[0, 1.0, 0.4]}>
-             <meshPhysicalMaterial color="#3b82f6" transmission={0.9} thickness={0.5} roughness={0.1} />
-          </Box>
-        </group>
-      </group>
-    </Float>
-  );
-};
-
-// --- SCENE 2: ORBITING CRYSTALS (Replaced flat boxes) ---
-const OrbitingSkills = () => {
-  const group = useRef();
-  const crystals = useMemo(() => {
-    return Array.from({ length: 12 }).map(() => ({
-      position: [Math.random() * 6 - 3, Math.random() * 6 - 3, Math.random() * 6 - 3],
-      scale: Math.random() * 0.4 + 0.2,
-      speed: Math.random() * 2 + 1,
-      ringSize: Math.random() * 1.5 + 2,
-      axis: new THREE.Vector3(Math.random() - 0.5, Math.random() - 0.5, Math.random() - 0.5).normalize(),
-      isNeon: Math.random() > 0.7
-    }));
-  }, []);
-
-  useFrame((state) => {
-    const t = state.clock.getElapsedTime();
-    group.current.rotation.y = t * 0.1;
-    group.current.children.forEach((child, i) => {
-       if (i > 0 && i <= crystals.length) { 
-          // Circular orbit mathematically calculated
-          const c = crystals[i-1];
-          child.position.x = Math.sin(t * c.speed) * c.ringSize;
-          child.position.z = Math.cos(t * c.speed) * c.ringSize;
-          child.rotation.x += 0.01;
-          child.rotation.y += 0.02;
-       }
-    });
-  });
-
-  return (
-    <group ref={group}>
-      {/* Central Energy Core */}
-      <Sphere args={[0.8, 64, 64]}>
-        <meshBasicMaterial color="#fff" />
-      </Sphere>
-      <Sphere args={[1.2, 64, 64]}>
-         <meshPhysicalMaterial color="#000" transmission={0.9} ior={2.0} thickness={5.0} roughness={0.1} />
-      </Sphere>
-      {/* Intense light radiating from center */}
-      <pointLight intensity={5} color="#3b82f6" distance={10} />
-      
-      {/* Orbiting Crystal Satellites */}
-      {crystals.map((props, i) => (
-        <Octahedron key={i} args={[1, 0]} scale={props.scale} position={props.position}>
-           {props.isNeon ? 
-              <meshBasicMaterial color={i%2===0 ? '#a855f7' : '#3b82f6'} toneMapped={false} /> 
-           : 
-              <meshPhysicalMaterial color="#fff" transmission={0.9} ior={1.7} thickness={1.0} roughness={0.1} clearcoat={1.0} />
-           }
-        </Octahedron>
-      ))}
-    </group>
-  );
-};
-
-// --- SCENE 3: SMARTPHONE & APP UI ---
-const SmartphoneScene = () => {
-  return (
-    <Float floatIntensity={4} rotationIntensity={1.5} speed={1.5}>
-      <group rotation={[0.4, -0.6, -0.2]}>
-        {/* Chassis */}
-        <RoundedBox args={[2.2, 4.4, 0.2]} radius={0.25} material={luxuryGlass} />
-        <Box args={[2, 4.2, 0.15]}>
-           <meshStandardMaterial color="#050505" metalness={1} roughness={0.1} />
-        </Box>
-        <RoundedBox args={[0.6, 0.15, 0.18]} radius={0.05} position={[0, 1.9, 0]}>
-           <meshBasicMaterial color="#000" />
-        </RoundedBox>
-        
-        {/* Dynamic Holographic Interface Layers */}
-        <Box args={[1.7, 1.0, 0.05]} position={[0, 1.2, 0.2]} material={glowingPurple} />
-        <Box args={[0.8, 0.8, 0.05]} position={[-0.45, 0.1, 0.3]} material={glowingCyan} />
-        <Box args={[0.8, 0.8, 0.05]} position={[0.45, 0.1, 0.2]} material={glowingBlue} />
-        
-        {/* Floating frosted glass search bar */}
-        <RoundedBox args={[1.8, 0.4, 0.05]} radius={0.1} position={[0, -1.2, 0.4]} material={luxuryGlass} />
-        <Box args={[0.2, 0.2, 0.02]} position={[-0.6, -1.2, 0.45]} material={glowingCyan} />
-        
-        {/* Particles surrounding phone */}
-        <Sparkles count={50} scale={5} size={2} speed={0.4} opacity={0.5} color="#22d3ee" />
-      </group>
-    </Float>
-  );
-};
-
-// --- SCENE 4: TIMELINE LATTICE ---
-const TimelineNodes = () => {
-  return (
-    <Float floatIntensity={1} rotationIntensity={0.5} speed={1}>
-      <group position={[0, 0, 0]}>
-        {/* Central Energy Beam */}
-        <Cylinder args={[0.05, 0.05, 8, 16]}>
-           <meshBasicMaterial color="#3b82f6" transparent opacity={0.6} toneMapped={false} />
-        </Cylinder>
-        
-        {/* Glass Nodes containing glowing spheres */}
-        {[-2.5, 0, 2.5].map((y, i) => (
-           <group position={[0, y, 0]} key={y}>
-              <Sphere args={[0.4, 32, 32]} material={i===1 ? glowingPurple : glowingCyan} />
-              <Sphere args={[0.6, 64, 64]} material={luxuryGlass} />
-              {/* Spinning Halos */}
-              <Float speed={5} rotationIntensity={5}>
-                 <Torus args={[1.2, 0.02, 16, 100]} rotation={[1.5, 0.2, 0]}>
-                    <meshBasicMaterial color="#a855f7" toneMapped={false} transparent opacity={0.4} />
-                 </Torus>
-                 <Torus args={[1.5, 0.01, 16, 100]} rotation={[1.5, -0.4, 0]}>
-                    <meshBasicMaterial color="#3b82f6" toneMapped={false} transparent opacity={0.3} />
-                 </Torus>
-              </Float>
-           </group>
-        ))}
-      </group>
-    </Float>
-  );
-};
-
-// --- SCENE 5: CONTACT PLATFORM ---
-const ParticleSystem = () => {
-  const pointsRef = useRef();
-  const particleCount = 300;
-  
-  const positions = useMemo(() => {
-    const pos = new Float32Array(particleCount * 3);
-    for (let i = 0; i < particleCount; i++) {
-      pos[i * 3] = (Math.random() - 0.5) * 8; // x
-      pos[i * 3 + 1] = Math.random() * 10 - 5; // y
-      pos[i * 3 + 2] = (Math.random() - 0.5) * 8; // z
-    }
-    return pos;
-  }, []);
-
-  useFrame((state) => {
-    const time = state.clock.getElapsedTime();
-    for (let i = 0; i < particleCount; i++) {
-       const iy = i * 3 + 1;
-       pointsRef.current.geometry.attributes.position.array[iy] += 0.03; 
-       if (pointsRef.current.geometry.attributes.position.array[iy] > 5) {
-           pointsRef.current.geometry.attributes.position.array[iy] = -5;
-       }
-    }
-    pointsRef.current.geometry.attributes.position.needsUpdate = true;
-    pointsRef.current.rotation.y = time * 0.05;
-  });
-
-  return (
-    <Points ref={pointsRef} positions={positions} stride={3} frustumCulled={false}>
-      <PointMaterial transparent color="#a855f7" size={0.06} sizeAttenuation={true} depthWrite={false} blending={THREE.AdditiveBlending} />
-    </Points>
-  );
-};
-
-const ContactPlatform = () => {
-  return (
-    <group position={[0, -2, 0]}>
-      {/* Massive Glass Pedestals */}
-      <Cylinder args={[4, 5, 0.6, 64]} material={luxuryGlass} />
-      <Cylinder args={[3, 3.5, 1.2, 64]} position={[0, -0.5, 0]} material={luxuryGlass} />
-      <Cylinder args={[3.8, 3.8, 0.1, 64]} position={[0, 0.3, 0]} material={glowingCyan} />
-      
-      {/* Holographic Projection Cylinder */}
-      <Cylinder args={[2.5, 2.5, 10, 32]} position={[0, 5, 0]}>
-         <meshBasicMaterial color="#a855f7" transparent opacity={0.02} side={THREE.DoubleSide} blending={THREE.AdditiveBlending} />
-      </Cylinder>
-      
-      <ParticleSystem />
-    </group>
-  );
-};
-
-// --- SCENE MANAGER (Handles Scroll Parallax) ---
-const SceneManager = () => {
-  const scroll = useScroll();
-  const { viewport } = useThree();
-  const rootGroup = useRef();
-
-  const isMobile = viewport.width < 5;
-
-  useFrame(() => {
-    const slideHeight = viewport.height;
-    const targetY = scroll.offset * slideHeight * 4; 
-    rootGroup.current.position.y = THREE.MathUtils.lerp(rootGroup.current.position.y, targetY, 0.05); // Smoother lerp
-  });
-
-  return (
-    <group ref={rootGroup}>
-      <group position={[isMobile ? 0 : 2.5, isMobile ? 1.5 : 0, 0]} scale={isMobile ? 0.45 : 1}>
-         <MacScene />
-      </group>
-      <group position={[isMobile ? 0 : -2.5, -viewport.height + (isMobile ? 1.8 : 0), 0]} scale={isMobile ? 0.55 : 1}>
-         <OrbitingSkills />
-      </group>
-      <group position={[isMobile ? 0 : 2.5, -viewport.height * 2 + (isMobile ? 1.5 : 0), 0]} scale={isMobile ? 0.5 : 1}>
-         <SmartphoneScene />
-      </group>
-      <group position={[isMobile ? 0 : -2.5, -viewport.height * 3 + (isMobile ? 1.8 : 0), 0]} scale={isMobile ? 0.55 : 1}>
-         <TimelineNodes />
-      </group>
-      <group position={[0, -viewport.height * 4 + (isMobile ? -1 : 0), 0]} scale={isMobile ? 0.5 : 1}>
-         <ContactPlatform />
-      </group>
-    </group>
-  );
-};
-
-// --- HTML AWWWARDS LAYER (2D DOM) ---
-const HtmlLayer = () => {
-  const { personal_info, summary, technical_stack, projects } = portfolioprofile;
-  
-  return (
-    <div className="w-full text-zinc-50 font-sans antialiased pointer-events-none selection:bg-purple-500/30 overflow-hidden">
-        
-      {/* PAGE 1: HERO - NAKED LUXURY TYPOGRAPHY */}
-      <section className="h-[100vh] w-full flex flex-col justify-end md:items-start md:justify-center px-6 md:px-24 md:flex-row pb-16 md:pb-0">
-         <div className="w-full pointer-events-auto mt-0 md:mt-0 flex flex-col justify-end md:justify-center h-full max-w-4xl z-10">
-            <h2 className="text-xs md:text-sm font-bold tracking-[0.3em] uppercase text-cyan-400 mb-4 animate-pulse">
-               Status: {personal_info.availability}
-            </h2>
-            <h1 className="text-[3.5rem] leading-[0.9] md:text-[9rem] font-black tracking-tighter uppercase mb-4 md:mb-8 text-white drop-shadow-[0_20px_50px_rgba(0,0,0,0.8)]">
-               {personal_info.name.split(' ')[0]}<span className="text-transparent bg-clip-text bg-gradient-to-t from-blue-600 to-cyan-400">.</span>
-            </h1>
-            <h2 className="text-xl md:text-3xl font-light text-zinc-300 mb-6 drop-shadow-lg max-w-2xl">{personal_info.title}</h2>
-            
-            <div className="flex gap-4 mt-4">
-              <button className="px-8 md:px-10 py-4 md:py-5 bg-transparent border border-white/20 hover:border-cyan-400 text-white font-bold uppercase tracking-[0.2em] text-[10px] md:text-xs rounded-full hover:bg-cyan-500/10 transition-all backdrop-blur-md shadow-[0_0_20px_rgba(255,255,255,0.05)]">
-                 Initiate Sequence
-              </button>
-            </div>
-         </div>
-      </section>
-
-      {/* PAGE 2: SKILLS - NEON CHIPS */}
-      <section className="h-[100vh] w-full flex flex-col justify-end md:items-end md:justify-center px-6 md:px-24 pb-16 md:pb-0">
-         <div className="w-full md:text-right pointer-events-auto z-10 max-w-3xl">
-            <h2 className="text-[3rem] leading-[0.9] md:text-[8rem] font-black uppercase tracking-tighter mb-8 md:mb-12 text-transparent bg-clip-text bg-gradient-to-l from-purple-400 to-cyan-500 drop-shadow-2xl">
-               Core <br className="hidden md:block"/> Vector.
-            </h2>
-            <div className="flex flex-wrap md:justify-end gap-3 md:gap-4">
-               {[...technical_stack.frontend, ...technical_stack.mobile, ...technical_stack.backend_integration].map((tech) => (
-                 <span key={tech} className="px-4 md:px-6 py-2 md:py-3 border border-purple-500/30 bg-purple-900/10 backdrop-blur-md text-[10px] md:text-xs font-bold tracking-[0.1em] uppercase text-purple-200 rounded-full shadow-[0_0_15px_rgba(168,85,247,0.15)] hover:bg-purple-500/30 hover:shadow-[0_0_25px_rgba(168,85,247,0.4)] transition-all cursor-default">
-                   {tech}
-                 </span>
-               ))}
-            </div>
-         </div>
-      </section>
-
-      {/* PAGE 3: PROJECTS - ABSTRACT CARDS */}
-      <section className="h-[100vh] w-full flex flex-col justify-end md:justify-center px-6 md:px-24 pb-16 md:pb-0">
-         <div className="w-full pointer-events-auto z-10 max-w-2xl">
-            <h2 className="text-[3rem] leading-[0.9] md:text-[7rem] font-black uppercase tracking-tighter mb-8 md:mb-12 text-white drop-shadow-xl">
-               Deploy<br/>ments.
-            </h2>
-            <div className="flex flex-col gap-6 max-h-[50vh] overflow-y-auto pr-4 custom-scrollbar">
-              {projects.map((p, i) => (
-                <div key={p.name} className="p-6 md:p-8 border-l-2 border-cyan-500 bg-gradient-to-r from-black/40 to-transparent backdrop-blur-sm hover:from-cyan-900/20 transition-all group">
-                  <h4 className="text-[10px] font-bold tracking-[0.2em] text-cyan-500 uppercase mb-2">Module 0{i+1}</h4>
-                  <h3 className="text-2xl md:text-4xl font-black uppercase tracking-tight text-white mb-3 group-hover:text-cyan-300 transition-colors">{p.name}</h3>
-                  <p className="text-xs md:text-sm text-zinc-400 mb-5 max-w-lg">{p.description}</p>
-                  <div className="flex flex-wrap gap-2">
-                    {p.technologies.slice(0, 4).map(t => (
-                      <span key={t} className="text-[9px] md:text-[10px] uppercase tracking-widest text-zinc-500 font-bold border border-zinc-800 px-3 py-1 rounded">{t}</span>
-                    ))}
-                  </div>
-                </div>
-              ))}
-            </div>
-         </div>
-      </section>
-
-      {/* PAGE 4: EXPERIENCE */}
-      <section className="h-[100vh] w-full flex flex-col justify-end md:items-end md:justify-center px-6 md:px-24 pb-16 md:pb-0">
-         <div className="w-full md:text-right pointer-events-auto z-10 max-w-2xl">
-            <h2 className="text-[3rem] leading-[0.9] md:text-[7rem] font-black uppercase tracking-tighter mb-6 md:mb-10 text-transparent bg-clip-text bg-gradient-to-l from-blue-400 to-cyan-300">
-               Milestones.
-            </h2>
-            <p className="text-sm md:text-xl text-zinc-300 font-light leading-relaxed drop-shadow-lg">
-               Mapping trajectories through top-tier scalable architectures. Every illuminated sector represents a hardened cross-platform deployment.
-            </p>
-         </div>
-      </section>
-
-      {/* PAGE 5: CONTACT */}
-      <section className="h-[100vh] w-full flex flex-col justify-end md:items-center md:justify-center px-6 md:px-24 pb-24 md:pb-0">
-         <div className="w-full text-center pointer-events-auto z-10 flex flex-col items-center">
-            <h2 className="text-[4rem] md:text-[9rem] font-black uppercase tracking-tighter mb-4 md:mb-6 text-white drop-shadow-[0_0_30px_rgba(59,130,246,0.3)]">
-               Enter Grid.
-            </h2>
-            <p className="text-sm md:text-2xl text-zinc-300 mb-10 md:mb-16 font-light max-w-xl">
-               Encrypted channels are currently open for advanced web architecture and collaboration.
-            </p>
-            <a href={`mailto:${personal_info.email}`} className="group relative px-10 md:px-16 py-4 md:py-6 bg-transparent overflow-hidden rounded-full inline-block">
-               <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-purple-600 opacity-20 group-hover:opacity-100 transition-opacity duration-500 blur" />
-               <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full border border-white/20 transition-all duration-500" />
-               <span className="relative z-10 text-white font-black uppercase tracking-[0.3em] text-[10px] md:text-xs drop-shadow-md">
-                  Establish Comms
-               </span>
-            </a>
-         </div>
-      </section>
-
-    </div>
-  );
-};
-
-// --- MAIN WRAPPER ---
 export default function Portfolio8() {
+  
+  // Design Tokens
+  const textHeading = "text-white font-sans font-black tracking-tighter";
+  const textSerif = "font-serif italic font-light text-neutral-400";
+  const labelText = "font-sans text-[10px] md:text-xs uppercase tracking-[0.3em] font-bold text-neutral-500";
+
+  const stats = [
+    { label: 'Years Exp', value: `${data.personal_info.experience_years}+` },
+    { label: 'Apps Built', value: `${data.projects.length}+` },
+    { label: 'Core Skills', value: `${data.core_expertise.length}` },
+    { label: 'Availability', value: 'NOW' }
+  ];
+
   return (
-    <div className="w-full h-screen bg-[#020202] text-white overflow-hidden">
-      <Canvas camera={{ position: [0, 0, 8], fov: 50 }} dpr={[1, 2]}>
-         <color attach="background" args={['#020202']} />
-         
-         <NebulaBackground />
+    <div className="min-h-screen bg-[#050505] text-neutral-300 font-sans selection:bg-white selection:text-black overflow-x-hidden relative">
+      
+      {/* WEBGL BACKGROUND CANVAS */}
+      <div className="fixed inset-0 z-0 pointer-events-none opacity-40 md:opacity-50 transition-opacity duration-1000">
+        <Canvas camera={{ position: [0, 0, 10], fov: 45 }} dpr={[1, 2]}>
+          <ambientLight intensity={0.2} />
+          <spotLight position={[10, 10, 10]} angle={0.15} penumbra={1} intensity={2} color="#ffffff" />
+          <spotLight position={[-10, -10, -10]} angle={0.15} penumbra={1} intensity={10} color="#3b82f6" />
+          <CinematicMesh />
+          <Environment preset="city" />
+          <ContactShadows position={[0, -3.5, 0]} opacity={0.4} scale={20} blur={2} far={4} />
+        </Canvas>
+      </div>
 
-         <ambientLight intensity={0.5} />
-         <directionalLight position={[10, 10, 5]} intensity={3} color="#3b82f6" />
-         <directionalLight position={[-10, 0, -5]} intensity={3} color="#a855f7" />
-         <directionalLight position={[0, -10, 5]} intensity={2} color="#22d3ee" />
-         
-         <Environment preset="city" />
+      {/* MAIN UI */}
+      <div className="relative z-10 flex flex-col min-h-screen border-x border-white/5 max-w-[1600px] mx-auto">
+        
+        {/* HEADER */}
+        <nav className="fixed top-0 inset-x-0 z-50 mix-blend-difference px-6 md:px-12 py-8 flex items-center justify-between pointer-events-none">
+           <div className={`text-xl font-bold tracking-tighter text-white pointer-events-auto`}>
+             {data.personal_info.name}
+           </div>
+           <div className={`${labelText} hidden md:flex items-center gap-12 text-white/50 pointer-events-auto`}>
+              <a href="#work" className="hover:text-white transition-colors">Portfolio</a>
+              <a href="#expertise" className="hover:text-white transition-colors">Expertise</a>
+              <a href="#contact" className="hover:text-white transition-colors">Contact</a>
+           </div>
+           <button className="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center hover:bg-white hover:text-black transition-colors pointer-events-auto text-white">
+             <CircleDot size={18} strokeWidth={1.5} />
+           </button>
+        </nav>
 
-         <ScrollControls pages={5} damping={0.25} distance={1}>
-            <SceneManager />
-            <Scroll html style={{ width: '100vw' }}>
-               <HtmlLayer />
-            </Scroll>
-         </ScrollControls>
-      </Canvas>
+        {/* HERO SECTION */}
+        <section className="min-h-[100svh] flex flex-col justify-start md:justify-center px-6 md:px-12 pt-40 md:pt-32 pb-24 relative">
+           
+           <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }} className="max-w-5xl mt-12 md:mt-0">
+              <div className={`${labelText} mb-8 md:mb-12 flex items-center gap-4`}>
+                 <span className="w-8 h-[1px] bg-neutral-500 shrink-0"></span> <span className="truncate">{data.personal_info.availability}</span>
+              </div>
 
-      <style dangerouslySetInnerHTML={{__html: `
-        .custom-scrollbar::-webkit-scrollbar { width: 2px; }
-        .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
-        .custom-scrollbar::-webkit-scrollbar-thumb { background: rgba(34, 211, 238, 0.5); border-radius: 4px; }
-      `}} />
+              <h1 className={`text-[3.25rem] sm:text-6xl md:text-8xl lg:text-[110px] leading-[1] md:leading-[0.9] mb-8 break-words hyphens-auto ${textHeading} uppercase`}>
+                Vision.<br/>
+                <span className={textSerif}>Engineered.</span>
+              </h1>
+
+              <div className="grid md:grid-cols-2 gap-12 md:gap-24 mt-16 md:mt-24 items-end">
+                 <p className="text-xl md:text-2xl font-light leading-relaxed max-w-lg text-neutral-400 mix-blend-difference">
+                   {data.personal_info.headline}
+                 </p>
+                 <div className="flex flex-col sm:flex-row items-start sm:items-center gap-8 md:justify-end">
+                    <a href={`mailto:${data.personal_info.email}`} className="group flex items-center gap-4 border-b border-white/30 pb-2 hover:border-white transition-colors">
+                      <span className={`${labelText} text-white`}>Initialize Request</span>
+                      <ArrowUpRight size={16} className="text-white group-hover:-translate-y-1 group-hover:translate-x-1 transition-transform" />
+                    </a>
+                    <a href="#work" className="group flex items-center gap-4 border-b border-transparent pb-2 hover:border-white/30 transition-colors">
+                       <Play size={12} className="text-white" fill="currentColor" />
+                       <span className={`${labelText} text-white`}>Explore Work</span>
+                    </a>
+                 </div>
+              </div>
+           </motion.div>
+        </section>
+
+        {/* STATISTICS STRIP */}
+        <section className="grid grid-cols-2 md:grid-cols-4 border-y border-white/5 divide-x divide-y md:divide-y-0 divide-white/5 bg-[#050505]/40 backdrop-blur-xl">
+           {stats.map((stat, i) => (
+             <div key={i} className="p-10 md:p-16 flex flex-col justify-center hover:bg-white/[0.02] transition-colors group">
+                <div className={`${textHeading} text-5xl md:text-7xl mb-4 group-hover:scale-105 transition-transform origin-left`}>{stat.value}</div>
+                <div className={labelText}>{stat.label}</div>
+             </div>
+           ))}
+        </section>
+
+        {/* 360 MARQUEE (TECHNOLOGIES) */}
+        <section className="py-24 md:py-32 border-b border-white/5 relative bg-[#050505]/20 backdrop-blur-sm overflow-hidden mix-blend-difference">
+           
+           <div className="absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-[#050505] to-transparent z-10 pointer-events-none"></div>
+           <div className="absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-[#050505] to-transparent z-10 pointer-events-none"></div>
+           
+           <div className="flex gap-16 animate-[marquee_50s_linear_infinite] px-8 hover:[animation-play-state:paused] whitespace-nowrap cursor-default">
+              {[...data.technical_stack.mobile, ...data.technical_stack.frontend, ...data.technical_stack.backend_integration].map((tech, i) => (
+                 <div key={i} className={`text-6xl md:text-8xl font-black uppercase tracking-tighter text-transparent italic hover:text-white transition-colors duration-500`} style={{ WebkitTextStroke: '1.5px rgba(255,255,255,0.15)' }}>
+                    {tech}
+                 </div>
+              ))}
+           </div>
+        </section>
+
+        {/* PORTFOLIO (EDITORIAL GRID) */}
+        <section id="work" className="py-32 px-6 md:px-12 bg-[#050505]">
+           <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-24 gap-8">
+              <h2 className={`text-5xl md:text-7xl ${textHeading}`}>
+                Selected <span className={textSerif}>Exhibitions</span>
+              </h2>
+              <div className={`${labelText} flex items-center gap-4`}>
+                 <span className="w-12 h-[1px] bg-neutral-600"></span> {data.projects.length} Works
+              </div>
+           </div>
+
+           <div className="space-y-12">
+             {data.projects.map((proj, i) => (
+                <div key={i} className="group relative border border-white/5 bg-white/[0.01] overflow-hidden hover:bg-white/[0.03] transition-colors p-8 md:p-12 flex flex-col md:flex-row gap-12 items-center">
+                   
+                   <div className="w-full md:w-1/2 aspect-video bg-[#0A0A0A] border border-white/10 flex items-center justify-center relative overflow-hidden">
+                      <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 z-10"></div>
+                      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 font-serif italic text-white/10 text-6xl md:text-8xl group-hover:scale-110 transition-transform duration-1000">0{i + 1}</div>
+                   </div>
+
+                   <div className="w-full md:w-1/2 flex flex-col justify-center">
+                      <div className={`${labelText} mb-6 text-white/40`}>{proj.type}</div>
+                      <h3 className={`text-4xl md:text-5xl mb-6 ${textHeading}`}>{proj.name}</h3>
+                      <p className="text-neutral-400 font-light leading-relaxed mb-10 text-lg">{proj.description}</p>
+                      
+                      <div className="grid grid-cols-2 gap-8 mb-10">
+                        <div>
+                           <div className="text-[9px] uppercase tracking-[0.2em] text-neutral-600 mb-2">Category</div>
+                           <div className="text-sm font-medium text-white">{proj.category}</div>
+                        </div>
+                        <div>
+                           <div className="text-[9px] uppercase tracking-[0.2em] text-neutral-600 mb-2">Primary Feature</div>
+                           <div className="text-sm font-medium text-emerald-400">{proj.features[0]}</div>
+                        </div>
+                      </div>
+
+                      <div className="flex flex-wrap gap-2 mt-auto">
+                        {proj.technologies.slice(0, 3).map((tech, idx) => (
+                           <span key={idx} className="px-3 py-1 border border-white/10 text-[10px] uppercase tracking-widest text-neutral-400 rounded-full">
+                             {tech}
+                           </span>
+                        ))}
+                      </div>
+                   </div>
+                   
+                   <div className="absolute top-8 right-8 w-12 h-12 rounded-full border border-white/10 flex items-center justify-center opacity-0 group-hover:opacity-100 group-hover:border-white/30 transition-all duration-500 translate-y-4 group-hover:translate-y-0">
+                      <ArrowUpRight size={16} className="text-white" />
+                   </div>
+                </div>
+             ))}
+           </div>
+        </section>
+
+        {/* EXPERTISE */}
+        <section id="expertise" className="py-32 px-6 md:px-12 bg-[#050505]/80 backdrop-blur-2xl border-t border-white/5">
+           <h2 className={`text-5xl md:text-7xl mb-24 ${textHeading}`}>
+             Our <span className={textSerif}>Disciplines</span>
+           </h2>
+
+           <div className="flex flex-col border-t border-white/10">
+              {data.services.map((service, i) => (
+                 <div key={i} className="py-12 md:py-16 border-b border-white/10 grid md:grid-cols-12 gap-8 md:gap-16 group hover:bg-white/[0.02] transition-colors px-6 md:px-12 -mx-6 md:-mx-12">
+                    <div className="md:col-span-2">
+                       <span className={`${labelText} text-white/30`}>/ 0{i + 1}</span>
+                    </div>
+                    <div className="md:col-span-4">
+                       <h3 className={`text-3xl md:text-4xl ${textHeading}`}>{service}</h3>
+                    </div>
+                    <div className="md:col-span-6">
+                       <p className="text-lg font-light leading-relaxed text-neutral-400 mb-8">Production ready implementation of {service} modules.</p>
+                       <ul className="grid grid-cols-2 gap-y-4">
+                            <li className="flex items-center gap-3">
+                              <CircleDot size={8} className="text-white/20" />
+                              <span className="text-sm tracking-wide text-neutral-300">Architecture</span>
+                            </li>
+                            <li className="flex items-center gap-3">
+                              <CircleDot size={8} className="text-white/20" />
+                              <span className="text-sm tracking-wide text-neutral-300">Optimization</span>
+                            </li>
+                       </ul>
+                    </div>
+                 </div>
+              ))}
+           </div>
+        </section>
+
+        {/* ACHIEVEMENTS (360 TICKER) */}
+        <section className="py-32 relative bg-black overflow-hidden border-b border-white/5">
+           <div className={`${labelText} text-center mb-16 relative z-10`}>Voices of Leadership</div>
+           
+           <div className="relative flex">
+              <div className="absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-black to-transparent z-10 pointer-events-none"></div>
+              <div className="absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-black to-transparent z-10 pointer-events-none"></div>
+              
+              <div className="flex gap-16 md:gap-32 animate-[marquee_60s_linear_infinite] px-8 hover:[animation-play-state:paused] whitespace-nowrap cursor-default">
+                  {[...data.achievements, ...data.achievements].map((ach, i) => (
+                    <div key={i} className="w-[85vw] md:w-[700px] shrink-0 flex flex-col items-center text-center">
+                      <p className={`text-2xl md:text-4xl leading-snug mb-12 whitespace-normal text-white ${i % 2 === 0 ? textHeading : textSerif}`}>
+                        "{ach}"
+                      </p>
+                      <div className="h-8 w-[1px] bg-white/20 mb-6"></div>
+                      <div className="text-sm font-bold tracking-widest uppercase text-white mb-2">Verified Achievement</div>
+                    </div>
+                  ))}
+              </div>
+           </div>
+        </section>
+
+        {/* CREDENTIALS */}
+        <section id="credentials" className="py-32 px-6 md:px-12 bg-[#050505]">
+           <div className="flex flex-col items-center mb-24 text-center">
+              <h2 className={`text-5xl md:text-7xl mb-6 ${textHeading}`}>
+                Internal <span className={textSerif}>Architecture</span>
+              </h2>
+           </div>
+           
+           <div className="grid lg:grid-cols-2 gap-8 max-w-5xl mx-auto">
+                  <div className={`p-10 border transition-all duration-500 hover:-translate-y-2 flex flex-col border-white/30 bg-white/[0.03] shadow-[0_0_40px_rgba(255,255,255,0.05)]`}>
+                    <div className={`${labelText} mb-8 text-white`}>Academic</div>
+                    <div className={`text-4xl md:text-5xl mb-10 ${textHeading}`}>{data.education.year}</div>
+                    <p className="text-xl font-light text-neutral-400 mb-8">{data.education.degree} in {data.education.field}</p>
+                    <div className="text-[10px] uppercase tracking-widest text-neutral-500">{data.education.institution}</div>
+                 </div>
+
+                 <div className={`p-10 border transition-all duration-500 hover:-translate-y-2 border-white/10 bg-black hover:border-white/20`}>
+                    <div className={`${labelText} mb-8`}>Career Goal</div>
+                    <div className={`text-4xl md:text-5xl mb-10 ${textHeading}`}>{data.personal_info.expected_salary}</div>
+                    <ul className="space-y-4 mb-4">
+                         <li className="text-sm tracking-wide text-neutral-300 flex items-center gap-2">
+                            <CircleDot size={10} className="text-white/20" /> {data.personal_info.current_salary}
+                         </li>
+                         <li className="text-sm tracking-wide text-neutral-300 flex items-center gap-2">
+                            <CircleDot size={10} className="text-white/20" /> {data.personal_info.notice_period}
+                         </li>
+                    </ul>
+                 </div>
+           </div>
+        </section>
+
+        {/* FOOTER */}
+        <footer id="contact" className="py-32 md:py-48 flex flex-col items-center justify-center text-center border-t border-white/5 relative overflow-hidden">
+           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-white/5 rounded-full filter blur-[100px] pointer-events-none"></div>
+           
+           <div className="relative z-10">
+              <div className={`${labelText} mb-12`}>End of Transmission</div>
+              <h2 className={`text-6xl md:text-[120px] leading-[0.9] mb-16 ${textHeading} uppercase`}>
+                Initiate <br/>
+                <span className={textSerif}>Dialogue.</span>
+              </h2>
+
+              <a href={`mailto:${data.personal_info.email}`} className="text-sm font-bold tracking-[0.2em] uppercase text-white border-b border-white pb-2 hover:opacity-50 transition-opacity">
+                {data.personal_info.email}
+              </a>
+
+              <div className="mt-32 flex flex-col items-center gap-6">
+                <div className="w-[1px] h-16 bg-white/20"></div>
+                <div className="text-2xl font-bold tracking-tighter text-white">{data.personal_info.name}</div>
+                <div className="text-[9px] uppercase tracking-widest text-neutral-600">
+                   © {new Date().getFullYear()} All Systems Operational.
+                </div>
+              </div>
+           </div>
+        </footer>
+
+      </div>
+
+      <style>{`
+        @keyframes marquee {
+          0% { transform: translateX(0); }
+          100% { transform: translateX(-50%); }
+        }
+      `}</style>
     </div>
   );
 }

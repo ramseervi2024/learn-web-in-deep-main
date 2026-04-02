@@ -9,12 +9,12 @@ export const portfolioprofile = {
       "gender": "Male",
       "marital_status": "Single",
       "experience_years": 3.5,
-      "availability": "Immediate Joiner",
-      "notice_period": "Serving Notice Period",
+      "availability": "Open to New Opportunities",
+      "notice_period": "Flexible / Negotiable",
       "email": "ramseervi4321@gmail.com",
       "phone": "(+91) 6360494477",
-      "current_salary": "₹8,50,000",
-      "expected_salary": "₹18,00,000",
+      "current_salary": "Looking for challenging tasks & projects",
+      "expected_salary": "Advanced Level Development",
       "preferred_locations": [
         "Remote", "Bangalore/Bengaluru", "Chennai", "Mumbai", "Pune", 
         "Gurgaon/Gurugram", "Noida", "Hyderabad/Secunderabad", "Ahmedabad", "Delhi / NCR"

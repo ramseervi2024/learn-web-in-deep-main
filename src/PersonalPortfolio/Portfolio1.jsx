@@ -1,48 +1,17 @@
-import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { portfolioprofile } from './portfoliodata';
-import {
-  Mail, Phone, MapPin, Calendar,
-  ExternalLink, Code2, Database, LayoutGrid,
-  Cloud, Terminal, Briefcase, ChevronRight,
-  Globe, Award, CheckCircle2,
-  Menu, X
+import React from 'react';
+import { motion } from 'framer-motion';
+import { portfolioprofile as data } from './portfoliodata';
+import { 
+  Code2, Smartphone, Server, Cloud, 
+  ArrowRight, CheckCircle2, 
+  Mail, Phone, ExternalLink, Globe
 } from 'lucide-react';
 
 const Portfolio1 = () => {
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
 
-  const {
-    personal_info, summary, roles, core_expertise,
-    technical_stack, saas_capabilities, services, projects, achievements
-  } = portfolioprofile;
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  useEffect(() => {
-    if (isMobileMenuOpen) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = 'unset';
-    }
-    return () => {
-      document.body.style.overflow = 'unset';
-    };
-  }, [isMobileMenuOpen]);
-
-  // Framer motion variants
-  const fadeUp = {
-    initial: { opacity: 0, y: 30 },
-    whileInView: { opacity: 1, y: 0 },
-    viewport: { once: true, margin: "-100px" },
-    transition: { type: "spring", stiffness: 80, damping: 20 }
+  const fadeIn = {
+    hidden: { opacity: 0, y: 30 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } }
   };
 
   const staggerContainer = {
