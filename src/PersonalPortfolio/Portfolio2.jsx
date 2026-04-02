@@ -358,7 +358,7 @@ const Portfolio2 = () => {
                          <div className="absolute inset-0 bg-[radial-gradient(#d4d4d8_1px,transparent_1px)] [background-size:20px_20px] opacity-30 pointer-events-none" />
                          
                          <div style={{ transform: "translateZ(80px)" }} className="relative z-10 m-auto text-center w-full drop-shadow-2xl">
-                           <h3 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-black leading-none tracking-tighter text-zinc-900 mb-6 uppercase max-w-2xl mx-auto drop-shadow-xl">{project.category}</h3>
+                           <h3 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black leading-none tracking-tighter text-zinc-900 mb-6 uppercase max-w-2xl mx-auto drop-shadow-xl text-balance whitespace-normal break-words">{project.category}</h3>
                            <div className="inline-block px-6 py-3 bg-zinc-900 text-white rounded-full text-xs md:text-sm font-bold uppercase tracking-widest shadow-2xl">
                              {project.type}
                            </div>
@@ -405,13 +405,13 @@ const Portfolio2 = () => {
         </section>
 
         {/* Ultra Minimal Contact */}
-        <section id="contact" className="w-full py-32 md:py-48 px-6 md:px-10 border-t border-zinc-200 relative overflow-hidden bg-white">
+        <section id="contact" className="w-full p-6 md:p-10 relative">
           <motion.div 
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 1 }}
-            className="max-w-4xl mx-auto text-center"
+            className="w-full max-w-7xl mx-auto py-32 md:py-40 px-6 md:px-10 bg-white rounded-[2rem] md:rounded-[4rem] border border-zinc-200 shadow-2xl relative text-center"
           >
             <h2 className="text-6xl md:text-[8rem] lg:text-[10rem] font-black tracking-tighter text-zinc-900 mb-8 md:mb-12 leading-[0.8] uppercase w-full">
               Start A <br/>

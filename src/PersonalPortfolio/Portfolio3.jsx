@@ -397,7 +397,7 @@ const Portfolio3 = () => {
                             
                             {/* Inner 3D Text Float */}
                             <div className="m-auto text-center w-full transition-transform duration-500 ease-out group-hover:translate-z-12">
-                               <h3 className="text-4xl md:text-5xl lg:text-7xl font-medium tracking-tighter text-white leading-[1.1] mb-6 shadow-2xl drop-shadow-2xl">
+                               <h3 className="text-3xl md:text-4xl lg:text-5xl font-medium tracking-tighter text-white leading-[1.1] mx-auto mb-6 shadow-2xl drop-shadow-2xl text-balance whitespace-normal break-words max-w-[90%]">
                                   {project.category}
                                </h3>
                                <div className="inline-block px-5 py-2 rounded-full border border-white/20 bg-black/40 backdrop-blur-md text-xs font-bold text-white/70 uppercase tracking-widest shadow-xl">
