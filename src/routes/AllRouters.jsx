@@ -40,6 +40,7 @@ import BackendLearning from "../BackendLearning/BackendLearning";
 import PersonalPortfolio from "../PersonalPortfolio/Portfolio";
 import NewsFeed from "../Newsfeed/Newsfeed";
 import FreelancePortfolio from "../FreelancePortfolio/FreelancePortfolio";
+import NotFound from "../pages/NotFound";
 
 
 export default function AllRouters() {
@@ -86,6 +87,7 @@ export default function AllRouters() {
             <Route path="/PersonalPortfolio/*" element={<PersonalPortfolio />} />
             <Route path="/FreelancePortfolio/*" element={<FreelancePortfolio />} />
             <Route path="/Newsfeed" element={<NewsFeed />} />
+            <Route path="*" element={<NotFound />} />
         </Routes>
     );
 }
