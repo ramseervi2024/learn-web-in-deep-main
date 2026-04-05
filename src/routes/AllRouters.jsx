@@ -41,6 +41,7 @@ import PersonalPortfolio from "../PersonalPortfolio/Portfolio";
 import NewsFeed from "../Newsfeed/Newsfeed";
 import FreelancePortfolio from "../FreelancePortfolio/FreelancePortfolio";
 import NotFound from "../pages/NotFound";
+import RPSAppStore from "../RPSAppStore/RPSAppStore";
 
 
 export default function AllRouters() {
@@ -87,6 +88,7 @@ export default function AllRouters() {
             <Route path="/PersonalPortfolio/*" element={<PersonalPortfolio />} />
             <Route path="/FreelancePortfolio/*" element={<FreelancePortfolio />} />
             <Route path="/Newsfeed" element={<NewsFeed />} />
+            <Route path="/RPSAppStore" element={<RPSAppStore />} />
             <Route path="*" element={<NotFound />} />
         </Routes>
     );

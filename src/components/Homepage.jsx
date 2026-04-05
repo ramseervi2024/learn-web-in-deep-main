@@ -45,6 +45,7 @@ export default function Homepage() {
     { id: 37, title: "PersonalPortfolio", url: "PersonalPortfolio" },
     { id: 38, title: "FreelancePortfolio", url: "FreelancePortfolio" },
     { id: 39, title: "Newsfeed", url: "Newsfeed" },
+    { id: 40, title: "RPSAppStore", url: "RPSAppStore" },
   ];
 
   return (

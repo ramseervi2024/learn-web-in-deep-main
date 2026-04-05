@@ -4,18 +4,7 @@ import Portfolio1 from './Portfolio1';
 import Portfolio2 from './Portfolio2';
 import Portfolio3 from './Portfolio3';
 import Portfolio4 from './Portfolio4';
-import Portfolio5 from './Portfolio5';
-import Portfolio6 from './Portfolio6';
-import Portfolio7 from './Portfolio7';
-import Portfolio8 from './Portfolio8';
-import Portfolio9 from './Portfolio9';
-import Portfolio10 from './Portfolio10';
-import Portfolio11 from './Portfolio11';
-import Portfolio12 from './Portfolio12';
-import Portfolio13 from './Portfolio13';
-import Portfolio14 from './Portfolio14';
-import Portfolio15 from './Portfolio15';
-import Portfolio16 from './Portfolio16';
+
 
 function PortfolioDirectory() {
     const portfolios = [
@@ -23,18 +12,18 @@ function PortfolioDirectory() {
         { id: 2, title: 'Dark Mode Pro', desc: 'Sleek dark theme for developers.' },
         { id: 3, title: 'Creative Studio', desc: 'Bold typography and interactive elements.' },
         { id: 4, title: 'Photography Focus', desc: 'Image-heavy layout for visual artists.' },
-        { id: 5, title: 'Tech Startup', desc: 'Professional, trustworthy design.' },
-        { id: 6, title: 'Bento Grid', desc: 'Trendy grid-based layout for quick access.' },
-        { id: 7, title: 'Deep Space', desc: 'Immersive, dark space-themed experience.' },
-        { id: 8, title: 'Cinematic 3D', desc: 'High-end, glassmorphic WebGL experience.' },
-        { id: 9, title: 'AI Futuristic', desc: 'Neon-glow UI with animated particle backgrounds.' },
-        { id: 10, title: '3D Interactive', desc: 'High-performance WebGL experience with React Three Fiber.' },
-        { id: 11, title: 'Glassmorphism Pro', desc: 'Sleek glass-based design with liquid backgrounds.' },
-        { id: 12, title: 'Storytelling', desc: 'Immersive horizontal scrolling narrative experience.' },
-        { id: 13, title: 'Editorial Strategy', desc: 'Bold typography and grid-based strategic layout.' },
-        { id: 14, title: 'Developer OS', desc: 'Dashboard UI with terminal and system monitoring feel.' },
-        { id: 15, title: 'Zen Minimalist', desc: 'Stark, foundation-focused design with crimson accents.' },
-        { id: 16, title: 'Liquid Agency', desc: 'Fluid, high-end agency style with refractive elements.' },
+        // { id: 5, title: 'Tech Startup', desc: 'Professional, trustworthy design.' },
+        // { id: 6, title: 'Bento Grid', desc: 'Trendy grid-based layout for quick access.' },
+        // { id: 7, title: 'Deep Space', desc: 'Immersive, dark space-themed experience.' },
+        // { id: 8, title: 'Cinematic 3D', desc: 'High-end, glassmorphic WebGL experience.' },
+        // { id: 9, title: 'AI Futuristic', desc: 'Neon-glow UI with animated particle backgrounds.' },
+        // { id: 10, title: '3D Interactive', desc: 'High-performance WebGL experience with React Three Fiber.' },
+        // { id: 11, title: 'Glassmorphism Pro', desc: 'Sleek glass-based design with liquid backgrounds.' },
+        // { id: 12, title: 'Storytelling', desc: 'Immersive horizontal scrolling narrative experience.' },
+        // { id: 13, title: 'Editorial Strategy', desc: 'Bold typography and grid-based strategic layout.' },
+        // { id: 14, title: 'Developer OS', desc: 'Dashboard UI with terminal and system monitoring feel.' },
+        // { id: 15, title: 'Zen Minimalist', desc: 'Stark, foundation-focused design with crimson accents.' },
+        // { id: 16, title: 'Liquid Agency', desc: 'Fluid, high-end agency style with refractive elements.' },
     ];
 
     return (
@@ -107,7 +96,7 @@ export default function Portfolio() {
             <Route path="2" element={<><BackButton /><Portfolio2 /></>} />
             <Route path="3" element={<><BackButton /><Portfolio3 /></>} />
             <Route path="4" element={<><BackButton /><Portfolio4 /></>} />
-            <Route path="5" element={<><BackButton /><Portfolio5 /></>} />
+            {/* <Route path="5" element={<><BackButton /><Portfolio5 /></>} />
             <Route path="6" element={<><BackButton /><Portfolio6 /></>} />
             <Route path="7" element={<><BackButton /><Portfolio7 /></>} />
             <Route path="8" element={<><BackButton /><Portfolio8 /></>} />
@@ -118,7 +107,7 @@ export default function Portfolio() {
             <Route path="13" element={<><BackButton /><Portfolio13 /></>} />
             <Route path="14" element={<><BackButton /><Portfolio14 /></>} />
             <Route path="15" element={<><BackButton /><Portfolio15 /></>} />
-            <Route path="16" element={<><BackButton /><Portfolio16 /></>} />
+            <Route path="16" element={<><BackButton /><Portfolio16 /></>} /> */}
         </Routes>
     );
 }
