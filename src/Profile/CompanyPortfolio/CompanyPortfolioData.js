@@ -1,233 +1,248 @@
 export const CompanyPortfolio = {
   "brand": {
     "name": "RPS DIGITAL STORE",
-    "tagline": "Scalable Software for Ambitious Startups",
-    "description": "We engineer high-performance web and mobile applications that help founders launch faster, scale securely, and dominate their markets.",
+    "tagline": "Software Engineered for Scaling Founders",
+    "description": "We are a premium software engineering agency specializing in high-performance React Native ecosystems, resilient SaaS architectures, and internal enterprise automation. We build the indestructible digital backbone for your business growth.",
     "website": "https://rpsdigitalworld.store/",
     "email": "info@rpstechno.com",
-    "phone": "+1 (555) 123-4567",
-    "location": "Global / Remote Native",
-    "support": "Priority Client Support",
+    "phone": "+91 (Agency) Support",
+    "location": "Global / Remote-First Agency",
     "founded": "2023",
-    "business_type": "Premium Software Engineering Agency"
+    "business_type": "Premium Software Engineering Consultancy"
   },
 
   "hero": {
-    "title": "Software Engineered for Growth.",
-    "subtitle": "We turn complex business problems into elegant, production-ready digital products. Delivered on time and built to scale.",
-    "cta_primary": "Start Your Project",
-    "cta_secondary": "View Case Studies"
+    "title": "Scale Your Vision with Precision.",
+    "subtitle": "We transform complex business requirements into high-end, production-ready digital products. Our managed engineering teams deliver technical excellence on time, every time.",
+    "cta_primary": "Consult with Our Architects",
+    "cta_secondary": "View Scaled Case Studies"
   },
 
   "stats": [
     { "label": "Enterprise Apps Shipped", "value": "25+" },
-    { "label": "Client Revenue Generated", "value": "$5M+" },
-    { "label": "On-Time Delivery Rate", "value": "100%" },
+    { "label": "Revenue Impacted", "value": "$5M+" },
+    { "label": "Retention Rate", "value": "98%" },
     { "label": "Global Partners", "value": "40+" }
   ],
 
   "services": [
     {
-      "category": "SaaS Web Applications",
-      "description": "Custom SaaS platforms engineered for speed, security, and massive scalability. We build the architecture that supports your growth.",
-      "technologies": ["React.js", "Next.js", "TypeScript", "Tailwind"],
-      "features": ["Multi-tenant Architecture", "SSO & Auth", "Payment Gateways", "Admin Dashboards"]
+      "category": "Enterprise Mobile Ecosystems",
+      "description": "Massive-scale React Native applications engineered for speed, security, and consistent cross-platform user experience.",
+      "features": ["Native Profile Optimization", "Micro-Frontend Architectures", "Secure Payment Vaults", "CI/CD App Store Pipelines"]
     },
     {
-      "category": "Mobile App Development",
-      "description": "Native-feeling iOS and Android applications perfectly optimized for user retention, smooth animations, and high conversion rates.",
-      "technologies": ["React Native", "Expo", "Flutter"],
-      "features": ["Cross-Platform Codebase", "Offline Sync", "Push Notifications", "App Store Deployment"]
+      "category": "Managed SaaS Engineering",
+      "description": "We provide end-to-end full-stack engineering teams to design, build, and maintain your most critical SaaS platforms.",
+      "features": ["Scalable Node.js Backends", "Multi-Tenant Architectures", "Real-Time Data Pipelines", "Admin Power Dashboards"]
     },
     {
-      "category": "Backend Engineering",
-      "description": "Robust, secure, and lightning-fast APIs that serve as the indestructible backbone of your digital product.",
-      "technologies": ["Node.js", "Express.js", "Python", "PostgreSQL"],
-      "features": ["Microservices", "REST/GraphQL APIs", "Caching Strategies", "Database Optimization"]
-    },
-    {
-      "category": "UI/UX Product Design",
-      "description": "We don’t just write code; we design intuitive, pixel-perfect user experiences that your customers will absolutely love.",
-      "features": ["Wireframing", "Interactive Prototypes", "Design Systems", "User Testing"]
-    },
-    {
-      "category": "E-Commerce Solutions",
-      "description": "High-converting bespoke e-commerce platforms designed to reduce cart abandonment and handle massive traffic spikes.",
-      "features": ["Custom Checkout Flow", "Inventory Sync", "Dynamic Pricing", "Headless Commerce"]
-    },
-    {
-      "category": "Cloud & DevOps",
-      "description": "Zero-downtime infrastructure setup. We ensure your application stays online, fast, and secure under any load.",
-      "technologies": ["AWS", "Docker", "CI/CD Pipeline"],
-      "features": ["Auto-Scaling Hubs", "Automated Backups", "Continuous Integration", "Security Audits"]
+      "category": "Internal Operations Automation",
+      "description": "Customized internal tools and high-concurrency operations software for workforce management and sales intelligence.",
+      "features": ["Role-Based Access (RBAC)", "Resource Intelligence", "Automated Reporting", "IoT & Geofence Integration"]
     }
   ],
 
   "technology_stack": {
-    "frontend": ["React.js", "Next.js", "TypeScript", "Tailwind CSS", "Framer Motion"],
-    "backend": ["Node.js", "Express.js", "Python", "GraphQL", "PostgreSQL"],
-    "mobile": ["React Native", "Expo", "Swift", "Kotlin"],
-    "database": ["MongoDB", "PostgreSQL", "Redis", "Supabase"],
-    "cloud": ["AWS", "Vercel", "Docker", "GitHub Actions"]
+    "mobile": ["React Native CLI Specialist", "iOS / Swift Bridges", "Android / Kotlin Modules", "Expo (Selective)"],
+    "frontend": ["React.js Expert", "TypeScript Strategy", "Redux Logic", "Tailwind CSS Architecture"],
+    "backend": ["Node.js Architectures", "Express.js", "Python Data Sprints", "Postgres / MongoDB"],
+    "cloud": ["AWS / Docker Deployments", "Google Cloud Platform", "Vercel / Next.js", "Firebase Scaling"]
   },
+
+  "saas_capabilities": [
+    "Enterprise Cloud Infrastructure (AWS/GCP)",
+    "Secure Digital Wallet Architectures",
+    "High-Concurrency User Management",
+    "Regulatory Compliance & Security Protocols",
+    "Automated Zero-Downtime Deployment CI/CD",
+    "Managed Team Performance Analytics"
+  ],
 
   "completed_projects": [
     {
-      "project_name": "PropTech Booking Engine",
-      "type": "Web SaaS Platform",
-      "description": "A comprehensive property management and holiday booking platform for a mid-sized real estate agency.",
-      "problem": "The client was losing 30% of potential bookings due to page latency, manual invoicing, and a fragmented property calendar.",
-      "solution": "Engineered a high-performance Next.js booking engine with automated Stripe invoicing and real-time calendar sync, increasing booked revenue by 45% in Q1.",
-      "features": ["Real-time Availability", "Automated Billing", "Owner Dashboard"],
-      "tech_stack": ["Next.js", "Node.js", "PostgreSQL", "Stripe API"],
-      "result": ["Increased revenue by 45%", "Zero double-bookings"]
+      "project_name": "Global Event Ecosystem & Ticketing Hub",
+      "type": "Managed B2C Product",
+      "description": "A robust ticketing and wallet ecosystem serving thousands of concurrent users with zero-latency digital wallet payments architecture.",
+      "problem": "Manual booking and fragmented third-party ticketing systems were leading to revenue loss and high launch-day failure rates.",
+      "solution": "Engineered a custom, high-concurrency ticketing engine with native Apple/Google Pay and instant booking confirmations.",
+      "features": ["High-concurrency ticket engine", "Native wallet security", "Universal QR distribution"],
+      "tech_stack": ["React Native CLI", "AWS Lambda", "Secure Sockets"],
+      "result": ["Handled 50k+ User Spikes", "Zero checkout downtime"]
     },
     {
-      "project_name": "NextGen Hiring Marketplace",
-      "type": "Two-Sided Marketplace",
-      "description": "A specialized platform connecting enterprise companies with vetted freelance engineers.",
-      "problem": "Their legacy WordPress system crashed frequently and couldn't handle concurrent user load during peak hiring hours.",
-      "solution": "Migrated their entire infrastructure to AWS with a decoupled React/Node stack, reducing downtime to zero and improving load times by 300%.",
-      "features": ["Algorithmic Matching", "Video Interviews", "Secure Escrow"],
-      "tech_stack": ["React.js", "Express.js", "MongoDB", "AWS/Docker"],
-      "result": ["300% faster load times", "Zero downtime during peaks"]
+      "project_name": "Hospitality SaaS & Booking Ecosystem",
+      "type": "Web & Mobile SaaS",
+      "description": "Comprehensive hospitality booking engine allowing for property management, automated billing, and secure customer-side reservations.",
+      "problem": "The client lacked a unified digital infrastructure to manage localized properties and automated billing cycles for owners.",
+      "solution": "Developed a full-stack hospitality engine with automated Stripe/Mada invoice generation and real-time calendar syncing across platforms.",
+      "features": ["Owner admin dashboards", "Automated Billing Engine", "Deep-linked reservation logic"],
+      "tech_stack": ["Next.js", "React Native", "PostgreSQL", "Stripe"],
+      "result": ["45% increase in booked revenue", "Investor-grade infrastructure"]
     },
     {
-      "project_name": "Aura Commerce App",
-      "type": "Mobile E-Commerce",
-      "description": "A premium lifestyle mobile shopping application for iOS and Android.",
-      "problem": "Client had a high mobile cart abandonment rate due to a clunky, non-native mobile web experience.",
-      "solution": "Built a blazing fast React Native application with native Apple/Google Pay integration, reducing checkout friction to seconds.",
-      "features": ["One-Tap Checkout", "AR Product Viewer", "Loyalty Program"],
-      "tech_stack": ["React Native", "Redux", "Shopify API"],
-      "result": ["60% lower cart abandonment", "4.9 App Store Rating"]
+      "project_name": "Workforce Intelligence & Productivity Hub",
+      "type": "Internal Enterprise Ops",
+      "description": "Customized workforce management portal for enterprise-level tracking, automated resource intelligence, and sales reporting.",
+      "problem": "Inaccurate manual tracking of enterprise field operations was costing 15% of annual operational efficiency.",
+      "solution": "Built a secure geofenced attendance engine with real-time sales reporting and automated manager dashboards for deep operational oversight.",
+      "features": ["Geolocation-precise tracking", "Granular Access (RBAC)", "Automated Sales Reporting"],
+      "tech_stack": ["React Native", "Firebase", "Redux", "PostgreSQL"],
+      "result": ["Recaptured 15% efficiency", "Real-time field oversight"]
     },
     {
-      "project_name": "Pulse Analytics Dashboard",
-      "type": "Enterprise Portal",
-      "description": "Internal data visualization tool for a logistics company to track delivery metrics.",
-      "problem": "Operations managers were spending 15 hours a week manually compiling Excel reports from 4 different APIs.",
-      "solution": "Developed a unified internal dashboard that processes millions of rows of tracking data into visually digestible, real-time charts.",
-      "features": ["Data Aggregation", "Custom CSV Exports", "Role-Based Access"],
-      "tech_stack": ["React.js", "Python", "Chart.js", "PostgreSQL"],
-      "result": ["Saved 60 hours/month", "Real-time fleet tracking"]
+      "project_name": "Luxury Retail & E-Commerce Mobile Engine",
+      "type": "Premium Mobile Retail",
+      "description": "A high-performance consumer retail engine featuring a complex dynamic product matrix and frictionless native checkout flows.",
+      "problem": "Legacy mobile web experience was failing to convert premium users, leading to significant revenue leakage at checkouts.",
+      "solution": "Built a high-end native storefront with custom liquid UI components and 100% native payment gateway integration for frictionless conversion.",
+      "features": ["Dynamic Checkout Matrix", "Liquid Glass UI Components", "Real-time fulfilling sync"],
+      "tech_stack": ["React Native", "TypeScript", "Shopify API Integration"],
+      "result": ["40% lower checkout friction", "4.9 App Store Rating"]
+    },
+    {
+      "project_name": "On-Demand Services & Wellness Marketplace",
+      "type": "Service Economy Product",
+      "description": "A React-based on-demand marketplace for real-time service scheduling, professional dashboards, and automated appointment reminders.",
+      "problem": "Fragmented appointment management was leading to high cancellation rates and inefficient service professional schedules.",
+      "solution": "Engineered a unified service marketplace platform with real-time conflict resolution and provider-side analytics dashboards.",
+      "features": ["Conflict-free Scheduling", "Provider Analytics Dashboards", "Automated SMS/Email Reminders"],
+      "tech_stack": ["React.js", "Node.js", "Express", "Twilio API"],
+      "result": ["Zero booking overlaps", "Significant reduction in no-shows"]
+    },
+    {
+      "project_name": "Internal Enterprise Event Operations Portal",
+      "type": "Operations Management",
+      "description": "High-performance internal tool for event organizers to oversee events, attendees, and ticketing with hardware scanning integration.",
+      "problem": "Large-scale event entry was slow and error-prone due to reliance on manual spreadsheet verification.",
+      "solution": "Designed an enterprise-grade staff portal with integrated QR scanning, real-time alerts, and role-based operational oversight.",
+      "features": ["Hardware QR scanning", "Real-time Staff Alerts", "Dynamic Speaker Management"],
+      "tech_stack": ["React Native CLI", "XCode", "Hardware Interface SDKs"],
+      "result": ["300% faster entry processing", "Secure operational control"]
+    },
+    {
+      "project_name": "B2B Supply Chain & Merchant Portal",
+      "type": "Supply Chain Ecosystem",
+      "description": "Robust B2B platform allowing vendors to list products, manage massive inventories, and process bulk orders securely.",
+      "problem": "Supply chain vendors were struggling with manual inventory updates and insecure bulk order processing protocols.",
+      "solution": "Created a robust merchant portal with complex inventory syncing engine and secure bulk-processing logic for B2B vendors.",
+      "features": ["Complex Inventory Syncing", "Secure Bulk Order Logic", "Vendor Pricing Matrix"],
+      "tech_stack": ["React.js", "Node.js", "MySQL", "Docker"],
+      "result": ["Stabilized B2B operations", "Zero payment discrepancies"]
+    },
+    {
+      "project_name": "Digital Talent & Recruitment Marketplace",
+      "type": "Recruitment Ecosystem",
+      "description": "Managed recruitment platform for remote work, enabling users to post projects and manage team collaboration at scale.",
+      "problem": "The client needed a resilient, two-sided marketplace to handle complex job bidding and tiered membership plans.",
+      "solution": "Consulted on and delivered a full-stack talent marketplace with automated bidding systems and role-based team management dashboards.",
+      "features": ["Bid & Auction Engine", "Tiered Membership Logic", "Integrated Team Dashboards"],
+      "tech_stack": ["React.js", "Node.js", "TypeScript", "AWS"],
+      "result": ["Launched Talent Marketplace", "Automated billing cycles"]
     }
   ],
 
   "testimonials": [
     {
-      "name": "Sarah Jenkins, CTO at TechFlow",
-      "feedback": "RPS Digital didn't just write code; they anticipated edge cases we hadn't even thought of. The SaaS MVP was delivered 2 weeks early, and the code quality was impeccable.",
+      "name": "Sarah J. | CEO at FinTech Innovation",
+      "feedback": "RPS Digital doesn't just write code; they provide strategic technical direction. They transformed our fragmented MVP into an enterprise-ready mobile product.",
       "rating": 5
     },
     {
-      "name": "Marcus Chen, Founder of Elevate",
-      "feedback": "We hired RPS after a terrible experience with another agency. They completely rescued our project, communicated every single day, and launched a flawless mobile app.",
+      "name": "Marcus L. | Founder at PropTech Global",
+      "feedback": "The managed team at RPS delivered our hospitality SaaS product two weeks ahead of schedule and within our precise technical requirements.",
       "rating": 5
     }
   ],
 
   "pricing": [
     {
-      "plan": "Starter MVP",
-      "price": "$2,499",
+      "plan": "Architectural Strategy",
+      "price": "Custom Consultancy",
       "features": [
-        "Landing Page & UI/UX Design",
-        "Responsive Web App",
-        "Basic Database Setup",
-        "Authentication System",
-        "Delivery in 2 Weeks"
+        "Product Discovery Sessions",
+        "Architecture Design Patterns",
+        "Technical Debt Audits",
+        "Infrastructure Roadmapping"
       ]
     },
     {
-      "plan": "Scale SaaS",
-      "price": "$7,999",
+      "plan": "Managed Engineering Team",
+      "price": "Retainer Based",
       "features": [
-        "Full-Stack Web App",
-        "Payment Gateway Integration",
-        "Admin Analytics Dashboard",
-        "API Architecture",
-        "Delivery in 4-6 Weeks"
+        "Dedicated Senior Engineers",
+        "Full-Cycle Development Ops",
+        "Daily Agile Sprints",
+        "Ongoing Priority Support",
+        "Long-Term Partnership"
       ]
     },
     {
-      "plan": "Enterprise",
-      "price": "Custom",
+      "plan": "Digital Transformation",
+      "price": "Market Expansion",
       "features": [
-        "Dedicated Engineering Team",
-        "Web & Mobile Applications",
-        "Complex Microservices",
-        "Ongoing Maintenance",
-        "Priority 24/7 Support"
+        "Full Ecosystem Architecture",
+        "Legacy SaaS Migration",
+        "Multi-Platform Parity",
+        "Dedicated Delivery Manager",
+        "24/7 Priority SLA"
       ]
     }
   ],
 
   "workflow": [
-    "01. Discovery & Architecture Planning",
-    "02. UI/UX Prototyping & Approval",
-    "03. Agile Development Sprints",
-    "04. Rigorous QA & Security Testing",
-    "05. Zero-Downtime Deployment",
-    "06. Ongoing Maintenance & Scaling"
-  ],
-
-  "guarantees": [
-    {
-      "title": "30-Day Zero Bug Code",
-      "description": "If you find a critical bug in our production code within 30 days of launch, we fix it entirely free of charge."
-    },
-    {
-      "title": "Transparent Async Comm",
-      "description": "No hidden hours. You get direct access to our tracking boards and daily async updates via your dedicated Slack channel."
-    },
-    {
-      "title": "100% IP Transfer",
-      "description": "Upon final milestone payment, full ownership of the codebase and intellectual property is legally transferred to you."
-    }
-  ],
-
-  "featured_in": [
-    "TechCrunch", 
-    "Product Hunt #1", 
-    "Awwwards Nominee", 
-    "Y Combinator Alumni Backed"
-  ],
-
-  "certifications": [
-    "AWS Certified Solutions Architect",
-    "Verified Stripe Partner",
-    "Vercel Experts Network"
+    "01. Strategic Discovery & Scoping",
+    "02. Architecture & UI/UX Blueprinting",
+    "03. Scaled Agile Feature Engineering",
+    "04. Comprehensive Quality Assurance",
+    "05. Zero-Downtime Global Deployment",
+    "06. Continuous Lifecycle Maintenance"
   ],
 
   "faq": [
     {
-      "question": "What happens if I need changes after the first draft?",
-      "answer": "We incorporate two rounds of comprehensive revisions into every project phase to ensure the final product perfectly aligns with your vision."
+      "question": "How does RPS Digital ensure Intellectual Property (IP) security?",
+      "answer": "We operate with full legal transparency. 100% of the Intellectual Property, source code, and design assets are legally transferred to your company upon milestone completion. We sign strict NDAs before project discovery begins."
     },
     {
-      "question": "Who owns the intellectual property and code?",
-      "answer": "Upon final payment, you own 100% of the intellectual property, design assets, and source code. No vendor lock-in, ever."
+      "question": "Can your agency scale our product for 100,000+ concurrent users?",
+      "answer": "Yes, scaling is our specialty. We architect mobile and web platforms using auto-scaling cloud infrastructure (AWS/GCP), microservices, and high-performance database indexing to handle massive traffic spikes."
     },
     {
-      "question": "How do we communicate during the project?",
-      "answer": "We set up a dedicated, private Slack channel for day-to-day chat, and we provide comprehensive end-of-week video updates on your project's progress."
+      "question": "How do you manage cross-platform parity between iOS and Android?",
+      "answer": "Using our specialized React Native CLI framework, we maintain a 90%+ shared codebase while leveraging native modules for platform-specific interactions, ensuring your users get the same premium feel on both devices."
     },
     {
-      "question": "Do you outsource my project to junior devs?",
-      "answer": "Absolutely not. Every line of code is written in-house by senior engineers to guarantee security, performance, and best practices."
+      "question": "What is the structure of your managed engineering teams?",
+      "answer": "Every project is led by a Senior Architect and a dedicated Project Manager. We provide a cross-functional squad of frontend, backend, and QA engineers who work as an extension of your internal team."
+    },
+    {
+      "question": "How frequently will we receive project updates?",
+      "answer": "We provide daily asynchronous updates via Slack and comprehensive weekly video demonstrations of your product's progress. You have 24/7 access to our Jira/Trello boards for full transparency."
+    },
+    {
+      "question": "Do you provide long-term maintenance and security SLAs?",
+      "answer": "Absolutely. We offer tailored Service Level Agreements (SLAs) for ongoing maintenance, covering monthly security audits, dependency updates, and priority bug resolution for enterprise clients."
+    },
+    {
+      "question": "What is your approach to 'legacy rescue' projects?",
+      "answer": "We specialize in reviving failing or outdated software. We perform a technical audit, stabilize the existing core, and then systematically migrate the architecture to a modern, scalable stack without affecting live users."
+    },
+    {
+      "question": "How do you handle data privacy and compliance (GDPR/HIPAA)?",
+      "answer": "Security is baked into our architecture. We implement encryption-at-rest, OAuth-driven authentication, and localized data residency to ensure your product meets all international compliance standards."
     }
   ],
 
   "contact": {
     "email": "hello@rpsdigital.store",
-    "phone": "+1 (555) 000-0000",
-    "form_fields": ["name", "company", "budget", "message"]
+    "phone": "+91 (Agency) Direct",
+    "work_type": "Enterprise Projects / Managed Teams"
   },
 
   "footer": {
     "brand": "RPS DIGITAL STORE",
-    "tagline": "Engineered for excellence. Built for scale.",
+    "tagline": "Software Excellence, Scaled for Business.",
     "copyright": "© 2026 RPS DIGITAL STORE. All rights reserved."
   }
 };

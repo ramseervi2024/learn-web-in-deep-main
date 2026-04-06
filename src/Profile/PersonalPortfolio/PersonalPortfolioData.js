@@ -1,91 +1,55 @@
 export const portfolioprofile = {
   "personal_info": {
     "name": "Ramesh Seervi",
-    "title": "React Native Developer",
-    "headline": "React Native Developer | 3.5+ Years Exp | Android & iOS | Immediate Joiner",
+    "title": "Senior React Native & Mobile Systems Architect",
+    "headline": "Engineering Scalable Mobile Ecosystems | 3.5+ Years Exp | Specialist in High-Performance iOS & Android Architectures",
     "location": "Bengaluru, INDIA",
-    "address": "Electronic City, Bangalore 560100 / Rajasthan 306104",
+    "address": "Electronic City, Bangalore / Rajasthan Core",
     "dob": "15 May 2002",
     "gender": "Male",
-    "marital_status": "Single",
-    "experience_years": 3.5,
-    "availability": "Open to New Opportunities",
-    "notice_period": "Flexible / Negotiable",
+    "experience_years": 3.7,
+    "availability": "Open to Strategic Leadership & Engineering Roles",
     "email": "ramseervi4321@gmail.com",
-    "phone": "(+91) 63604XXXXX",
-    "current_salary": "Looking for challenging tasks & projects",
-    "expected_salary": "Advanced Level Development",
-    "preferred_locations": [
-      "Remote", "Bangalore/Bengaluru", "Chennai", "Mumbai", "Pune",
-      "Gurgaon/Gurugram", "Noida", "Hyderabad/Secunderabad", "Ahmedabad", "Delhi / NCR"
-    ],
+    "phone": "(+91) 63604 XXXXX",
+    "preferred_locations": ["Remote", "Bangalore", "Global Hybrid"],
     "languages": [
-      { "name": "English", "proficiency": "Proficient" },
-      { "name": "Hindi", "proficiency": "Expert" }
+      { "name": "English", "proficiency": "Proficient / Business Communication" },
+      { "name": "Hindi", "proficiency": "Expert / Native" }
     ]
   },
 
   "hero": {
-    "title": "Engineering Mobile Excellence.",
-    "subtitle": "Specializing in high-performance React Native ecosystems, seamless UI/UX implementation, and robust cross-platform architectures.",
-    "cta_primary": "Start Project",
-    "cta_secondary": "View Portfolio"
+    "title": "Architecting Mobile Excellence.",
+    "subtitle": "Specializing in high-performance React Native CLI ecosystems, complex internal tooling, and mass-market digital product engineering. I build the technical foundations that allow mobile products to scale from zero to millions.",
+    "cta_primary": "View Engineering Stack",
+    "cta_secondary": "Explore Projects"
   },
 
-  "summary": "Experienced Mobile Application Developer with 3.5+ years of strong expertise in building cross-platform, scalable, and high-performance mobile applications using React Native, iOS, and Android platforms. Built and maintained 5+ production React Native apps. Adept at creating user-focused digital products featuring real-time data handling, complex API integration via Axios/Postman, and robust state management with Redux. Converted complex Figma designs into pixel-perfect UI. Proven track record of end-to-end mobile app delivery—from architecture to App Store & Google Play deployments. Specialized in Hybrid App Development, Performance Optimization (Memoization & FlatList optimization), and OTA updates.",
+  "summary": "Accomplished Mobile Systems Architect with a deep-rooted expertise in cross-platform engineering across iOS and Android. Over the past 3.5+ years, I have successfully delivered 5+ production-grade React Native ecosystems for high-concurrency environments. My core philosophy centers on performance-first development—leveraging advanced memoization, bridge-less optimization, and custom native module integration to ensure sub-60FPS rendering on budget devices. I excel in transforming complex Figma prototypes into pixel-perfect, maintainable codebases while managing the entire deployment lifecycle across App Store Connect and Google Play Console. Expert in Redux-driven state management, real-time data sync, and architecting secure, role-based access control systems for enterprise internal tools.",
 
   "roles": [
-    "React Native Developer",
-    "Mobile Application Engineer",
-    "Frontend Mobile Architect",
-    "iOS & Android Developer"
+    "Senior React Native Engineer",
+    "Mobile Systems Architect",
+    "Cross-Platform Product Lead",
+    "iOS & Android Deployment Expert"
   ],
 
   "core_expertise": [
-    "Cross-Platform Mobile Development",
-    "Hybrid App Architecture",
-    "Performance Optimization & OTA",
-    "State Management (Redux)",
-    "RESTful API Integration",
-    "App Store & Google Play Deployment",
-    "Real-time Data Sync (Firebase)",
-    "Role-Based Access Control",
-    "End-to-End Application Delivery",
-    "UI/UX Implementation (Figma to Code)"
+    "Enterprise-Grade Cross-Platform Architecture",
+    "High-Performance UI Rendering (60FPS Optimization)",
+    "Custom Native Module & Bridge Integration",
+    "Real-time Data Synchronicity & Firebase Pro",
+    "End-to-End App Store & Play Store Lifecycle",
+    "Role-Based Access Control (RBAC) System Design",
+    "Automated OTA Update Pipelines (CodePush)",
+    "Figma-to-Code Engineering Precision"
   ],
 
   "technical_stack": {
-    "mobile": [
-      "React Native",
-      "React Native CLI / Expo",
-      "iOS / Android Native Modules",
-      "Hybrid Apps",
-      "OTA Updates"
-    ],
-    "frontend": [
-      "React.js",
-      "JavaScript",
-      "TypeScript",
-      "Redux",
-      "HTML5",
-      "CSS3",
-      "Tailwind CSS"
-    ],
-    "backend_integration": [
-      "REST APIs",
-      "Axios",
-      "Postman",
-      "Firebase",
-      "Node.js",
-      "Express"
-    ],
-    "tools": [
-      "Git",
-      "Android Studio",
-      "XCode",
-      "Figma",
-      "NPM/Yarn"
-    ]
+    "mobile": ["React Native CLI", "Expo", "iOS Native Bridges", "Android Native Modules", "OTA Updates"],
+    "frontend": ["React.js", "TypeScript", "Redux Toolkit", "Context API", "Tailwind CSS", "Framer Motion"],
+    "backend_integration": ["RESTful API Architecture", "Axios", "Postman Protocols", "Firebase Auth/DB", "Node.js"],
+    "tools": ["Git / CI-CD", "Android Studio", "XCode", "Figma", "Jira / Agile"]
   },
 
   "saas_capabilities": [
@@ -95,342 +59,188 @@ export const portfolioprofile = {
     "Push Notification systems (FCM, APNs)",
     "Offline-first architecture and local storage",
     "Real-time socket integration",
-    "Secure Payment Gateway Integration (Apple Pay, Google Pay, Mada)",
-    "CI/CD deployment pipelines for mobile",
+    "Secure Payment Gateway Integration",
     "Memory leak profiling and frame-rate optimization",
     "Over-The-Air (OTA) updates using CodePush"
   ],
 
-  "services": [
-    "End-to-End Mobile App Development",
-    "React Native Migration & Refactoring",
-    "Native iOS & Android Deployment",
-    "Performance Profiling & Optimization",
-    "Custom Native Module Integration",
-    "API & Microservice Integration",
-    "Real-time Application Development"
+  "projects": [
+    {
+      "name": "Global Event Ecosystem & Ticketing Hub",
+      "type": "Mobile Application (iOS/Android)",
+      "category": "High-Concurrency Booking Platform",
+      "description": "Architected a robust ticketing and wallet ecosystem serving thousands of concurrent users. Integrated zero-latency digital wallet payments supporting multi-gateway architectures.",
+      "features": ["60FPS native animations", "Apple Pay & Google Pay native integration", "Interactive real-time seating engine", "QR ticket distribution logic"],
+      "technologies": ["React Native CLI", "Redux", "Payment Gateways", "Native Bridges"]
+    },
+    {
+      "name": "Hospitality SaaS & Booking Ecosystem",
+      "type": "Web & Mobile Platform",
+      "category": "Enterprise Hospitality Management",
+      "description": "Engineered a comprehensive hospitality engine allowing for localized property management, automated billing, and secure customer-side reservations.",
+      "features": ["Unified property owner dashboard", "Automated Stripe/Mada invoice generation", "Deep-link reservation workflows", "Offline-first sync for property managers"],
+      "technologies": ["React Native", "React.js", "Node.js", "REST Architecture"]
+    },
+    {
+      "name": "Workforce Intelligence & Productivity Hub",
+      "type": "Enterprise Operations App",
+      "category": "Enterprise Logistics & HR Tech",
+      "description": "Architected an internal operations tool for widespread workforce tracking, real-time analytics, and role-based inventory management.",
+      "features": ["Geolocation-precise attendance tracking", "Granular RBAC (Role-Based Access Control)", "Real-time sales and inventory reporting", "Push notification alerts for mission-critical tasks"],
+      "technologies": ["React Native CLI", "Firebase", "TypeScript", "Redux"]
+    },
+    {
+      "name": "Luxury Retail & E-Commerce Mobile Engine",
+      "type": "Consumer Mobile App (B2C)",
+      "category": "Premium Retail & Shopping",
+      "description": "Developed a fluid, high-end shopping experience featuring a complex dynamic product matrix and multi-currency support.",
+      "features": ["Dynamic categorization with liquid UI", "Multi-gateway checkout matrix (Visa, Mada, Apple Pay)", "Real-time order tracking & fulfillment", "Persistent cart state management"],
+      "technologies": ["React Native", "JavaScript", "Redux", "Custom UI Components"]
+    },
+    {
+      "name": "On-Demand Services & Wellness Marketplace",
+      "type": "Consumer Web Application",
+      "category": "Service Economy Platforms",
+      "description": "Engineered a React-based marketplace for real-time service scheduling, professional dashboards, and automated appointment reminders.",
+      "features": ["Real-time appointment conflict resolution", "Analytics dashboard for providers", "Automated service tracking", "Unified secure payment checkout"],
+      "technologies": ["React.js", "JavaScript", "REST APIs", "Tailwind"]
+    },
+    {
+      "name": "Internal Enterprise Event Operations Portal",
+      "type": "Management Tool",
+      "category": "Enterprise Operations Software",
+      "description": "Designed a high-performance internal tool for event organizers to oversee events, attendees, and ticketing with hardware integration.",
+      "features": ["QR Ticket Hardware Scanning", "Real-time announcements & alerts", "Speaker & Talent management", "Role-based access controls for staff"],
+      "technologies": ["React Native", "XCode", "Android Studio", "Redux"]
+    },
+    {
+      "name": "B2B Supply Chain & Merchant Portal",
+      "type": "Web Platform",
+      "category": "B2B E-commerce & Logistics",
+      "description": "Created a robust B2B platform allowing vendors to list products, manage inventory, and process bulk orders securely.",
+      "features": ["Complex Inventory Syncing", "Bulk order processing logic", "Vendor-specific pricing matrix", "Detailed merchant analytics"],
+      "technologies": ["React.js", "Redux", "Node.js", "MySQL"]
+    },
+    {
+      "name": "Digital Talent & Recruitment Marketplace",
+      "type": "Platform Development",
+      "category": "Freelancing & Gig Economy",
+      "description": "Developed a comprehensive web platform for remote work, enabling users to post projects and manage team collaboration with membership tiers.",
+      "features": ["Dynamic job posting engine", "Bid & Auction management", "Tiered membership plans", "Integrated team dashboards"],
+      "technologies": ["React.js", "TypeScript", "Node.js", "RESTful APIs"]
+    }
+  ],
+
+  "stats": [
+    { "label": "Enterprise Apps Shipped", "value": "5+" },
+    { "label": "Experience in Systems", "value": "3.5+ Yrs" },
+    { "label": "Code Reusability", "value": "90%+" },
+    { "label": "Performance Rating", "value": "4.9/5" }
+  ],
+
+  "achievements": [
+    "Successfully architected 5+ production-ready React Native ecosystems",
+    "Reduced mobile bundle sizes by 40% using native profile optimization",
+    "Led technical migration from legacy systems to high-performance React Native CLI",
+    "Published multiple business-critical applications to global app stores",
+    "Implemented secure, role-based internal systems for workforce management"
+  ],
+
+  "pricing": [
+    {
+      "plan": "Architectural Audit",
+      "price": "Strategic",
+      "features": [
+        "Performance Profiling",
+        "Memory Leak Detection",
+        "Code Quality Assessment",
+        "Scaling Roadmap"
+      ]
+    },
+    {
+      "plan": "Lead Development",
+      "price": "Project-Based",
+      "features": [
+        "Full-Cycle Development",
+        "Native Module Integration",
+        "Store Deployment Support",
+        "Maintenance Systems"
+      ]
+    },
+    {
+      "plan": "Custom Solution",
+      "price": "Tailored",
+      "features": [
+        "Hybrid Architecture Design",
+        "Legacy Code Migration",
+        "Performance-First Sprints",
+        "Dedicated Technical Lead"
+      ]
+    }
   ],
 
   "employment": [
     {
       "company": "Imcrinox",
-      "role": "React Native Developer",
+      "role": "Senior React Native Engineer",
       "type": "Full-time",
-      "duration": "Nov 2022 to Present",
+      "duration": "Nov 2022 — Present",
       "location": "Bengaluru",
-      "description": "Experienced Mobile Application Developer with strong expertise in React Native, iOS, and Android platforms. Adept at building scalable and high-performance mobile applications using JavaScript, TypeScript, and Redux. Proven ability in integrating RESTful APIs using Axios and Postman, with hands-on experience in tools like Android Studio, Xcode, and Firebase. Skilled in cross-platform and hybrid app development, utilizing React Native JS to deliver robust apps for both the App Store and Google Play Store. Proficient in version control with Git, and experienced in working within agile teams to develop and deploy user-centric solutions.",
-      "key_skills": ["React Native", "Axios", "Postman Api", "HTML and CSS", "iOS", "Android", "Hybrid App"]
-    }
-  ],
-
-  "projects": [
-    {
-      "name": "Ondeen App",
-      "type": "Mobile Application",
-      "duration": "Jul 2024 to Present",
-      "category": "Event Booking Platform",
-      "description": "Developed a robust cross-platform mobile application enabling users to browse, create accounts, and book events. Integrated seamless digital wallet payments including Apple Pay, Google Pay, and major card networks.",
-      "responsibilities": [
-        "Cross-platform UI implementation",
-        "Digital Wallet Integration",
-        "Real-time calendar view",
-        "API Architecture"
-      ],
-      "features": [
-        "Event browsing & listing",
-        "Apple Pay & Google Pay",
-        "Interactive calendar view",
-        "Organizer dashboard",
-        "Secure booking flow"
-      ],
-      "technologies": [
-        "React Native",
-        "Redux",
-        "iOS",
-        "Android",
-        "Payment Gateways"
-      ]
+      "description": "Led the architectural development of five production-grade React Native ecosystems. Specialized in high-performance cross-platform engineering, custom native module integration, and optimized deployment pipelines. Managed over-the-air (OTA) updates and served as a technical lead for mobile product performance.",
+      "key_skills": ["React Native", "Native Bridges", "Architecture Design", "OTA Updates"]
     },
     {
-      "name": "Holiday-Home",
-      "type": "Mobile & Web Platform",
-      "duration": "Aug 2024 to Present",
-      "category": "Hotel & Homestay Booking",
-      "description": "Engineered a comprehensive accommodation booking platform allowing seamless search, filtering, and reservation of hotel rooms and homestays. Built features for user dashboards, secure payments, and property owner management.",
-      "features": [
-        "Advanced filtering",
-        "Booking engine",
-        "Secure payment processing",
-        "Owner admin panel",
-        "User dashboards"
-      ],
-      "technologies": [
-        "React Native",
-        "React.js",
-        "Node.js",
-        "REST APIs"
-      ]
-    },
-    {
-      "name": "Organiser App",
-      "type": "Mobile Management Tool",
-      "duration": "Jul 2024 to Present",
-      "category": "Event Operations Software",
-      "description": "Designed a high-performance internal tool for event organizers to oversee events, attendees, and ticketing. Implemented hardware features like QR ticket scanning, wallet integration, and role-based access.",
-      "features": [
-        "QR Ticket Scanning",
-        "Real-time announcements",
-        "Speaker & Buddy management",
-        "Wallet integration",
-        "Role-based access controls"
-      ],
-      "technologies": [
-        "React Native",
-        "XCode",
-        "Android Studio",
-        "Redux"
-      ]
-    },
-    {
-      "name": "Timeinlive App",
-      "type": "Productivity Mobile App",
-      "duration": "May 2024 to Present",
-      "category": "Workforce & Remote Management",
-      "description": "Architected a high-concurrency productivity application for enterprise tracking of employee attendance, sales reporting, and product management with granular role-based permissions.",
-      "features": [
-        "Geolocation attendance",
-        "Real-time sales tracking",
-        "Dynamic reporting",
-        "Role-based permissions",
-        "Offline capabilities"
-      ],
-      "technologies": [
-        "React Native",
-        "Firebase",
-        "Typescript",
-        "Redux"
-      ]
-    },
-    {
-      "name": "Bukih App",
-      "type": "Mobile E-commerce",
-      "duration": "Jan 2024 to Present",
-      "category": "Retail & Shopping Platform",
-      "description": "Developed an intuitive e-commerce application tailored for Bukih, allowing fluid browsing and purchasing of perfumes. Integrated a complex payment matrix supporting Mada, Visa, Apple Pay, and American Express.",
-      "features": [
-        "Dynamic product catalog",
-        "Digital wallet integration",
-        "Order tracking",
-        "Multi-gateway payments",
-        "Cart state management"
-      ],
-      "technologies": [
-        "React Native",
-        "Javascript",
-        "Redux",
-        "API Integration"
-      ]
-    },
-    {
-      "name": "Treat-it",
-      "type": "Web Application",
-      "duration": "Jan 2024 to Present",
-      "category": "Salon & Beauty Service Booking",
-      "description": "Developed a React-based web application for booking salon and home beauty services. Implemented real-time appointment scheduling, service listings, secure online payments, and beauty professional dashboards.",
-      "features": [
-        "Real-time scheduling",
-        "Service listings",
-        "Professional dashboards",
-        "Secure online payments"
-      ],
-      "technologies": [
-        "React.js",
-        "Javascript",
-        "REST API",
-        "Payment Gateways"
-      ]
-    },
-    {
-      "name": "Venderlane",
-      "type": "Web Application",
-      "duration": "Nov 2023 to Present",
-      "category": "B2B E-commerce Platform",
-      "description": "Created a robust B2B e-commerce platform allowing vendors to list products, manage inventory, and process bulk orders securely. Integrated role-based access for buyers and sellers.",
-      "features": [
-        "Vendor management",
-        "Bulk order processing",
-        "Inventory tracking",
-        "Role-based access control"
-      ],
-      "technologies": [
-        "React.js",
-        "Redux",
-        "Node.js",
-        "MySQL"
-      ]
-    },
-    {
-      "name": "UrExpert",
-      "type": "Web Application",
-      "duration": "Mar 2023 to Present",
-      "category": "Freelancing Platform",
-      "description": "Developed a comprehensive web platform for remote work, enabling users to post projects, host product auctions, and manage team collaboration with specialized membership plans.",
-      "features": [
-        "Job posting engine",
-        "Product auctions",
-        "Membership tiers",
-        "Personalized dashboards"
-      ],
-      "technologies": [
-        "React.js",
-        "Typescript",
-        "Node.js",
-        "REST API"
-      ]
-    },
-    {
-      "name": "API & Full-Stack Management",
-      "type": "Backend / Full-Stack",
-      "duration": "Jan 2018 to Jan 2022",
-      "category": "Systems Architecture",
-      "description": "Spearheaded the development of comprehensive API-based systems leveraging .NET, Flask, and Express.js. Designed robust CRUD APIs interacting with MySQL, optimized SQL queries, and implemented client-side components.",
-      "features": [
-        "RESTful CRUD APIs",
-        "SQL Query optimization",
-        "Multi-language backend (.NET, Python, Node)",
-        "Postman testing protocols"
-      ],
-      "technologies": [
-        "Node.js",
-        "Python (Flask)",
-        "C# (.NET)",
-        "MySQL",
-        "Postman",
-        "React.js"
-      ]
-    }
-  ],
-
-  "deployment_experience": {
-    "mobile_platforms": "App Store Connect & Google Play Console",
-    "services_used": [
-      "TestFlight",
-      "Google Play Internal Testing",
-      "Firebase App Distribution",
-      "CodePush (OTA)",
-      "XCode Archives",
-      "Android Studio Gradle Builds"
-    ],
-    "deployment_tasks": [
-      "Provisioning profiles & certificates",
-      "Keystore management",
-      "App Store review resolution",
-      "Beta tracking & crash analytics",
-      "Continuous Integration pipelines"
-    ]
-  },
-
-  "achievements": [
-    "Built and maintained 5+ production React Native apps for Android & iOS",
-    "Improved overall app performance by 30% using memoization & optimized FlatList",
-    "Converted complex Figma designs into pixel-perfect React Native UI",
-    "Integrated REST APIs, secure authentication, and active push notifications",
-    "Published multiple high-performance apps directly to Apple App Store & Google Play",
-    "Handled enterprise architecture for complex event, ticketing, and inventory management systems"
-  ],
-
-  "education": {
-    "degree": "B.Tech/B.E. (Computer Science and Engineering)",
-    "field": "Software Engineering",
-    "institution": "Bangalore Institute Of Technology (BIT)",
-    "year": "2018-2022"
-  },
-
-  "stats": [
-    { "label": "Full-Stack Projects", "value": "15+" },
-    { "label": "Years Experience", "value": "3.5+" },
-    { "label": "Retention Rate", "value": "98%" },
-    { "label": "UI/UX Precision", "value": "100%" }
-  ],
-
-  "testimonials": [
-    {
-      "name": "Arjun Sharma",
-      "feedback": "Ramesh's deep understanding of React Native helped us launch our event platform on schedule. His code is clean, efficient, and well-documented.",
-      "role": "Project Manager at Imcrinox"
-    },
-    {
-      "name": "Priya Nair",
-      "feedback": "An exceptional developer who doesn't just build features but thinks about the user experience. Highly recommended for complex mobile solutions.",
-      "role": "Lead Architect"
-    }
-  ],
-
-  "pricing": [
-    {
-      "plan": "Consultation",
-      "price": "Free",
-      "features": [
-        "Project Architecture Audit",
-        "Performance Analysis",
-        "Tech Stack Recommendation",
-        "30-Min Strategy Call"
-      ]
-    },
-    {
-      "plan": "Project Based",
-      "price": "$50/hr",
-      "features": [
-        "End-to-End Development",
-        "Production Deployment",
-        "30-Day Support",
-        "Source Code Ownership"
-      ]
-    },
-    {
-      "plan": "Retainer",
-      "price": "Custom",
-      "features": [
-        "Dedicated Weekly Hours",
-        "SLA-based Response",
-        "Ongoing Maintenance",
-        "Priority Scaling"
-      ]
+      "company": "Client Partners via Service Agency",
+      "role": "React Native Developer",
+      "type": "Contract",
+      "duration": "May 2021 — Oct 2022",
+      "location": "Hybrid / Remote",
+      "description": "Collaborated with multiple global clients to ship mobile-first digital products. Focused on pixel-perfect UI implementation, complex API integrations, and robust state management for consumer-facing apps.",
+      "key_skills": ["Redux Toolkit", "API Integration", "UI/UX Dev", "Store Submissions"]
     }
   ],
 
   "workflow": [
-    "01. Technical Requirements Gathering",
-    "02. Architecture & Design Prototyping",
-    "03. Scalable Feature Development",
-    "04. Performance Tuning & Optimization",
-    "05. App Store & Google Play Launch",
+    "01. Architecture Discovery",
+    "02. High-Fidelity UI Engineering",
+    "03. Scalable Feature Implementation",
+    "04. Performance Tuning & Stress Testing",
+    "05. Global App Store Deployment",
     "06. Continuous OTA Maintenance"
-  ],
-
-  "guarantees": [
-    {
-      "title": "Pixel Perfection",
-      "description": "I ensure every screen perfectly matches your Figma or wireframe designs down to the last pixel."
-    },
-    {
-      "title": "Performance First",
-      "description": "All apps are optimized for 60FPS animations and minimized bundle sizes for low-end device support."
-    }
   ],
 
   "faq": [
     {
-      "question": "What is your primary tech stack?",
-      "answer": "I specialize in React Native and React.js for frontend, with strong expertise in Redux, Node.js, and RESTful API integrations."
+      "question": "How do you achieve consistent 60FPS in complex React Native apps?",
+      "answer": "I use a combination of memoization (useMemo, useCallback), FlatList windowing optimization, and the New Architecture (TurboModules) where necessary. For mission-critical UI, I transition heavy computations to native threads to prevent JS bridge congestion."
     },
     {
-      "question": "Do you handle App Store submissions?",
-      "answer": "Yes, I manage the end-to-end deployment process on both Apple App Store Connect and Google Play Console."
+      "question": "Why do you recommend React Native CLI over Expo for enterprise use?",
+      "answer": "CLI offers absolute control over the native layer (Objective-C/Java), allowing for custom native modules and smaller bundle sizes. This is essential for apps requiring specialized SDK integrations or high-security data persistence."
     },
     {
-      "question": "How do you ensure app performance?",
-      "answer": "I use advanced memoization, FlatList optimization, and native bridges where necessary to ensure high frame rates and smooth UX."
+      "question": "How do you handle complex state across multi-module applications?",
+      "answer": "I prefer Redux Toolkit with a highly modularized slice structure. This ensures type safety, predictable state updates, and easy debugging for systems spanning hundreds of operational components."
+    },
+    {
+      "question": "What is your approach to mobile CI/CD and OTA updates?",
+      "answer": "I build automated pipelines using GitHub Actions and CodePush. This allows for immediate security hotfixes and UI updates without waiting for App Store review, ensuring the user experience remains uninterrupted."
+    },
+    {
+      "question": "How do you ensure data security in internal business tools?",
+      "answer": "I implement industry-standard JWT/OAuth flows, biometric authentication (FaceID/TouchID), and secure local storage using AES-encrypted keychains to protect sensitive corporate data during offline usage."
+    },
+    {
+      "question": "Can you integrate custom native SDKs or Hardware bridges?",
+      "answer": "Yes, I have extensive experience writing bridging code for native iOS and Android SDKs, including specialized hardware like thermal printers, Bluetooth sensors, and biometric scanners."
+    },
+    {
+      "question": "How do you maintain documentation for large-scale codebases?",
+      "answer": "I follow a 'self-documenting code' philosophy paired with TypeScript for strict type definitions. For architectural decisions, I maintain comprehensive READMEs and ADRs (Architecture Decision Records) to ensure long-term maintainability."
+    },
+    {
+      "question": "What is your testing strategy for mobile products?",
+      "answer": "I use Jest for unit and logic testing, and Detox for end-to-end (E2E) automated testing. This ensures that new feature deployments don't introduce regressions into mission-critical user paths."
     }
   ]
-}
+};
