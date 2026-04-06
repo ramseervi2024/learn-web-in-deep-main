@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FreelancePortfolio as data } from './freelanceportfoliodata';
+import { FullTimeFreelancerProfile as data } from './FreelancerPortfolioData';
 import { 
   ArrowRight, ShieldCheck, Mail, Phone, ChevronDown, CheckCircle, Star, ExternalLink, Activity
 } from 'lucide-react';
 
-export default function FreelancePortfolio3() {
+export default function FreelancerPortfolio3() {
   const [openFaq, setOpenFaq] = useState(null);
 
   return (

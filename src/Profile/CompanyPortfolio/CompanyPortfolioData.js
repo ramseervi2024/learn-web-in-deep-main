@@ -1,4 +1,4 @@
-export const FreelancePortfolio = {
+export const CompanyPortfolio = {
   "brand": {
     "name": "RPS DIGITAL STORE",
     "tagline": "Scalable Software for Ambitious Startups",

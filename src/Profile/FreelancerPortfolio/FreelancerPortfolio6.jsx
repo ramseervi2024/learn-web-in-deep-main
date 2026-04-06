@@ -1,9 +1,9 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { FreelancePortfolio as data } from './freelanceportfoliodata';
+import { FullTimeFreelancerProfile as data } from './FreelancerPortfolioData';
 import { ArrowRight, LayoutGrid, Zap, CheckCircle2, PhoneCall, Code2, Play, Mail } from 'lucide-react';
 
-export default function FreelancePortfolio6() {
+export default function FreelancerPortfolio6() {
   
   // Design Tokens for Bento Grid
   const bentoCard = "bg-white rounded-3xl md:rounded-[2.5rem] p-8 md:p-12 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_20px_40px_-10px_rgba(79,70,229,0.15)] hover:-translate-y-1 transition-all duration-500 overflow-hidden relative";

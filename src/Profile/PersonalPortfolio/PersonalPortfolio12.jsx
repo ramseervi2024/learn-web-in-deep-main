@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, useScroll, useSpring, useTransform, useMotionValue } from 'framer-motion';
-import { portfolioprofile as data } from './portfoliodata';
+import { portfolioprofile as data } from './PersonalPortfolioData';
 import { 
   Code2, Smartphone, Terminal, Mail, ArrowUpRight, ArrowRight, Globe, Layers, Zap, Shield, Github, Twitter, Check
 } from 'lucide-react';

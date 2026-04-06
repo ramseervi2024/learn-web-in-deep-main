@@ -37,12 +37,13 @@ import MyPortpolio from "../MyPortpolio/MyPortpolio";
 import InterviewCrackRoadmap from "../SkillCareerRoadmap/InterviewCrackRoadmap";
 import SkillCareerRoadmap from "../SkillCareerRoadmap/SkillCareerRoadmap";
 import BackendLearning from "../BackendLearning/BackendLearning";
-import PersonalPortfolio from "../PersonalPortfolio/Portfolio";
 import NewsFeed from "../Newsfeed/Newsfeed";
-import FreelancePortfolio from "../FreelancePortfolio/FreelancePortfolio";
 import NotFound from "../pages/NotFound";
 import RPSAppStore from "../RPSAppStore/RPSAppStore";
-import FullTimeFreelancePortfolio from "../FullTimeFreelancePortfolio/FullTimeFreelancePortfolio";
+import ProfileHub from "../Profile/ProfileHub";
+import PersonalPortfolio from "../Profile/PersonalPortfolio/PersonalPortfolio";
+import FreelancerPortfolio from "../Profile/FreelancerPortfolio/FreelancerPortfolio";
+import CompanyPortfolio from "../Profile/CompanyPortfolio/CompanyPortfolio";
 
 
 export default function AllRouters() {
@@ -86,11 +87,15 @@ export default function AllRouters() {
             <Route path="/BackendLearning" element={<BackendLearning />} />
             <Route path="/SkillCareerRoadmap" element={<SkillCareerRoadmap />} />
             <Route path="/InterviewCrackRoadmap" element={<InterviewCrackRoadmap />} />
-            <Route path="/PersonalPortfolio/*" element={<PersonalPortfolio />} />
-            <Route path="/FreelancePortfolio/*" element={<FreelancePortfolio />} />
+            
+            {/* Professional Profiles Hierarchy */}
+            <Route path="/Profiles" element={<ProfileHub />} />
+            <Route path="/Profiles/Personal/*" element={<PersonalPortfolio />} />
+            <Route path="/Profiles/Freelance/*" element={<FreelancerPortfolio />} />
+            <Route path="/Profiles/Company/*" element={<CompanyPortfolio />} />
+            
             <Route path="/Newsfeed" element={<NewsFeed />} />
             <Route path="/RPSAppStore" element={<RPSAppStore />} />
-            <Route path="/FullTimeFreelancePortfolio" element={<FullTimeFreelancePortfolio />} />
             <Route path="*" element={<NotFound />} />
         </Routes>
     );

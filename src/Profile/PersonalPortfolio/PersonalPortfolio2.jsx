@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence, useMotionValue, useTransform, useSpring } from 'framer-motion';
-import { portfolioprofile as data } from './portfoliodata';
+import { portfolioprofile as data } from './PersonalPortfolioData';
 import { 
   ArrowUpRight, Mail, MapPin, Code2, 
   Database, Layout, Cloud, Briefcase, 

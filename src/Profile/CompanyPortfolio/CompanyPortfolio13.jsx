@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence, useScroll, useTransform, useSpring } from 'framer-motion';
-import { FreelancePortfolio as data } from './freelanceportfoliodata';
+import { CompanyPortfolio as data } from './CompanyPortfolioData';
 import { 
   ArrowUpRight, ArrowRight, Github, Twitter, 
   Linkedin, Mail, Check, Menu, X, Globe, 
@@ -371,7 +371,7 @@ const FooterEditorial = () => (
   </footer>
 );
 
-export default function FreelancePortfolio13() {
+export default function CompanyPortfolio13() {
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {

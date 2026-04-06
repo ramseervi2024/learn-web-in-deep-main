@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FreelancePortfolio as data } from './freelanceportfoliodata';
+import { FullTimeFreelancerProfile as data } from './FreelancerPortfolioData';
 import { 
   Code2, Smartphone, Server, Cloud, Megaphone, 
   ArrowRight, CheckCircle2, Star, Plus, Minus,
   Mail, Phone, ExternalLink, Globe
 } from 'lucide-react';
 
-export default function FreelancePortfolio1() {
+export default function FreelancerPortfolio1() {
   const [openFaq, setOpenFaq] = useState(null);
 
   const fadeIn = {

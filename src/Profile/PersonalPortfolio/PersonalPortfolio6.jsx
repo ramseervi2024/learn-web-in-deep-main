@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { portfolioprofile as data } from './portfoliodata';
+import { portfolioprofile as data } from './PersonalPortfolioData';
 import { ArrowRight, LayoutGrid, Zap, CheckCircle2, PhoneCall, Code2, Play, Mail, Smartphone, Terminal } from 'lucide-react';
 
 export default function Portfolio6() {

@@ -2,7 +2,7 @@ import React, { Suspense, useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence, useScroll, useSpring, useTransform } from 'framer-motion';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { Float, MeshDistortMaterial, Sphere, Environment, ContactShadows, OrbitControls } from '@react-three/drei';
-import { FreelancePortfolio as data } from './freelanceportfoliodata';
+import { FullTimeFreelancerProfile as data } from './FreelancerPortfolioData';
 import { 
   Rocket, Shield, Zap, Code2, Layers, 
   Terminal, Smartphone, Cpu, Mail, Phone,
@@ -110,7 +110,7 @@ const SectionHeading = ({ title, subtitle, centered = false }) => (
   </div>
 );
 
-export default function FreelancePortfolio10() {
+export default function FreelancerPortfolio10() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const containerRef = useRef(null);

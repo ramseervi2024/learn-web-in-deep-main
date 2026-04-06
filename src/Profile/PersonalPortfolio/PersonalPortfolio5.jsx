@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { portfolioprofile as data } from './portfoliodata';
+import { portfolioprofile as data } from './PersonalPortfolioData';
 import { ArrowRight, ArrowUpRight, Plus, MapPin, Mail, Phone, Smartphone, Code2, Terminal } from 'lucide-react';
 
 export default function Portfolio5() {

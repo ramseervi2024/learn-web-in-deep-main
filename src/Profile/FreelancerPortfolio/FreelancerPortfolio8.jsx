@@ -1,6 +1,6 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { FreelancePortfolio as data } from './freelanceportfoliodata';
+import { FullTimeFreelancerProfile as data } from './FreelancerPortfolioData';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { Environment, Float, ContactShadows } from '@react-three/drei';
 import { ArrowUpRight, Play, CircleDot } from 'lucide-react';
@@ -36,7 +36,7 @@ function CinematicMesh() {
   );
 }
 
-export default function FreelancePortfolio8() {
+export default function FreelancerPortfolio8() {
   
   // Design Tokens
   const textHeading = "text-white font-sans font-black tracking-tighter";

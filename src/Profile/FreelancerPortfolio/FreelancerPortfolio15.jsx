@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FreelancePortfolio as data } from './freelanceportfoliodata';
+import { FullTimeFreelancerProfile as data } from './FreelancerPortfolioData';
 import { 
   ArrowRight, Menu, X, Github, Twitter, Linkedin, 
   MapPin, Mail, Phone, ExternalLink, Globe, Zap
@@ -20,7 +20,7 @@ const CrimsonTag = ({ children }) => (
   </div>
 );
 
-export default function FreelancePortfolio15() {
+export default function FreelancerPortfolio15() {
   const [scrolled, setScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 

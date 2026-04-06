@@ -1,9 +1,9 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { FreelancePortfolio as data } from './freelanceportfoliodata';
+import { CompanyPortfolio as data } from './CompanyPortfolioData';
 import { Terminal, Database, Shield, Zap, Code, ChevronRight, Minimize2, Maximize2, X } from 'lucide-react';
 
-export default function FreelancePortfolio7() {
+export default function CompanyPortfolio7() {
   
   // Terminal Design Tokens
   const cardFrame = "border border-white/10 bg-black/50 backdrop-blur-sm p-8 hover:border-white/20 transition-colors relative group";

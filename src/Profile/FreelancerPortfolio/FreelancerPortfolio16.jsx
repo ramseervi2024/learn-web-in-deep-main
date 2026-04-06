@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, useScroll, useSpring, useTransform, useMotionValue } from 'framer-motion';
-import { FreelancePortfolio as data } from './freelanceportfoliodata';
+import { FullTimeFreelancerProfile as data } from './FreelancerPortfolioData';
 import { 
   ArrowUpRight, ChevronRight, Globe, Github, Twitter, Linkedin, 
   Layers, Cpu, Smartphone, Zap, Mail, MapPin, Share2
@@ -18,7 +18,7 @@ const MercuryCard = ({ children, className = "" }) => (
   </motion.div>
 );
 
-export default function FreelancePortfolio16() {
+export default function FreelancerPortfolio16() {
   const [scrolled, setScrolled] = useState(false);
   const containerRef = useRef(null);
   const { scrollYProgress } = useScroll();

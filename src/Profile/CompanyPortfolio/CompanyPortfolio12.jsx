@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, useScroll, useSpring, useTransform, useMotionValue, useVelocity, useAnimationFrame, AnimatePresence } from 'framer-motion';
-import { FreelancePortfolio as data } from './freelanceportfoliodata';
+import { CompanyPortfolio as data } from './CompanyPortfolioData';
 import { 
   Zap, Shield, Rocket, Code2, Layers, 
   Terminal, Smartphone, Cpu, Mail, Phone,
@@ -50,7 +50,7 @@ const CustomCursor = () => {
   );
 };
 
-export default function FreelancePortfolio12() {
+export default function CompanyPortfolio12() {
   const containerRef = useRef(null);
   const { scrollYProgress } = useScroll({ target: containerRef, offset: ["start start", "end end"] });
   const xTranslation = useTransform(scrollYProgress, [0, 1], ["0%", "-80%"]);

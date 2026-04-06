@@ -42,9 +42,7 @@ export default function Homepage() {
     // { id: 34, title: "BackendLearning", url: "BackendLearning" },
     // { id: 35, title: "SkillCareerRoadmap", url: "SkillCareerRoadmap" },
     // { id: 36, title: "InterviewCrackRoadmap", url: "InterviewCrackRoadmap" },
-    { id: 37, title: "PersonalPortfolio", url: "PersonalPortfolio" },
-    { id: 38, title: "FreelancePortfolio", url: "FreelancePortfolio" },
-    { id: 40, title: "FullTimeFreelancePortfolio", url: "FullTimeFreelancePortfolio" },
+    { id: 37, title: "Professional Profiles Hub", url: "Profiles" },
     // { id: 39, title: "Newsfeed", url: "Newsfeed" },
     // { id: 40, title: "RPSAppStore", url: "RPSAppStore" },
   ];

@@ -1,202 +1,144 @@
 export const FullTimeFreelancerProfile = {
-  "freelancer_identity": {
+  "brand": {
     "name": "Ramesh Seervi",
-    "role": "Full-Time Freelance React Native Developer",
-    "headline": "Full-Time Freelance React Native Developer | 3.5+ Years Experience | iOS & Android | Available for Remote Projects",
-    "availability": "Full-Time Freelancer (40 hrs/week)",
-    "work_mode": "Remote",
+    "tagline": "Full-Time Freelance React Native Developer",
+    "description": "High-performance mobile application development for startups and brands. 3.5+ years of specialized experience in iOS & Android ecosystems.",
+    "website": "https://rpsdigitalworld.store/",
+    "email": "ramseervi4321@gmail.com",
+    "phone": "+91 63604 XXXXX",
     "location": "Bengaluru, India",
-    "timezone": "IST (GMT +5:30)",
-    "experience_years": 3.5,
-    "communication": [
-      "Slack",
-      "Zoom",
-      "Google Meet",
-      "WhatsApp",
-      "Email"
-    ],
-    "response_time": "Within 1-3 hours",
-    "start_date": "Immediate"
+    "availability": "40+ Hours / Week (Remote)",
+    "response_time": "Within 2 Hours"
   },
 
   "hero": {
-    "title": "Reliable Full-Time Freelance Developer for Your Product.",
-    "subtitle": "I help startups and businesses build scalable mobile apps using React Native with fast delivery, clean code, and long-term support.",
+    "title": "Scalable Mobile Products.",
+    "subtitle": "I engineer high-end, production-ready React Native applications with clean architecture and long-term support. Available for full-time remote contracts.",
     "cta_primary": "Hire Me Full-Time",
-    "cta_secondary": "View My Work"
+    "cta_secondary": "View Case Studies"
   },
 
-  "freelancer_summary": "I am a dedicated full-time freelance React Native developer with 3.5+ years of experience building high-performance mobile applications for startups and businesses. I specialize in delivering production-ready Android and iOS apps, integrating APIs, optimizing performance, and managing complete app deployment to the App Store and Google Play. I work independently, communicate clearly, and focus on long-term client relationships.",
+  "stats": [
+    { "label": "Retention Rate", "value": "100%" },
+    { "label": "Apps Shipped", "value": "5+" },
+    { "label": "Years Experience", "value": "3.5+" },
+    { "label": "Client Satisfaction", "value": "5/5" }
+  ],
 
   "services": [
-    "Full-Time React Native Development",
-    "Mobile App Development (iOS & Android)",
-    "API Integration & Backend Connectivity",
-    "Bug Fixing & App Maintenance",
-    "Performance Optimization",
-    "App Store & Play Store Deployment",
-    "Feature Development",
-    "Code Refactoring",
-    "Firebase Integration",
-    "UI Implementation from Figma"
-  ],
-
-  "freelance_roles": [
-    "Full-Time Remote Developer",
-    "Dedicated React Native Engineer",
-    "Mobile App Maintenance Developer",
-    "Startup Product Developer"
-  ],
-
-  "core_skills": [
-    "React Native",
-    "JavaScript",
-    "TypeScript",
-    "Redux",
-    "REST API Integration",
-    "Firebase",
-    "Android",
-    "iOS",
-    "Git",
-    "App Deployment"
-  ],
-
-  "tech_stack": {
-    "mobile": [
-      "React Native",
-      "Expo",
-      "Android",
-      "iOS"
-    ],
-    "frontend": [
-      "React.js",
-      "JavaScript",
-      "TypeScript",
-      "Redux"
-    ],
-    "backend": [
-      "Node.js",
-      "Express",
-      "Firebase",
-      "REST APIs"
-    ],
-    "tools": [
-      "Git",
-      "Android Studio",
-      "XCode",
-      "Postman",
-      "Figma"
-    ]
-  },
-
-  "freelance_work_model": {
-    "engagement_types": [
-      "Full-Time Freelance",
-      "Monthly Contract",
-      "Long-Term Remote",
-      "Dedicated Developer"
-    ],
-    "working_hours": "40 hours per week",
-    "availability_hours": "Monday to Friday",
-    "support": "Ongoing Maintenance Available",
-    "contract_preference": [
-      "Upwork",
-      "Direct Client",
-      "Remote Company",
-      "Freelance Platforms"
-    ]
-  },
-
-  "projects_highlight": [
     {
-      "name": "Event Booking App",
-      "description": "Developed a cross-platform mobile application for browsing and booking events with payment integration.",
-      "technologies": [
-        "React Native",
-        "Redux",
-        "Payment Gateway"
-      ]
+      "category": "Full-Stack Mobile Apps",
+      "description": "End-to-end development for iOS and Android using React Native CLI or Expo. From Figma to App Store deployment.",
+      "features": ["Cross-Platform Parity", "Native Modules", "Store Deployment", "Push Notifications"]
     },
     {
-      "name": "Workforce Management App",
-      "description": "Built a productivity application for employee tracking, attendance, and reporting.",
-      "technologies": [
-        "React Native",
-        "Firebase",
-        "TypeScript"
-      ]
+      "category": "Performance Tuning",
+      "description": "Deep-dives into frame rate optimization, memory leak tracing, and bundle size reduction for low-end device support.",
+      "features": ["Memoization", "List Optimization", "Bridge Profiling", "OTA Updates"]
     },
     {
-      "name": "E-commerce Mobile App",
-      "description": "Developed an e-commerce application with secure payments and product management.",
-      "technologies": [
-        "React Native",
-        "API Integration"
-      ]
+      "category": "API & Core Systems",
+      "description": "Robust integration of RESTful APIs, real-time sockets, and complex state management using Redux or Context.",
+      "features": ["Axios Architectures", "Auth Flow Systems", "Offline-First Data", "Firebase Integration"]
     }
   ],
 
-  "pricing_model": [
+  "technology_stack": {
+    "frontend": ["React Native", "React.js", "Redux", "TypeScript", "Tailwind"],
+    "backend": ["Node.js", "Express", "Firebase", "REST APIs"],
+    "mobile": ["iOS (XCode)", "Android (Studio)", "Expo CLI", "React Native CLI"],
+    "cloud": ["Firebase", "AWS Amplify", "App Store Connect", "Play Console"]
+  },
+
+  "completed_projects": [
     {
-      "type": "Full-Time Monthly",
-      "price": "$1500 - $2500 / month",
-      "details": "Dedicated developer working full-time on your project."
+      "project_name": "Ondeen Event Booking",
+      "type": "Mobile App",
+      "description": "A high-performance event discovery and booking platform with digital wallet integration.",
+      "problem": "Client needed a fluid native-feeling experience to handle high-concurrency event launches.",
+      "solution": "Built a custom React Native architecture with Apple/Google Pay and real-time calendar syncing.",
+      "tech_stack": ["React Native", "Redux", "Payment Gateways"],
+      "result": ["Launched on both stores", "Stable 60FPS performance"]
     },
     {
-      "type": "Hourly",
-      "price": "$15 - $25 / hour",
-      "details": "Flexible hourly development support."
-    },
-    {
-      "type": "Part-Time",
-      "price": "$800 - $1200 / month",
-      "details": "20 hours per week support."
+      "project_name": "Workforce Productivity",
+      "type": "Enterprise App",
+      "description": "Internal employee tracking and sales reporting system for logistics teams.",
+      "problem": "Manual tracking was leading to data loss and inefficient sales reporting.",
+      "solution": "Developed a geolocation-based attendance system with real-time sales dashboards and offline capabilities.",
+      "tech_stack": ["React Native", "Firebase", "TypeScript"],
+      "result": ["35% increase in reporting accuracy"]
     }
   ],
 
-  "why_hire_me": [
-    "Available Full-Time for Remote Projects",
-    "Fast Communication",
-    "Production-Ready Code",
-    "3.5+ Years Real Industry Experience",
-    "App Store & Play Store Deployment Experience",
-    "Long-Term Support",
-    "Clean & Maintainable Code"
+  "testimonials": [
+    {
+      "name": "Arjun Sharma",
+      "feedback": "Ramesh is a rare freelancer who communicates clearly and delivers code that is architectural in quality. Our mobile app launch was seamless.",
+      "rating": 5
+    },
+    {
+      "name": "Global Client",
+      "feedback": "Deep technical knowledge and an eye for UI/UX. Ramesh transformed our Figma designs into a blazing fast React Native application.",
+      "rating": 5
+    }
+  ],
+
+  "pricing": [
+    {
+      "plan": "Full-Time Monthly",
+      "price": "$2,500+",
+      "features": [
+        "40 Hours Per Week",
+        "Direct Slack Access",
+        "Daily Standups / Updates",
+        "Source Code Ownership",
+        "Maintenance Included"
+      ]
+    },
+    {
+      "plan": "Hourly / Project",
+      "price": "$30-$50",
+      "features": [
+        "Scope-Based Delivery",
+        "Technical Consultation",
+        "Performance Audits",
+        "Store Submissions",
+        "Flexible Engagement"
+      ]
+    }
   ],
 
   "workflow": [
-    "01. Understand Project Requirements",
-    "02. Plan Development Tasks",
-    "03. Build Features",
-    "04. Testing & Debugging",
-    "05. Deployment",
-    "06. Maintenance & Support"
+    "01. Technical Requirements Breakdown",
+    "02. Architecture & Design Implementation",
+    "03. Agile Feature Development Sprints",
+    "04. Testing & Deployment (Beta Hubs)",
+    "05. App Store & Google Play Launch",
+    "06. Post-Launch support & Maintenance"
   ],
 
-  "guarantees": [
+  "faq": [
     {
-      "title": "On-Time Delivery",
-      "description": "I deliver features and updates on time as per the agreed timeline."
+      "question": "Are you available for full-time remote roles?",
+      "answer": "Yes, I am currently available for long-term freelancer contracts (40+ hours/week) for companies anywhere in the world."
     },
     {
-      "title": "Clear Communication",
-      "description": "You will receive regular updates and quick responses."
-    },
-    {
-      "title": "Long-Term Support",
-      "description": "I provide ongoing maintenance after project delivery."
+      "question": "Can you handle App Store rejections?",
+      "answer": "Absolutely. I have extensive experience resolving Apple and Google Play review issues and ensuring technical compliance."
     }
   ],
 
   "contact": {
     "email": "ramseervi4321@gmail.com",
+    "phone": "+91 63604 XXXXX",
     "availability": "Immediate",
-    "work_type": "Full-Time Freelance",
-    "preferred_clients": [
-      "Startups",
-      "Remote Companies",
-      "Product Teams",
-      "Agencies"
-    ]
+    "work_type": "Full-Time Remote / Contract"
+  },
+
+  "footer": {
+    "brand": "Ramesh Seervi Freelance",
+    "tagline": "Engineering Excellence, Delivered Remotely.",
+    "copyright": "© 2026 Ramesh Seervi. All rights reserved."
   }
 };

@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence, useScroll, useSpring, useTransform, useMotionValue } from 'framer-motion';
-import { FreelancePortfolio as data } from './freelanceportfoliodata';
+import { FullTimeFreelancerProfile as data } from './FreelancerPortfolioData';
 import { 
   Zap, Shield, Rocket, Code2, Layers, 
   Terminal, Smartphone, Cpu, Mail, Phone,
@@ -104,7 +104,7 @@ const SectionHeader = ({ title, subtitle, centered = false }) => (
   </div>
 );
 
-export default function FreelancePortfolio11() {
+export default function FreelancerPortfolio11() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const containerRef = useRef(null);

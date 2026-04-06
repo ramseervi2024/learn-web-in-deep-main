@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { portfolioprofile as data } from './portfoliodata';
+import { portfolioprofile as data } from './PersonalPortfolioData';
 import { 
   ArrowRight, ShieldCheck, Mail, Phone, ExternalLink, Zap, Star, LayoutGrid, CheckSquare, Smartphone, Code2, Terminal
 } from 'lucide-react';

@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { FreelancePortfolio as data } from './freelanceportfoliodata';
+import { CompanyPortfolio as data } from './CompanyPortfolioData';
 import { ArrowRight, ArrowUpRight, Plus, MapPin, Mail, Phone } from 'lucide-react';
 
-export default function FreelancePortfolio5() {
+export default function CompanyPortfolio5() {
   const [hoveredProject, setHoveredProject] = useState(null);
 
   // Animation Variants

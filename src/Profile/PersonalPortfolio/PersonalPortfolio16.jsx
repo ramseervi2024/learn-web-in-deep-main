@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, useScroll, useSpring, useMotionValue } from 'framer-motion';
-import { portfolioprofile as data } from './portfoliodata';
+import { portfolioprofile as data } from './PersonalPortfolioData';
 import { 
   ArrowUpRight, Globe, Github, Twitter, Linkedin, 
   Layers, Cpu, Smartphone, Zap

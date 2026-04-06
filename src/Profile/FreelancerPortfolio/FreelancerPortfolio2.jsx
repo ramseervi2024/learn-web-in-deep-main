@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FreelancePortfolio as data } from './freelanceportfoliodata';
+import { FullTimeFreelancerProfile as data } from './FreelancerPortfolioData';
 import { 
   ArrowUpRight, ArrowRight, Minus, Plus, 
   TerminalSquare, Layout, ServerCrash, Shapes, 
   Activity, CloudCog, Check, Star 
 } from 'lucide-react';
 
-export default function FreelancePortfolio2() {
+export default function FreelancerPortfolio2() {
   const [activeFaq, setActiveFaq] = useState(null);
   
   // Custom reveal anims

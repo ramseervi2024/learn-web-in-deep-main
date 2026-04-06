@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence, useSpring, useTransform, useMotionValue } from 'framer-motion';
-import { portfolioprofile as data } from './portfoliodata';
+import { portfolioprofile as data } from './PersonalPortfolioData';
 import { 
   Zap, Shield, Rocket, Code2, Smartphone, Layers, 
   Terminal, Mail, Phone, Github, Twitter, ChevronRight,

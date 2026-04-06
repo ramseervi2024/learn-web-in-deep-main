@@ -1,10 +1,21 @@
 import React from 'react';
 import { Routes, Route, Link } from 'react-router-dom';
-import Portfolio1 from './Portfolio1';
-import Portfolio2 from './Portfolio2';
-import Portfolio3 from './Portfolio3';
-import Portfolio4 from './Portfolio4';
-
+import Portfolio1 from './PersonalPortfolio1';
+import Portfolio2 from './PersonalPortfolio2';
+import Portfolio3 from './PersonalPortfolio3';
+import Portfolio4 from './PersonalPortfolio4';
+import Portfolio5 from './PersonalPortfolio5';
+import Portfolio6 from './PersonalPortfolio6';
+import Portfolio7 from './PersonalPortfolio7';
+import Portfolio8 from './PersonalPortfolio8';
+import Portfolio9 from './PersonalPortfolio9';
+import Portfolio10 from './PersonalPortfolio10';
+import Portfolio11 from './PersonalPortfolio11';
+import Portfolio12 from './PersonalPortfolio12';
+import Portfolio13 from './PersonalPortfolio13';
+import Portfolio14 from './PersonalPortfolio14';
+import Portfolio15 from './PersonalPortfolio15';
+import Portfolio16 from './PersonalPortfolio16';
 
 function PortfolioDirectory() {
     const portfolios = [
@@ -12,18 +23,18 @@ function PortfolioDirectory() {
         { id: 2, title: 'Dark Mode Pro', desc: 'Sleek dark theme for developers.' },
         { id: 3, title: 'Creative Studio', desc: 'Bold typography and interactive elements.' },
         { id: 4, title: 'Photography Focus', desc: 'Image-heavy layout for visual artists.' },
-        // { id: 5, title: 'Tech Startup', desc: 'Professional, trustworthy design.' },
-        // { id: 6, title: 'Bento Grid', desc: 'Trendy grid-based layout for quick access.' },
-        // { id: 7, title: 'Deep Space', desc: 'Immersive, dark space-themed experience.' },
-        // { id: 8, title: 'Cinematic 3D', desc: 'High-end, glassmorphic WebGL experience.' },
-        // { id: 9, title: 'AI Futuristic', desc: 'Neon-glow UI with animated particle backgrounds.' },
-        // { id: 10, title: '3D Interactive', desc: 'High-performance WebGL experience with React Three Fiber.' },
-        // { id: 11, title: 'Glassmorphism Pro', desc: 'Sleek glass-based design with liquid backgrounds.' },
-        // { id: 12, title: 'Storytelling', desc: 'Immersive horizontal scrolling narrative experience.' },
-        // { id: 13, title: 'Editorial Strategy', desc: 'Bold typography and grid-based strategic layout.' },
-        // { id: 14, title: 'Developer OS', desc: 'Dashboard UI with terminal and system monitoring feel.' },
-        // { id: 15, title: 'Zen Minimalist', desc: 'Stark, foundation-focused design with crimson accents.' },
-        // { id: 16, title: 'Liquid Agency', desc: 'Fluid, high-end agency style with refractive elements.' },
+        { id: 5, title: 'Tech Startup', desc: 'Professional, trustworthy design.' },
+        { id: 6, title: 'Bento Grid', desc: 'Trendy grid-based layout for quick access.' },
+        { id: 7, title: 'Deep Space', desc: 'Immersive, dark space-themed experience.' },
+        { id: 8, title: 'Cinematic 3D', desc: 'High-end, glassmorphic WebGL experience.' },
+        { id: 9, title: 'AI Futuristic', desc: 'Neon-glow UI with animated particle backgrounds.' },
+        { id: 10, title: '3D Interactive', desc: 'High-performance WebGL experience with React Three Fiber.' },
+        { id: 11, title: 'Glassmorphism Pro', desc: 'Sleek glass-based design with liquid backgrounds.' },
+        { id: 12, title: 'Storytelling', desc: 'Immersive horizontal scrolling narrative experience.' },
+        { id: 13, title: 'Editorial Strategy', desc: 'Bold typography and grid-based strategic layout.' },
+        { id: 14, title: 'Developer OS', desc: 'Dashboard UI with terminal and system monitoring feel.' },
+        { id: 15, title: 'Zen Minimalist', desc: 'Stark, foundation-focused design with crimson accents.' },
+        { id: 16, title: 'Liquid Agency', desc: 'Fluid, high-end agency style with refractive elements.' },
     ];
 
     return (
@@ -32,11 +43,11 @@ function PortfolioDirectory() {
                 <header className="mb-16 text-center">
                     <h1 className="text-5xl md:text-7xl font-extrabold mb-6 tracking-tight">
                         <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-400 to-pink-500">
-                            My Portfolios
+                            Personal Portfolios
                         </span>
                     </h1>
                     <p className="text-lg md:text-xl text-slate-400 max-w-2xl mx-auto">
-                        Explore 16 unique, high-end portfolio designs crafted with React, Tailwind CSS, and advanced animations.
+                        A collection of 16 high-end professional identities designed for career growth and organizational impact.
                     </p>
                 </header>
 
@@ -62,7 +73,7 @@ function PortfolioDirectory() {
                             </div>
 
                             <div className="mt-8 flex items-center text-sm font-medium text-blue-400 opacity-0 group-hover:opacity-100 transition-all transform translate-y-2 group-hover:translate-y-0">
-                                View Portfolio
+                                View Identity
                                 <svg className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                                 </svg>
@@ -77,9 +88,9 @@ function PortfolioDirectory() {
 
 const BackButton = () => (
     <Link
-        to="/Portfolio"
+        to="/Profiles"
         className="fixed bottom-6 left-6 z-50 bg-slate-900/80 backdrop-blur-md border border-slate-700 text-white p-3 rounded-full hover:bg-slate-800 hover:scale-105 transition-all duration-300 shadow-2xl flex items-center gap-2 group"
-        title="Back to All Portfolios"
+        title="Back to Profiles Hub"
     >
         <svg className="w-5 h-5 group-hover:-translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
@@ -88,7 +99,7 @@ const BackButton = () => (
     </Link>
 );
 
-export default function Portfolio() {
+export default function PersonalPortfolio() {
     return (
         <Routes>
             <Route path="/" element={<PortfolioDirectory />} />
@@ -96,7 +107,7 @@ export default function Portfolio() {
             <Route path="2" element={<><BackButton /><Portfolio2 /></>} />
             <Route path="3" element={<><BackButton /><Portfolio3 /></>} />
             <Route path="4" element={<><BackButton /><Portfolio4 /></>} />
-            {/* <Route path="5" element={<><BackButton /><Portfolio5 /></>} />
+            <Route path="5" element={<><BackButton /><Portfolio5 /></>} />
             <Route path="6" element={<><BackButton /><Portfolio6 /></>} />
             <Route path="7" element={<><BackButton /><Portfolio7 /></>} />
             <Route path="8" element={<><BackButton /><Portfolio8 /></>} />
@@ -107,7 +118,7 @@ export default function Portfolio() {
             <Route path="13" element={<><BackButton /><Portfolio13 /></>} />
             <Route path="14" element={<><BackButton /><Portfolio14 /></>} />
             <Route path="15" element={<><BackButton /><Portfolio15 /></>} />
-            <Route path="16" element={<><BackButton /><Portfolio16 /></>} /> */}
+            <Route path="16" element={<><BackButton /><Portfolio16 /></>} />
         </Routes>
     );
 }

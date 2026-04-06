@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FreelancePortfolio as data } from './freelanceportfoliodata';
+import { CompanyPortfolio as data } from './CompanyPortfolioData';
 import { 
   ArrowRight, ShieldCheck, Mail, Phone, ExternalLink, Zap, Star, LayoutGrid, CheckSquare
 } from 'lucide-react';
@@ -18,7 +18,7 @@ const brutalColors = [
 const brutalShadow = "border-[3px] border-zinc-900 shadow-[8px_8px_0px_0px_rgba(24,24,27,1)]";
 const brutalButtonHover = "hover:translate-x-[4px] hover:translate-y-[4px] hover:shadow-[4px_4px_0px_0px_rgba(24,24,27,1)] active:translate-x-[8px] active:translate-y-[8px] active:shadow-[0px_0px_0px_0px_rgba(24,24,27,1)] transition-all";
 
-export default function FreelancePortfolio4() {
+export default function CompanyPortfolio4() {
   const [openFaq, setOpenFaq] = useState(null);
 
   return (
