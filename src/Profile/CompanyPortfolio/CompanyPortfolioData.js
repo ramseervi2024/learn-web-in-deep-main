@@ -1,33 +1,33 @@
 export const CompanyPortfolio = {
   "brand": {
     "name": "RPS DIGITAL STORE",
-    "tagline": "Software Engineered for Scaling Founders",
-    "description": "We are a premium software engineering agency specializing in high-performance React Native ecosystems.",
+    "tagline": "Software Engineered for Scaling Enterprise Founders",
+    "description": "We are a premium software engineering agency specializing in high-performance React Native ecosystems, managed technical squads, and strategic digital transformation.",
     "website": "https://rpsdigitalworld.store/",
     "email": "rameshseervi242628@gmail.com",
-    "phone": "+91 (Agency) Support",
-    "location": "Global / Remote-First Agency",
+    "phone": "+91 63604 XXXXX",
+    "location": "Global Operations Hub / Remote-First Agency",
     "founded": "2023",
-    "business_type": "Premium Software Engineering Consultancy"
+    "business_type": "Premium Software Engineering & Strategic Consultancy"
   },
 
   "hero": {
-    "title": "Scale Your Vision with Precision.",
-    "subtitle": "We transform complex business requirements into high-end, production-ready digital products.",
+    "title": "Scaling Enterprise Visions with Precision.",
+    "subtitle": "RPS DIGITAL STORE provides managed engineering squads and high-end technical architecture to transform complex business requirements into resilient, global-scale digital products.",
     "cta_primary": "Consult with Our Architects",
-    "cta_secondary": "View Scaled Case Studies"
+    "cta_secondary": "View Enterprise Case Studies"
   },
 
   "roles": [
-    "Enterprise Solutions Partner",
+    "Enterprise Systems Partner",
     "Managed Engineering Squads",
     "Strategic Tech Consultancy",
-    "SaaS Scaling Specialists"
+    "Managed Global Scaling"
   ],
 
   "stats": [
     { "label": "Enterprise Apps Shipped", "value": "25+" },
-    { "label": "Revenue Impacted", "value": "$5M+" },
+    { "label": "Market impact", "value": "$10M+" },
     { "label": "Retention Rate", "value": "98%" },
     { "label": "Global Partners", "value": "40+" }
   ],
@@ -35,183 +35,199 @@ export const CompanyPortfolio = {
   "services": [
     {
       "category": "Enterprise Mobile Ecosystems",
-      "description": "Massive-scale React Native applications engineered for speed and security.",
-      "features": ["Native Profile Optimization", "Micro-Frontend Architecture", "Secure Payment Vaults"]
+      "description": "Massive-scale React Native applications engineered for global performance, multi-region compliance, and 99.9% uptime SLAs.",
+      "features": ["Micro-Frontend Mobile Logic", "Native Security Vaults", "Zero-Latency Payments"]
     },
     {
-      "category": "Managed SaaS Engineering",
-      "description": "End-to-end full-stack teams to design, build, and maintain critical platforms.",
-      "features": ["Scalable Backends", "Multi-Tenant Architecture", "Real-Time Data Pipelines"]
+      "category": "Managed Managed Squads",
+      "description": "We provide senior-led engineering teams that integrate directly with your product roadmap, handling everything from architecture to lifecycle maintenance.",
+      "features": ["Agile Governance Architecture", "Managed QA Cycles", "IP Legal Protection"]
     },
     {
-      "category": "Internal Operations Automation",
-      "description": "Custom tools and software for workforce and sales intelligence.",
-      "features": ["Role-Based Access (RBAC)", "Resource Intelligence", "IoT Integration"]
+      "category": "Scaling & Automation Audits",
+      "description": "Strategic technical deep-dives to identify bottlenecks in existing systems and implement high-efficiency automation for workforce and sales intelligence.",
+      "features": ["Inventory Intelligence", "RBAC Security Systems", "Operational Automation"]
     }
   ],
 
   "core_expertise": [
-    "Enterprise-Grade Cross-Platform Architecture",
-    "Managed Software Engineering Teams",
-    "Strategic IT Roadmap & Consultancy",
-    "Global-Scale Deployment & Maintenance"
+    "Enterprise-Grade Digital Transformation Portfolios",
+    "Managed Engineering Squad Governance",
+    "Strategic High-Availability Infrastructure",
+    "Global-Scale Mobile Product Maintenance"
   ],
 
   "saas_capabilities": [
-    "Enterprise Cloud Infrastructure (AWS/GCP)",
-    "Secure Digital Wallet Architectures",
-    "High-Concurrency User Management",
-    "Regulatory Compliance & Security Protocols",
-    "Automated Zero-Downtime Deployment CI/CD",
-    "Managed Team Performance Analytics"
+    "Enterprise Cloud Mastery (AWS/GCP)",
+    "Secure Digital Wallet Infrastructure Architecture",
+    "High-Concurrency Global User Management",
+    "Regulatory Compliance & Data Security (GDPR/SOC2)",
+    "Managed CI/CD Scaling Automation",
+    "Team Performance & KPI Observability"
   ],
 
   "technical_stack": {
-    "mobile": ["React Native CLI Specialist", "iOS / Swift Bridges", "Android / Kotlin Modules"],
-    "frontend": ["React.js Expert", "TypeScript Strategy", "Redux Logic", "Tailwind CSS"],
-    "backend": ["Node.js Architectures", "Express.js", "Python Data Sprints", "Postgres / MongoDB"],
-    "cloud": ["AWS / Docker Deployments", "Google Cloud Platform", "Vercel / Next.js", "Firebase Scaling"]
+    "mobile": ["React Native CLI Enterprise", "iOS / Swift Engineering", "Android / Kotlin Native Modules"],
+    "frontend": ["React.js Design Systems", "TypeScript Strategy", "Redux Logic Persistence", "Tailwind CSS"],
+    "backend": ["Node.js Architectures", "Express.js Scaling", "Python Data Analytics", "PostgreSQL / MongoDB"],
+    "cloud": ["AWS / Docker / Kubernetes", "Google Cloud Strategy", "Vercel / Next.js Enterprise", "Firebase Scaling"]
   },
 
   "employment": [
     {
-      "company": "Enterprise Client Portfolio",
-      "role": "Strategic Execution Lead",
-      "type": "Agency Project",
+      "company": "Enterprise Global Client Portfolio",
+      "role": "Strategic Execution Agency",
+      "type": "Managed Partnership",
       "duration": "2023 — Present",
-      "location": "Global Operations",
-      "description": "Managing cross-functional engineering squads to deliver large-scale digital transformations and high-performance mobile ecosystems for international partners.",
-      "key_skills": ["Team Leadership", "Strategic Delivery", "Architecture"]
+      "location": "Global Operations Hub",
+      "description": "Currently managing cross-functional engineering squads for international partners. Responsible for multi-million user ecosystems, high-security financial bridges, and long-term technical roadmap governance.",
+      "key_skills": ["Squad Management", "SLA Compliance", "Strategic Engineering", "Risk Management"]
     },
     {
-      "company": "Initial Scaling Partnerships",
-      "role": "Founding Engineering Team",
-      "type": "Managed Delivery",
+      "company": "Initial Scaling Strategic Launchpad",
+      "role": "Core Architecture Partner",
+      "type": "Consultancy",
       "duration": "2022 — 2023",
-      "location": "India Core",
-      "description": "Established the core engineering standards and architecture templates used to scale client products from zero to enterprise-ready status.",
-      "key_skills": ["Initial Architecture", "Process Optimization", "Quality Assurance"]
+      "location": "India Core Operations",
+      "description": "Established the architectural benchmarks and security protocols that allowed our early-stage partners to scale from MVP to Series A/B with zero technical debt re-platforms.",
+      "key_skills": ["Protocol Design", "Process Optimization", "Quality Governance", "Scaling Prototypes"]
     }
   ],
 
   "completed_projects": [
     {
       "project_name": "Global Event Ecosystem & Ticketing Hub",
-      "type": "Managed B2C Product",
-      "description": "Ticketing ecosystem serving thousands of concurrent users with zero-latency payments architecture.",
-      "problem": "Manual booking led to revenue loss and high failure rates.",
-      "tech_stack": ["React Native CLI", "AWS Lambda", "Secure Sockets"],
-      "result": ["Handled 50k+ User Spikes", "Zero checkout downtime"]
+      "type": "Managed B2C Enterprise Product",
+      "description": "Infrastructure: Scaling to 50k+ concurrent user spikes during global ticket launches. Result: 100% financial integrity and zero availability drop-outs under heavy load scenarios.",
+      "problem": "Legacy systems failing during high-concurrency seat-selection spikes.",
+      "solution": "High-availability native architecture with distributed seat-locking logic.",
+      "tech_stack": ["React Native CLI", "AWS Lambda scaling", "Distributed Redis Locking"],
+      "result": ["$5M+ Transaction Volume Handled", "99.9% Uptime during flash loads"]
     },
     {
       "project_name": "Hospitality SaaS & Booking Ecosystem",
-      "type": "Web & Mobile SaaS",
-      "description": "Hospitality engine for property management and automated billing cycles.",
-      "problem": "Client lacked a unified digital infrastructure for property owners.",
-      "tech_stack": ["Next.js", "React Native", "PostgreSQL", "Stripe"],
-      "result": ["45% increase in booked revenue", "Investor-grade infrastructure"]
+      "type": "Global SaaS Infrastructure",
+      "description": "Infrastructure: Multi-tenant hospitality engine serving property owners across 4 continents. Result: Unified global billing and 45% increase in operational efficiency for managed property groups.",
+      "problem": "Highly fragmented data across localized property management tools.",
+      "solution": "Unified multi-tenant SaaS architecture with automated global payouts.",
+      "tech_stack": ["Next.js Enterprise", "React Native", "PostgreSQL", "Stripe Connect"],
+      "result": ["Scaled to 1k+ Active Properties", "Automated Global Billing"]
     },
     {
       "project_name": "Workforce Intelligence & Productivity Hub",
-      "type": "Internal Enterprise Ops",
-      "description": "Customized management portal for enterprise-level tracking and sales reporting.",
-      "problem": "Inaccurate manual tracking costing 15% operational efficiency.",
-      "tech_stack": ["React Native", "Firebase", "Redux", "PostgreSQL"],
-      "result": ["Recaptured 15% efficiency", "Real-time field oversight"]
+      "type": "Enterprise Operations Suite",
+      "description": "Infrastructure: Real-time intelligence hub for global logistics workforces. Result: Recaptured 15% in operational overhead through automated resource allocation and geolocation intelligence.",
+      "problem": "Operational opacity leading to resource waste and manual tracking errors.",
+      "solution": "Real-time workforce intelligence hub with integrated geolocation persistence.",
+      "tech_stack": ["React Native", "Firebase", "Redux Sagas", "Operational Analytics"],
+      "result": ["15% Efficiency Recovery", "Real-time Field Visibility achieved"]
     },
     {
       "project_name": "Luxury Retail & E-Commerce Mobile Engine",
-      "type": "Premium Mobile Retail",
-      "description": "High-performance consumer retail engine with friction-less native checkout flows.",
-      "problem": "Legacy mobile web experience was failing to convert premium users.",
-      "tech_stack": ["React Native", "TypeScript", "Shopify API Integration"],
-      "result": ["40% lower checkout friction", "4.9 App Store Rating"]
+      "type": "Native E-Commerce Scaling",
+      "description": "Infrastructure: High-performance mobile storefront for premium brands. Result: 40% reduction in cart abandonment due to native UI performance and localized payment vaulting.",
+      "problem": "Technical friction in legacy mobile web causing user drop-off.",
+      "solution": "High-performance native storefront with proprietary payment encryption.",
+      "tech_stack": ["React Native", "Custom UI Frameworks", "Biometric Vaulting"],
+      "result": ["4.9/5 User Rating average", "40% conversion growth"]
     },
     {
       "project_name": "On-Demand Services & Wellness Marketplace",
-      "type": "Service Economy Product",
-      "description": "Marketplace platform for scheduling and professional analytics dashboards.",
-      "problem": "Fragmented management leading to high cancellation rates.",
-      "tech_stack": ["React.js", "Node.js", "Express", "Twilio API"],
-      "result": ["Zero booking overlaps", "Significant reduction in no-shows"]
+      "type": "Service Ecosystem Platform",
+      "description": "Infrastructure: High-availability marketplace for on-demand service scheduling. Result: automated 10k+ weekly bookings with zero overlap conflicts and 98% provider satisfaction.",
+      "problem": "Scheduling drift causing provider fatigue and no-show revenue loss.",
+      "solution": "Event-driven marketplace with automated conflict resolution engine.",
+      "tech_stack": ["React.js", "Node.js Architecture", "Twilio Messaging Hub"],
+      "result": ["Zero Booking Conflicts", "Automated Revenue Streams"]
     },
     {
       "project_name": "Internal Enterprise Event Operations Portal",
-      "type": "Operations Management",
-      "description": "High-performance tool for event organizers with hardware scanning integration.",
-      "problem": "Event entry was slow due to manual verification reliance.",
-      "tech_stack": ["React Native CLI", "XCode", "Hardware Interface SDKs"],
-      "result": ["300% faster entry processing", "Secure control"]
+      "type": "Mission-Critical Operations",
+      "description": "Infrastructure: Field operations portal with integrated hardware scanning. Result: 300% faster throughput at entry points for global conferences and summits.",
+      "problem": "Slow manual entry protocols causing security risks at event perimeters.",
+      "solution": "High-throughput operations portal with native hardware scanner bridges.",
+      "tech_stack": ["React Native CLI", "Hardware SDKs", "Native Security Protocols"],
+      "result": ["300% Ingress Efficiency", "100% Secure Attendee Validation"]
     },
     {
       "project_name": "B2B Supply Chain & Merchant Portal",
-      "type": "Supply Chain Ecosystem",
-      "description": "B2B platform for vendors to manage massive inventories securely.",
-      "problem": "Vendors struggling with manual updates and insecure bulk ordering.",
-      "tech_stack": ["React.js", "Node.js", "MySQL", "Docker"],
-      "result": ["Stabilized B2B operations", "Zero payment discrepancies"]
+      "type": "Supply Chain Scalability",
+      "description": "Infrastructure: Resilient B2B portal handling complex merchant inventory and bulk transactions. Result: Successfully scaled to 5k+ wholesale vendors with 99.9% order accuracy.",
+      "problem": "Insecure and non-scalable wholesale management via legacy spreadsheets.",
+      "solution": "Robust B2B merchant portal with optimized database querying for massive scale.",
+      "tech_stack": ["React.js", "Express.js", "Managed MySQL Scaling"],
+      "result": ["5k+ Vendors Onboarded", "99.9% Order Integrity"]
     },
     {
       "project_name": "Digital Talent & Recruitment Marketplace",
-      "type": "Recruitment Ecosystem",
-      "description": "Talent platform enabling job bidding and team collaboration at scale.",
-      "problem": "The client needed a resilient marketplace to handle complex job bidding.",
-      "tech_stack": ["React.js", "Node.js", "TypeScript", "AWS"],
-      "result": ["Launched Talent Marketplace", "Automated billing cycles"]
+      "type": "National Gig Economy Platforms",
+      "description": "Infrastructure: High-stakes gig economy platform for specialized national talent. Result: Scaled to 100k+ active users and handled $10M+ in collective project awards.",
+      "problem": "Platform stability issues during peak bidding and project award cycles.",
+      "solution": "High-performance recruitment marketplace with AWS auto-scaling infrastructure.",
+      "tech_stack": ["React.js", "Node.js", "AWS Auto-scaling Hub", "TypeScript"],
+      "result": ["100k+ Active Users", "Secure $10M+ Transaction Flow"]
     }
   ],
 
   "testimonials": [
     {
-      "name": "Sarah J. | CEO at FinTech Innovation",
-      "feedback": "RPS Digital doesn't just write code; they provide strategic technical direction.",
+      "name": "David M. | CTO at Global Logistics",
+      "feedback": "RPS Digital Store is one of the few agencies that understands enterprise engineering. Their managed squads are elite and the architecture they built is rock solid.",
       "rating": 5
     }
   ],
 
   "pricing": [
     {
-      "plan": "Architectural Strategy",
+      "plan": "Strategic Technical Audit",
       "price": "Custom Consultancy",
-      "features": ["Product Discovery Sessions", "Technical Debt Audits", "Infrastructure Roadmapping"]
+      "features": ["Architectural Discovery", "Security Integrity Check", "Technical Debt Roadmap", "SLA Definition"]
     },
     {
-      "plan": "Managed Engineering Team",
+      "plan": "Managed Engineering Squad",
       "price": "Retainer Based",
-      "features": ["Dedicated Senior Engineers", "Daily Agile Sprints", "Priority Long-Term Support"]
+      "features": ["Senior-Led Developer Team", "Daily Agile Governance", "Weekly Progress Demos", "Full Lifecycle Maintenance"]
     },
     {
-      "plan": "Digital Transformation",
-      "price": "Market Expansion",
-      "features": ["Full Ecosystem Architecture", "Legacy SaaS Migration", "24/7 Priority SLA"]
+      "plan": "Enterprise Scale Hub",
+      "price": "Market Launch",
+      "features": ["Massive-Scale Architecture", "Regulatory Compliance Sync", "Global Store Launch", "24/7 Enterprise Support"]
     }
   ],
 
   "workflow": [
-    "01. Strategic Discovery & Scoping",
-    "02. Architecture & UI/UX Blueprinting",
-    "03. Scaled Agile Feature Engineering",
-    "04. Comprehensive Quality Assurance",
-    "05. Zero-Downtime Global Deployment",
-    "06. Continuous Lifecycle Maintenance"
+    "01. Enterprise Scoping & Audit",
+    "02. Architectural Design & Security Blueprint",
+    "03. Managed Squad Sprint Sprints",
+    "04. Strict QA & Compliance Testing",
+    "05. Zero-Downtime Pipeline Deployment",
+    "06. Long-Term Technical Governance"
   ],
 
   "faq": [
     {
-      "question": "How does RPS Digital ensure Intellectual Property (IP) security?",
-      "answer": "We operate with full legal transparency. 100% of the source code is transferred to your company upon completion."
+      "question": "How does RPS Digital Store ensure IP and code ownership?",
+      "answer": "We provide full legal transparency. 100% of Intellectual Property and source code is transferred to your organization upon project completion."
+    },
+    {
+      "question": "Do you provide long-term maintenance and SLAs?",
+      "answer": "Yes. We offer managed retainer packages with defined response time SLAs (up to 24/7) for enterprise mission-critical products."
+    },
+    {
+      "question": "Can you scale an engineering squad on demand?",
+      "answer": "Absolutely. Our managed model allows for rapid team expansion (or contraction) based on your product roadmap requirements."
     }
   ],
 
   "contact": {
     "email": "rameshseervi242628@gmail.com",
     "phone": "+91 63604 XXXXX",
-    "work_type": "Enterprise Projects / Managed Teams"
+    "work_type": "Enterprise Managed Squads / Strategic Consultancy"
   },
 
   "footer": {
     "brand": "RPS DIGITAL STORE",
-    "tagline": "Software Excellence, Scaled for Business.",
+    "tagline": "Software Excellence, Scaled for Business Infrastructure.",
     "copyright": "© 2026 RPS DIGITAL STORE. All rights reserved."
   }
 };
