@@ -69,16 +69,27 @@ export const CompanyPortfolio = {
   "technology_stack": {
     "mobile": ["React Native CLI Enterprise", "iOS / Swift Engineering", "Android / Kotlin Native Modules"],
     "frontend": ["React.js Design Systems", "TypeScript Strategy", "Redux Logic Persistence", "Tailwind CSS"],
-    "backend": ["Node.js Architectures", "Express.js Scaling", "Python Data Analytics", "PostgreSQL / MongoDB"],
-    "cloud": ["AWS / Docker / Kubernetes", "Google Cloud Strategy", "Vercel / Next.js Enterprise", "Firebase Scaling"]
+    "backend": ["Node.js Architectures", "Express.js Scaling", "Python Data Analytics"],
+    "database": ["PostgreSQL / MongoDB", "Redis Caching", "Supabase Architecture"],
+    "cloud": ["AWS / Docker / Kubernetes", "Google Cloud Strategy", "Vercel / Next.js Enterprise", "Firebase Scaling"],
+    "tools": ["GitLab CI/CD", "Jira / Confluence", "Figma Enterprise", "Sentry Observability"]
   },
 
   "technical_stack": {
     "mobile": ["React Native CLI Enterprise", "iOS / Swift Engineering", "Android / Kotlin Native Modules"],
     "frontend": ["React.js Design Systems", "TypeScript Strategy", "Redux Logic Persistence", "Tailwind CSS"],
-    "backend": ["Node.js Architectures", "Express.js Scaling", "Python Data Analytics", "PostgreSQL / MongoDB"],
-    "cloud": ["AWS / Docker / Kubernetes", "Google Cloud Strategy", "Vercel / Next.js Enterprise", "Firebase Scaling"]
+    "backend": ["Node.js Architectures", "Express.js Scaling", "Python Data Analytics"],
+    "database": ["PostgreSQL / MongoDB", "Redis Caching", "Supabase Architecture"],
+    "cloud": ["AWS / Docker / Kubernetes", "Google Cloud Strategy", "Vercel / Next.js Enterprise", "Firebase Scaling"],
+    "tools": ["GitLab CI/CD", "Jira / Confluence", "Figma Enterprise", "Sentry Observability"]
   },
+
+  "achievements": [
+    "Successfully managed 25+ enterprise-scale digital transformations.",
+    "Engineered 99.9% uptime architectures for global fintech bridges.",
+    "Integrated 40+ strategic partners into the managed squad ecosystem.",
+    "Recovered $2M+ in annual operational overhead for retail partners via automation."
+  ],
 
   "employment": [
     {
@@ -243,6 +254,20 @@ export const CompanyPortfolio = {
       "title": "24/7 Enterprise Support",
       "description": "Strategic Technical Governance and Mission-Critical support for global operations after product deployment."
     }
+  ],
+
+  "featured_in": [
+    "TechCrunch",
+    "Product Hunt",
+    "Forbes Tech",
+    "Wired",
+    "Enterprise Insider"
+  ],
+
+  "socials": [
+    { "platform": "Twitter", "url": "https://twitter.com/rpsdigital" },
+    { "platform": "Github", "url": "https://github.com/rpsdigital" },
+    { "platform": "Linkedin", "url": "https://linkedin.com/company/rpsdigital" }
   ]
 };
 

@@ -68,17 +68,28 @@ export const FullTimeFreelancerProfile = {
 
   "technology_stack": {
     "frontend": ["React Native CLI", "Redux Toolkit / Saga", "TypeScript", "Tailwind CSS"],
-    "backend": ["Firebase Specialist", "Node.js (Express)", "REST APIs", "Supabase DB"],
+    "backend": ["Node.js (Express)", "REST APIs", "PostgreSQL / MongoDB"],
+    "database": ["PostgreSQL / MongoDB", "Redis Caching", "Supabase DB"],
     "mobile": ["iOS (XCode Tools)", "Android Studio Tools", "Expo & CLI Bridges"],
-    "cloud": ["AWS Deployment", "App Store Connect", "Play Console", "Firebase Cloud Ops"]
+    "cloud": ["AWS Deployment", "App Store Connect", "Play Console", "Firebase Cloud Ops"],
+    "tools": ["Git / CI-CD", "Figma Design", "Jira / Documentation", "Postman"]
   },
 
   "technical_stack": {
     "frontend": ["React Native CLI", "Redux Toolkit / Saga", "TypeScript", "Tailwind CSS"],
-    "backend": ["Firebase Specialist", "Node.js (Express)", "REST APIs", "Supabase DB"],
+    "backend": ["Node.js (Express)", "REST APIs", "PostgreSQL / MongoDB"],
+    "database": ["PostgreSQL / MongoDB", "Redis Caching", "Supabase DB"],
     "mobile": ["iOS (XCode Tools)", "Android Studio Tools", "Expo & CLI Bridges"],
-    "cloud": ["AWS Deployment", "App Store Connect", "Play Console", "Firebase Cloud Ops"]
+    "cloud": ["AWS Deployment", "App Store Connect", "Play Console", "Firebase Cloud Ops"],
+    "tools": ["Git / CI-CD", "Figma Design", "Jira / Documentation", "Postman"]
   },
+
+  "achievements": [
+    "Successfully launched 8+ production-ready mobile MVPs in 12 months.",
+    "Engineered 60FPS UI performance architectures for multiple fintech apps.",
+    "Secured seed funding for 2+ startups through high-fidelity functional prototypes.",
+    "Reduced time-to-market by 40% using optimized CI/CD and deployment pipelines."
+  ],
 
   "employment": [
     {
@@ -244,6 +255,20 @@ export const FullTimeFreelancerProfile = {
       "title": "Zero-Maintenance Scaling",
       "description": "Architected with sustainable, high-velocity logic so you can scale without technical re-platforms."
     }
+  ],
+
+  "featured_in": [
+    "Product Hunt",
+    "Indie Hackers",
+    "Freelancer Gazette",
+    "JS Weekly",
+    "Mobile Dev Mag"
+  ],
+
+  "socials": [
+    { "platform": "Twitter", "url": "https://twitter.com/ramchoudhary" },
+    { "platform": "Github", "url": "https://github.com/ramchoudhary" },
+    { "platform": "Linkedin", "url": "https://linkedin.com/in/ramchoudhary" }
   ]
 };
 
