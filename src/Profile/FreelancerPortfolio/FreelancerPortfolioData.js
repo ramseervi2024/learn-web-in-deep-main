@@ -66,6 +66,13 @@ export const FullTimeFreelancerProfile = {
     "Post-Launch Scalability Roadmapping"
   ],
 
+  "technology_stack": {
+    "frontend": ["React Native CLI", "Redux Toolkit / Saga", "TypeScript", "Tailwind CSS"],
+    "backend": ["Firebase Specialist", "Node.js (Express)", "REST APIs", "Supabase DB"],
+    "mobile": ["iOS (XCode Tools)", "Android Studio Tools", "Expo & CLI Bridges"],
+    "cloud": ["AWS Deployment", "App Store Connect", "Play Console", "Firebase Cloud Ops"]
+  },
+
   "technical_stack": {
     "frontend": ["React Native CLI", "Redux Toolkit / Saga", "TypeScript", "Tailwind CSS"],
     "backend": ["Firebase Specialist", "Node.js (Express)", "REST APIs", "Supabase DB"],

@@ -67,7 +67,14 @@ export const portfolioprofile = {
     "mobile": ["React Native CLI Specialist", "iOS Native Bridges", "Android Native Modules", "OTA Updates"],
     "frontend": ["React.js", "TypeScript Strategy", "Redux Toolkit / Saga", "Tailwind CSS", "Framer Motion"],
     "backend_integration": ["RESTful API Architecture", "Axios", "Postman Protocols", "Firebase Auth/DB", "Node.js"],
-    "tools": ["Git / CI-CD Pipelines", "Android Studio", "XCode", "Jira / Documentation"]
+    "tools": ["Git / CI-CD Pipelines", "Android Studio", "XCode", "Figma", "Jira / Documentation"]
+  },
+
+  "technology_stack": {
+    "mobile": ["React Native CLI Specialist", "iOS Native Bridges", "Android Native Modules", "OTA Updates"],
+    "frontend": ["React.js", "TypeScript Strategy", "Redux Toolkit / Saga", "Tailwind CSS", "Framer Motion"],
+    "backend": ["RESTful API Architecture", "Axios", "Postman Protocols", "Firebase Auth/DB", "Node.js"],
+    "cloud": ["Firebase Auth/DB", "App Store Connect", "Play Console", "AWS Cloud Ops"]
   },
 
   "saas_capabilities": [

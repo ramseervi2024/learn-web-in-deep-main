@@ -66,6 +66,13 @@ export const CompanyPortfolio = {
     "Team Performance & KPI Observability"
   ],
 
+  "technology_stack": {
+    "mobile": ["React Native CLI Enterprise", "iOS / Swift Engineering", "Android / Kotlin Native Modules"],
+    "frontend": ["React.js Design Systems", "TypeScript Strategy", "Redux Logic Persistence", "Tailwind CSS"],
+    "backend": ["Node.js Architectures", "Express.js Scaling", "Python Data Analytics", "PostgreSQL / MongoDB"],
+    "cloud": ["AWS / Docker / Kubernetes", "Google Cloud Strategy", "Vercel / Next.js Enterprise", "Firebase Scaling"]
+  },
+
   "technical_stack": {
     "mobile": ["React Native CLI Enterprise", "iOS / Swift Engineering", "Android / Kotlin Native Modules"],
     "frontend": ["React.js Design Systems", "TypeScript Strategy", "Redux Logic Persistence", "Tailwind CSS"],
