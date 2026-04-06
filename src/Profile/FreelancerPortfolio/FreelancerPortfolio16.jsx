@@ -231,13 +231,13 @@ export default function FreelancerPortfolio16() {
                  </div>
                  
                  <div className="flex flex-col justify-center gap-12">
-                    <div className="flex flex-col group cursor-pointer">
+                    <div className="flex flex-col group cursor-pointer max-w-full overflow-hidden">
                        <span className="text-[10px] font-black opacity-30 tracking-[0.5em] mb-4">DIRECT_CHANNEL</span>
-                       <span className="text-3xl md:text-5xl font-black italic group-hover:text-[#6366f1] transition-all">{data?.brand?.email}</span>
+                       <span className="text-xl md:text-3xl font-black italic group-hover:text-[#6366f1] transition-all break-all">{data?.brand?.email}</span>
                     </div>
-                    <div className="flex flex-col group cursor-pointer">
+                    <div className="flex flex-col group cursor-pointer max-w-full overflow-hidden">
                        <span className="text-[10px] font-black opacity-30 tracking-[0.5em] mb-4">ENGINE_GEO</span>
-                       <span className="text-2xl md:text-4xl font-black italic text-white/40 group-hover:text-white transition-all">{data?.brand?.location}</span>
+                       <span className="text-lg md:text-2xl font-black italic text-white/40 group-hover:text-white transition-all">{data?.brand?.location}</span>
                     </div>
                  </div>
               </div>

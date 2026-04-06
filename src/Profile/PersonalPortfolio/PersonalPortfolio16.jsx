@@ -231,13 +231,13 @@ export default function Portfolio16() {
                  </div>
                  
                  <div className="flex flex-col justify-center gap-12 text-left">
-                    <div className="flex flex-col group cursor-pointer">
-                       <span className="text-[10px] font-black opacity-30 tracking-[0.5em] mb-4">DIRECT_CHANNEL</span>
-                       <span className="text-3xl md:text-5xl font-black italic group-hover:text-[#6366f1] transition-all">{data.contact.email}</span>
+                    <div className="flex flex-col group cursor-pointer max-w-full overflow-hidden text-left">
+                       <span className="text-[10px] font-black opacity-30 tracking-[0.5em] mb-4 text-left">DIRECT_CHANNEL</span>
+                       <span className="text-xl md:text-3xl font-black italic group-hover:text-[#6366f1] transition-all break-all text-left">{data.contact.email}</span>
                     </div>
-                    <div className="flex flex-col group cursor-pointer">
-                       <span className="text-[10px] font-black opacity-30 tracking-[0.5em] mb-4">ENGINE_GEO</span>
-                       <span className="text-2xl md:text-4xl font-black italic text-white/40 group-hover:text-white transition-all">REMOTE // GLOBAL</span>
+                    <div className="flex flex-col group cursor-pointer max-w-full overflow-hidden text-left">
+                       <span className="text-[10px] font-black opacity-30 tracking-[0.5em] mb-4 text-left">ENGINE_GEO</span>
+                       <span className="text-lg md:text-2xl font-black italic text-white/40 group-hover:text-white transition-all text-left">REMOTE // GLOBAL</span>
                     </div>
                  </div>
               </div>
