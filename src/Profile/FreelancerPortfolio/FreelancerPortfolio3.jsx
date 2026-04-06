@@ -2,33 +2,68 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FullTimeFreelancerProfile as data } from './FreelancerPortfolioData';
 import { 
-  ArrowRight, ShieldCheck, Mail, Phone, ChevronDown, CheckCircle, Star, ExternalLink, Activity
+  ArrowRight, ShieldCheck, Mail, Phone, ChevronDown, CheckCircle, 
+  Star, ExternalLink, Activity, Terminal, Zap, Cpu, Globe, 
+  Lock, Layout, Box, Monitor, Database
 } from 'lucide-react';
 
+// --- Technical Components ---
+
+const ScanLines = () => (
+  <div className="fixed inset-0 pointer-events-none z-[99] opacity-[0.03] overflow-hidden">
+    <div className="absolute inset-0 bg-[linear-gradient(to_bottom,transparent_50%,black_50%)] bg-[length:100%_4px] animate-[scan_10s_linear_infinite]" />
+  </div>
+);
+
+const NodeIndicator = ({ label, value }) => (
+  <div className="flex flex-col gap-1">
+    <span className="text-[9px] uppercase tracking-[0.2em] text-slate-500 font-mono italic">{label}</span>
+    <span className="text-white font-black tracking-tighter text-lg">{value}</span>
+  </div>
+);
+
+const WindowControls = () => (
+  <div className="flex gap-2">
+    <div className="w-3 h-3 rounded-full bg-red-500/20 border border-red-500/50 group-hover:bg-red-500 transition-colors" />
+    <div className="w-3 h-3 rounded-full bg-yellow-500/20 border border-yellow-500/50 group-hover:bg-yellow-500 transition-colors" />
+    <div className="w-3 h-3 rounded-full bg-green-500/20 border border-green-500/50 group-hover:bg-green-500 transition-colors" />
+  </div>
+);
+
 export default function FreelancerPortfolio3() {
-  const [openFaq, setOpenFaq] = useState(null);
+  const [activeTab, setActiveTab] = useState(0);
 
   return (
-    <div className="min-h-screen bg-[#020617] text-slate-200 font-sans selection:bg-purple-500/30 overflow-x-hidden relative">
+    <div className="min-h-screen bg-[#020617] text-slate-200 font-sans selection:bg-purple-500/30 overflow-x-hidden relative text-left">
+      <ScanLines />
       
       {/* MESH GRADIENT BACKGROUND */}
       <div className="fixed inset-0 min-h-screen w-full pointer-events-none z-0 overflow-hidden bg-[#020617]">
-         <div className="absolute top-[-10%] left-[-10%] w-[50vw] h-[50vh] bg-purple-600/30 rounded-full blur-[150px] mix-blend-screen animate-[pulse_10s_ease-in-out_infinite]" />
-         <div className="absolute top-[20%] right-[-10%] w-[60vw] h-[60vh] bg-blue-600/20 rounded-full blur-[180px] mix-blend-screen animate-[pulse_15s_ease-in-out_infinite_reverse]" />
-         <div className="absolute bottom-[-20%] left-[20%] w-[50vw] h-[60vh] bg-indigo-600/20 rounded-full blur-[150px] mix-blend-screen animate-[pulse_12s_ease-in-out_infinite]" />
-         <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg viewBox=%220 0 400 400%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22noiseFilter%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.8%22 numOctaves=%223%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23noiseFilter)%22/%3E%3C/svg%3E')] opacity-[0.03] mix-blend-overlay"></div>
+         <div className="absolute top-[-10%] left-[-10%] w-[50vw] h-[50vh] bg-purple-600/20 rounded-full blur-[150px] mix-blend-screen animate-[pulse_10s_ease-in-out_infinite]" />
+         <div className="absolute top-[20%] right-[-10%] w-[60vw] h-[60vh] bg-blue-600/10 rounded-full blur-[180px] mix-blend-screen animate-[pulse_15s_ease-in-out_infinite_reverse]" />
+         <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg viewBox=%220 0 400 400%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22noiseFilter%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.8%22 numOctaves=%223%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23noiseFilter)%22/%3E%3C/svg%3E')] opacity-[0.02] mix-blend-overlay"></div>
       </div>
 
       {/* FLOATING GLASS NAV */}
-      <nav className="fixed top-6 inset-x-0 z-50 flex justify-center px-4 pointer-events-none">
+      <nav className="fixed top-6 inset-x-0 z-[100] flex justify-center px-4 pointer-events-none">
         <div className="backdrop-blur-3xl bg-white/5 border border-white/10 rounded-full px-8 py-4 flex items-center justify-between w-full max-w-5xl shadow-[0_8px_32px_rgba(0,0,0,0.5)] pointer-events-auto">
-          <div className="font-bold text-xl tracking-tighter text-white">{data.brand.name.split(' ')[0]}</div>
-          <div className="hidden md:flex items-center gap-8 text-sm font-medium text-slate-300">
-             <a href="#services" className="hover:text-white transition-colors">OS Architecture</a>
-             <a href="#work" className="hover:text-white transition-colors">Protocols</a>
-             <a href="#pricing" className="hover:text-white transition-colors">Access</a>
+          <div className="flex items-center gap-4">
+             <div className="w-10 h-10 rounded-lg bg-white/10 border border-white/10 flex items-center justify-center font-black italic text-lg shadow-inner">
+                {data.brand.name.charAt(0)}
+             </div>
+             <div className="flex flex-col">
+                <span className="font-black text-xs tracking-[0.2em] uppercase text-white leading-none">{data.brand.name.split('|')[0]}</span>
+                <span className="text-[8px] font-mono text-purple-400 mt-1 uppercase tracking-widest hidden sm:block">Status: Dedicated Freelancer // Node_03</span>
+             </div>
           </div>
-          <a href="#contact" className="px-5 py-2 rounded-full bg-white text-black text-sm font-bold hover:scale-105 active:scale-95 transition-all">
+          
+          <div className="hidden md:flex items-center gap-10 text-[10px] font-black uppercase tracking-[0.2em] text-slate-400">
+             <a href="#services" className="hover:text-white transition-colors flex items-center gap-2"><Cpu size={12} /> Solution</a>
+             <a href="#work" className="hover:text-white transition-colors flex items-center gap-2"><Activity size={12} /> Work</a>
+             <a href="#pricing" className="hover:text-white transition-colors flex items-center gap-2"><Lock size={12} /> Access</a>
+          </div>
+
+          <a href="#contact" className="px-6 py-2.5 rounded-full bg-white text-black text-[10px] font-black uppercase tracking-widest hover:scale-105 active:scale-95 transition-all shadow-xl shadow-white/10">
             Initialize
           </a>
         </div>
@@ -36,125 +71,209 @@ export default function FreelancerPortfolio3() {
 
       <main className="relative z-10 space-y-40 pb-40">
         
-        {/* HERO */}
-        <section className="pt-48 px-6 min-h-[90vh] flex flex-col justify-center items-center text-center">
+        {/* HERO: OPERATIONAL OVERVIEW */}
+        <section className="pt-48 px-6 min-h-[95vh] flex flex-col justify-center items-center text-center relative overflow-hidden">
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-purple-600/5 rounded-full blur-[200px]" />
+            
             <motion.div 
-              initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 1, ease: 'easeOut' }}
-              className="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-white/5 border border-white/10 backdrop-blur-xl mb-12 shadow-2xl"
+              initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 1 }}
+              className="inline-flex items-center gap-4 px-6 py-3 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-3xl mb-12 shadow-2xl relative group"
             >
               <div className="relative flex h-3 w-3">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-purple-400 opacity-75"></span>
                 <span className="relative inline-flex rounded-full h-3 w-3 bg-purple-500"></span>
               </div>
-              <span className="text-sm font-medium tracking-wide text-slate-200">{data.hero.subtitle.split('.')[0]}.</span>
+              <span className="text-[10px] font-black tracking-[0.3em] uppercase text-white/80 font-mono">MVP Diagnostic: Optimal</span>
             </motion.div>
 
             <motion.h1 
-               initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1, delay: 0.2, ease: 'easeOut' }}
-               className="text-5xl sm:text-6xl md:text-8xl lg:text-[140px] font-black tracking-tighter leading-none mb-10 text-transparent bg-clip-text bg-gradient-to-br from-white via-white to-white/20"
+               initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.2 }}
+               className="text-6xl sm:text-7xl md:text-9xl lg:text-[160px] font-black tracking-tighter leading-[0.8] mb-12 text-white relative z-10"
             >
-              Vision.<br/>Engineered.
+              Vision.<br/>
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-blue-400 to-indigo-500 italic drop-shadow-[0_0_30px_rgba(168,85,247,0.3)]">Engineered.</span>
             </motion.h1>
 
-            <motion.div 
+            <motion.p 
               initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1, delay: 0.4 }}
-              className="flex justify-center w-full"
+              className="text-lg md:text-2xl text-slate-400 font-light max-w-3xl mx-auto leading-relaxed mb-20 px-4"
             >
-              <div className="flex flex-col sm:flex-row flex-wrap gap-8 md:gap-12 text-center items-center justify-center bg-white/5 border border-white/10 backdrop-blur-2xl rounded-3xl p-6 md:p-8 max-w-4xl shadow-2xl w-[90vw] md:w-auto">
-                 {data.stats.map((stat, i) => (
-                    <div key={i} className="flex-1 min-w-[120px] md:min-w-[150px]">
-                       <div className="text-3xl md:text-5xl font-black text-white mb-2">{stat.value}</div>
-                       <div className="text-[10px] md:text-xs uppercase tracking-[0.2em] text-slate-400 font-bold">{stat.label}</div>
-                    </div>
-                 ))}
-              </div>
+              {data.hero.subtitle}
+            </motion.p>
+
+            <motion.div 
+               initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1, delay: 0.6 }}
+               className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-16 bg-white/5 border border-white/10 backdrop-blur-3xl rounded-[3rem] p-10 md:p-14 max-w-5xl shadow-[0_0_100px_rgba(0,0,0,0.5)] border-t-white/20"
+            >
+               {data.stats.map((stat, i) => (
+                  <NodeIndicator key={i} label={stat.label} value={stat.value} />
+               ))}
             </motion.div>
         </section>
 
         {/* FEATURED IN MARQUEE (TRUST) */}
         {data.featured_in && (
-          <section className="border-y border-white/10 bg-white/5 backdrop-blur-md overflow-hidden relative flex py-8">
-             <div className="absolute inset-y-0 left-0 w-16 md:w-32 bg-gradient-to-r from-[#020617] to-transparent z-10 pointer-events-none" />
-             <div className="absolute inset-y-0 right-0 w-16 md:w-32 bg-gradient-to-l from-[#020617] to-transparent z-10 pointer-events-none" />
-             <div className="flex gap-16 animate-[marquee_30s_linear_infinite] px-8 cursor-default whitespace-nowrap opacity-60">
-                 {[...data.featured_in, ...data.featured_in, ...data.featured_in, ...data.featured_in].map((item, i) => (
-                   <div key={i} className="text-xl md:text-2xl font-bold uppercase tracking-widest text-slate-400">{item}</div>
+          <section className="border-y border-white/5 bg-white/[0.02] backdrop-blur-sm overflow-hidden relative flex py-10">
+             <div className="absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-[#020617] to-transparent z-10 pointer-events-none" />
+             <div className="absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-[#020617] to-transparent z-10 pointer-events-none" />
+             <div className="flex gap-20 animate-[marquee_40s_linear_infinite] px-10 cursor-default whitespace-nowrap opacity-20 hover:opacity-50 transition-opacity">
+                 {[...data.featured_in, ...data.featured_in, ...data.featured_in].map((item, i) => (
+                   <div key={i} className="text-2xl md:text-3xl font-black uppercase tracking-[0.4em] text-white flex items-center gap-8 italic">
+                      {item} <div className="w-3 h-3 rounded-full bg-purple-500" />
+                   </div>
                  ))}
              </div>
           </section>
         )}
 
-        {/* LIQUID SERVICES BENTO */}
+        {/* SERVICES: OS MODULES */}
         <section id="services" className="px-6 max-w-7xl mx-auto">
-          <div className="mb-20 text-center md:text-left">
-             <h2 className="text-4xl md:text-5xl font-black mb-6">System Architecture</h2>
-             <p className="text-xl text-slate-400 font-light max-w-2xl">High-performance modules engineered for massive scale.</p>
+          <div className="mb-24 flex flex-col md:flex-row justify-between items-end gap-12">
+             <div className="max-w-2xl text-left">
+                <div className="text-purple-500 text-[10px] font-black tracking-[0.5em] uppercase mb-4">Core Framework</div>
+                <h2 className="text-5xl md:text-7xl font-black text-white italic tracking-tighter leading-none mb-8">Rapid Evolution.</h2>
+                <p className="text-xl text-slate-400 font-light leading-relaxed">High-velocity modules engineered for founder-market fit and 99.9% production resilience.</p>
+             </div>
+             <div className="w-16 h-16 rounded-full border border-white/10 flex items-center justify-center animate-bounce hidden md:flex">
+                <ChevronDown size={24} className="text-slate-500" />
+             </div>
           </div>
           
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
              {data.services.map((service, i) => (
-               <div key={i} className="group p-8 rounded-[2.5rem] bg-white/[0.03] border border-white/10 backdrop-blur-2xl hover:bg-white/[0.08] transition-all duration-500 shadow-[0_8px_32px_rgba(0,0,0,0.3)] hover:shadow-purple-500/10 hover:-translate-y-2">
-                 <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-purple-500/20 to-blue-500/20 border border-white/10 flex items-center justify-center mb-8">
-                   <div className="w-6 h-6 bg-white/80 rounded-full blur-[2px] group-hover:blur-0 transition-all duration-300"></div>
+               <motion.div 
+                  key={i} 
+                  whileHover={{ y: -10 }}
+                  className="group p-10 rounded-[3rem] bg-white/[0.02] border border-white/5 backdrop-blur-3xl hover:bg-white/[0.05] transition-all duration-700 shadow-2xl relative overflow-hidden text-left"
+               >
+                 <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-purple-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                 
+                 <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-purple-500/10 to-blue-500/10 border border-white/10 flex items-center justify-center mb-10 group-hover:scale-110 transition-transform duration-500">
+                   {i === 0 ? <Box size={32} /> : i === 1 ? <Layout size={32} /> : <Database size={32} />}
                  </div>
-                 <h3 className="text-2xl font-bold text-white mb-4">{service.category}</h3>
-                 <p className="text-slate-400 font-light leading-relaxed">{service.description}</p>
-                 <div className="mt-8 pt-6 border-t border-white/10 flex flex-wrap gap-2">
+                 <h3 className="text-3xl font-bold text-white mb-6 uppercase tracking-tighter italic">{service.category}</h3>
+                 <p className="text-slate-400 font-light text-lg leading-relaxed mb-12">{service.description}</p>
+                 
+                 <div className="space-y-4 pt-10 border-t border-white/5">
                     {service.features.map((feat, idx) => (
-                       <span key={idx} className="px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-xs text-slate-300 tracking-wide">{feat}</span>
+                       <div key={idx} className="flex items-center gap-3 text-xs font-bold uppercase tracking-widest text-slate-500">
+                          <CheckCircle size={14} className="text-purple-500" /> {feat}
+                       </div>
                     ))}
                  </div>
-               </div>
+               </motion.div>
              ))}
           </div>
         </section>
 
-        {/* WORK / PROTOCOLS */}
+        {/* WORK: ACTIVE PROTOCOLS */}
         <section id="work" className="px-6 max-w-7xl mx-auto">
-           <div className="mb-20 text-center">
-             <h2 className="text-4xl md:text-5xl font-black mb-6">Production Environments</h2>
-             <p className="text-xl text-slate-400 font-light max-w-2xl mx-auto">Live protocols driving metric growth and user retention.</p>
+           <div className="mb-32 text-center relative">
+             <div className="absolute inset-0 top-1/2 -translate-y-1/2 text-[15vw] font-black opacity-[0.02] whitespace-nowrap select-none overflow-hidden uppercase italic">Production Environments</div>
+             <h2 className="text-5xl md:text-8xl font-black text-white relative z-10 italic">MVP Protocols <span className="text-slate-700">_01.</span></h2>
           </div>
           
-          <div className="space-y-32">
+          <div className="space-y-40">
              {data.completed_projects.map((proj, i) => (
-               <div key={i} className={`flex flex-col ${i % 2 !== 0 ? 'lg:flex-row-reverse' : 'lg:flex-row'} gap-12 lg:gap-20 items-center`}>
+               <div key={i} className={`flex flex-col ${i % 2 !== 0 ? 'lg:flex-row-reverse' : 'lg:flex-row'} gap-16 lg:gap-24 items-center`}>
                   
-                  {/* GLASS IMAGE MOCK */}
-                  <div className="w-full lg:w-1/2 aspect-video rounded-[3rem] bg-gradient-to-br from-white/[0.08] to-transparent border border-white/20 backdrop-blur-3xl overflow-hidden relative group shadow-[0_0_80px_rgba(147,51,234,0.15)] flex flex-col hover:border-white/40 transition-colors duration-500">
-                     <div className="h-14 border-b border-white/10 bg-white/5 flex items-center px-8 gap-3 backdrop-blur-xl">
-                        <div className="w-4 h-4 rounded-full bg-slate-600 group-hover:bg-red-500 transition-colors"></div>
-                        <div className="w-4 h-4 rounded-full bg-slate-600 group-hover:bg-yellow-500 transition-colors"></div>
-                        <div className="w-4 h-4 rounded-full bg-slate-600 group-hover:bg-green-500 transition-colors"></div>
+                  {/* TERMINAL WINDOW: HIGH-IMPACT VISUAL */}
+                  <div className="w-full lg:w-1/2 aspect-[4/3] rounded-[3rem] bg-[#0a0a0a] border border-white/10 overflow-hidden relative shadow-[0_0_150px_rgba(0,0,0,0.8)] group ring-1 ring-white/5">
+                     {/* Window Header */}
+                     <div className="h-14 bg-white/5 flex items-center justify-between px-8 border-b border-white/10 backdrop-blur-xl relative z-10">
+                        <WindowControls />
+                        <div className="text-[10px] font-mono text-slate-500 uppercase tracking-widest flex items-center gap-2">
+                           <Terminal size={12} /> app_v{i+1}.sys
+                        </div>
+                        <div className="flex gap-4">
+                           <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
+                        </div>
                      </div>
-                     <div className="flex-1 flex justify-center items-center relative overflow-hidden bg-[#0a0a0a]">
-                        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.05)_0,transparent_100%)]"></div>
-                        <ExternalLink size={80} className="text-white/20 group-hover:text-white/80 transition-all duration-500 transform group-hover:scale-110" />
+                     
+                     {/* Terminal Body: DYNAMIC HUD */}
+                     <div className="absolute inset-0 pt-14 p-10 font-mono text-[10px] sm:text-sm text-left overflow-hidden">
+                        {/* Background Data Stream */}
+                        <div className="absolute inset-0 opacity-[0.03] select-none pointer-events-none p-4 overflow-hidden leading-tight font-mono whitespace-pre text-[8px]">
+                           {Array(20).fill(0).map((_, idx) => (
+                             <div key={idx} className="mb-1 truncate">
+                               {`0x${Math.random().toString(16).slice(2, 10)} >> APP_DEPLOY_${idx} >> STATUS: ${Math.random() > 0.5 ? 'STABLE' : 'LOAD'} >> CPU: ${Math.floor(Math.random() * 100)}%`}
+                             </div>
+                           ))}
+                        </div>
+
+                        <div className="relative z-10 space-y-6">
+                           <div className="flex gap-3 text-purple-400">
+                              <span className="opacity-40 text-white">{">"}</span>
+                              <span className="text-white font-black uppercase tracking-[0.2em]">{proj.project_name}</span>
+                           </div>
+                           <div className="flex gap-3 text-green-500 text-[10px] font-black italic">
+                              <span className="opacity-40">{">"}</span>
+                              <span className="opacity-80 flex items-center gap-2">
+                                 <Activity size={10} className="animate-pulse" /> MVP_PROTOCOL_RUNNING
+                              </span>
+                           </div>
+                           
+                           {/* DYNAMIC VISUALIZATION CENTER */}
+                           <div className="mt-8 relative group-hover:scale-[1.02] transition-transform duration-700">
+                              <div className="h-48 md:h-64 w-full rounded-2xl border border-white/10 bg-white/[0.02] relative overflow-hidden flex items-center justify-center backdrop-blur-sm">
+                                 {/* Scanning Line */}
+                                 <div className="absolute inset-x-0 h-[2px] bg-gradient-to-r from-transparent via-purple-500 to-transparent top-0 animate-[scan_3s_ease-in-out_infinite]" />
+                                 
+                                 {/* HUD Reticle */}
+                                 <div className="absolute w-32 h-32 md:w-48 md:h-48 border border-white/5 rounded-full animate-[spin_20s_linear_infinite]" />
+                                 <div className="absolute w-24 h-24 md:w-40 md:h-40 border border-purple-500/10 rounded-full animate-[spin_15s_linear_infinite_reverse]" />
+                                 
+                                 <div className="relative flex flex-col items-center">
+                                    <Box size={48} className="text-purple-400 animate-pulse drop-shadow-[0_0_20px_rgba(168,85,247,0.5)]" />
+                                    <div className="mt-6 px-4 py-1.5 rounded-md bg-purple-500/10 border border-purple-500/20 text-[8px] font-black text-purple-300 uppercase tracking-[0.3em]">
+                                       Authorized_Partner_v1.0
+                                    </div>
+                                 </div>
+
+                                 {/* Corner Brackets */}
+                                 <div className="absolute top-4 left-4 w-4 h-4 border-t-2 border-l-2 border-white/10" />
+                                 <div className="absolute top-4 right-4 w-4 h-4 border-t-2 border-r-2 border-white/10" />
+                                 <div className="absolute bottom-4 left-4 w-4 h-4 border-b-2 border-l-2 border-white/10" />
+                                 <div className="absolute bottom-4 right-4 w-4 h-4 border-b-2 border-r-2 border-white/10" />
+                              </div>
+                           </div>
+
+                           <div className="flex justify-between items-center text-[10px] text-slate-500 font-black tracking-widest pt-4">
+                              <div className="flex gap-4">
+                                 <span>[RAM: 16GB]</span>
+                                 <span>[Uptime: 99.9%]</span>
+                              </div>
+                              <div className="text-purple-400/50">ENCRYPTED_MVP_TUNNEL</div>
+                           </div>
+                        </div>
                      </div>
                   </div>
 
-                  {/* DATA */}
-                  <div className="w-full lg:w-1/2 space-y-8">
-                     <div className="inline-flex px-4 py-1.5 rounded-full bg-purple-500/10 border border-purple-500/20 text-purple-400 text-xs font-bold tracking-widest uppercase">
-                       {proj.type}
-                     </div>
-                     <h3 className="text-4xl md:text-5xl font-black text-white">{proj.project_name}</h3>
-                     <p className="text-xl text-slate-400 font-light">{proj.description}</p>
-                     
-                     <div className="grid sm:grid-cols-2 gap-6">
-                        <div className="p-6 rounded-3xl bg-white/5 border border-white/10 backdrop-blur-xl shadow-inner">
-                           <div className="text-xs font-bold uppercase text-slate-500 tracking-widest mb-3">Problem</div>
-                           <div className="text-sm text-slate-300 font-light leading-relaxed">{proj.problem}</div>
+                  {/* DATA: REFINED TEXT WEIGHT */}
+                  <div className="w-full lg:w-1/2 space-y-8 text-left">
+                     <div className="flex flex-wrap items-center gap-4">
+                        <div className="px-5 py-2 rounded-xl bg-purple-500/10 border border-purple-500/20 text-purple-400 text-[10px] font-black tracking-[0.3em] uppercase">
+                          {proj.type}
                         </div>
-                        <div className="p-6 rounded-3xl bg-gradient-to-br from-purple-500/10 to-transparent border border-purple-500/20 backdrop-blur-xl">
-                           <div className="text-xs font-bold uppercase text-purple-400 tracking-widest mb-3">Solution</div>
-                           <div className="text-sm text-slate-200 font-light leading-relaxed">{proj.solution}</div>
+                        <div className="text-slate-600 font-mono text-[10px] italic tracking-tighter">APP_ID: 0x{i+7241}</div>
+                     </div>
+                     <h3 className="text-5xl md:text-6xl lg:text-7xl font-black text-white italic tracking-tighter leading-[0.9] drop-shadow-2xl">{proj.project_name}</h3>
+                     <p className="text-lg md:text-xl text-slate-400 font-light leading-relaxed max-w-xl">{proj.description}</p>
+                     
+                     <div className="grid sm:grid-cols-2 gap-6 pt-10 border-t border-white/5">
+                        <div className="p-8 rounded-[2rem] bg-white/[0.02] border border-white/5 backdrop-blur-xl group hover:border-white/10 transition-all shadow-2xl hover:bg-white/[0.03]">
+                           <div className="text-[10px] font-black uppercase text-slate-600 tracking-[0.4em] mb-4">Initial_Logic</div>
+                           <div className="text-sm text-slate-300 font-light leading-relaxed italic">"{proj.problem}"</div>
+                        </div>
+                        <div className="p-8 rounded-[2rem] bg-gradient-to-br from-purple-500/5 to-transparent border border-purple-500/10 backdrop-blur-xl group hover:border-purple-500/20 transition-all shadow-2xl hover:bg-purple-500/10">
+                           <div className="text-[10px] font-black uppercase text-purple-400 tracking-[0.4em] mb-4">Production_Build</div>
+                           <div className="text-sm text-slate-200 font-medium leading-relaxed italic">"{proj.solution}"</div>
                         </div>
                      </div>
 
-                     <div className="flex flex-wrap gap-2">
+                     <div className="flex flex-wrap gap-2 pt-4">
                         {proj.tech_stack.map((tech, idx) => (
-                           <span key={idx} className="px-5 py-2 rounded-full bg-white/10 backdrop-blur-xl border border-white/20 text-sm font-semibold text-white shadow-lg">{tech}</span>
+                           <span key={idx} className="px-5 py-2 rounded-full bg-white/5 border border-white/10 text-[9px] font-black uppercase tracking-widest text-slate-500 hover:text-white hover:border-white/20 transition-all cursor-default">{tech}</span>
                         ))}
                      </div>
                   </div>
@@ -166,19 +285,22 @@ export default function FreelancerPortfolio3() {
         {/* GUARANTEES (THE 3 PILLARS) */}
         {data.guarantees && (
           <section className="px-6 max-w-7xl mx-auto">
-             <div className="p-10 md:p-16 rounded-[4rem] bg-white/5 backdrop-blur-3xl border border-white/10 shadow-[0_0_100px_rgba(0,0,0,0.5)]">
-                <div className="text-center mb-16">
-                  <h2 className="text-3xl md:text-5xl font-black mb-4">Risk Architecture</h2>
-                  <p className="text-slate-400 font-light text-lg">Eliminating variables to guarantee production success.</p>
+             <div className="p-16 md:p-24 rounded-[5rem] bg-white/[0.01] backdrop-blur-3xl border border-white/5 shadow-[0_0_150px_rgba(0,0,0,0.5)] relative overflow-hidden group">
+                <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-purple-500 to-transparent opacity-30" />
+                
+                <div className="text-center mb-24">
+                  <div className="text-purple-500 text-[10px] font-black tracking-[0.6em] uppercase mb-6 italic">Strategic Commitments</div>
+                  <h2 className="text-5xl md:text-8xl font-black text-white italic tracking-tighter">The Guarantees.</h2>
                 </div>
-                <div className="grid md:grid-cols-3 gap-12 md:gap-16">
+                
+                <div className="grid lg:grid-cols-3 gap-16 md:gap-20 relative z-10">
                    {data.guarantees.map((guarantee, i) => (
-                      <div key={i} className="text-center group">
-                         <div className="w-20 h-20 mx-auto rounded-[2rem] bg-white/[0.03] border border-white/10 flex items-center justify-center mb-8 shadow-inner group-hover:bg-gradient-to-br group-hover:from-indigo-500 group-hover:to-purple-600 transition-all duration-500">
-                            <ShieldCheck size={36} className="text-slate-400 group-hover:text-white transition-colors" />
+                      <div key={i} className="text-center group/card">
+                         <div className="w-24 h-24 mx-auto rounded-3xl bg-white/[0.02] border border-white/5 flex items-center justify-center mb-10 shadow-inner group-hover/card:bg-purple-600 group-hover/card:scale-110 transition-all duration-700">
+                            <ShieldCheck size={40} className="text-slate-500 group-hover/card:text-white transition-colors" />
                          </div>
-                         <h3 className="text-xl font-bold text-white mb-4">{guarantee.title}</h3>
-                         <p className="text-slate-400 font-light text-sm md:text-base leading-relaxed">{guarantee.description}</p>
+                         <h3 className="text-2xl font-black text-white mb-6 uppercase tracking-tighter italic">{guarantee.title}</h3>
+                         <p className="text-slate-400 font-light leading-relaxed italic px-4">"{guarantee.description}"</p>
                       </div>
                    ))}
                 </div>
@@ -186,111 +308,124 @@ export default function FreelancerPortfolio3() {
           </section>
         )}
 
-        {/* 360 MARQUEE TESTIMONIALS */}
-        <section className="overflow-hidden relative py-10">
-          <div className="text-center mb-20 relative z-20 px-6">
-             <h2 className="text-4xl md:text-5xl font-black">Authorized by the Best</h2>
+        {/* TESTIMONIALS: AUTHORIZED CHANNELS */}
+        <section className="overflow-hidden relative py-20 px-6">
+          <div className="max-w-7xl mx-auto mb-24 flex flex-col md:flex-row justify-between items-end gap-10">
+             <div className="text-left">
+                <span className="text-purple-500 text-[10px] font-black tracking-[0.5em] uppercase mb-4 block">Feedback Pipeline</span>
+                <h2 className="text-5xl md:text-7xl font-black text-white italic tracking-tighter leading-none">Authorized by Founders.</h2>
+             </div>
+             <div className="flex items-center gap-4 text-slate-500 font-mono text-[10px] uppercase tracking-widest hidden md:flex">
+                <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" /> Live_Authorization_Stream
+             </div>
           </div>
+          
           <div className="relative flex">
-            <div className="absolute inset-y-0 left-0 w-16 md:w-40 bg-gradient-to-r from-[#020617] to-transparent z-10 pointer-events-none" />
-            <div className="absolute inset-y-0 right-0 w-16 md:w-40 bg-gradient-to-l from-[#020617] to-transparent z-10 pointer-events-none" />
+            <div className="absolute inset-y-0 left-0 w-32 md:w-60 bg-gradient-to-r from-[#020617] to-transparent z-20 pointer-events-none" />
+            <div className="absolute inset-y-0 right-0 w-32 md:w-60 bg-gradient-to-l from-[#020617] to-transparent z-20 pointer-events-none" />
             
-            <div className="flex gap-6 md:gap-8 animate-[marquee_50s_linear_infinite] px-4 hover:[animation-play-state:paused] cursor-default whitespace-nowrap">
-              {[...data.testimonials, ...data.testimonials, ...data.testimonials, ...data.testimonials].map((test, i) => (
-                <div key={i} className="w-[85vw] md:w-[450px] shrink-0 p-8 md:p-12 rounded-[3.5rem] bg-white/[0.03] backdrop-blur-xl border border-white/10 shadow-2xl relative group whitespace-normal flex flex-col hover:bg-white/[0.08] hover:border-white/20 transition-all duration-500 overflow-hidden">
-                  
-                  {/* Subtle glass reflection */}
-                  <div className="absolute top-0 left-0 w-full h-1/2 bg-gradient-to-b from-white/[0.08] to-transparent pointer-events-none"></div>
-
-                  <div className="flex gap-1 text-purple-400 mb-8 opacity-80 relative z-10">
-                    {[...Array(test.rating)].map((_, idx) => <Star key={idx} fill="currentColor" size={20} />)}
+            <div className="flex gap-10 animate-[marquee_60s_linear_infinite] px-6 hover:[animation-play-state:paused] cursor-default whitespace-nowrap pb-10">
+              {[...data.testimonials, ...data.testimonials, ...data.testimonials].map((test, i) => (
+                <div key={i} className="w-[85vw] md:w-[600px] shrink-0 p-12 md:p-20 rounded-[4rem] bg-white/[0.01] backdrop-blur-3xl border border-white/5 shadow-2xl relative group overflow-hidden flex flex-col hover:bg-white/[0.03] hover:border-white/10 transition-all duration-700 whitespace-normal text-left">
+                  <div className="absolute top-0 right-0 p-12 opacity-5 scale-150 rotate-12">
+                     <Lock size={120} />
                   </div>
-                  <p className="text-lg md:text-2xl font-light text-slate-300 mb-10 leading-relaxed italic flex-1 relative z-10">
+                  
+                  <div className="flex gap-1 text-purple-400 mb-10">
+                    {[...Array(test.rating)].map((_, idx) => <Star key={idx} fill="currentColor" size={18} />)}
+                  </div>
+                  
+                  <p className="text-xl md:text-3xl font-light text-slate-300 mb-16 leading-relaxed italic flex-1 relative z-10">
                     "{test.feedback}"
                   </p>
-                  <div className="flex items-center gap-5 mt-auto relative z-10">
-                    <div className="w-14 h-14 rounded-full bg-gradient-to-br from-purple-500/20 to-blue-500/20 border border-white/20 flex items-center justify-center font-black text-white text-xl shadow-inner">
+                  
+                  <div className="flex items-center gap-8 mt-auto relative z-10">
+                    <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-purple-500/20 to-blue-500/20 border border-white/10 flex items-center justify-center font-black text-white text-3xl shadow-inner group-hover:scale-110 transition-transform">
                       {test.name.charAt(0)}
                     </div>
-                    <div>
-                      <div className="font-bold text-white tracking-wide text-lg">{test.name.split(',')[0]}</div>
-                      <div className="text-xs text-slate-400 uppercase tracking-widest font-bold mt-1">
-                        {test.name.split(',')[1] ? test.name.split(',')[1].trim() : "Verified Account"}
+                    <div className="flex flex-col">
+                      <div className="font-black text-white tracking-widest text-xl uppercase italic">{test.name.split('|')[0]}</div>
+                      <div className="text-[9px] text-purple-400 uppercase tracking-[0.5em] font-black mt-2">
+                        {test.name.split('|')[1] || "Founder / Visionary"} // Verified_Identity
                       </div>
                     </div>
                   </div>
                 </div>
               ))}
             </div>
-            <style>{`
-             @keyframes marquee {
-               0% { transform: translateX(0); }
-               100% { transform: translateX(-50%); }
-             }
-            `}</style>
           </div>
         </section>
 
-        {/* PRICING */}
-        <section id="pricing" className="max-w-7xl mx-auto px-6">
-           <div className="text-center mb-24">
-             <h2 className="text-4xl md:text-5xl font-black mb-4">Engagement Tiers</h2>
-             <p className="text-xl text-slate-400 font-light">Transparent modeling. Infinite upside.</p>
+        {/* ACCESS PROTOCOL: FINAL CTA */}
+        <section id="contact" className="max-w-7xl mx-auto px-6 pt-40 flex flex-col items-center">
+           <div className="w-32 h-32 rounded-3xl bg-white/5 border border-white/10 flex items-center justify-center mb-16 relative">
+              <div className="absolute inset-0 bg-purple-500/20 rounded-3xl blur-2xl animate-pulse" />
+              <Zap size={60} className="text-white relative z-10" />
            </div>
            
-           <div className="grid lg:grid-cols-3 gap-8">
-              {data.pricing.map((tier, i) => (
-                 <div key={i} className={`p-10 md:p-12 rounded-[3.5rem] border backdrop-blur-3xl flex flex-col relative overflow-hidden group ${i === 1 ? 'bg-gradient-to-b from-purple-900/40 to-white/[0.04] border-purple-500/40 shadow-[0_0_80px_rgba(168,85,247,0.2)] transform md:-translate-y-6 z-10' : 'bg-white/[0.02] border-white/10'}`}>
-                    
-                    {i === 1 && <div className="absolute top-0 inset-x-0 h-1.5 bg-gradient-to-r from-blue-500 to-purple-500"></div>}
-                    
-                    {i === 1 && <div className="text-xs font-bold uppercase tracking-[0.2em] text-purple-400 mb-8 flex items-center gap-2 relative z-10"><div className="w-2 h-2 rounded-full bg-purple-500 animate-pulse"></div> Authorized Standard</div>}
-                    {i !== 1 && <div className="h-6 mb-8 relative z-10"></div>}
-                    
-                    <h3 className="text-3xl font-black text-white tracking-tight mb-4 relative z-10">{tier.plan}</h3>
-                    <div className="text-6xl font-light tracking-tighter text-white mb-12 relative z-10">{tier.price}</div>
-                    
-                    <ul className="space-y-5 mb-14 flex-1 relative z-10">
-                       {tier.features.map((feat, idx) => (
-                          <li key={idx} className="flex items-center gap-4 text-slate-300 font-light">
-                             <CheckCircle size={20} className={i === 1 ? "text-purple-400" : "text-slate-600"} />
-                             {feat}
-                          </li>
-                       ))}
-                    </ul>
-                    
-                    <button className={`w-full py-6 rounded-3xl font-bold uppercase tracking-widest text-sm transition-all shadow-xl active:scale-95 relative z-10 ${i === 1 ? 'bg-white text-black hover:bg-slate-200 shadow-white/10' : 'bg-white/10 text-white hover:bg-white/20 border border-white/10 shadow-none'}`}>
-                       Initialize Sequence
-                    </button>
-                    
-                    {/* Glass Reflection */}
-                    <div className="absolute top-0 left-0 w-full h-[60%] bg-gradient-to-b from-white/[0.05] to-transparent pointer-events-none transition-opacity duration-1000 group-hover:opacity-100 opacity-50"></div>
-                 </div>
-              ))}
-           </div>
-        </section>
-
-        {/* FOOTER */}
-        <section id="contact" className="max-w-5xl mx-auto px-6 pb-10 pt-20 md:pt-32 text-center relative z-10 w-full">
-           <h2 className="text-4xl sm:text-5xl md:text-8xl font-black tracking-tighter text-white mb-8">Ready to execute?</h2>
-           <p className="text-lg md:text-2xl text-slate-400 font-light mb-16 max-w-3xl mx-auto">System diagnostics suggest we are a perfect match. Contact the architect directly.</p>
+           <h2 className="text-6xl md:text-[10vw] font-black tracking-[0.02em] text-white mb-12 text-center uppercase leading-[0.8] italic">Launch Your <br/><span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-indigo-600">Product.</span></h2>
            
-           <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-40">
-              <a href={`mailto:${data.contact.email}`} className="px-10 py-6 rounded-full bg-white text-black font-bold tracking-widest uppercase text-sm hover:bg-slate-200 transition-all flex items-center gap-4 w-full sm:w-auto justify-center shadow-[0_0_40px_rgba(255,255,255,0.2)] hover:scale-105">
-                 <Mail size={20} /> Transmit Request
+           <p className="text-lg md:text-2xl text-slate-400 font-light mb-20 max-w-2xl text-center leading-relaxed">System diagnostics suggest we are a perfect partnership match. Initialize the launch protocol below.</p>
+           
+           <div className="flex flex-col sm:flex-row gap-8 justify-center items-center mb-60 w-full max-w-2xl">
+              <a href={`mailto:${data.contact.email}`} className="w-full sm:w-auto px-16 py-8 rounded-[2.5rem] bg-white text-black font-black tracking-widest uppercase text-xs hover:bg-slate-200 transition-all flex items-center gap-6 justify-center shadow-[0_0_50px_rgba(255,255,255,0.2)] hover:scale-105 active:scale-95 group">
+                 <Mail size={20} className="group-hover:rotate-12 transition-transform" /> Transmit_Vision
               </a>
-              <div className="px-10 py-6 rounded-full bg-white/5 border border-white/10 backdrop-blur-3xl text-white font-bold tracking-widest text-sm uppercase flex items-center gap-4 w-full sm:w-auto justify-center">
-                 <Phone size={20} /> {data.contact.phone}
+              <div className="w-full sm:w-auto px-16 py-8 rounded-[2.5rem] bg-white/5 border border-white/10 backdrop-blur-3xl text-white font-black tracking-[0.3em] text-[10px] uppercase flex items-center gap-6 justify-center italic">
+                 <Phone size={20} className="text-slate-500" /> {data.contact.phone}
               </div>
            </div>
            
-           <div className="flex flex-col md:flex-row justify-between items-center gap-6 border-t border-white/10 pt-12">
-              <div className="font-black text-2xl tracking-tighter text-white">{data.footer.brand}</div>
-              <div className="text-sm text-slate-500 font-medium tracking-wide">{data.footer.copyright}</div>
+           {/* DEEP FOOTER */}
+           <div className="w-full pt-16 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-10">
+              <div className="flex items-center gap-4">
+                 <div className="w-12 h-12 rounded-xl bg-white/10 flex items-center justify-center font-black italic">{data.footer.brand.charAt(0)}</div>
+                 <div className="flex flex-col">
+                    <span className="text-xs font-black uppercase tracking-widest text-white">{data.footer.brand}</span>
+                    <span className="text-[10px] text-slate-500 font-mono italic">{data.footer.tagline}</span>
+                 </div>
+              </div>
+              
+              <div className="flex gap-10 text-[10px] font-black uppercase tracking-[0.4em] text-slate-500">
+                 <a href="#" className="hover:text-white transition-colors">Github</a>
+                 <a href="#" className="hover:text-white transition-colors">Twitter</a>
+                 <a href="#" className="hover:text-white transition-colors">LinkedIn</a>
+              </div>
+
+              <div className="text-[9px] font-mono text-slate-600 uppercase tracking-widest bg-white/5 px-6 py-2 rounded-full border border-white/5">
+                 {data.footer.copyright} // FREELANCE_V3_2026
+              </div>
            </div>
         </section>
 
       </main>
+
+      <style dangerouslySetInnerHTML={{ __html: `
+        @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Outfit:wght@300;400;700;900&display=swap');
+        
+        body { font-family: 'Outfit', sans-serif; }
+        .font-mono { font-family: 'JetBrains+Mono', monospace; }
+
+        @keyframes scan {
+          from { transform: translateY(-100%); }
+          to { transform: translateY(100%); }
+        }
+
+        @keyframes marquee {
+          0% { transform: translateX(0); }
+          100% { transform: translateX(-50%); }
+        }
+
+        @keyframes pulse {
+          0%, 100% { opacity: 0.15; transform: scale(1); }
+          50% { opacity: 0.25; transform: scale(1.1); }
+        }
+
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #020617; }
+        ::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: #334155; }
+      `}} />
     </div>
   );
 }

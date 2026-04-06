@@ -228,7 +228,22 @@ export const CompanyPortfolio = {
     "brand": "RPS DIGITAL STORE",
     "tagline": "Software Excellence, Scaled for Business Infrastructure.",
     "copyright": "© 2026 RPS DIGITAL STORE. All rights reserved."
-  }
+  },
+
+  "guarantees": [
+    {
+      "title": "Enterprise Compliance SLA",
+      "description": "Every solution is architected for regulatory compliance (GDPR/SOC2) and data security by default."
+    },
+    {
+      "title": "Managed Squad Governance",
+      "description": "Daily agile reporting and deep-level технический oversight with senior-only engineering squads."
+    },
+    {
+      "title": "24/7 Enterprise Support",
+      "description": "Strategic Technical Governance and Mission-Critical support for global operations after product deployment."
+    }
+  ]
 };
 
 // Alias for theme compatibility

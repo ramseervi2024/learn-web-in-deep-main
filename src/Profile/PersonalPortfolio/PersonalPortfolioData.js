@@ -309,6 +309,21 @@ export const portfolioprofile = {
     "Product Hunt",
     "React Native Digest",
     "Mobile Weekly"
+  ],
+
+  "guarantees": [
+    {
+      "title": "60FPS Performance SLA",
+      "description": "Every interface is engineered for buttery-smooth 60FPS fluid motion, even on lower-end Android devices."
+    },
+    {
+      "title": "Zero-Security Debt",
+      "description": "Architected with biometric-first encryption and bank-grade vaulting protocols from day one."
+    },
+    {
+      "title": "Modular Scaling Ready",
+      "description": "Codebases are modularized into independent technical domains, making it effortless to add massive features later."
+    }
   ]
 };
 

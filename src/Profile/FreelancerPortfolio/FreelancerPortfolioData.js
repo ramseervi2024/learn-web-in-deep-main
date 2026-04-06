@@ -229,7 +229,22 @@ export const FullTimeFreelancerProfile = {
     "brand": "Ram Choudhary Product Partner",
     "tagline": "Turning Vision into High-Performance Products.",
     "copyright": "© 2026 Ram Choudhary. All rights reserved."
-  }
+  },
+
+  "guarantees": [
+    {
+      "title": "6-Week MVP Launchpad",
+      "description": "Your idea transformed from Sigma designs into a live App Store submission in exactly 6 sprints."
+    },
+    {
+      "title": "Founder-First Logic",
+      "description": "Weekly progress demos. Transparent technical roadmaps. 100% intellectual property ownership from day one."
+    },
+    {
+      "title": "Zero-Maintenance Scaling",
+      "description": "Architected with sustainable, high-velocity logic so you can scale without technical re-platforms."
+    }
+  ]
 };
 
 // Aliases for theme compatibility
