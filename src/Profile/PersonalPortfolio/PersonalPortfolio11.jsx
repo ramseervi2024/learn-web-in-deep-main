@@ -1,11 +1,14 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { motion, AnimatePresence, useSpring, useTransform, useMotionValue } from 'framer-motion';
+import { motion, AnimatePresence, useScroll, useSpring, useTransform, useMotionValue } from 'framer-motion';
 import { portfolioprofile as data } from './PersonalPortfolioData';
 import { 
-  Zap, Shield, Rocket, Code2, Smartphone, Layers, 
-  Terminal, Mail, Phone, Github, Twitter, ChevronRight,
-  Menu, X, Check, ArrowRight
+  Zap, Shield, Rocket, Code2, Layers, 
+  Terminal, Smartphone, Cpu, Mail, Phone,
+  Github, Twitter, ArrowUpRight, ChevronRight,
+  Menu, X, Check, ArrowRight, Globe, BarChart3
 } from 'lucide-react';
+
+// --- Animated Liquid Background ---
 
 const LiquidBackground = () => (
   <div className="fixed inset-0 z-0 overflow-hidden bg-[#02040a]">
@@ -39,6 +42,8 @@ const LiquidBackground = () => (
     <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 contrast-[120%] brightness-[120%] pointer-events-none" />
   </div>
 );
+
+// --- Sub-Components ---
 
 const TiltCard = ({ children, className = "" }) => {
   const x = useMotionValue(0);
@@ -114,15 +119,16 @@ export default function Portfolio11() {
     <div ref={containerRef} className="bg-[#02040a] text-white min-h-screen selection:bg-cyan-500/30 overflow-x-hidden font-sans">
       <LiquidBackground />
 
+      {/* Floating Glass Navbar */}
       <nav className={`fixed top-8 inset-x-0 z-[100] transition-all duration-500 ${scrolled ? 'translate-y-[-10px]' : ''}`}>
         <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between bg-white/[0.03] backdrop-blur-2xl border border-white/10 rounded-full mx-6 md:mx-auto">
           <div className="flex items-center gap-3 cursor-pointer group px-2">
             <div className="w-8 h-8 rounded-full bg-gradient-to-br from-cyan-400 to-blue-600 flex items-center justify-center p-[1px]">
               <div className="w-full h-full bg-[#02040a] rounded-full flex items-center justify-center">
-                <span className="text-xs font-black bg-clip-text text-transparent bg-gradient-to-br from-cyan-400 to-blue-600">RS</span>
+                <span className="text-xs font-black bg-clip-text text-transparent bg-gradient-to-br from-cyan-400 to-blue-600">{data.brand.name.charAt(0)}</span>
               </div>
             </div>
-            <span className="text-sm font-bold tracking-widest uppercase text-white/80">{data.personal_info.name}</span>
+            <span className="text-sm font-bold tracking-widest uppercase text-white/80">{data.brand.name}</span>
           </div>
 
           <div className="hidden md:flex items-center gap-10">
@@ -135,7 +141,7 @@ export default function Portfolio11() {
 
           <div className="flex items-center gap-4">
             <button className="hidden sm:block h-10 px-6 rounded-full bg-white text-black text-[10px] font-black uppercase tracking-[0.2em] hover:scale-105 transition-transform">
-                Get In Touch
+              Initialize
             </button>
             <button onClick={() => setIsMenuOpen(true)} className="md:hidden text-white/60 p-2">
               <Menu size={20} />
@@ -144,6 +150,7 @@ export default function Portfolio11() {
         </div>
       </nav>
 
+      {/* Mobile Menu */}
       <AnimatePresence>
         {isMenuOpen && (
           <motion.div
@@ -155,7 +162,7 @@ export default function Portfolio11() {
             <button onClick={() => setIsMenuOpen(false)} className="absolute top-12 right-12 w-12 h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white">
               <X size={24} />
             </button>
-            <div className="flex flex-col gap-8 text-center" style={{ maxHeight: '80vh', overflowY: 'auto' }}>
+            <div className="flex flex-col gap-8 text-center">
               {['Architecture', 'Projects', 'Pricing', 'Connect'].map((item, i) => (
                 <motion.a
                   key={item}
@@ -176,6 +183,7 @@ export default function Portfolio11() {
 
       <main className="relative z-10">
         
+        {/* --- Hero Section --- */}
         <section className="min-h-screen flex flex-col items-center justify-center px-6 pt-32 pb-48">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -193,7 +201,7 @@ export default function Portfolio11() {
               transition={{ duration: 1 }}
               className="block mb-4"
             >
-                Professional Engineer
+              Software Engineering
             </motion.span>
             <motion.span 
               initial={{ opacity: 0, x: -50 }} 
@@ -211,11 +219,11 @@ export default function Portfolio11() {
           
           <div className="mt-20 flex flex-col sm:flex-row items-center gap-8">
             <button className="group relative h-16 px-12 rounded-full bg-white text-black font-black uppercase tracking-[0.2em] text-[10px] overflow-hidden hover:scale-105 transition-all">
-              <span className="relative z-10">{data.hero.cta_primary}</span>
+              <span className="relative z-10">Start The Mission</span>
               <div className="absolute inset-x-0 bottom-0 h-0 group-hover:h-full bg-cyan-400 transition-all duration-300" />
             </button>
             <button className="flex items-center gap-3 text-white font-black uppercase tracking-[0.2em] text-[10px] hover:text-cyan-400 transition-all">
-              {data.hero.cta_secondary} <ArrowRight size={16} />
+              View Case Studies <ArrowRight size={16} />
             </button>
           </div>
 
@@ -228,49 +236,47 @@ export default function Portfolio11() {
           </motion.div>
         </section>
 
+        {/* --- Services Section --- */}
         <section id="architecture" className="max-w-7xl mx-auto px-6 mb-64">
           <SectionHeader 
             title="System Architecture" 
-            subtitle="Engineering complete end-to-end mobile ecosystems that provide the technological foundation for your business growth."
+            subtitle="Engineering complete end-to-end ecosystems that provide the technological foundation for your professional presence."
           />
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {(data.services || data.core_expertise).map((service, i) => (
+            {data.services.map((service, i) => (
               <TiltCard key={i}>
                 <div className="h-full p-10 rounded-[2.5rem] bg-white/[0.02] backdrop-blur-3xl border border-white/5 hover:border-white/20 transition-all group overflow-hidden">
                   <div className="absolute top-0 right-0 w-32 h-32 bg-cyan-500/5 blur-3xl opacity-0 group-hover:opacity-100 transition-opacity" />
                   
                   <div className="w-14 h-14 rounded-2xl bg-white/5 flex items-center justify-center text-white/40 mb-10 group-hover:scale-110 group-hover:text-cyan-400 transition-all">
-                    {i % 6 === 0 && <Code2 size={28} />}
-                    {i % 6 === 1 && <Smartphone size={28} />}
-                    {i % 6 === 2 && <Terminal size={28} />}
-                    {i % 6 === 3 && <Layers size={28} />}
-                    {i % 6 === 4 && <Zap size={28} />}
-                    {i % 6 === 5 && <Shield size={28} />}
+                    {i === 0 && <Code2 size={28} />}
+                    {i === 1 && <Smartphone size={28} />}
+                    {i === 2 && <Terminal size={28} />}
+                    {i === 3 && <Layers size={28} />}
+                    {i === 4 && <Zap size={28} />}
+                    {i === 5 && <Shield size={28} />}
                   </div>
                   
-                  <h3 className="text-2xl font-bold text-white mb-4 italic tracking-tight">
-                    {service.category || service}
-                  </h3>
+                  <h3 className="text-2xl font-bold text-white mb-4 italic tracking-tight">{service.category}</h3>
                   <p className="text-white/40 font-light leading-relaxed mb-8">
-                    {service.description || "Expert implementation of high-performance architectural patterns."}
+                    {service.description}
                   </p>
                   
-                  {service.features && (
-                    <div className="flex flex-wrap gap-2">
-                        {service.features.map(f => (
-                            <span key={f} className="px-3 py-1 rounded-full bg-white/5 border border-white/5 text-[9px] font-black uppercase tracking-widest text-white/30">
-                                {f}
-                            </span>
-                        ))}
-                    </div>
-                  )}
+                  <div className="flex flex-wrap gap-2">
+                    {service.features.map(f => (
+                      <span key={f} className="px-3 py-1 rounded-full bg-white/5 border border-white/5 text-[9px] font-black uppercase tracking-widest text-white/30">
+                        {f}
+                      </span>
+                    ))}
+                  </div>
                 </div>
               </TiltCard>
             ))}
           </div>
         </section>
 
+        {/* --- Showcase Section --- */}
         <section id="projects" className="max-w-7xl mx-auto px-6 mb-64">
           <SectionHeader 
             title="Production Protocol" 
@@ -278,7 +284,7 @@ export default function Portfolio11() {
           />
           
           <div className="space-y-48">
-            {data.projects.map((project, i) => (
+            {data.completed_projects.map((project, i) => (
               <motion.div
                 key={i}
                 initial={{ opacity: 0 }}
@@ -289,7 +295,7 @@ export default function Portfolio11() {
                 <div className="flex-1 w-full aspect-square md:aspect-video rounded-[3rem] bg-white/[0.02] backdrop-blur-3xl border border-white/5 relative overflow-hidden group shadow-2xl">
                   <div className="absolute inset-0 bg-gradient-to-t from-cyan-500/10 to-transparent" />
                   <div className="absolute inset-0 flex items-center justify-center text-[18rem] md:text-[25rem] font-black italic text-white/[0.01] uppercase select-none pointer-events-none">
-                    {project.name.charAt(0)}
+                    {project.project_name.charAt(0)}
                   </div>
                   
                   <div className="absolute top-12 left-12">
@@ -298,7 +304,7 @@ export default function Portfolio11() {
                   </div>
                   
                   <div className="absolute bottom-12 right-12 flex flex-col items-end gap-2">
-                    {project.technologies.slice(0, 3).map(tech => (
+                    {project.tech_stack.map(tech => (
                       <span key={tech} className="px-5 py-2 rounded-full bg-black/60 backdrop-blur-xl border border-white/10 text-[9px] font-black uppercase tracking-widest text-white/80 shadow-2xl">
                         {tech}
                       </span>
@@ -308,16 +314,16 @@ export default function Portfolio11() {
                 
                 <div className="flex-1 max-w-xl">
                   <h3 className="text-5xl md:text-7xl font-light italic tracking-tighter text-white mb-8">
-                    {project.name}.
+                    {project.project_name}.
                   </h3>
                   <p className="text-xl text-white/40 font-light leading-relaxed mb-12">
                     {project.description}
                   </p>
                   
                   <div className="grid grid-cols-2 gap-8 mb-12">
-                    {project.features.slice(0, 2).map((res, idx) => (
+                    {project.result?.map((res, idx) => (
                       <div key={idx}>
-                        <div className="text-[10px] font-black uppercase tracking-[0.2em] text-cyan-400 mb-2">FEATURE {idx + 1}</div>
+                        <div className="text-[10px] font-black uppercase tracking-[0.2em] text-cyan-400 mb-2">KPI METRIC</div>
                         <div className="text-xl font-bold text-white tracking-tight">{res}</div>
                       </div>
                     ))}
@@ -332,6 +338,7 @@ export default function Portfolio11() {
           </div>
         </section>
 
+        {/* --- Investment Section --- */}
         <section id="pricing" className="max-w-7xl mx-auto px-6 mb-64">
           <SectionHeader 
             centered
@@ -339,14 +346,14 @@ export default function Portfolio11() {
             subtitle="Transparent investment snapshots for elite product delivery."
           />
           
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-12" style={{ transformStyle: 'preserve-3d' }}>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
             {data.pricing.map((plan, i) => (
               <div key={i} className={`relative p-12 rounded-[3rem] border transition-all hover:scale-[1.02] ${
                 i === 1 ? 'bg-white text-black border-white shadow-[0_0_80px_rgba(255,255,255,0.1)]' : 'bg-white/[0.02] border-white/10 text-white'
               }`}>
                 {i === 1 && (
                   <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-6 py-2 rounded-full bg-cyan-400 text-black text-[9px] font-black uppercase tracking-widest">
-                    Best Value
+                    Production Favorite
                   </div>
                 )}
                 
@@ -376,19 +383,19 @@ export default function Portfolio11() {
           </div>
         </section>
 
-        {data.testimonials && (
-            <section className="w-full py-24 mb-64 bg-white/[0.02] backdrop-blur-3xl overflow-hidden relative">
-                <div className="flex animate-marquee gap-24 items-center whitespace-nowrap">
-                    {[...data.testimonials, ...data.testimonials, ...data.testimonials].map((t, i) => (
-                        <div key={i} className="flex-shrink-0 flex flex-col items-start max-w-sm">
-                            <p className="text-2xl font-light italic text-white/60 mb-6 whitespace-normal">"{t.feedback}"</p>
-                            <div className="text-xs font-black uppercase tracking-widest text-cyan-400">— {t.name}</div>
-                        </div>
-                    ))}
-                </div>
-            </section>
-        )}
+        {/* --- Testimonial Strip --- */}
+        <section className="w-full py-24 mb-64 bg-white/[0.02] backdrop-blur-3xl overflow-hidden">
+          <div className="flex animate-marquee gap-24 items-center">
+            {Array(4).fill(data.employment).flat().map((t, i) => (
+              <div key={i} className="flex-shrink-0 flex flex-col items-start max-w-sm">
+                <p className="text-2xl font-light italic text-white/60 mb-6 font-serif">"{t.description}"</p>
+                <div className="text-xs font-black uppercase tracking-widest text-cyan-400">— {t.company}</div>
+              </div>
+            ))}
+          </div>
+        </section>
 
+        {/* --- Elite Connect --- */}
         <section id="connect" className="max-w-7xl mx-auto px-6 mb-32">
           <div className="relative p-8 sm:p-12 md:p-20 rounded-[3rem] md:rounded-[4rem] bg-[#0d1b2a] border border-white/5 overflow-hidden text-center">
             <motion.div
@@ -401,22 +408,18 @@ export default function Portfolio11() {
               <SectionHeader 
                 centered
                 title="Initialize Mission" 
-                subtitle="Available for high-priority mobile development slot applications."
+                subtitle="We are currently accepting high-priority slot applications for the upcoming quarters."
               />
               
               <div className="flex flex-col items-center gap-12 mt-16 text-center">
-                <a href={`mailto:${data.personal_info.email}`} className="text-2xl sm:text-4xl md:text-[6rem] font-light tracking-tighter text-white hover:text-cyan-400 transition-all underline decoration-white/10 underline-offset-[10px] md:underline-offset-[20px] decoration-1 break-all">
-                  {data.personal_info.email}
+                <a href={`mailto:${data.contact.email}`} className="text-2xl sm:text-4xl md:text-[6rem] font-light tracking-tighter text-white hover:text-cyan-400 transition-all underline decoration-white/10 underline-offset-[10px] md:underline-offset-[20px] decoration-1 break-all">
+                  {data.contact.email}
                 </a>
                 
-                <div className="flex gap-12">
+                <div className="flex gap-12 text-center">
                   <div className="flex flex-col gap-2">
-                    <div className="text-[10px] font-black uppercase tracking-[0.3em] text-white/20">CURRENT STATUS</div>
-                    <div className="text-sm font-medium text-white/60 tracking-widest uppercase italic">{data.personal_info.availability}</div>
-                  </div>
-                  <div className="flex flex-col gap-2">
-                    <div className="text-[10px] font-black uppercase tracking-[0.3em] text-white/20">LOCATION</div>
-                    <div className="text-sm font-medium text-white/60 tracking-widest uppercase italic">{data.personal_info.location}</div>
+                    <div className="text-[10px] font-black uppercase tracking-[0.3em] text-white/20">STATUS</div>
+                    <div className="text-sm font-medium text-white/60 tracking-widest uppercase italic">AVAILABLE</div>
                   </div>
                 </div>
               </div>
@@ -424,40 +427,39 @@ export default function Portfolio11() {
           </div>
         </section>
 
+        {/* --- Footer --- */}
         <footer className="max-w-7xl mx-auto px-6 py-20 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-12">
           <div>
             <div className="text-xl font-black tracking-widest uppercase text-white mb-2">
-              {data.personal_info.name}
+              {data.brand.name}
             </div>
             <p className="text-[9px] font-bold uppercase tracking-[0.3em] text-white/20">
-              {data.personal_info.title}
+              Personal Professional Identity
             </p>
           </div>
           
-          <div className="flex gap-16 text-[9px] font-black uppercase tracking-[0.2em] text-white/40">
+          <div className="flex gap-16 text-[9px] font-black uppercase tracking-[0.3em] text-white/40">
             <a href="#" className="hover:text-cyan-400 transition-colors">Github</a>
             <a href="#" className="hover:text-cyan-400 transition-colors">Twitter</a>
-            <a href="#" className="hover:text-cyan-400 transition-colors">Layers</a>
           </div>
           
           <div className="text-right">
             <div className="text-[10px] font-bold text-white/20 uppercase tracking-[0.2em] italic mb-1">
-               Protocol: Stable Build 11.0.4
+               Protocol: Stable Build 11.1.0
             </div>
             <div className="text-[9px] font-black uppercase tracking-[0.2em] text-white/10">
-                © {new Date().getFullYear()} {data.personal_info.name}. All rights reserved.
+              {data.footer.copyright}
             </div>
           </div>
         </footer>
       </main>
 
-      <style>{`
+      <style jsx global>{`
         @keyframes marquee {
           0% { transform: translateX(0); }
           100% { transform: translateX(-50%); }
         }
         .animate-marquee {
-          display: inline-flex;
           animation: marquee 60s linear infinite;
         }
       `}</style>

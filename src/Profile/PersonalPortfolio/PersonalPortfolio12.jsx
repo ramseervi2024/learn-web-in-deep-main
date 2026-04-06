@@ -1,9 +1,15 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { motion, useScroll, useSpring, useTransform, useMotionValue } from 'framer-motion';
+import { motion, useScroll, useSpring, useTransform, useMotionValue, useVelocity, useAnimationFrame, AnimatePresence } from 'framer-motion';
 import { portfolioprofile as data } from './PersonalPortfolioData';
 import { 
-  Code2, Smartphone, Terminal, Mail, ArrowUpRight, ArrowRight, Globe, Layers, Zap, Shield, Github, Twitter, Check
+  Zap, Shield, Rocket, Code2, Layers, 
+  Terminal, Smartphone, Cpu, Mail, Phone,
+  Github, Twitter, ArrowUpRight, ChevronRight,
+  Menu, X, Check, ArrowRight, ExternalLink, Globe,
+  ArrowRightCircle, MousePointer2
 } from 'lucide-react';
+
+// --- Sub-Components ---
 
 const SectionWrap = ({ children, title, className = "" }) => (
   <section className={`relative w-[100vw] h-screen flex-shrink-0 flex flex-col items-start px-12 md:px-32 py-24 md:py-32 overflow-hidden ${className}`}>
@@ -84,11 +90,9 @@ export default function Portfolio12() {
         <div className="flex items-center gap-6 group cursor-pointer text-left">
           <div className="w-12 h-12 rounded-full border-2 border-white/20 flex items-center justify-center group-hover:border-white transition-all overflow-hidden relative">
              <div className="absolute inset-0 bg-white translate-y-[100%] group-hover:translate-y-0 transition-transform duration-500" />
-             <span className="text-sm font-black relative z-10 group-hover:text-black transition-colors uppercase italic tracking-tighter">
-                {data.personal_info.name.split(' ').map(n => n[0]).join('')}
-             </span>
+             <span className="text-sm font-black relative z-10 group-hover:text-black transition-colors uppercase italic tracking-tighter">{data.brand.name.charAt(0)}</span>
           </div>
-          <span className="text-[12px] font-black uppercase tracking-[0.5em] text-white/50">{data.personal_info.name}</span>
+          <span className="text-[12px] font-black uppercase tracking-[0.5em] text-white/50">{data.brand.name}</span>
         </div>
         <div className="flex items-center gap-16 text-[10px] font-black uppercase tracking-[0.4em] text-white/40">
           <a href="#" className="hover:text-white transition-colors">Architecture</a>
@@ -108,10 +112,10 @@ export default function Portfolio12() {
               <div className="pt-20">
                 <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} className="mb-12 inline-flex items-center gap-4 px-6 py-2 border-2 border-white/10 rounded-full">
                   <div className="w-1.5 h-1.5 rounded-full bg-cyan-400" />
-                  <span className="text-[11px] font-black uppercase tracking-[0.6em] text-white/50 italic">Production Engine Ready // 2026</span>
+                  <span className="text-[11px] font-black uppercase tracking-[0.6em] text-white/50 italic">Personal Protocol // 2026</span>
                 </motion.div>
                 <h1 className="text-[11vw] font-black leading-[0.8] tracking-tighter uppercase italic select-none text-left">
-                  Engineering<br/>Mobile<br/><span className="text-transparent italic" style={{ WebkitTextStroke: "2px rgba(255,255,255,0.6)" }}>Excellence.</span>
+                  Professional<br/>Digital<br/><span className="text-transparent italic" style={{ WebkitTextStroke: "2px rgba(255,255,255,0.6)" }}>Identity.</span>
                 </h1>
               </div>
               <div className="pb-12 flex justify-between items-end w-full">
@@ -120,8 +124,8 @@ export default function Portfolio12() {
                    {data.hero.subtitle}
                 </p>
                 <div className="hidden lg:flex flex-col gap-2 border-l-2 border-white/10 pl-10 text-left">
-                  <span className="text-[10px] font-black uppercase tracking-[0.4em] text-white/20 italic">Experience Magnitude</span>
-                  <span className="text-4xl font-black italic tracking-tighter tabular-nums">{data.personal_info.experience_years}Y+</span>
+                  <span className="text-[10px] font-black uppercase tracking-[0.4em] text-white/20 italic">Status</span>
+                  <span className="text-4xl font-black italic tracking-tighter tabular-nums">ACTIVE</span>
                 </div>
               </div>
             </SectionWrap>
@@ -129,29 +133,23 @@ export default function Portfolio12() {
             {/* Section 02 */}
             <SectionWrap title="02 // ARCHITECTURE" className="bg-[#080808]">
               <div className="pt-16">
-                 <h2 className="text-[8vw] font-black uppercase italic tracking-tighter leading-[0.8] mb-8 text-left">System <span className="text-transparent" style={{ WebkitTextStroke: "1px rgba(255,255,255,0.6)" }}>Logic.</span></h2>
+                 <h2 className="text-[8vw] font-black uppercase italic tracking-tighter leading-[0.8] mb-8 text-left">Internal <span className="text-transparent" style={{ WebkitTextStroke: "1px rgba(255,255,255,0.6)" }}>Logic.</span></h2>
               </div>
-              <div className="flex gap-12 overflow-x-auto pb-24 items-end" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
-                {(data.services || data.core_expertise).map((service, i) => (
+              <div className="flex gap-12 overflow-x-auto pb-24 no-scrollbar items-end">
+                {data.services.map((service, i) => (
                   <motion.div key={i} whileHover={{ y: -20 }} className="flex-shrink-0 w-[450px] min-h-[500px] p-16 bg-white/[0.02] border border-white/5 group relative flex flex-col justify-between text-left">
                     <div>
                       <div className="text-white/20 mb-16 group-hover:text-cyan-400 transition-colors">
-                        {i % 6 === 0 ? <Code2 size={64} /> : i % 6 === 1 ? <Smartphone size={64} /> : <Terminal size={64} />}
+                        {i === 0 ? <Code2 size={64} /> : i === 1 ? <Smartphone size={64} /> : <Terminal size={64} />}
                       </div>
-                      <h3 className="text-4xl font-black uppercase italic tracking-tighter mb-6">
-                        {service.category || service}
-                      </h3>
-                      <p className="text-white/40 font-light leading-snug text-xl italic">
-                        {service.description || "Building premium mobile experiences with architectural precision."}
-                      </p>
+                      <h3 className="text-4xl font-black uppercase italic tracking-tighter mb-6">{service.category}</h3>
+                      <p className="text-white/40 font-light leading-snug text-xl italic">{service.description}</p>
                     </div>
-                    {service.features && (
-                        <div className="flex flex-wrap gap-3 mt-12">
-                            {service.features.map(f => (
-                                <span key={f} className="text-[10px] font-black uppercase tracking-[0.3em] text-white/20 border border-white/10 px-4 py-2">{f}</span>
-                            ))}
-                        </div>
-                    )}
+                    <div className="flex flex-wrap gap-3 mt-12">
+                       {service.features.map(f => (
+                         <span key={f} className="text-[10px] font-black uppercase tracking-[0.3em] text-white/20 border border-white/10 px-4 py-2">{f}</span>
+                       ))}
+                    </div>
                   </motion.div>
                 ))}
               </div>
@@ -163,19 +161,19 @@ export default function Portfolio12() {
                 <h2 className="text-[6vw] font-black uppercase italic tracking-tighter leading-none mb-12 text-left">Select <span className="text-transparent" style={{ WebkitTextStroke: "1px rgba(255,255,255,0.4)" }}>Nodes.</span></h2>
               </div>
               <div className="flex gap-24 items-end pb-24 pr-[20vw] h-full overflow-visible">
-                {data.projects.map((project, i) => (
+                {data.completed_projects.map((project, i) => (
                   <div key={i} className="w-[85vw] md:w-[65vw] lg:w-[50vw] shrink-0 group">
                     <div className="aspect-[21/9] bg-white/[0.03] border border-white/10 mb-12 relative overflow-hidden shadow-2xl">
-                       <span className="absolute inset-0 flex items-center justify-center text-[30vw] font-black italic text-white/[0.01] uppercase select-none">{project.name.charAt(0)}</span>
+                       <span className="absolute inset-0 flex items-center justify-center text-[30vw] font-black italic text-white/[0.01] uppercase select-none">{project.project_name.charAt(0)}</span>
                        <div className="absolute top-10 right-10 w-20 h-20 rounded-full border border-white/20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all hover:bg-cyan-500 hover:text-black"><ArrowUpRight size={32} /></div>
                     </div>
                     <div className="flex justify-between items-end gap-12 text-left">
-                       <div className="flex-1 text-left">
-                          <h3 className="text-7xl lg:text-9xl font-black uppercase italic tracking-tighter mb-4 leading-none underline decoration-cyan-500/10 decoration-8">{project.name}.</h3>
+                       <div className="flex-1">
+                          <h3 className="text-7xl lg:text-9xl font-black uppercase italic tracking-tighter mb-4 leading-none underline decoration-cyan-500/10 decoration-8">{project.project_name}.</h3>
                           <span className="text-xl font-black text-white/20 italic tracking-widest uppercase">{project.type}</span>
                        </div>
                        <div className="flex flex-col gap-3 items-end shrink-0 tabular-nums font-black text-cyan-400/40 text-lg">
-                          {project.features.slice(0, 2).map((res, idx) => <span key={idx}>{res}</span>)}
+                          {project.result?.map((res, idx) => <span key={idx}>{res}</span>)}
                        </div>
                     </div>
                   </div>
@@ -184,7 +182,7 @@ export default function Portfolio12() {
             </SectionWrap>
 
             {/* Section 04 */}
-            <SectionWrap title="04 // ENGAGEMENT" className="bg-[#080808]">
+            <SectionWrap title="04 // INVESTMENT" className="bg-[#080808]">
               <div className="pt-12 text-center w-full">
                  <h2 className="text-[10vw] font-black uppercase italic tracking-tighter leading-none text-white/10 mb-20 translate-y-8">PROTOCOL_STAKES</h2>
               </div>
@@ -212,12 +210,11 @@ export default function Portfolio12() {
                <div className="pb-24 w-full flex flex-col md:flex-row justify-between items-end gap-20">
                   <div className="flex flex-col gap-10 text-left">
                      <span className="text-sm font-black uppercase tracking-[0.8em] text-white/20 italic">COMMS // DIRECT</span>
-                     <a href={`mailto:${data.personal_info.email}`} className="text-4xl lg:text-7xl font-black uppercase italic tracking-tighter hover:text-cyan-500 transition-all">{data.personal_info.email}</a>
+                     <a href={`mailto:${data.contact.email}`} className="text-4xl lg:text-7xl font-black uppercase italic tracking-tighter hover:text-cyan-400 transition-all">{data.contact.email}</a>
                   </div>
                   <div className="flex flex-wrap gap-8 text-xs font-black uppercase tracking-[0.6em] text-white/20 italic">
                      <a href="#" className="hover:text-white">Github</a>
                      <a href="#" className="hover:text-white">Twitter</a>
-                     <a href="#" className="hover:text-white">Layers</a>
                   </div>
                </div>
                <div className="absolute top-[50%] right-[-10%] translate-y-[-50%] opacity-2 pointer-events-none scale-150 rotate-12">
@@ -228,7 +225,7 @@ export default function Portfolio12() {
           </motion.div>
         </div>
       </div>
-      <style>{`
+      <style jsx global>{`
         ::-webkit-scrollbar { display: none; }
         .no-scrollbar::-webkit-scrollbar { display: none; }
         @keyframes spin-slow { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }

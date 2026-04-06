@@ -167,7 +167,7 @@ export const CompanyPortfolio = {
     },
     {
       "project_name": "Digital Talent & Recruitment Marketplace",
-      "type": "National Gig Economy Platforms",
+      "type": "Recruitment Ecosystem",
       "description": "Infrastructure: High-stakes gig economy platform for specialized national talent. Result: Scaled to 100k+ active users and handled $10M+ in collective project awards.",
       "problem": "Platform stability issues during peak bidding and project award cycles.",
       "solution": "High-performance recruitment marketplace with AWS auto-scaling infrastructure.",
@@ -215,14 +215,6 @@ export const CompanyPortfolio = {
     {
       "question": "How does RPS Digital Store ensure IP and code ownership?",
       "answer": "We provide full legal transparency. 100% of Intellectual Property and source code is transferred to your organization upon project completion."
-    },
-    {
-      "question": "Do you provide long-term maintenance and SLAs?",
-      "answer": "Yes. We offer managed retainer packages with defined response time SLAs (up to 24/7) for enterprise mission-critical products."
-    },
-    {
-      "question": "Can you scale an engineering squad on demand?",
-      "answer": "Absolutely. Our managed model allows for rapid team expansion (or contraction) based on your product roadmap requirements."
     }
   ],
 
@@ -238,3 +230,6 @@ export const CompanyPortfolio = {
     "copyright": "© 2026 RPS DIGITAL STORE. All rights reserved."
   }
 };
+
+// Alias for theme compatibility
+CompanyPortfolio.projects = CompanyPortfolio.completed_projects;

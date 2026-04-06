@@ -1,21 +1,23 @@
 import React, { Suspense, useState, useRef, useEffect } from 'react';
-import { motion, AnimatePresence, useScroll, useSpring } from 'framer-motion';
+import { motion, AnimatePresence, useScroll, useSpring, useTransform } from 'framer-motion';
 import { Canvas, useFrame } from '@react-three/fiber';
-import { Float, MeshDistortMaterial, Sphere, Environment, ContactShadows } from '@react-three/drei';
+import { Float, MeshDistortMaterial, Sphere, Environment, ContactShadows, OrbitControls } from '@react-three/drei';
 import { portfolioprofile as data } from './PersonalPortfolioData';
 import { 
-  ArrowUpRight, Menu, X, Check, ArrowRight,
-  Code2, Smartphone, Terminal, Layers, Zap, Shield, Mail, Phone, Github, Twitter
+  Rocket, Shield, Zap, Code2, Layers, 
+  Terminal, Smartphone, Cpu, Mail, Phone,
+  Github, Twitter, ArrowUpRight, ChevronDown,
+  Menu, X, Check, ArrowRight
 } from 'lucide-react';
+
+// --- 3D Components ---
 
 const Shape = ({ position, color, speed, distort }) => {
   const mesh = useRef();
   useFrame((state) => {
     const time = state.clock.getElapsedTime();
-    if (mesh.current) {
-        mesh.current.rotation.x = Math.cos(time / 4) * 0.2;
-        mesh.current.rotation.y = Math.sin(time / 2) * 0.2;
-    }
+    mesh.current.rotation.x = Math.cos(time / 4) * 0.2;
+    mesh.current.rotation.y = Math.sin(time / 2) * 0.2;
   });
 
   return (
@@ -58,15 +60,15 @@ const Scene = () => {
   );
 };
 
+// --- UI Components ---
+
 const Navbar = ({ scrolled, setMenuOpen }) => (
   <nav className={`fixed top-8 left-1/2 -translate-x-1/2 z-[100] transition-all duration-500 w-[95%] max-w-4xl px-6 py-3 rounded-2xl border border-white/5 backdrop-blur-xl flex justify-between items-center ${
     scrolled ? 'bg-black/60 shadow-2xl translate-y-[-10px]' : 'bg-transparent'
   }`}>
     <div className="flex items-center gap-2 group cursor-pointer">
-      <div className="w-8 h-8 rounded-lg bg-cyan-500 flex items-center justify-center text-black font-black uppercase text-sm group-hover:rotate-12 transition-transform">
-        {data.personal_info.name[0]}
-      </div>
-      <span className="text-white font-bold tracking-tight">{data.personal_info.name}</span>
+      <div className="w-8 h-8 rounded-lg bg-cyan-500 flex items-center justify-center text-black font-black uppercase text-sm group-hover:rotate-12 transition-transform">{data.brand.name.charAt(0)}</div>
+      <span className="text-white font-bold tracking-tight">{data.brand.name}</span>
     </div>
     
     <div className="hidden md:flex items-center gap-8">
@@ -112,6 +114,8 @@ export default function Portfolio10() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const containerRef = useRef(null);
+  const { scrollYProgress } = useScroll({ target: containerRef });
+  const scaleProgress = useSpring(scrollYProgress, { stiffness: 100, damping: 30, restDelta: 0.001 });
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
@@ -122,6 +126,7 @@ export default function Portfolio10() {
   return (
     <div ref={containerRef} className="bg-[#050505] text-white min-h-screen selection:bg-cyan-500/30 overflow-x-hidden font-sans">
       
+      {/* 3D Background Layer */}
       <div className="fixed inset-0 z-0 pointer-events-none opacity-40">
         <Canvas camera={{ position: [0, 0, 10], fov: 35 }}>
           <Suspense fallback={null}>
@@ -132,6 +137,7 @@ export default function Portfolio10() {
 
       <Navbar scrolled={scrolled} setMenuOpen={setMenuOpen} />
 
+      {/* Mobile Menu */}
       <AnimatePresence>
         {menuOpen && (
           <motion.div
@@ -141,7 +147,7 @@ export default function Portfolio10() {
             className="fixed inset-0 z-[200] bg-black backdrop-blur-2xl p-12 flex flex-col justify-between"
           >
             <div className="flex justify-between items-center">
-              <span className="text-xl font-black italic tracking-tighter text-cyan-400">RS.</span>
+              <span className="text-xl font-black italic tracking-tighter text-cyan-400">{data.brand.name.split(' ')[0]}.</span>
               <button onClick={() => setMenuOpen(false)} className="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center text-white">
                 <X size={24} />
               </button>
@@ -164,7 +170,7 @@ export default function Portfolio10() {
             </div>
             
             <div className="text-white/30 text-xs font-bold tracking-widest uppercase italic">
-              Status // Online.Spatial
+              Status // Online.Personal
             </div>
           </motion.div>
         )}
@@ -172,6 +178,7 @@ export default function Portfolio10() {
 
       <main className="relative z-10 pt-48">
         
+        {/* --- Hero Section --- */}
         <section className="container mx-auto px-6 mb-48 flex flex-col items-center text-center">
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
@@ -179,11 +186,11 @@ export default function Portfolio10() {
             className="inline-flex items-center gap-3 px-4 py-1.5 rounded-full border border-white/10 bg-white/5 backdrop-blur-xl mb-12"
           >
             <span className="w-2 h-2 rounded-full bg-cyan-500 animate-ping" />
-            <span className="text-[10px] font-black uppercase tracking-[0.3em] text-white/70">Spatial Protocol 3.0</span>
+            <span className="text-[10px] font-black uppercase tracking-[0.3em] text-white/70">Personal Protocol 1.0</span>
           </motion.div>
           
           <h1 className="text-6xl md:text-[8rem] font-black tracking-tighter leading-[0.8] italic mb-12">
-            Build. <br/> <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600">Scale.</span> <br/> Dominate.
+            Build. <br/> <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600">Evolve.</span> <br/> Lead.
           </h1>
           
           <p className="max-w-2xl text-xl text-white/50 font-light leading-relaxed mb-12">
@@ -200,6 +207,7 @@ export default function Portfolio10() {
           </div>
         </section>
 
+        {/* --- Stats Strip --- */}
         <section className="w-full py-12 md:py-20 border-y border-white/5 backdrop-blur-md mb-48">
           <div className="container mx-auto px-6 grid grid-cols-2 lg:grid-cols-4 gap-12">
             {data.stats.map((stat, i) => (
@@ -216,60 +224,60 @@ export default function Portfolio10() {
           </div>
         </section>
 
+        {/* --- Services Section --- */}
         <section id="architecture" className="container mx-auto px-6 mb-48">
           <SectionHeading 
-            title="System Architecture" 
-            subtitle="I engineer mobile software at the intersection of precision and scale. My protocols are built for high-performance user experiences."
+            title="Design Architecture" 
+            subtitle="Engineering visual excellence and functional precision. Our design protocols are built for modern professional presence."
           />
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {(data.services || data.core_expertise).map((service, i) => (
+            {data.services.map((service, i) => (
               <motion.div
                 key={i}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
-                className="group relative p-10 rounded-[2.5rem] bg-white/[0.03] border border-white/5 hover:bg-white/[0.06] transition-all hover:scale-[1.02]"
+                className="group relative p-10 rounded-[2.5rem] bg-white/[0.03] border border-white/5 hover:bg-white/[0.06] transition-all hover:scale-[1.02] cursor-none"
               >
                 <div className="w-14 h-14 rounded-2xl bg-cyan-500/10 flex items-center justify-center text-cyan-400 mb-8 border border-white/5 group-hover:scale-110 group-hover:rotate-6 transition-transform">
-                  {i % 6 === 0 && <Code2 size={28} />}
-                  {i % 6 === 1 && <Smartphone size={28} />}
-                  {i % 6 === 2 && <Terminal size={28} />}
-                  {i % 6 === 3 && <Layers size={28} />}
-                  {i % 6 === 4 && <Zap size={28} />}
-                  {i % 6 === 5 && <Shield size={28} />}
+                  {i === 0 && <Code2 size={28} />}
+                  {i === 1 && <Smartphone size={28} />}
+                  {i === 2 && <Terminal size={28} />}
+                  {i === 3 && <Layers size={28} />}
+                  {i === 4 && <Zap size={28} />}
+                  {i === 5 && <Shield size={28} />}
                 </div>
                 
                 <h3 className="text-2xl font-black italic text-white mb-4 group-hover:text-cyan-400 transition-colors">
-                  {service.category || service}
+                  {service.category}
                 </h3>
                 <p className="text-white/40 font-light leading-relaxed mb-8">
-                  {service.description || "Expert implementation of high-performance architectural patterns."}
+                  {service.description}
                 </p>
                 
-                {service.features && (
-                    <div className="flex flex-wrap gap-2">
-                        {service.features.map(f => (
-                            <span key={f} className="px-3 py-1 rounded-full bg-white/5 border border-white/5 text-[9px] font-black uppercase tracking-widest text-white/30">
-                                {f}
-                            </span>
-                        ))}
-                    </div>
-                )}
+                <div className="flex flex-wrap gap-2">
+                  {service.features.map(f => (
+                    <span key={f} className="px-3 py-1 rounded-full bg-white/5 border border-white/5 text-[9px] font-black uppercase tracking-widest text-white/30">
+                      {f}
+                    </span>
+                  ))}
+                </div>
               </motion.div>
             ))}
           </div>
         </section>
 
+        {/* --- Projects Section --- */}
         <section id="projects" className="container mx-auto px-6 mb-48">
           <SectionHeading 
-            title="Execution Core" 
-            subtitle="A showcase of high-impact products engineered for performance and reliability."
+            title="Creative Core" 
+            subtitle="A showcase of refined projects engineered for professional impact and visual dominance."
           />
           
           <div className="space-y-48">
-            {data.projects.map((project, i) => (
+            {data.completed_projects.map((project, i) => (
               <motion.div
                 key={i}
                 initial={{ opacity: 0 }}
@@ -280,10 +288,10 @@ export default function Portfolio10() {
                 <div className="flex-1 w-full aspect-video rounded-[3rem] bg-gradient-to-br from-white/5 to-transparent border border-white/10 relative overflow-hidden group">
                   <div className="absolute inset-0 bg-cyan-500/10 opacity-0 group-hover:opacity-100 transition-opacity" />
                   <div className="absolute inset-0 flex items-center justify-center text-[15rem] font-black italic text-white/[0.02] uppercase tracking-tighter -rotate-12 select-none">
-                    {project.name.split(' ')[0]}
+                    {project.project_name.split(' ')[0]}
                   </div>
                   <div className="absolute bottom-12 left-12 right-12 flex flex-wrap gap-3">
-                    {project.technologies.map(tech => (
+                    {project.tech_stack.map(tech => (
                       <span key={tech} className="px-5 py-2 rounded-2xl bg-black/80 backdrop-blur-xl border border-white/10 text-[10px] font-black uppercase tracking-widest text-white shadow-2xl">
                         {tech}
                       </span>
@@ -293,16 +301,16 @@ export default function Portfolio10() {
                 
                 <div className="flex-1 max-w-xl">
                   <div className="text-cyan-400 font-black uppercase tracking-[0.3em] text-[10px] mb-6">
-                    {project.type} // STATUS: SHIPPED
+                    {project.type} // STATUS: VERIFIED
                   </div>
                   <h3 className="text-5xl md:text-7xl font-black italic text-white mb-8 tracking-tighter">
-                    {project.name}.
+                    {project.project_name}.
                   </h3>
                   <p className="text-xl text-white/50 font-light leading-relaxed mb-10">
                     {project.description}
                   </p>
                   <ul className="space-y-4 mb-12">
-                    {project.features.slice(0, 3).map((res, i) => (
+                    {project.result?.map((res, i) => (
                       <li key={i} className="flex items-center gap-4 text-white/70 font-medium">
                         <div className="w-1.5 h-1.5 rounded-full bg-cyan-500" />
                         {res}
@@ -318,11 +326,12 @@ export default function Portfolio10() {
           </div>
         </section>
 
+        {/* --- Pricing Section --- */}
         <section id="pricing" className="container mx-auto px-6 mb-48">
           <SectionHeading 
             centered
-            title="Investment Protocol" 
-            subtitle="Secure my development availability with structured engagement models."
+            title="Service Protocol" 
+            subtitle="Transparent engagement models for professional creative collaboration."
           />
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -367,9 +376,10 @@ export default function Portfolio10() {
           </div>
         </section>
 
+        {/* --- Testimonials --- */}
         <section className="container mx-auto px-6 mb-48">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-24">
-            {data.testimonials.map((t, i) => (
+            {data.employment.map((t, i) => (
               <motion.div
                 key={i}
                 initial={{ opacity: 0 }}
@@ -378,18 +388,19 @@ export default function Portfolio10() {
               >
                 <div className="text-8xl italic font-black text-cyan-400/20 absolute -top-12 -left-4">"</div>
                 <p className="text-3xl md:text-4xl font-light italic text-white/80 leading-snug mb-8 relative z-10">
-                  {t.feedback}
+                  {t.description}
                 </p>
                 <div>
-                  <div className="text-xl font-black text-white italic">{t.name}</div>
-                  <div className="text-[10px] font-bold uppercase tracking-widest text-cyan-400">{t.role}</div>
+                  <div className="text-xl font-black text-white italic">{t.role}</div>
+                  <div className="text-[10px] font-bold uppercase tracking-widest text-cyan-400">Collaborator // {t.company}</div>
                 </div>
               </motion.div>
             ))}
           </div>
         </section>
 
-        <section id="connect" className="container mx-auto px-6 mb-24 relative overflow-hidden rounded-[5rem] bg-gradient-to-br from-cyan-400 to-blue-500 p-24 text-center">
+        {/* --- Contact Context --- */}
+        <section id="connect" className="container mx-auto px-6 mb-24 relative overflow-hidden rounded-[5rem] bg-gradient-to-br from-cyan-500 to-blue-600 p-24 text-center">
           <div className="absolute inset-0 bg-black/10 backdrop-blur-sm" />
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
@@ -400,21 +411,20 @@ export default function Portfolio10() {
               Start The <br/> Mission.
             </h2>
             <p className="max-w-xl mx-auto text-xl md:text-2xl text-black/60 font-medium mb-16">
-                Let's collaborate on your next high-performance mobile application.
+              Awaiting your next professional breakthrough. Secure a collaborative slot for immediate planning.
             </p>
-            <a href={`mailto:${data.personal_info.email}`} className="h-24 px-20 inline-flex items-center gap-6 rounded-full bg-black text-white text-2xl font-black uppercase tracking-widest hover:scale-105 active:scale-95 transition-all shadow-2xl">
-              <Mail size={32} /> Initialize Project
+            <a href={`mailto:${data.contact.email}`} className="h-24 px-20 inline-flex items-center gap-6 rounded-full bg-black text-white text-2xl font-black uppercase tracking-widest hover:scale-105 active:scale-95 transition-all shadow-2xl">
+              <Mail size={32} /> Initialize Contact
             </a>
           </motion.div>
         </section>
 
+        {/* --- Footer --- */}
         <footer className="container mx-auto px-6 py-24 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-12 text-center md:text-left">
           <div>
-            <div className="text-3xl font-black italic text-white mb-2">
-                {data.personal_info.name.split(' ').map(n => n[0]).join('')}.
-            </div>
+            <div className="text-3xl font-black italic text-white mb-2">{data.brand.name.split(' ')[0]}.</div>
             <div className="text-[10px] font-bold uppercase tracking-[0.3em] text-white/30">
-              {data.personal_info.title}
+              Personal Professional Identity
             </div>
           </div>
           
@@ -431,11 +441,14 @@ export default function Portfolio10() {
           </div>
           
           <div className="text-[10px] font-bold uppercase tracking-widest text-white/30 text-right">
-            © {new Date().getFullYear()} {data.personal_info.name}. <br/>
-            <span className="text-cyan-400/30">Build: 10.0.1 // Spatial Deployment</span>
+            {data.footer.copyright} <br/>
+            <span className="text-cyan-400/30">Build: 1.1.0 // Spatial Personal Deployment</span>
           </div>
         </footer>
       </main>
+
+      {/* Custom Global Cursor (Optional/Decorative) */}
+      <div className="fixed top-0 left-0 w-8 h-8 rounded-full border border-cyan-400/50 pointer-events-none z-[300] hidden lg:block blend-difference" />
     </div>
   );
 }

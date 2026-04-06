@@ -213,16 +213,8 @@ export const FullTimeFreelancerProfile = {
 
   "faq": [
     {
-      "question": "Can you build a high-performance MVP in just 6 weeks?",
-      "answer": "Yes. My 'Sprint Launchpad' focuses on core features that matter for market validation, using pre-built modular components to speed up delivery."
-    },
-    {
-      "question": "Who owns the code upon completion?",
-      "answer": "You do. 100% of the Intellectual Property (IP) and source code is transferred to your repository upon final milestone payment."
-    },
-    {
-      "question": "What happens after the app is launched?",
-      "answer": "I provide 30 days of free post-launch support and offer long-term maintenance retainers as you scale your user base."
+      "question": "How fast can you build a production-ready mobile MVP?",
+      "answer": "For most startups, I can deliver a fully functional cross-platform MVP (iOS & Android) in 4 to 6 weeks."
     }
   ],
 
@@ -239,3 +231,6 @@ export const FullTimeFreelancerProfile = {
     "copyright": "© 2026 Ram Choudhary. All rights reserved."
   }
 };
+
+// Aliases for theme compatibility
+FullTimeFreelancerProfile.projects = FullTimeFreelancerProfile.completed_projects;
