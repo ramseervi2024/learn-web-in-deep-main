@@ -45,6 +45,24 @@ export const portfolioprofile = {
     "Figma-to-Code Engineering Precision"
   ],
 
+  "services": [
+    {
+      "category": "High-Performance Mobile Systems",
+      "description": "Architecting production-ready React Native ecosystems with native-level performance.",
+      "features": ["Performance Optimization", "Secure Auth Systems", "OTA Updates"]
+    },
+    {
+      "category": "Enterprise Technical Lead",
+      "description": "Leading development teams to deliver mission-critical internal tools and B2B products.",
+      "features": ["Architecture Design", "Team Mentorship", "CI/CD Setup"]
+    },
+    {
+      "category": "Mobile Security & Maintenance",
+      "description": "Implementing secure local vaults, biometric auth, and long-term app stability.",
+      "features": ["AES Encryption", "Biometric Integrity", "SLA Support"]
+    }
+  ],
+
   "technical_stack": {
     "mobile": ["React Native CLI", "Expo", "iOS Native Bridges", "Android Native Modules", "OTA Updates"],
     "frontend": ["React.js", "TypeScript", "Redux Toolkit", "Context API", "Tailwind CSS", "Framer Motion"],
@@ -53,7 +71,7 @@ export const portfolioprofile = {
   },
 
   "saas_capabilities": [
-    "Cross-platform parity for iOS and Android",
+    "Cross-platform parity (iOS & Android)",
     "Native module integration (Camera, Maps, Wallets)",
     "App Store Connect & Google Play Console workflows",
     "Push Notification systems (FCM, APNs)",
@@ -146,39 +164,6 @@ export const portfolioprofile = {
     "Implemented secure, role-based internal systems for workforce management"
   ],
 
-  "pricing": [
-    {
-      "plan": "Architectural Audit",
-      "price": "Strategic",
-      "features": [
-        "Performance Profiling",
-        "Memory Leak Detection",
-        "Code Quality Assessment",
-        "Scaling Roadmap"
-      ]
-    },
-    {
-      "plan": "Lead Development",
-      "price": "Project-Based",
-      "features": [
-        "Full-Cycle Development",
-        "Native Module Integration",
-        "Store Deployment Support",
-        "Maintenance Systems"
-      ]
-    },
-    {
-      "plan": "Custom Solution",
-      "price": "Tailored",
-      "features": [
-        "Hybrid Architecture Design",
-        "Legacy Code Migration",
-        "Performance-First Sprints",
-        "Dedicated Technical Lead"
-      ]
-    }
-  ],
-
   "employment": [
     {
       "company": "Imcrinox",
@@ -186,8 +171,8 @@ export const portfolioprofile = {
       "type": "Full-time",
       "duration": "Nov 2022 — Present",
       "location": "Bengaluru",
-      "description": "Led the architectural development of five production-grade React Native ecosystems. Specialized in high-performance cross-platform engineering, custom native module integration, and optimized deployment pipelines. Managed over-the-air (OTA) updates and served as a technical lead for mobile product performance.",
-      "key_skills": ["React Native", "Native Bridges", "Architecture Design", "OTA Updates"]
+      "description": "Led the architectural development of five production-grade React Native ecosystems. Specialized in high-performance cross-platform engineering, custom native module integration, and optimized deployment pipelines.",
+      "key_skills": ["React Native", "Architecture Design", "OTA Updates"]
     },
     {
       "company": "Client Partners via Service Agency",
@@ -195,8 +180,26 @@ export const portfolioprofile = {
       "type": "Contract",
       "duration": "May 2021 — Oct 2022",
       "location": "Hybrid / Remote",
-      "description": "Collaborated with multiple global clients to ship mobile-first digital products. Focused on pixel-perfect UI implementation, complex API integrations, and robust state management for consumer-facing apps.",
-      "key_skills": ["Redux Toolkit", "API Integration", "UI/UX Dev", "Store Submissions"]
+      "description": "Collaborated with multiple global clients to ship mobile-first digital products. Focused on pixel-perfect UI implementation and complex API integrations.",
+      "key_skills": ["Redux Toolkit", "API Integration", "UI/UX Dev"]
+    }
+  ],
+
+  "pricing": [
+    {
+      "plan": "Architectural Audit",
+      "price": "Strategic",
+      "features": ["Performance Profiling", "Memory Leak Detection", "Scaling Roadmap"]
+    },
+    {
+      "plan": "Lead Development",
+      "price": "Project-Based",
+      "features": ["Full-Cycle Development", "Native Module Integration", "Store Deployment"]
+    },
+    {
+      "plan": "Custom Solution",
+      "price": "Tailored",
+      "features": ["Hybrid Architecture Design", "Legacy Migration", "Technical Lead"]
     }
   ],
 
@@ -212,35 +215,11 @@ export const portfolioprofile = {
   "faq": [
     {
       "question": "How do you achieve consistent 60FPS in complex React Native apps?",
-      "answer": "I use a combination of memoization (useMemo, useCallback), FlatList windowing optimization, and the New Architecture (TurboModules) where necessary. For mission-critical UI, I transition heavy computations to native threads to prevent JS bridge congestion."
+      "answer": "I use a combination of memoization, FlatList windowing, and TurboModules to prevent JS bridge congestion."
     },
     {
       "question": "Why do you recommend React Native CLI over Expo for enterprise use?",
-      "answer": "CLI offers absolute control over the native layer (Objective-C/Java), allowing for custom native modules and smaller bundle sizes. This is essential for apps requiring specialized SDK integrations or high-security data persistence."
-    },
-    {
-      "question": "How do you handle complex state across multi-module applications?",
-      "answer": "I prefer Redux Toolkit with a highly modularized slice structure. This ensures type safety, predictable state updates, and easy debugging for systems spanning hundreds of operational components."
-    },
-    {
-      "question": "What is your approach to mobile CI/CD and OTA updates?",
-      "answer": "I build automated pipelines using GitHub Actions and CodePush. This allows for immediate security hotfixes and UI updates without waiting for App Store review, ensuring the user experience remains uninterrupted."
-    },
-    {
-      "question": "How do you ensure data security in internal business tools?",
-      "answer": "I implement industry-standard JWT/OAuth flows, biometric authentication (FaceID/TouchID), and secure local storage using AES-encrypted keychains to protect sensitive corporate data during offline usage."
-    },
-    {
-      "question": "Can you integrate custom native SDKs or Hardware bridges?",
-      "answer": "Yes, I have extensive experience writing bridging code for native iOS and Android SDKs, including specialized hardware like thermal printers, Bluetooth sensors, and biometric scanners."
-    },
-    {
-      "question": "How do you maintain documentation for large-scale codebases?",
-      "answer": "I follow a 'self-documenting code' philosophy paired with TypeScript for strict type definitions. For architectural decisions, I maintain comprehensive READMEs and ADRs (Architecture Decision Records) to ensure long-term maintainability."
-    },
-    {
-      "question": "What is your testing strategy for mobile products?",
-      "answer": "I use Jest for unit and logic testing, and Detox for end-to-end (E2E) automated testing. This ensures that new feature deployments don't introduce regressions into mission-critical user paths."
+      "answer": "CLI offers absolute control over the native layer, essential for custom modules and smaller bundles."
     }
   ]
 };

@@ -1,10 +1,10 @@
 export const FullTimeFreelancerProfile = {
   "brand": {
-    "name": "Ramesh Seervi | Product-Focused Expert",
+    "name": "Ram Choudhary | Product-Focused Expert",
     "tagline": "Full-Time Freelance React Native Developer",
-    "description": "High-velocity mobile product engineering for startups and global brands. I transform your vision into a production-ready iOS & Android application with uncompromising speed and clean architecture.",
+    "description": "High-velocity mobile product engineering for startups and global brands.",
     "website": "https://rpsdigitalworld.store/",
-    "email": "ramseervi4321@gmail.com",
+    "email": "rameshseervi242628@gmail.com",
     "phone": "+91 63604 XXXXX",
     "location": "Bengaluru, India (Available Worldwide Remote)",
     "availability": "40+ Hours / Week (Dedicated Freelancer)",
@@ -13,10 +13,17 @@ export const FullTimeFreelancerProfile = {
 
   "hero": {
     "title": "Launch Your Product Faster.",
-    "subtitle": "I engineer high-performance mobile MVPs and feature-rich applications using React Native. From cross-platform UI/UX to App Store deployment—I handle the entire technical lifecycle so you can focus on growth.",
+    "subtitle": "I engineer high-performance mobile MVPs and feature-rich applications using React Native.",
     "cta_primary": "Book a Free Project Audit",
     "cta_secondary": "View My Latest MVPs"
   },
+
+  "roles": [
+    "Product Focused Engineer",
+    "Agile React Native Expert",
+    "MVP Delivery Specialist",
+    "Full-Stack Mobile Partner"
+  ],
 
   "stats": [
     { "label": "Client Retention", "value": "100%" },
@@ -28,27 +35,27 @@ export const FullTimeFreelancerProfile = {
   "services": [
     {
       "category": "Hybrid MVP Development",
-      "description": "Rapidly building production-ready mobile apps from scratch. Ideal for startups looking to launch in weeks, not months.",
-      "features": ["iOS & Android Parity", "Scalable Architecture", "Auth & Database Setup", "Store Launch Support"]
+      "description": "Rapidly building production-ready mobile apps from scratch.",
+      "features": ["iOS & Android Parity", "Scalable Architecture", "Store Launch Support"]
     },
     {
       "category": "Performance Engineering",
-      "description": "Rescuing slow or buggy React Native apps. I specialize in frame rate optimization and critical bug resolution.",
-      "features": ["60FPS Fluidity", "Memory Leak Audit", "Code Refactoring", "OTA CodePush Updates"]
+      "description": "Rescuing slow or buggy React Native apps.",
+      "features": ["60FPS Fluidity", "Memory Leak Audit", "Code Refactoring"]
     },
     {
       "category": "Custom Feature Sprints",
-      "description": "Adding complex modules like digital wallets, real-time maps, or socket-driven systems to your existing codebase.",
-      "features": ["Wallet Integration", "FCM Push Alerts", "Real-Time Sockets", "Native Module Bridges"]
+      "description": "Adding complex modules like digital wallets or real-time maps.",
+      "features": ["Wallet Integration", "FCM Push Alerts", "Native Module Bridges"]
     }
   ],
 
-  "technology_stack": {
-    "frontend": ["React Native", "Redux Toolkit", "TypeScript", "Tailwind CSS"],
-    "backend": ["Firebase", "Node.js (Express)", "RESTful APIs", "Supabase"],
-    "mobile": ["iOS (XCode)", "Android (Studio)", "Expo CLI", "React Native CLI"],
-    "cloud": ["AWS Amplify", "App Store Connect", "Play Console", "Firebase Functions"]
-  },
+  "core_expertise": [
+    "High-Velocity MVP Delivery",
+    "Cross-Platform Performance Architecture",
+    "Direct Client Communication & Agile Sprints",
+    "End-to-End App Store Lifecycle Management"
+  ],
 
   "saas_capabilities": [
     "High-Performance MVP Architecture",
@@ -59,76 +66,104 @@ export const FullTimeFreelancerProfile = {
     "CI/CD Mobile Automation Pipelines"
   ],
 
+  "technical_stack": {
+    "frontend": ["React Native", "Redux Toolkit", "TypeScript", "Tailwind CSS"],
+    "backend": ["Firebase", "Node.js (Express)", "RESTful APIs", "Supabase"],
+    "mobile": ["iOS (XCode)", "Android (Studio)", "Expo CLI", "React Native CLI"],
+    "cloud": ["AWS Amplify", "App Store Connect", "Play Console", "Firebase Functions"]
+  },
+
+  "employment": [
+    {
+      "company": "Independent Freelance Partnerships",
+      "role": "Full-Time Freelance Developer",
+      "type": "Contract",
+      "duration": "2023 — Present",
+      "location": "Remote",
+      "description": "Operating as a dedicated technical partner for startups. Delivered multiple high-performance mobile MVPs and enterprise internal tools with a focus on speed-to-market.",
+      "key_skills": ["Product Strategy", "React Native", "Client Success"]
+    },
+    {
+      "company": "Global Client Network via Agency",
+      "role": "Mobile Product Consultant",
+      "type": "Hybrid",
+      "duration": "2021 — 2023",
+      "location": "India / Overseas",
+      "description": "Consulted on complex feature updates and performance refactors for diverse e-commerce and hospitality platforms.",
+      "key_skills": ["Technical Consultation", "Performance Rescue", "Architecture"]
+    }
+  ],
+
   "completed_projects": [
     {
       "project_name": "Global Event Ecosystem & Ticketing Hub",
       "type": "Product Launch",
-      "description": "High-conversion ticketing hub featuring real-time availability and localized digital wallet support for mass-market launches.",
-      "problem": "Manual booking was leading to revenue loss and customer frustration during high-traffic launches.",
-      "solution": "Built an automated, high-concurrency ticket engine with Apple/Google Pay and instant booking confirmations.",
+      "description": "High-conversion ticketing hub featuring real-time availability and localized digital wallet support.",
+      "problem": "Manual booking was leading to revenue loss during high-traffic launches.",
+      "solution": "Built an automated, high-concurrency ticket engine with Apple/Google Pay.",
       "tech_stack": ["React Native CLI", "Redux", "Secure Wallets"],
       "result": ["100% automated booking", "Zero launch-day crashes"]
     },
     {
       "project_name": "Hospitality SaaS & Booking Ecosystem",
       "type": "Full-Stack MVP",
-      "description": "Complete hospitality booking engine allowing for property management, automated billing, and secure customer-side reservations.",
-      "problem": "Client needed a production-ready MVP to showcase to investors and initial property owners.",
-      "solution": "Delivered a full-stack booking ecosystem with automated billing and real-time calendar syncing.",
+      "description": "Complete hospitality booking engine for property management and secure registrations.",
+      "problem": "Client needed a production-ready MVP to showcase to investors.",
+      "solution": "Delivered a full-stack booking ecosystem with automated billing.",
       "tech_stack": ["React Native", "Node.js", "Stripe API"],
       "result": ["Investor-ready product", "Live bookings enabled"]
     },
     {
       "project_name": "Workforce Intelligence & Productivity Hub",
       "type": "Enterprise Operations",
-      "description": "Productivity suite for tracking remote teams, managing sales cycles, and internal reporting with real-time feedback.",
-      "problem": "Fragmented data collection across Slack and spreadsheets made operational oversight impossible.",
-      "solution": "Developed a unified workforce intelligence hub with geolocation attendance and real-time sales dashboards.",
+      "description": "Productivity suite for tracking remote teams and internal reporting.",
+      "problem": "Fragmented data collection made operational oversight impossible.",
+      "solution": "Developed a unified workforce intelligence hub with geolocation attendance.",
       "tech_stack": ["React Native", "Firebase", "TypeScript"],
       "result": ["Saved 20+ hours of manual reporting", "Real-time sync"]
     },
     {
       "project_name": "Luxury Retail & E-Commerce Mobile Engine",
       "type": "Native Mobile App",
-      "description": "Premium retail application designed for high-end commerce with a focus on frictionless native checkout flows.",
+      "description": "Premium retail application designed for high-end commerce.",
       "problem": "Clunky mobile web experience was causing 70%+ drop-off at checkout.",
-      "solution": "Engineered a high-performance native storefront with a frictionless one-tap payment matrix.",
+      "solution": "Engineered a high-performance native storefront with frictionless checkout.",
       "tech_stack": ["React Native", "Custom UI Components", "Stripe API"],
       "result": ["40% increase in checkout completions"]
     },
     {
       "project_name": "On-Demand Services & Wellness Marketplace",
       "type": "Marketplace MVP",
-      "description": "Service marketplace for real-time scheduling, professional dashboards, and automated appointment reminders.",
-      "problem": "Service providers lacked a centralized tool to manage bookings and payments.",
-      "solution": "Built an on-demand marketplace with automated scheduling and provider-side dashboards.",
+      "description": "Service marketplace for real-time scheduling and professional dashboards.",
+      "problem": "Service providers lacked a centralized tool to manage bookings.",
+      "solution": "Built an on-demand marketplace with automated scheduling.",
       "tech_stack": ["React.js", "REST APIs", "Tailwind"],
       "result": ["Reduced booking conflicts", "Automated payments"]
     },
     {
       "project_name": "Internal Enterprise Event Operations Portal",
       "type": "Operations Tool",
-      "description": "Internal tool for event organizers to oversee events, attendees, and ticketing with hardware scanning integration.",
-      "problem": "Event staff were using manual spreadsheets, leading to slow entry times and ticketing errors.",
-      "solution": "Designed a high-performance tool with QR scanning and role-based staff access.",
+      "description": "Internal tool for event organizers to oversee events and ticketing.",
+      "problem": "Event staff were using manual spreadsheets, leading to slow entry times.",
+      "solution": "Designed a high-performance tool with QR scanning.",
       "tech_stack": ["React Native", "Hardware Hooks", "Redux"],
       "result": ["300% faster attendee entry", "Eliminated errors"]
     },
     {
       "project_name": "B2B Supply Chain & Merchant Portal",
       "type": "Merchant Platform",
-      "description": "B2B platform allowing vendors to list products, manage inventory, and process bulk orders securely.",
-      "problem": "Vendors lacked a centralized portal to manage wholesale inventory and bulk orders.",
-      "solution": "Created a robust B2B merchant portal with complex inventory syncing and secure bulk processing.",
+      "description": "B2B platform for vendors to manage inventory and bulk orders.",
+      "problem": "Vendors lacked a centralized portal to manage wholesale inventory.",
+      "solution": "Created a robust B2B merchant portal with complex inventory syncing.",
       "tech_stack": ["React.js", "Node.js", "MySQL"],
       "result": ["Scaled merchant onboarding", "Secure bulk operations"]
     },
     {
       "project_name": "Digital Talent & Recruitment Marketplace",
       "type": "Gig Economy Platform",
-      "description": "Comprehensive platform for remote work, enabling users to post projects and manage team collaboration.",
-      "problem": "Missing a unified platform to handle job postings, bidding, and talent management.",
-      "solution": "Developed a comprehensive gig economy platform with team dashboards and membership tiers.",
+      "description": "Platform for remote work, enabling users to post projects and manage collaboration.",
+      "problem": "Missing a unified platform to handle job postings and bidding.",
+      "solution": "Developed a comprehensive gig economy platform with recruitment dashboards.",
       "tech_stack": ["React.js", "Node.js", "TypeScript"],
       "result": ["Launched talent portal", "Automated bidding"]
     }
@@ -137,12 +172,7 @@ export const FullTimeFreelancerProfile = {
   "testimonials": [
     {
       "name": "Tech Startup Founder",
-      "feedback": "Ramesh doesn't just build what you ask for—he thinks about the business model. Our MVP was ready ahead of schedule and the code quality exceeded our expectations.",
-      "rating": 5
-    },
-    {
-      "name": "Agency Project Lead",
-      "feedback": "An exceptional specialist for complex React Native tasks. He solved performance issues our internal team had been struggling with for months.",
+      "feedback": "Ramesh doesn't just build what you ask for—he thinks about the business model.",
       "rating": 5
     }
   ],
@@ -151,35 +181,17 @@ export const FullTimeFreelancerProfile = {
     {
       "plan": "Dedicated Sprint",
       "price": "Weekly",
-      "features": [
-        "40 Hours Dedicated",
-        "Direct Slack Access",
-        "Daily Reporting",
-        "Source Code Ownership",
-        "Immediate Availability"
-      ]
+      "features": ["40 Hours Dedicated", "Direct Slack Access", "Source Code Ownership"]
     },
     {
       "plan": "Project Engagement",
       "price": "Fixed Scope",
-      "features": [
-        "Milestone-Based Delivery",
-        "End-to-End Execution",
-        "Technical Consultation",
-        "App Store Handover",
-        "30-Day Launch Warrenty"
-      ]
+      "features": ["Milestone-Based Delivery", "Full Cycle Execution", "App Store Handover"]
     },
     {
       "plan": "Monthly Retainer",
       "price": "Custom Support",
-      "features": [
-        "On-Call Technical Support",
-        "Performance Monitoring",
-        "Security Patching",
-        "Priority Feature Backlog",
-        "Monthly Architecture Review"
-      ]
+      "features": ["On-Call Support", "Performance Monitoring", "Priority Backlog"]
     }
   ],
 
@@ -195,40 +207,12 @@ export const FullTimeFreelancerProfile = {
   "faq": [
     {
       "question": "How fast can you build a production-ready mobile MVP?",
-      "answer": "For most startups, I can deliver a fully functional cross-platform MVP (iOS & Android) in 4 to 6 weeks. This includes authentication, core features, database integration, and a polished UI ready for store submission."
-    },
-    {
-      "question": "How do we communicate during the project sprints?",
-      "answer": "I am a remote-native freelancer. We will communicate via a dedicated Slack channel or WhatsApp for daily syncs, and use Google Meet for weekly milestone demos. You will get a progress report every single day."
-    },
-    {
-      "question": "Do I own 100% of the code after the project is done?",
-      "answer": "Yes, once final payment is made, you have full ownership of the intellectual property and the entire Git repository. I provide a clean handoff with documentation to ensure your team can take over anytime."
-    },
-    {
-      "question": "What happens if the App Store or Google Play rejects my app?",
-      "answer": "Store rejections are common but manageable. I handle the entire submission process and will work directly with you to resolve any technical or policy issues until the app is live."
-    },
-    {
-      "question": "Can you work within my existing design in Figma or Adobe XD?",
-      "answer": "I specialize in pixel-perfect implementation of complex Figma designs. I am a developer with a deep eye for design, ensuring that every animation and transition feels high-end and native."
-    },
-    {
-      "question": "How do you handle project changes or feature creep?",
-      "answer": "We start with a clear project scope. If you need major changes mid-project, we simply adjust the timeline or add a new sprint. I am flexible and focus on building the right product for your customers."
-    },
-    {
-      "question": "What is your ongoing support policy after launch?",
-      "answer": "I don't just disappear after launch. I offer monthly maintenance packages for security updates, performance monitoring, and rapid bug fixes to ensure your app stays stable as you scale."
-    },
-    {
-      "question": "Can you fix performance issues in my existing React Native app?",
-      "answer": "Yes, I offer 'App Rescue' sprints where I audit your existing codebase, fix major crashes, optimize slow lists, and bring the app back to a production-ready state."
+      "answer": "For most startups, I can deliver a fully functional cross-platform MVP (iOS & Android) in 4 to 6 weeks."
     }
   ],
 
   "contact": {
-    "email": "ramseervi4321@gmail.com",
+    "email": "rameshseervi242628@gmail.com",
     "phone": "+91 63604 XXXXX",
     "availability": "Immediate",
     "work_type": "Full-Time Freelance / Contract"
