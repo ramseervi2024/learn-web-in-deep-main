@@ -16,6 +16,18 @@ import Portfolio13 from './PersonalPortfolio13';
 import Portfolio14 from './PersonalPortfolio14';
 import Portfolio15 from './PersonalPortfolio15';
 import Portfolio16 from './PersonalPortfolio16';
+import Portfolio17 from './PersonalPortfolio17';
+import Portfolio18 from './PersonalPortfolio18';
+import Portfolio19 from './PersonalPortfolio19';
+import Portfolio20 from './PersonalPortfolio20';
+import Portfolio21 from './PersonalPortfolio21';
+import Portfolio22 from './PersonalPortfolio22';
+import Portfolio23 from './PersonalPortfolio23';
+import Portfolio24 from './PersonalPortfolio24';
+import Portfolio25 from './PersonalPortfolio25';
+import Portfolio26 from './PersonalPortfolio26';
+import Portfolio27 from './PersonalPortfolio27';
+import Portfolio28 from './PersonalPortfolio28';
 
 function PortfolioDirectory() {
     const portfolios = [
@@ -35,6 +47,18 @@ function PortfolioDirectory() {
         { id: 14, title: 'Developer OS', desc: 'Dashboard UI with terminal and system monitoring feel.' },
         { id: 15, title: 'Zen Minimalist', desc: 'Stark, foundation-focused design with crimson accents.' },
         { id: 16, title: 'Liquid Agency', desc: 'Fluid, high-end agency style with refractive elements.' },
+        { id: 17, title: 'Neuro Grid', desc: 'Bioluminescent connections & neural nodes.' },
+        { id: 18, title: 'Quantum UI', desc: 'Refractive glass & "entangled" hover states.' },
+        { id: 19, title: 'Cyber Pulse', desc: 'Neon glitch & digital pulse animations.' },
+        { id: 20, title: 'Nova Interface', desc: 'High-contrast stellar editorial layout.' },
+        { id: 21, title: 'Code Matrix', desc: 'Digital rain & terminal-focused monochrome UI.' },
+        { id: 22, title: 'Dev Nexus', desc: 'Node-based connection graphs & electric accents.' },
+        { id: 23, title: 'Stack Horizon', desc: 'Isometric architecture & perspective-shifting layers.' },
+        { id: 24, title: 'API Core', desc: 'Endpoint style patterns & interactive JSON payloads.' },
+        { id: 25, title: 'Elite Studio', desc: 'Minimalist luxury & high-end editorial typography.' },
+        { id: 26, title: 'Prime Digital', desc: 'High-energy agency aesthetic & dynamic overlays.' },
+        { id: 27, title: 'Vertex Agency', desc: 'Geometric structural design & architectural grids.' },
+        { id: 28, title: 'Apex Portfolio', desc: 'Pinnacle technical polish & cinematic 3D reveals.' },
     ];
 
     return (
@@ -119,6 +143,18 @@ export default function PersonalPortfolio() {
             <Route path="14" element={<><BackButton /><Portfolio14 /></>} />
             <Route path="15" element={<><BackButton /><Portfolio15 /></>} />
             <Route path="16" element={<><BackButton /><Portfolio16 /></>} />
+            <Route path="17" element={<><BackButton /><Portfolio17 /></>} />
+            <Route path="18" element={<><BackButton /><Portfolio18 /></>} />
+            <Route path="19" element={<><BackButton /><Portfolio19 /></>} />
+            <Route path="20" element={<><BackButton /><Portfolio20 /></>} />
+            <Route path="21" element={<><BackButton /><Portfolio21 /></>} />
+            <Route path="22" element={<><BackButton /><Portfolio22 /></>} />
+            <Route path="23" element={<><BackButton /><Portfolio23 /></>} />
+            <Route path="24" element={<><BackButton /><Portfolio24 /></>} />
+            <Route path="25" element={<><BackButton /><Portfolio25 /></>} />
+            <Route path="26" element={<><BackButton /><Portfolio26 /></>} />
+            <Route path="27" element={<><BackButton /><Portfolio27 /></>} />
+            <Route path="28" element={<><BackButton /><Portfolio28 /></>} />
         </Routes>
     );
 }

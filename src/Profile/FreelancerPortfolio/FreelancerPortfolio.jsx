@@ -16,6 +16,18 @@ import FreelancerPortfolio13 from './FreelancerPortfolio13';
 import FreelancerPortfolio14 from './FreelancerPortfolio14';
 import FreelancerPortfolio15 from './FreelancerPortfolio15';
 import FreelancerPortfolio16 from './FreelancerPortfolio16';
+import FreelancerPortfolio17 from './FreelancerPortfolio17';
+import FreelancerPortfolio18 from './FreelancerPortfolio18';
+import FreelancerPortfolio19 from './FreelancerPortfolio19';
+import FreelancerPortfolio20 from './FreelancerPortfolio20';
+import FreelancerPortfolio21 from './FreelancerPortfolio21';
+import FreelancerPortfolio22 from './FreelancerPortfolio22';
+import FreelancerPortfolio23 from './FreelancerPortfolio23';
+import FreelancerPortfolio24 from './FreelancerPortfolio24';
+import FreelancerPortfolio25 from './FreelancerPortfolio25';
+import FreelancerPortfolio26 from './FreelancerPortfolio26';
+import FreelancerPortfolio27 from './FreelancerPortfolio27';
+import FreelancerPortfolio28 from './FreelancerPortfolio28';
 
 function FreelancerPortfolioDirectory() {
     const FreelancerPortfolios = [
@@ -34,7 +46,15 @@ function FreelancerPortfolioDirectory() {
         { id: 13, title: 'Developer OS', desc: 'Dashboard UI with terminal and file explorer.' },
         { id: 14, title: 'Mobile App Style', desc: 'iOS/Android transitions with bottom navigation.' },
         { id: 15, title: 'Bento Grid v2', desc: 'Advanced grid with hover previews and dynamic stats.' },
-        { id: 16, title: 'Premium Solo', desc: 'Minimal black and gold theme for high-ticket freelancers.' },
+        { id: 20, title: 'Nova Interface', desc: 'High-contrast stellar editorial layout.' },
+        { id: 21, title: 'Code Matrix', desc: 'Digital rain & terminal-focused monochrome UI.' },
+        { id: 22, title: 'Dev Nexus', desc: 'Node-based connection graphs & electric accents.' },
+        { id: 23, title: 'Stack Horizon', desc: 'Isometric architecture & perspective-shifting layers.' },
+        { id: 24, title: 'API Core', desc: 'Endpoint style patterns & high-fidelity service interfaces.' },
+        { id: 25, title: 'Elite Studio', desc: 'Minimalist luxury & high-end editorial typography.' },
+        { id: 26, title: 'Prime Digital', desc: 'High-energy agency aesthetic & dynamic overlays.' },
+        { id: 27, title: 'Vertex Agency', desc: 'Geometric structural design & architectural grids.' },
+        { id: 28, title: 'Apex Portfolio', desc: 'Pinnacle technical polish & cinematic solo reveals.' },
     ];
 
     return (
@@ -120,6 +140,18 @@ export default function FreelancerPortfolio() {
             <Route path="14" element={<><BackButton /><FreelancerPortfolio14 /></>} />
             <Route path="15" element={<><BackButton /><FreelancerPortfolio15 /></>} />
             <Route path="16" element={<><BackButton /><FreelancerPortfolio16 /></>} />
+            <Route path="17" element={<><BackButton /><FreelancerPortfolio17 /></>} />
+            <Route path="18" element={<><BackButton /><FreelancerPortfolio18 /></>} />
+            <Route path="19" element={<><BackButton /><FreelancerPortfolio19 /></>} />
+            <Route path="20" element={<><BackButton /><FreelancerPortfolio20 /></>} />
+            <Route path="21" element={<><BackButton /><FreelancerPortfolio21 /></>} />
+            <Route path="22" element={<><BackButton /><FreelancerPortfolio22 /></>} />
+            <Route path="23" element={<><BackButton /><FreelancerPortfolio23 /></>} />
+            <Route path="24" element={<><BackButton /><FreelancerPortfolio24 /></>} />
+            <Route path="25" element={<><BackButton /><FreelancerPortfolio25 /></>} />
+            <Route path="26" element={<><BackButton /><FreelancerPortfolio26 /></>} />
+            <Route path="27" element={<><BackButton /><FreelancerPortfolio27 /></>} />
+            <Route path="28" element={<><BackButton /><FreelancerPortfolio28 /></>} />
         </Routes>
     );
 }

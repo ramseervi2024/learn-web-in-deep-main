@@ -16,6 +16,18 @@ import CompanyPortfolio13 from './CompanyPortfolio13';
 import CompanyPortfolio14 from './CompanyPortfolio14';
 import CompanyPortfolio15 from './CompanyPortfolio15';
 import CompanyPortfolio16 from './CompanyPortfolio16';
+import CompanyPortfolio17 from './CompanyPortfolio17';
+import CompanyPortfolio18 from './CompanyPortfolio18';
+import CompanyPortfolio19 from './CompanyPortfolio19';
+import CompanyPortfolio20 from './CompanyPortfolio20';
+import CompanyPortfolio21 from './CompanyPortfolio21';
+import CompanyPortfolio22 from './CompanyPortfolio22';
+import CompanyPortfolio23 from './CompanyPortfolio23';
+import CompanyPortfolio24 from './CompanyPortfolio24';
+import CompanyPortfolio25 from './CompanyPortfolio25';
+import CompanyPortfolio26 from './CompanyPortfolio26';
+import CompanyPortfolio27 from './CompanyPortfolio27';
+import CompanyPortfolio28 from './CompanyPortfolio28';
 
 function CompanyPortfolioDirectory() {
     const CompanyPortfolios = [
@@ -35,6 +47,18 @@ function CompanyPortfolioDirectory() {
         { id: 14, title: 'Mobile First App', desc: 'iOS/Android transitions with bottom navigation for app agencies.' },
         { id: 15, title: 'Bento Grid Pro', desc: 'Advanced grid with hover previews and dynamic business stats.' },
         { id: 16, title: 'Premium Scale', desc: 'Minimal black and gold theme with big typography for elite business.' },
+        { id: 17, title: 'Neuro Grid', desc: 'Bioluminescent connections & neural nodes.' },
+        { id: 18, title: 'Quantum UI', desc: 'Refractive glass & "entangled" hover states.' },
+        { id: 19, title: 'Cyber Pulse', desc: 'Neon glitch & digital pulse animations.' },
+        { id: 20, title: 'Nova Interface', desc: 'High-contrast stellar editorial layout.' },
+        { id: 21, title: 'Code Matrix', desc: 'Digital rain & terminal-focused monochrome UI.' },
+        { id: 22, title: 'Dev Nexus', desc: 'Node-based connection graphs & electric accents.' },
+        { id: 23, title: 'Stack Horizon', desc: 'Isometric architecture & perspective-shifting layers.' },
+        { id: 24, title: 'API Core', desc: 'Endpoint style patterns & high-fidelity agency interfaces.' },
+        { id: 25, title: 'Elite Studio', desc: 'Minimalist luxury & high-end editorial typography.' },
+        { id: 26, title: 'Prime Digital', desc: 'High-energy agency aesthetic & dynamic overlays.' },
+        { id: 27, title: 'Vertex Agency', desc: 'Geometric structural design & architectural grids.' },
+        { id: 28, title: 'Apex Portfolio', desc: 'Pinnacle technical polish & cinematic agency reveals.' },
     ];
 
     return (
@@ -119,6 +143,18 @@ export default function CompanyPortfolio() {
             <Route path="14" element={<><BackButton /><CompanyPortfolio14 /></>} />
             <Route path="15" element={<><BackButton /><CompanyPortfolio15 /></>} />
             <Route path="16" element={<><BackButton /><CompanyPortfolio16 /></>} />
+            <Route path="17" element={<><BackButton /><CompanyPortfolio17 /></>} />
+            <Route path="18" element={<><BackButton /><CompanyPortfolio18 /></>} />
+            <Route path="19" element={<><BackButton /><CompanyPortfolio19 /></>} />
+            <Route path="20" element={<><BackButton /><CompanyPortfolio20 /></>} />
+            <Route path="21" element={<><BackButton /><CompanyPortfolio21 /></>} />
+            <Route path="22" element={<><BackButton /><CompanyPortfolio22 /></>} />
+            <Route path="23" element={<><BackButton /><CompanyPortfolio23 /></>} />
+            <Route path="24" element={<><BackButton /><CompanyPortfolio24 /></>} />
+            <Route path="25" element={<><BackButton /><CompanyPortfolio25 /></>} />
+            <Route path="26" element={<><BackButton /><CompanyPortfolio26 /></>} />
+            <Route path="27" element={<><BackButton /><CompanyPortfolio27 /></>} />
+            <Route path="28" element={<><BackButton /><CompanyPortfolio28 /></>} />
         </Routes>
     );
 }
