@@ -20,6 +20,7 @@ import ClaudeAIStudio from './ClaudeAIStudio'
 import FacelessReels from './FacelessReels/FacelessReels'
 import Devroadmap from './components/Devroadmap'
 import Newsfeed from './Newsfeed/Newsfeed'
+import DynamicPosters from './DynamicPosters/DynamicPosters'
 export default function App() {
   return (
     <>
@@ -29,7 +30,7 @@ export default function App() {
       <SpeakSmart />
       <BreakTimeCaseSenario /> */}
       {/* <VenturesPortfolio /> */}
-      <AllRouters />
+      {/* <AllRouters /> */}
       {/* <BackendLearning /> */}
       {/* <SkillCareerRoadmap /> */}
       {/* <InterviewCrackRoadmap /> */}
@@ -40,6 +41,7 @@ export default function App() {
       {/* <Devroadmap /> */}
       {/* <Newsfeed /> */}
       {/* <Portfolio /> */}
+      <DynamicPosters />
     </>
 
   )
