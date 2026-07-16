@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ExternalLink, Github, Smartphone, Globe } from 'lucide-react';
+import SectionTitle from './common/SectionTitle';
+import ProjectCard from './common/ProjectCard';
 
 const projects = [
     {
@@ -63,16 +64,12 @@ const Projects = () => {
     return (
         <section id="projects" className="section-container">
             <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-8">
-                <div>
-                    <motion.h2
-                        initial={{ opacity: 0, x: -20 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        className="text-3xl md:text-5xl font-bold mb-4"
-                    >
-                        Featured <span className="text-gradient">Projects</span>
-                    </motion.h2>
-                    <p className="text-slate-400">A showcase of my recent mobile and web development work.</p>
-                </div>
+                <SectionTitle
+                    eyebrow="Projects"
+                    title="Featured Projects"
+                    description="A showcase of mobile and web product work, built with reusable components and strong visual polish."
+                    align="left"
+                />
 
                 <div className="flex gap-2 glass p-1.5 rounded-2xl">
                     {['All', 'Web', 'Mobile'].map((f) => (
@@ -99,35 +96,8 @@ const Projects = () => {
                             initial={{ opacity: 0, scale: 0.9 }}
                             animate={{ opacity: 1, scale: 1 }}
                             exit={{ opacity: 0, scale: 0.9 }}
-                            className="project-card flex flex-col h-full group"
                         >
-                            <div className="relative aspect-video bg-slate-800 flex items-center justify-center group">
-                                {project.category === 'Mobile' ? <Smartphone size={48} className="text-slate-700 group-hover:text-blue-500/50 transition-colors" /> : <Globe size={48} className="text-slate-700 group-hover:text-emerald-500/50 transition-colors" />}
-
-                                <div className="absolute inset-0 bg-blue-600/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-4">
-                                    <button className="p-3 bg-white rounded-full text-slate-900 hover:scale-110 transition-transform">
-                                        <ExternalLink size={20} />
-                                    </button>
-                                    <button className="p-3 bg-white rounded-full text-slate-900 hover:scale-110 transition-transform">
-                                        <Github size={20} />
-                                    </button>
-                                </div>
-                            </div>
-
-                            <div className="p-6 flex-grow flex flex-col">
-                                <div className="flex items-center justify-between mb-3">
-                                    <span className="text-xs font-bold uppercase tracking-wider text-blue-400">{project.type}</span>
-                                </div>
-                                <h3 className="text-xl font-bold mb-3 text-white group-hover:text-blue-400 transition-colors">{project.title}</h3>
-                                <p className="text-sm text-slate-400 mb-6 flex-grow">{project.description}</p>
-                                <div className="flex flex-wrap gap-2">
-                                    {project.tech.map(t => (
-                                        <span key={t} className="text-[10px] px-2 py-1 bg-white/5 rounded-md text-slate-300 font-medium uppercase border border-white/5">
-                                            {t}
-                                        </span>
-                                    ))}
-                                </div>
-                            </div>
+                            <ProjectCard {...project} />
                         </motion.div>
                     ))}
                 </AnimatePresence>

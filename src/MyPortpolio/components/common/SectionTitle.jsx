@@ -16,6 +16,11 @@ const SectionTitle = ({ eyebrow, title, description, align = 'left' }) => {
       {description && (
         <p className="text-slate-400 leading-relaxed">{description}</p>
       )}
+      <div className="mt-6 flex flex-wrap gap-3 justify-start">
+        <span className="text-xs uppercase tracking-[0.25em] text-slate-500">React</span>
+        <span className="text-xs uppercase tracking-[0.25em] text-slate-500">Storybook</span>
+        <span className="text-xs uppercase tracking-[0.25em] text-slate-500">Tailwind</span>
+      </div>
     </div>
   );
 };

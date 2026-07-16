@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Briefcase, Calendar } from 'lucide-react';
+import SectionTitle from './common/SectionTitle';
 
 const experiences = [
     {
@@ -30,13 +31,12 @@ const Experience = () => {
     return (
         <section id="experience" className="section-container">
             <div className="mb-16">
-                <motion.h2
-                    initial={{ opacity: 0, x: -20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    className="text-3xl md:text-5xl font-bold"
-                >
-                    Work <span className="text-gradient">Journey</span>
-                </motion.h2>
+                <SectionTitle
+                    eyebrow="Experience"
+                    title="Work Journey"
+                    description="A timeline of roles and accomplishments built with reusable components to keep the portfolio consistent."
+                    align="left"
+                />
             </div>
 
             <div className="relative space-y-8 before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-slate-700 before:to-transparent">

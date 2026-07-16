@@ -80,5 +80,6 @@ Include the following in your ZIP:
 - `src/stories/MyPortpolio.stories.jsx`
 - `package.json`
 - `README.md` or this `STORYBOOK-ASSIGNMENT.md`
+- `public/profile.jpg` (your actual profile photo)
 
 This file explains where Storybook was used and how the common reusable components are built and used in the project.

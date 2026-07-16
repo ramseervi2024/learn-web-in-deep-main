@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { MousePointer2, Download, ChevronRight } from 'lucide-react';
 import InfoCard from './common/InfoCard';
+import ActionButton from './common/ActionButton';
 
 const Hero = () => {
     return (
@@ -36,21 +37,18 @@ const Hero = () => {
                         </p>
 
                         <div className="flex flex-wrap gap-4">
-                            <motion.button
-                                whileHover={{ scale: 1.05 }}
-                                whileTap={{ scale: 0.95 }}
-                                className="px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white rounded-2xl font-semibold flex items-center gap-2 transition-colors shadow-lg shadow-blue-500/25"
-                            >
-                                View Projects <ChevronRight size={20} />
-                            </motion.button>
-
-                            <motion.button
-                                whileHover={{ scale: 1.05 }}
-                                whileTap={{ scale: 0.95 }}
-                                className="px-8 py-4 glass text-white rounded-2xl font-semibold flex items-center gap-2"
-                            >
-                                Resume <Download size={20} />
-                            </motion.button>
+                            <ActionButton
+                                label="View Projects"
+                                variant="primary"
+                                icon={ChevronRight}
+                                href="#projects"
+                            />
+                            <ActionButton
+                                label="Resume"
+                                variant="secondary"
+                                icon={Download}
+                                href="#"
+                            />
                         </div>
                     </motion.div>
 

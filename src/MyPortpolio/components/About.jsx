@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import SectionTitle from './common/SectionTitle';
+import profileImage from '../profile.png';
 
 const About = () => {
     return (
@@ -14,10 +15,11 @@ const About = () => {
                     className="relative"
                 >
                     <div className="aspect-[4/5] rounded-3xl overflow-hidden glass p-2">
-                        <div className="w-full h-full bg-slate-800 rounded-2xl flex items-center justify-center text-slate-500">
-                            {/* Placeholder for Profile Photo */}
-                            <span className="text-sm">Profile Image</span>
-                        </div>
+                        <img
+                            src={profileImage}
+                            alt="Profile"
+                            className="w-full h-full object-cover rounded-2xl"
+                        />
                     </div>
                     <div className="absolute -bottom-6 -right-6 glass p-6 rounded-2xl hidden md:block">
                         <div className="text-blue-400 font-bold text-xl leading-tight">Problem Solver &<br />Innovator</div>
