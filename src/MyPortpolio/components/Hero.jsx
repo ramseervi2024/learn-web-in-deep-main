@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { MousePointer2, Download, ChevronRight } from 'lucide-react';
+import InfoCard from './common/InfoCard';
 
 const Hero = () => {
     return (
@@ -85,19 +86,17 @@ const Hero = () => {
                         <motion.div
                             animate={{ y: [0, 10, 0] }}
                             transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                            className="absolute -top-10 -right-10 glass p-6 rounded-2xl"
+                            className="absolute -top-10 -right-10"
                         >
-                            <div className="text-3xl font-bold">3+</div>
-                            <div className="text-sm text-slate-400">Years Experience</div>
+                            <InfoCard title="Experience" value="3+ Years" subtitle="Building polished interfaces" accent="blue" />
                         </motion.div>
 
                         <motion.div
                             animate={{ y: [0, -10, 0] }}
                             transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-                            className="absolute -bottom-10 -left-10 glass p-6 rounded-2xl"
+                            className="absolute -bottom-10 -left-10"
                         >
-                            <div className="text-3xl font-bold">4+</div>
-                            <div className="text-sm text-slate-400">Apps Published</div>
+                            <InfoCard title="Projects" value="4+ Apps" subtitle="Published and live" accent="emerald" />
                         </motion.div>
                     </motion.div>
                 </div>

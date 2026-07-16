@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import SectionTitle from './common/SectionTitle';
 
 const About = () => {
     return (
@@ -29,9 +30,11 @@ const About = () => {
                     viewport={{ once: true }}
                     transition={{ duration: 0.8 }}
                 >
-                    <h2 className="text-3xl md:text-4xl font-bold mb-8">
-                        Passionate About Building <span className="text-gradient">High-Performance</span> Products
-                    </h2>
+                    <SectionTitle
+                        eyebrow="About Me"
+                        title={"Passionate About Building High-Performance Products"}
+                        description="I build polished web and mobile experiences with a strong focus on performance, user experience, and scalable architecture."
+                    />
 
                     <div className="space-y-6 text-slate-400 leading-relaxed">
                         <p>
