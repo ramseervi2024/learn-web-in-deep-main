@@ -41,7 +41,8 @@ export default function App() {
       {/* <Devroadmap /> */}
       {/* <Newsfeed /> */}
       {/* <Portfolio /> */}
-      <DynamicPosters />
+      {/* <DynamicPosters /> */}
+      <MyPortpolio />
     </>
 
   )
