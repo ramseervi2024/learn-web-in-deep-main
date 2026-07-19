@@ -65,18 +65,18 @@ const OutreachOS = () => {
     return (
         <section id="outreach-os" className="section-container relative">
             {/* Background decoration */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-gradient-to-r from-blue-500/5 to-purple-500/5 rounded-full blur-[120px] pointer-events-none" />
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[min(100vw,800px)] h-[min(100vw,800px)] bg-gradient-to-r from-blue-500/5 to-purple-500/5 rounded-full blur-[120px] pointer-events-none" />
 
             <div className="relative">
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
-                    className="text-center mb-8 md:mb-16"
+                    className="text-center mb-6 sm:mb-8 md:mb-16"
                 >
-                    <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4">
+                    <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-3 sm:mb-4">
                         Outreach <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-emerald-400 bg-clip-text text-transparent">OS</span>
                     </h2>
-                    <p className="text-slate-300 text-base md:text-lg max-w-2xl mx-auto">
+                    <p className="text-sm sm:text-base md:text-lg text-slate-600 dark:text-slate-300 max-w-2xl mx-auto">
                         Quick access tools and resources for efficient job applications and networking
                     </p>
                 </motion.div>
@@ -85,13 +85,13 @@ const OutreachOS = () => {
                 <motion.div
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
-                    className="mb-16"
+                    className="mb-12 sm:mb-16"
                 >
-                    <h3 className="text-2xl font-bold mb-6 md:mb-8 text-white flex items-center gap-3">
+                    <h3 className="text-xl sm:text-2xl font-bold mb-6 sm:mb-8 text-slate-900 dark:text-white flex items-center gap-2 sm:gap-3">
                         <Zap className="text-yellow-400" />
                         Quick Access Shortcuts
                     </h3>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
                         {quickAccess.map((item, index) => {
                             const Icon = item.icon;
                             return (
@@ -100,27 +100,27 @@ const OutreachOS = () => {
                                     initial={{ opacity: 0, scale: 0.95 }}
                                     whileInView={{ opacity: 1, scale: 1 }}
                                     transition={{ delay: index * 0.05 }}
-                                    className="group relative overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-br from-slate-900/50 to-slate-800/50 backdrop-blur-xl p-4 hover:border-blue-500/30 transition-all duration-300"
+                                    className="group relative overflow-hidden rounded-xl sm:rounded-2xl border border-slate-200 dark:border-white/10 bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-900/50 dark:to-slate-800/50 backdrop-blur-xl p-3 sm:p-4 hover:border-blue-500/30 transition-all duration-300"
                                 >
-                                    <div className="flex items-center justify-between mb-2">
-                                        <div className="flex items-center gap-3">
-                                            <div className="p-2 bg-blue-500/20 rounded-xl text-blue-400">
-                                                <Icon size={18} />
+                                    <div className="flex items-center justify-between mb-1.5 sm:mb-2">
+                                        <div className="flex items-center gap-2 sm:gap-3">
+                                            <div className="p-1.5 sm:p-2 bg-blue-500/20 rounded-lg sm:rounded-xl text-blue-400">
+                                                <Icon size={16} />
                                             </div>
-                                            <span className="text-sm font-semibold text-white">{item.label}</span>
+                                            <span className="text-xs sm:text-sm font-semibold text-slate-900 dark:text-white">{item.label}</span>
                                         </div>
-                                        <span className="text-xs text-slate-500 font-mono">{item.shortcut}</span>
+                                        <span className="text-[10px] sm:text-xs text-slate-500 font-mono hidden sm:inline">{item.shortcut}</span>
                                     </div>
-                                    <div className="flex items-center gap-2">
-                                        <p className="text-xs text-slate-400 truncate flex-1">{item.value}</p>
+                                    <div className="flex items-center gap-1.5 sm:gap-2">
+                                        <p className="text-[10px] sm:text-xs text-slate-500 dark:text-slate-400 truncate flex-1">{item.value}</p>
                                         <button
                                             onClick={() => copyToClipboard(item.value, item.id)}
-                                            className="p-1.5 rounded-lg bg-white/5 hover:bg-white/10 transition-colors"
+                                            className="p-1 sm:p-1.5 rounded-lg bg-slate-100 dark:bg-white/5 hover:bg-slate-200 dark:hover:bg-slate-200/80 dark:bg-white/10 transition-colors"
                                         >
                                             {copied === item.id ? (
                                                 <Check size={14} className="text-green-400" />
                                             ) : (
-                                                <Copy size={14} className="text-slate-400" />
+                                                <Copy size={14} className="text-slate-500 dark:text-slate-400" />
                                             )}
                                         </button>
                                         {item.value.startsWith('http') && (
@@ -128,9 +128,9 @@ const OutreachOS = () => {
                                                 href={item.value}
                                                 target="_blank"
                                                 rel="noopener noreferrer"
-                                                className="p-1.5 rounded-lg bg-white/5 hover:bg-white/10 transition-colors"
+                                                className="p-1 sm:p-1.5 rounded-lg bg-slate-100 dark:bg-white/5 hover:bg-slate-200 dark:hover:bg-slate-200/80 dark:bg-white/10 transition-colors"
                                             >
-                                                <ExternalLink size={14} className="text-slate-400" />
+                                                <ExternalLink size={14} className="text-slate-500 dark:text-slate-400" />
                                             </a>
                                         )}
                                     </div>
@@ -144,13 +144,13 @@ const OutreachOS = () => {
                 <motion.div
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
-                    className="mb-12 md:mb-16"
+                    className="mb-12 sm:mb-16"
                 >
-                    <h3 className="text-2xl font-bold mb-6 md:mb-8 text-white flex items-center gap-3">
+                    <h3 className="text-xl sm:text-2xl font-bold mb-6 sm:mb-8 text-slate-900 dark:text-white flex items-center gap-2 sm:gap-3">
                         <Radio className="text-blue-400" />
                         Job Portal Radars
                     </h3>
-                    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 md:gap-4">
+                    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-2 sm:gap-3 md:gap-4">
                         {jobPortals.map((portal, index) => {
                             const Icon = portal.icon;
                             return (
@@ -159,14 +159,14 @@ const OutreachOS = () => {
                                     initial={{ opacity: 0, scale: 0.95 }}
                                     whileInView={{ opacity: 1, scale: 1 }}
                                     transition={{ delay: index * 0.05 }}
-                                    className="group relative overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-br from-slate-900/50 to-slate-800/50 backdrop-blur-xl p-6 hover:border-white/20 transition-all duration-300 hover:scale-105 cursor-pointer"
+                                    className="group relative overflow-hidden rounded-xl sm:rounded-2xl border border-slate-200 dark:border-white/10 bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-900/50 dark:to-slate-800/50 backdrop-blur-xl p-3 sm:p-4 md:p-6 hover:border-slate-300 dark:hover:border-white/20 transition-all duration-300 hover:scale-105 cursor-pointer"
                                 >
                                     <div className={`absolute inset-0 bg-gradient-to-br ${portal.color} opacity-0 group-hover:opacity-10 transition-opacity duration-300`} />
                                     <div className="relative">
-                                        <div className={`p-3 rounded-xl bg-gradient-to-br ${portal.color} text-white mb-3 group-hover:scale-110 transition-transform`}>
-                                            <Icon size={24} />
+                                        <div className={`p-2 sm:p-3 rounded-lg sm:rounded-xl bg-gradient-to-br ${portal.color} text-slate-900 dark:text-white mb-2 sm:mb-3 group-hover:scale-110 transition-transform`}>
+                                            <Icon size={20} />
                                         </div>
-                                        <p className="text-sm font-semibold text-white">{portal.name}</p>
+                                        <p className="text-xs sm:text-sm font-semibold text-slate-900 dark:text-white">{portal.name}</p>
                                     </div>
                                 </motion.div>
                             );
@@ -178,13 +178,13 @@ const OutreachOS = () => {
                 <motion.div
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
-                    className="mb-12 md:mb-16"
+                    className="mb-12 sm:mb-16"
                 >
-                    <h3 className="text-2xl font-bold mb-6 md:mb-8 text-white flex items-center gap-3">
+                    <h3 className="text-xl sm:text-2xl font-bold mb-6 sm:mb-8 text-slate-900 dark:text-white flex items-center gap-2 sm:gap-3">
                         <Command className="text-purple-400" />
                         Command Room
                     </h3>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 sm:gap-3 md:gap-4">
                         {commandRoom.map((tool, index) => {
                             const Icon = tool.icon;
                             return (
@@ -193,15 +193,15 @@ const OutreachOS = () => {
                                     initial={{ opacity: 0, scale: 0.95 }}
                                     whileInView={{ opacity: 1, scale: 1 }}
                                     transition={{ delay: index * 0.05 }}
-                                    className="group relative overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-br from-slate-900/50 to-slate-800/50 backdrop-blur-xl p-6 hover:border-purple-500/30 transition-all duration-300 hover:scale-105"
+                                    className="group relative overflow-hidden rounded-xl sm:rounded-2xl border border-slate-200 dark:border-white/10 bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-900/50 dark:to-slate-800/50 backdrop-blur-xl p-3 sm:p-4 md:p-6 hover:border-purple-500/30 transition-all duration-300 hover:scale-105"
                                 >
                                     <div className="absolute inset-0 bg-gradient-to-br from-purple-500/5 to-pink-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                                     <div className="relative">
-                                        <div className="p-3 rounded-xl bg-purple-500/20 text-purple-400 mb-3 group-hover:scale-110 transition-transform">
-                                            <Icon size={24} />
+                                        <div className="p-2 sm:p-3 rounded-lg sm:rounded-xl bg-purple-500/20 text-purple-400 mb-2 sm:mb-3 group-hover:scale-110 transition-transform">
+                                            <Icon size={20} />
                                         </div>
-                                        <h4 className="text-lg font-bold text-white mb-2">{tool.name}</h4>
-                                        <p className="text-sm text-slate-400">{tool.description}</p>
+                                        <h4 className="text-sm sm:text-base md:text-lg font-bold text-slate-900 dark:text-white mb-1 sm:mb-2">{tool.name}</h4>
+                                        <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400">{tool.description}</p>
                                     </div>
                                 </motion.div>
                             );
@@ -214,35 +214,35 @@ const OutreachOS = () => {
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
                 >
-                    <h3 className="text-2xl font-bold mb-6 md:mb-8 text-white flex items-center gap-3">
+                    <h3 className="text-xl sm:text-2xl font-bold mb-6 sm:mb-8 text-slate-900 dark:text-white flex items-center gap-2 sm:gap-3">
                         <MessageSquare className="text-emerald-400" />
                         Interview Q&A
                     </h3>
-                    <div className="space-y-3 md:space-y-4">
+                    <div className="space-y-2 sm:space-y-3 md:space-y-4">
                         {interviewQA.map((qa, index) => (
                             <motion.div
                                 key={index}
                                 initial={{ opacity: 0, x: -20 }}
                                 whileInView={{ opacity: 1, x: 0 }}
                                 transition={{ delay: index * 0.03 }}
-                                className="group relative overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-br from-slate-900/50 to-slate-800/50 backdrop-blur-xl hover:border-emerald-500/30 transition-all duration-300"
+                                className="group relative overflow-hidden rounded-xl sm:rounded-2xl border border-slate-200 dark:border-white/10 bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-900/50 dark:to-slate-800/50 backdrop-blur-xl hover:border-emerald-500/30 transition-all duration-300"
                             >
                                 <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/5 to-teal-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                                <div className="relative p-6">
+                                <div className="relative p-3 sm:p-4 md:p-6">
                                     <div className="flex items-start justify-between gap-4 mb-3">
-                                        <h4 className="text-lg font-semibold text-white flex-1">{qa.question}</h4>
+                                        <h4 className="text-lg font-semibold text-slate-900 dark:text-white flex-1">{qa.question}</h4>
                                         <button
                                             onClick={() => copyToClipboard(qa.answer, `qa-${index}`)}
-                                            className="p-2 rounded-lg bg-white/5 hover:bg-white/10 transition-colors shrink-0"
+                                            className="p-2 rounded-lg bg-slate-100 dark:bg-white/5 hover:bg-slate-200 dark:hover:bg-slate-200/80 dark:bg-white/10 transition-colors shrink-0"
                                         >
                                             {copied === `qa-${index}` ? (
                                                 <Check size={16} className="text-green-400" />
                                             ) : (
-                                                <Copy size={16} className="text-slate-400" />
+                                                <Copy size={16} className="text-slate-500 dark:text-slate-400" />
                                             )}
                                         </button>
                                     </div>
-                                    <p className="text-slate-300 text-sm leading-relaxed">{qa.answer}</p>
+                                    <p className="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">{qa.answer}</p>
                                 </div>
                             </motion.div>
                         ))}

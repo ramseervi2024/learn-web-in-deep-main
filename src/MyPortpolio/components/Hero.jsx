@@ -6,40 +6,41 @@ import ActionButton from './common/ActionButton';
 
 const Hero = () => {
     return (
-        <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden pt-16 sm:pt-20">
+        <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden pt-20 sm:pt-24 w-full">
             {/* Enhanced background decorative elements */}
-            <div className="absolute top-1/4 -right-20 w-96 h-96 bg-gradient-to-br from-blue-600/30 to-purple-600/30 rounded-full blur-[120px] animate-pulse" />
-            <div className="absolute bottom-1/4 -left-20 w-96 h-96 bg-gradient-to-br from-emerald-600/30 to-teal-600/30 rounded-full blur-[120px] animate-pulse" />
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-gradient-to-r from-blue-500/5 to-purple-500/5 rounded-full blur-[150px]" />
+            <div className="absolute top-1/4 -right-20 w-64 sm:w-96 h-64 sm:h-96 bg-gradient-to-br from-blue-600/30 to-purple-600/30 rounded-full blur-[120px] animate-pulse pointer-events-none" />
+            <div className="absolute bottom-1/4 -left-20 w-64 sm:w-96 h-64 sm:h-96 bg-gradient-to-br from-emerald-600/30 to-teal-600/30 rounded-full blur-[120px] animate-pulse pointer-events-none" />
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[min(100vw,800px)] h-[min(100vw,800px)] bg-gradient-to-r from-blue-500/5 to-purple-500/5 rounded-full blur-[150px] pointer-events-none" />
 
-            <div className="section-container relative z-10">
-                <div className="grid lg:grid-cols-2 gap-8 md:gap-16 items-center">
+            <div className="section-container relative z-10 !overflow-visible">
+                <div className="grid lg:grid-cols-2 gap-8 md:gap-16 items-center w-full">
                     <motion.div
                         initial={{ opacity: 0, y: 30 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8 }}
+                        className="min-w-0 w-full"
                     >
                         <motion.div
                             initial={{ opacity: 0, x: -20 }}
                             animate={{ opacity: 1, x: 0 }}
                             transition={{ delay: 0.2 }}
-                            className="inline-flex items-center space-x-2 px-4 py-2 rounded-full bg-gradient-to-r from-emerald-500/20 to-teal-500/20 border border-emerald-500/30 backdrop-blur-xl mb-8"
+                            className="inline-flex items-center space-x-1.5 sm:space-x-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-gradient-to-r from-emerald-500/20 to-teal-500/20 border border-emerald-500/30 backdrop-blur-xl mb-6 sm:mb-8"
                         >
-                            <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-ping" />
-                            <span className="text-sm font-semibold text-emerald-300">Available for Hire</span>
+                            <span className="w-2 sm:w-2.5 h-2 sm:h-2.5 rounded-full bg-emerald-400 animate-ping" />
+                            <span className="text-xs sm:text-sm font-semibold text-emerald-700 dark:text-emerald-300">Available for Hire</span>
                         </motion.div>
 
-                                        <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold mb-6 leading-tight tracking-tight">
-                            Full Stack <br />
-                            <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-emerald-400 bg-clip-text text-transparent">JavaScript</span> <br />
+                        <h1 className="text-[clamp(1.05rem,4.6vw,4.5rem)] leading-tight font-bold mb-4 sm:mb-6 tracking-tight whitespace-nowrap">
+                            Full Stack{' '}
+                            <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-emerald-400 bg-clip-text text-transparent">JavaScript</span>{' '}
                             Developer
                         </h1>
 
-                        <p className="text-base md:text-lg lg:text-xl text-slate-300 mb-8 md:mb-10 max-w-xl leading-relaxed">
-                            I'm <span className="text-white font-semibold">Ramesh Seervi</span>, a Full Stack Developer with 3.7+ years of experience building scalable Web & Mobile applications with React, React Native, Node.js, and TypeScript.
+                        <p className="text-sm sm:text-base md:text-lg lg:text-xl text-slate-600 dark:text-slate-300 mb-6 sm:mb-8 md:mb-10 max-w-xl leading-relaxed">
+                            I'm <span className="text-slate-900 dark:text-white font-semibold">Ramesh Seervi</span>, a Full Stack Developer with 3.7+ years of experience building scalable Web & Mobile applications with React, React Native, Node.js, and TypeScript.
                         </p>
 
-                        <div className="flex flex-wrap gap-3 md:gap-4 mb-8 md:mb-12">
+                        <div className="flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4 mb-6 sm:mb-8 md:mb-12">
                             <ActionButton
                                 label="View Projects"
                                 variant="primary"
@@ -56,7 +57,7 @@ const Hero = () => {
                         </div>
 
                         {/* Quick Stats */}
-                        <div className="flex flex-wrap gap-4 md:gap-8">
+                        <div className="grid grid-cols-3 gap-3 sm:flex sm:flex-wrap sm:gap-6 md:gap-8">
                             {[
                                 { label: 'Experience', value: '3.7+ Years', color: 'text-blue-400' },
                                 { label: 'Projects', value: '14+ Live', color: 'text-emerald-400' },
@@ -69,8 +70,8 @@ const Hero = () => {
                                     transition={{ delay: 0.4 + index * 0.1 }}
                                     className="flex flex-col"
                                 >
-                                    <span className={`text-xl md:text-2xl lg:text-3xl font-bold ${stat.color}`}>{stat.value}</span>
-                                    <span className="text-xs md:text-sm text-slate-400">{stat.label}</span>
+                                    <span className={`text-base sm:text-xl md:text-2xl lg:text-3xl font-bold ${stat.color}`}>{stat.value}</span>
+                                    <span className="text-[10px] sm:text-xs md:text-sm text-slate-500 dark:text-slate-400">{stat.label}</span>
                                 </motion.div>
                             ))}
                         </div>
@@ -125,7 +126,7 @@ const Hero = () => {
                                         }}
                                         className="absolute inset-0 flex items-center justify-center"
                                     >
-                                        <div className="w-32 h-32 bg-gradient-to-br from-blue-500/20 to-purple-500/20 rounded-2xl backdrop-blur-xl border border-white/10 flex items-center justify-center">
+                                        <div className="w-32 h-32 bg-gradient-to-br from-blue-500/20 to-purple-500/20 rounded-2xl backdrop-blur-xl border border-slate-200 dark:border-white/10 flex items-center justify-center">
                                             <span className="text-4xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">RS</span>
                                         </div>
                                     </motion.div>

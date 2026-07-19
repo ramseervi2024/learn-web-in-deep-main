@@ -50,19 +50,19 @@ const ProjectCard = ({ title, type, category, description, tech, link, github, a
       
       <div className="relative p-4 sm:p-6 md:p-8">
         <div className="flex items-center justify-between mb-4 md:mb-6">
-          <span className="text-[10px] sm:text-xs uppercase tracking-[0.2em] sm:tracking-[0.3em] font-semibold bg-white/10 px-2 sm:px-3 py-1 sm:py-1.5 rounded-full text-white/80 backdrop-blur-sm">
+          <span className="text-[10px] sm:text-xs uppercase tracking-[0.2em] sm:tracking-[0.3em] font-semibold bg-slate-200/80 dark:bg-white/10 px-2 sm:px-3 py-1 sm:py-1.5 rounded-full text-slate-600 dark:text-white/80 backdrop-blur-sm">
             {type}
           </span>
           <div className={`p-2 sm:p-3 rounded-xl sm:rounded-2xl ${colors.iconBg} ${colors.icon} group-hover:scale-110 transition-transform duration-300`}>
-            <Icon size={16} sm:size={20} />
+            <Icon size={18} />
           </div>
         </div>
         
-        <h3 className="text-lg sm:text-xl md:text-2xl font-bold mb-3 md:mb-4 text-white group-hover:text-blue-200 transition-colors">
+        <h3 className="text-lg sm:text-xl md:text-2xl font-bold mb-3 md:mb-4 text-slate-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-200 transition-colors">
           {title}
         </h3>
         
-        <p className="text-xs sm:text-sm text-slate-300 mb-4 md:mb-6 leading-relaxed line-clamp-3">
+        <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 mb-4 md:mb-6 leading-relaxed line-clamp-3">
           {description}
         </p>
         
@@ -70,17 +70,17 @@ const ProjectCard = ({ title, type, category, description, tech, link, github, a
           {tech.map((item) => (
             <span 
               key={item} 
-              className="text-[9px] sm:text-[10px] uppercase tracking-[0.15em] sm:tracking-[0.2em] bg-white/10 px-2 sm:px-3 py-1 sm:py-1.5 rounded-full text-white/70 backdrop-blur-sm border border-white/10 hover:bg-white/20 transition-colors"
+              className="text-[9px] sm:text-[10px] uppercase tracking-[0.15em] sm:tracking-[0.2em] bg-slate-200/80 dark:bg-white/10 px-2 sm:px-3 py-1 sm:py-1.5 rounded-full text-slate-600 dark:text-white/70 backdrop-blur-sm border border-slate-200 dark:border-white/10 hover:bg-slate-300/80 dark:hover:bg-white/20 transition-colors"
             >
               {item}
             </span>
           ))}
         </div>
         
-        <div className="flex items-center gap-3 md:gap-4 pt-3 md:pt-4 border-t border-white/10">
+        <div className="flex items-center gap-3 md:gap-4 pt-3 md:pt-4 border-t border-slate-200 dark:border-white/10">
           {link && (
-            <span className="inline-flex items-center gap-1.5 md:gap-2 text-xs sm:text-sm font-semibold text-blue-300 group-hover:text-blue-200 transition-colors">
-              <ExternalLink size={14} sm:size={16} className="group-hover:translate-x-1 transition-transform" /> 
+            <span className="inline-flex items-center gap-1.5 md:gap-2 text-xs sm:text-sm font-semibold text-blue-600 dark:text-blue-300 group-hover:text-blue-500 dark:group-hover:text-blue-200 transition-colors">
+              <ExternalLink size={14} className="group-hover:translate-x-1 transition-transform" /> 
               View Live
             </span>
           )}
@@ -90,9 +90,9 @@ const ProjectCard = ({ title, type, category, description, tech, link, github, a
               target="_blank"
               rel="noopener noreferrer"
               onClick={(e) => e.stopPropagation()}
-              className="inline-flex items-center gap-1.5 md:gap-2 text-xs sm:text-sm font-semibold text-slate-400 hover:text-white transition-colors"
+              className="inline-flex items-center gap-1.5 md:gap-2 text-xs sm:text-sm font-semibold text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors"
             >
-              <Github size={14} sm:size={16} /> Source
+              <Github size={14} /> Source
             </a>
           )}
         </div>

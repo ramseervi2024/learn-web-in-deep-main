@@ -128,10 +128,10 @@ const Projects = () => {
     return (
         <section id="projects" className="section-container relative">
             {/* Background gradient decoration */}
-            <div className="absolute top-0 right-0 w-96 h-96 bg-blue-600/10 rounded-full filter blur-[100px] pointer-events-none" />
-            <div className="absolute bottom-0 left-0 w-96 h-96 bg-purple-600/10 rounded-full filter blur-[100px] pointer-events-none" />
+            <div className="absolute top-0 right-0 w-48 sm:w-96 h-48 sm:h-96 bg-blue-600/10 rounded-full filter blur-[100px] pointer-events-none" />
+            <div className="absolute bottom-0 left-0 w-48 sm:w-96 h-48 sm:h-96 bg-purple-600/10 rounded-full filter blur-[100px] pointer-events-none" />
 
-            <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 md:mb-16 gap-6 md:gap-8 relative">
+            <div className="flex flex-col md:flex-row md:items-end justify-between mb-6 sm:mb-8 md:mb-16 gap-4 sm:gap-6 md:gap-8 relative">
                 <SectionTitle
                     eyebrow="Projects"
                     title="Featured Projects"
@@ -139,15 +139,15 @@ const Projects = () => {
                     align="left"
                 />
 
-                <div className="flex gap-2 p-1.5 rounded-2xl bg-slate-900/50 backdrop-blur-xl border border-white/10">
+                <div className="flex gap-1.5 sm:gap-2 p-1 sm:p-1.5 rounded-xl sm:rounded-2xl bg-slate-100/80 dark:bg-slate-900/50 backdrop-blur-xl border border-slate-200 dark:border-white/10">
                     {['All', 'Web', 'Mobile'].map((f) => (
                         <button
                             key={f}
                             onClick={() => setFilter(f)}
-                            className={`px-4 md:px-6 py-2 md:py-2.5 rounded-xl text-xs md:text-sm font-semibold transition-all duration-300 ${
+                            className={`px-3 sm:px-4 md:px-6 py-1.5 sm:py-2 md:py-2.5 rounded-lg sm:rounded-xl text-[10px] sm:text-xs md:text-sm font-semibold transition-all duration-300 ${
                                 filter === f 
-                                    ? 'bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-lg shadow-blue-500/25' 
-                                    : 'text-slate-400 hover:text-white hover:bg-white/5'
+                                    ? 'bg-gradient-to-r from-blue-600 to-purple-600 text-slate-900 dark:text-white shadow-lg shadow-blue-500/25' 
+                                    : 'text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:text-white hover:bg-slate-100 dark:hover:bg-slate-100 dark:bg-white/5'
                             }`}
                         >
                             {f}
@@ -158,7 +158,7 @@ const Projects = () => {
 
             <motion.div
                 layout
-                className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8 relative"
+                className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 md:gap-6 lg:gap-8 relative"
             >
                 <AnimatePresence mode='popLayout'>
                     {filteredProjects.map((project, index) => (
