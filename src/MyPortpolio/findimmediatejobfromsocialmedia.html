@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Discover instant job opportunities from Instagram, Facebook, Twitter, and other social media platforms in one modern dashboard." />
+  <title>Instant Social Jobs | Find Jobs Faster</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #07111f;
+      --bg-soft: #0f1d33;
+      --surface: rgba(255, 255, 255, 0.08);
+      --surface-strong: rgba(255, 255, 255, 0.14);
+      --text: #f4f7fb;
+      --muted: #9fb0c7;
+      --primary: #3b82f6;
+      --primary-2: #06b6d4;
+      --accent: #34d399;
+      --border: rgba(255, 255, 255, 0.12);
+      --shadow: 0 16px 40px rgba(2, 8, 23, 0.35);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(59,130,246,0.22), transparent 25%),
+        radial-gradient(circle at bottom right, rgba(6,182,212,0.18), transparent 28%),
+        var(--bg);
+      line-height: 1.6;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+
+    .container {
+      width: min(1160px, calc(100% - 2rem));
+      margin: 0 auto;
+    }
+
+    .hero {
+      min-height: 100vh;
+      padding: 1.25rem 0 4rem;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 1.25rem;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      background: rgba(7, 17, 31, 0.75);
+      backdrop-filter: blur(14px);
+      position: sticky;
+      top: 1rem;
+      z-index: 10;
+    }
+
+    .brand {
+      font-weight: 800;
+      font-size: 1.05rem;
+      letter-spacing: 0.02em;
+    }
+
+    .brand span { color: var(--primary-2); }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      color: var(--muted);
+      font-weight: 500;
+    }
+
+    .nav-links a:hover { color: var(--text); }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.85rem 1.2rem;
+      border-radius: 999px;
+      font-weight: 700;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      cursor: pointer;
+      border: none;
+    }
+
+    .btn:hover { transform: translateY(-2px); }
+    .btn-primary {
+      background: linear-gradient(135deg, var(--primary), var(--primary-2));
+      color: #fff;
+      box-shadow: 0 10px 25px rgba(59,130,246,0.25);
+    }
+
+    .btn-secondary {
+      background: rgba(255,255,255,0.08);
+      border: 1px solid var(--border);
+      color: var(--text);
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 2rem;
+      align-items: center;
+      padding: 4rem 0 2rem;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      padding: 0.45rem 0.75rem;
+      border-radius: 999px;
+      background: rgba(59,130,246,0.16);
+      color: #b7d7ff;
+      font-size: 0.9rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+
+    h1 {
+      font-size: clamp(2.1rem, 3.5vw, 3.7rem);
+      line-height: 1.08;
+      margin: 0 0 1rem;
+      letter-spacing: -0.03em;
+    }
+
+    .hero p { color: var(--muted); font-size: 1.05rem; }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.85rem;
+      margin: 1.4rem 0 1.1rem;
+    }
+
+    .stats {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-top: 1.25rem;
+    }
+
+    .stat-pill {
+      padding: 0.8rem 1rem;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      background: var(--surface);
+      min-width: 140px;
+    }
+
+    .stat-pill strong { display: block; font-size: 1.1rem; color: #fff; }
+
+    .hero-card {
+      padding: 1.25rem;
+      border-radius: 24px;
+      border: 1px solid var(--border);
+      background: linear-gradient(145deg, rgba(255,255,255,0.16), rgba(255,255,255,0.08));
+      box-shadow: var(--shadow);
+    }
+
+    .hero-card h3 { margin-top: 0; margin-bottom: 0.5rem; }
+
+    .job-list {
+      display: grid;
+      gap: 0.8rem;
+      margin-top: 1rem;
+    }
+
+    .job-item {
+      padding: 0.9rem 1rem;
+      border-radius: 14px;
+      background: rgba(7,17,31,0.58);
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .job-item strong { display: block; margin-bottom: 0.2rem; }
+    .job-item small { color: var(--muted); }
+
+    section { padding: 1.3rem 0 2.5rem; }
+
+    .section-title {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .section-title h2 { margin: 0; font-size: 1.4rem; }
+
+    .section-title p { color: var(--muted); margin: 0; }
+
+    .feature-grid,
+    .feature-grid,
+    .platform-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1rem;
+    }
+
+    .search-panel {
+      padding: 1.1rem;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,0.08);
+      background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+    }
+
+    .form-row {
+      display: flex;
+      gap: 0.6rem;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .form-row input[type="text"],
+    .form-row select {
+      padding: 0.78rem 0.95rem;
+      border-radius: 10px;
+      border: 1px solid rgba(255,255,255,0.10);
+      background: rgba(10,20,36,0.6);
+      color: var(--text);
+      min-width: 160px;
+      flex: 1;
+      outline: none;
+    }
+
+    .form-row input[type="text"]::placeholder {
+      color: rgba(255,255,255,0.45);
+    }
+
+    .form-row label { color: var(--muted); font-size: 0.92rem; margin-right: 0.35rem; }
+
+    .platform-buttons { display: flex; gap: 0.6rem; flex-wrap: wrap; }
+
+    .skills-list { display:flex; gap:0.5rem; flex-wrap:wrap; align-items:center; padding:0.5rem; border-radius:10px; background:rgba(255,255,255,0.02); border:1px solid rgba(255,255,255,0.03); }
+
+    .platform-button {
+      padding: 0.55rem 0.85rem;
+      border-radius: 10px;
+      border: 1px solid rgba(255,255,255,0.04);
+      background: rgba(255,255,255,0.03);
+      cursor: pointer;
+      font-weight: 700;
+      color: var(--text);
+      transition: transform 0.12s ease, background 0.12s ease;
+    }
+
+    .platform-button:hover { transform: translateY(-2px); background: rgba(255,255,255,0.06); }
+
+    .platform-button.primary { background: linear-gradient(90deg, var(--primary), var(--primary-2)); color: white; }
+    .platform-button.active {
+      border-color: var(--primary-2);
+      box-shadow: 0 6px 18px rgba(6,182,212,0.12);
+      background: linear-gradient(90deg, rgba(59,130,246,0.16), rgba(6,182,212,0.12));
+      color: #fff;
+    }
+    .platform-button.skill { background: rgba(255,255,255,0.02); padding: 0.45rem 0.7rem; font-weight:600; border-radius:8px; color:var(--muted); }
+    .platform-button.skill.active { background: linear-gradient(90deg, rgba(59,130,246,0.12), rgba(6,182,212,0.08)); border-color: rgba(59,130,246,0.28); color: #fff; }
+
+    .card {
+      padding: 1.15rem;
+      border-radius: 20px;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      box-shadow: var(--shadow);
+    }
+
+    .icon {
+      width: 44px;
+      height: 44px;
+      display: grid;
+      place-items: center;
+      border-radius: 12px;
+      margin-bottom: 0.8rem;
+      font-size: 1.1rem;
+      background: linear-gradient(135deg, rgba(59,130,246,0.2), rgba(6,182,212,0.22));
+    }
+
+    .card h3 { margin: 0 0 0.45rem; font-size: 1.05rem; }
+    .card p { margin: 0; color: var(--muted); font-size: 0.95rem; }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1rem;
+    }
+
+    .step {
+      padding: 1.25rem;
+      border-radius: 20px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.05));
+      border: 1px solid var(--border);
+    }
+
+    .step .num {
+      width: 38px;
+      height: 38px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--primary), var(--primary-2));
+      font-weight: 800;
+      margin-bottom: 0.7rem;
+    }
+
+    .platform-grid .card strong { display: block; margin-bottom: 0.35rem; }
+
+    .cta {
+      padding: 2.2rem;
+      border-radius: 28px;
+      border: 1px solid var(--border);
+      background: linear-gradient(135deg, rgba(59,130,246,0.18), rgba(6,182,212,0.14));
+      text-align: center;
+      margin-top: 0.6rem;
+    }
+
+    .cta h2 { margin: 0 0 0.5rem; }
+    .cta p { color: var(--muted); margin-bottom: 1rem; }
+
+    footer {
+      padding: 2rem 0 2.5rem;
+      color: var(--muted);
+      text-align: center;
+      font-size: 0.95rem;
+    }
+
+    @media (max-width: 900px) {
+      .hero-grid { grid-template-columns: 1fr; }
+      .feature-grid,
+      .platform-grid,
+      .steps { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 720px) {
+      .nav { border-radius: 24px; flex-wrap: wrap; gap: 0.75rem; justify-content: center; }
+      .nav-links { width: 100%; justify-content: center; flex-wrap: wrap; }
+      .section-title { flex-direction: column; align-items: flex-start; }
+      .hero { padding-top: 1rem; }
+    }
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <div class="container">
+      <nav class="nav">
+        <a class="brand" href="#">Instant<span>SocialJobs</span></a>
+        <div class="nav-links">
+          <a href="#features">Features</a>
+          <a href="#platforms">Platforms</a>
+          <a href="#how-it-works">How It Works</a>
+        </div>
+        <a class="btn btn-primary" href="#cta">Get Started</a>
+      </nav>
+
+      <div class="hero-grid">
+        <div>
+          <div class="eyebrow">Social-first hiring platform</div>
+          <h1>Find your next job faster from Instagram, Facebook, and Twitter.</h1>
+          <p>Stop depending only on traditional job boards. Discover live openings shared on social media, connect instantly, and move from search to interview in record time.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#cta">Start Finding Jobs Now</a>
+            <a class="btn btn-secondary" href="#platforms">Explore Platforms</a>
+          </div>
+          <div class="stats">
+            <div class="stat-pill">
+              <strong>+20k</strong>
+              <span>Live opportunities</span>
+            </div>
+            <div class="stat-pill">
+              <strong>48 hrs</strong>
+              <span>Average response</span>
+            </div>
+            <div class="stat-pill">
+              <strong>4.9/5</strong>
+              <span>User rating</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-card">
+          <h3>Fresh opportunities right now</h3>
+          <p>Real openings discovered from social channels and ready for fast application.</p>
+          <div class="job-list">
+            <div class="job-item">
+              <strong>Frontend Developer • Remote</strong>
+              <small>Shared 2 hours ago on Instagram</small>
+            </div>
+            <div class="job-item">
+              <strong>Customer Support Specialist • Hybrid</strong>
+              <small>Posted today on Facebook</small>
+            </div>
+            <div class="job-item">
+              <strong>Sales Executive • Delhi</strong>
+              <small>Trending on Twitter this morning</small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section id="features">
+      <div class="container">
+        <div class="section-title">
+          <h2>Why this platform works</h2>
+          <p>Built for job seekers who want speed, clarity, and instant access.</p>
+        </div>
+        <div class="feature-grid">
+          <article class="card">
+            <div class="icon">⚡</div>
+            <h3>Instant Discovery</h3>
+            <p>Find fresh openings that appear on social media before they reach traditional boards.</p>
+          </article>
+          <article class="card">
+            <div class="icon">🎯</div>
+            <h3>Better Match Quality</h3>
+            <p>Get suggestions based on your skills, experience, preferred location, and preferred work mode.</p>
+          </article>
+          <article class="card">
+            <div class="icon">🚀</div>
+            <h3>Fast Apply Flow</h3>
+            <p>Move quickly from role discovery to application with a simple, guided workflow.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="platforms">
+      <div class="container">
+        <div class="section-title">
+          <h2>Search jobs from your favorite social platforms</h2>
+          <p>Instagram, Facebook, and Twitter are now part of your job search engine.</p>
+        </div>
+        <div class="search-panel">
+          <div class="skills-list form-row" style="gap:0.5rem;">
+            <!-- Quick skill tags; click to fill the keyword box -->
+            <button type="button" class="platform-button skill" onclick="applySkill(this,'React Native')">React Native</button>
+            <button type="button" class="platform-button skill" onclick="applySkill(this,'React.js')">React.js</button>
+            <button type="button" class="platform-button skill" onclick="applySkill(this,'JavaScript')">JavaScript</button>
+            <button type="button" class="platform-button skill" onclick="applySkill(this,'TypeScript')">TypeScript</button>
+            <button type="button" class="platform-button skill" onclick="applySkill(this,'Node.js')">Node.js</button>
+            <button type="button" class="platform-button skill" onclick="applySkill(this,'Express.js')">Express.js</button>
+            <button type="button" class="platform-button skill" onclick="applySkill(this,'Redux')">Redux</button>
+            <button type="button" class="platform-button skill" onclick="applySkill(this,'Redux Toolkit')">Redux Toolkit</button>
+            <button type="button" class="platform-button skill" onclick="applySkill(this,'Firebase')">Firebase</button>
+            <button type="button" class="platform-button skill" onclick="applySkill(this,'Axios')">Axios</button>
+            <button type="button" class="platform-button skill" onclick="applySkill(this,'REST APIs')">REST APIs</button>
+            <button type="button" class="platform-button skill" onclick="applySkill(this,'MongoDB')">MongoDB</button>
+            <button type="button" class="platform-button skill" onclick="applySkill(this,'HTML5')">HTML5</button>
+            <button type="button" class="platform-button skill" onclick="applySkill(this,'CSS3')">CSS3</button>
+          </div>
+
+          <div class="form-row">
+            <input id="q-keyword" type="text" placeholder="Job keyword, e.g., React Native hiring" value="React Native">
+            <input id="q-location" type="text" placeholder="Location (optional)" value="Bangalore">
+            <select id="q-type">
+              <option value="">Any type</option>
+              <option selected>Full-time</option>
+              <option>Part-time</option>
+              <option>Contract</option>
+              <option>Internship</option>
+            </select>
+            <select id="q-remote">
+              <option value="">Any</option>
+              <option selected>Remote</option>
+              <option>Hybrid</option>
+              <option>Onsite</option>
+            </select>
+          </div>
+          <div class="form-row">
+            <label><input id="immediate" type="checkbox"> Immediate joiner</label>
+            <div class="platform-buttons">
+              <button class="platform-button platform-search-button primary" onclick="selectPlatform(this,'instagram')">Instagram</button>
+              <button class="platform-button platform-search-button" onclick="selectPlatform(this,'facebook')">Facebook</button>
+              <button class="platform-button platform-search-button" onclick="selectPlatform(this,'twitter')">Twitter</button>
+              <button class="platform-button platform-search-button" onclick="selectPlatform(this,'linkedin')">LinkedIn</button>
+              <button class="platform-button platform-search-button" onclick="selectPlatform(this,'reddit')">Reddit</button>
+              <button class="platform-button platform-search-button" onclick="selectPlatform(this,'indeed')">Indeed</button>
+              <button class="platform-button platform-search-button" onclick="selectPlatform(this,'glassdoor')">Glassdoor</button>
+              <button class="platform-button platform-search-button" onclick="selectPlatform(this,'angel')">AngelList</button>
+              <button class="platform-button platform-search-button" onclick="selectPlatform(this,'naukri')">Naukri</button>
+              <button class="platform-button platform-search-button" onclick="selectPlatform(this,'stackoverflow')">StackOverflow</button>
+              <button class="platform-button platform-search-button" onclick="selectPlatform(this,'upwork')">Upwork</button>
+              <button class="platform-button platform-search-button" onclick="selectPlatform(this,'github')">GitHub</button>
+              <button class="platform-button platform-search-button" onclick="selectPlatform(this,'youtube')">YouTube</button>
+              <button class="platform-button platform-search-button" onclick="selectPlatform(this,'telegram')">Telegram</button>
+              <button class="platform-button platform-search-button" onclick="selectPlatform(this,'craigslist')">Craigslist</button>
+              <button class="platform-button platform-search-button" onclick="selectPlatform(this,'monster')">Monster</button>
+              <button class="platform-button platform-search-button" onclick="selectPlatform(this,'simplyhired')">SimplyHired</button>
+              <button class="platform-button platform-search-button" onclick="selectPlatform(this,'fiverr')">Fiverr</button>
+              <button class="platform-button platform-search-button" onclick="selectPlatform(this,'dribbble')">Dribbble</button>
+              <button class="platform-button platform-search-button" onclick="selectPlatform(this,'behance')">Behance</button>
+              <button class="platform-button platform-search-button" onclick="selectPlatform(this,'remoteok')">RemoteOK</button>
+              <button class="platform-button platform-search-button" onclick="selectPlatform(this,'weworkremotely')">WeWorkRemotely</button>
+              <button class="platform-button platform-search-button" onclick="selectPlatform(this,'freelancer')">Freelancer</button>
+              <button class="platform-button platform-search-button" onclick="selectPlatform(this,'jobstreet')">JobStreet</button>
+              <button class="platform-button platform-search-button" onclick="selectPlatform(this,'jobsdb')">JobsDB</button>
+              <button class="platform-button platform-search-button" onclick="selectPlatform(this,'meetup')">Meetup</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="platform-grid">
+          <article class="card">
+            <div class="icon">📸</div>
+            <strong>Instagram</strong>
+            <p>Catch job reels, founder updates, and hiring stories from brands you already follow.</p>
+          </article>
+          <article class="card">
+            <div class="icon">👍</div>
+            <strong>Facebook</strong>
+            <p>Discover community groups, employer pages, and local hiring posts in real time.</p>
+          </article>
+          <article class="card">
+            <div class="icon">🐦</div>
+            <strong>Twitter</strong>
+            <p>Follow hiring threads, recruiter updates, and startup announcements instantly.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="how-it-works">
+      <div class="container">
+        <div class="section-title">
+          <h2>How it works</h2>
+          <p>A simple path from social discovery to interviews.</p>
+        </div>
+        <div class="steps">
+          <article class="step">
+            <div class="num">1</div>
+            <h3>Choose your interests</h3>
+            <p>Select your role, city, skills, and preferred work type.</p>
+          </article>
+          <article class="step">
+            <div class="num">2</div>
+            <h3>Discover social opportunities</h3>
+            <p>See curated openings from Instagram, Facebook, and Twitter in one place.</p>
+          </article>
+          <article class="step">
+            <div class="num">3</div>
+            <h3>Apply and get noticed</h3>
+            <p>Send your application fast and improve your chances of an interview response.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="cta">
+      <div class="container">
+        <div class="cta">
+          <h2>Ready to find your next opportunity faster?</h2>
+          <p>Start using a smarter job search experience built around social media discovery.</p>
+          <a class="btn btn-primary" href="mailto:hello@instantsocialjobs.com">Join the waitlist</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>© 2026 Instant Social Jobs. Built for modern job seekers.</p>
+    </div>
+  </footer>
+  <script>
+    function buildQuery() {
+      const kw = document.getElementById('q-keyword')?.value.trim() || '';
+      const loc = document.getElementById('q-location')?.value.trim() || '';
+      const type = document.getElementById('q-type')?.value || '';
+      const remote = document.getElementById('q-remote')?.value || '';
+      const immediate = document.getElementById('immediate')?.checked || false;
+      const parts = [];
+      if (kw) parts.push(kw);
+      if (loc) parts.push(loc);
+      if (type) parts.push(type);
+      if (remote) parts.push(remote);
+      if (immediate) parts.push('immediate joiner');
+      return parts.join(' ');
+    }
+
+    function searchPlatform(platform) {
+      const q = buildQuery();
+      const url = platformSearchUrl(platform, q);
+      window.open(url, '_blank');
+    }
+
+    function platformSearchUrl(platform, query) {
+      const q = encodeURIComponent(query);
+      const support = {
+        instagram: `https://www.google.com/search?q=site:instagram.com+${q}+jobs`,
+        facebook: `https://www.facebook.com/search/top?q=${q}`,
+        twitter: `https://twitter.com/search?q=${q}&src=typed_query`,
+        linkedin: `https://www.linkedin.com/jobs/search?keywords=${q}`,
+        reddit: `https://www.reddit.com/search/?q=${q}`,
+        indeed: `https://www.indeed.com/jobs?q=${q}`,
+        glassdoor: `https://www.glassdoor.com/Job/jobs.htm?sc.keyword=${q}`,
+        angel: `https://angel.co/jobs?query=${q}`,
+        naukri: `https://www.naukri.com/${q}-jobs`,
+        stackoverflow: `https://stackoverflow.com/jobs?q=${q}`,
+        upwork: `https://www.upwork.com/search/jobs/?q=${q}`,
+        github: `https://github.com/search?q=${q}&type=jobs`,
+        youtube: `https://www.youtube.com/results?search_query=${q}`,
+        telegram: `https://www.google.com/search?q=site:telegram.org+${q}`,
+        craigslist: `https://www.google.com/search?q=site:craigslist.org+${q}`,
+        monster: `https://www.monster.com/jobs/search?q=${q}`,
+        simplyhired: `https://www.simplyhired.com/search?q=${q}`,
+        fiverr: `https://www.fiverr.com/search/gigs?query=${q}`,
+        dribbble: `https://dribbble.com/search/${q}`,
+        behance: `https://www.behance.net/search/projects?search=${q}`,
+        remoteok: `https://remoteok.io/remote-${q}-jobs`,
+        weworkremotely: `https://weworkremotely.com/remote-jobs/search?term=${q}`,
+        freelancer: `https://www.freelancer.com/jobs/?w=f&kw=${q}`,
+        jobstreet: `https://www.jobstreet.com.sg/en/job-search/${q}/`,
+        jobsdb: `https://hk.jobsdb.com/hk/en/search-jobs/${q}`,
+        meetup: `https://www.google.com/search?q=site:meetup.com+${q}+jobs`
+      };
+      return support[platform] || `https://www.google.com/search?q=${q}`;
+    }
+
+    // Persistence: save and restore form values so user changes persist
+    const STORAGE_KEY = 'instantSocialJobs.searchState.v1';
+
+    function saveSearchState() {
+      try {
+        const state = {
+          keyword: document.getElementById('q-keyword')?.value || '',
+          location: document.getElementById('q-location')?.value || '',
+          type: document.getElementById('q-type')?.value || '',
+          remote: document.getElementById('q-remote')?.value || '',
+          immediate: !!document.getElementById('immediate')?.checked
+        };
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+      } catch (e) {
+        console.warn('Could not save search state', e);
+      }
+    }
+
+    function loadSearchState() {
+      try {
+        const raw = localStorage.getItem(STORAGE_KEY);
+        if (!raw) return;
+        const state = JSON.parse(raw);
+        if (state.keyword !== undefined) document.getElementById('q-keyword').value = state.keyword;
+        if (state.location !== undefined) document.getElementById('q-location').value = state.location;
+        if (state.type !== undefined) document.getElementById('q-type').value = state.type;
+        if (state.remote !== undefined) document.getElementById('q-remote').value = state.remote;
+        if (state.immediate !== undefined) document.getElementById('immediate').checked = !!state.immediate;
+      } catch (e) {
+        console.warn('Could not load search state', e);
+      }
+    }
+
+    // Attach listeners to inputs to persist on change
+    function attachPersistenceListeners() {
+      const ids = ['q-keyword', 'q-location', 'q-type', 'q-remote', 'immediate'];
+      ids.forEach(id => {
+        const el = document.getElementById(id);
+        if (!el) return;
+        const ev = el.tagName.toLowerCase() === 'input' && el.type === 'checkbox' ? 'change' : 'input';
+        el.addEventListener(ev, saveSearchState);
+      });
+    }
+
+    function applySkill(skill) {
+      const kw = document.getElementById('q-keyword');
+      if (!kw) return;
+      // Replace the whole keyword with the skill for clarity; user can edit further
+      kw.value = skill;
+      saveSearchState();
+      kw.focus();
+    }
+
+    // New: toggle skill active state and persist selected skills
+    function applySkill(button, skill) {
+      // if called with element and skill, toggle active class
+      if (button && button.classList) {
+        button.classList.toggle('active');
+      }
+      const kw = document.getElementById('q-keyword');
+      if (kw) kw.value = skill;
+      // update saved skills array
+      saveSelectedSkillsFromDOM();
+      saveSearchState();
+      if (kw) kw.focus();
+    }
+
+    function saveSelectedSkillsFromDOM() {
+      try {
+        const nodes = Array.from(document.querySelectorAll('.platform-button.skill.active'));
+        const skills = nodes.map(n => n.textContent.trim());
+        const raw = localStorage.getItem(STORAGE_KEY);
+        const state = raw ? JSON.parse(raw) : {};
+        state.selectedSkills = skills;
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+      } catch (e) {
+        console.warn('Could not save skills', e);
+      }
+    }
+
+    function restoreSelectedSkills() {
+      try {
+        const raw = localStorage.getItem(STORAGE_KEY);
+        if (!raw) return;
+        const state = JSON.parse(raw);
+        if (!state.selectedSkills) return;
+        state.selectedSkills.forEach(s => {
+          const btn = Array.from(document.querySelectorAll('.platform-button.skill')).find(b => b.textContent.trim() === s);
+          if (btn) btn.classList.add('active');
+        });
+      } catch (e) {
+        console.warn('Could not restore skills', e);
+      }
+    }
+
+    function selectPlatform(button, platform) {
+      // remove active from other platform buttons
+      document.querySelectorAll('.platform-button').forEach(b => b.classList.remove('active'));
+      if (button && button.classList) button.classList.add('active');
+      // persist selection
+      try {
+        const raw = localStorage.getItem(STORAGE_KEY);
+        const state = raw ? JSON.parse(raw) : {};
+        state.selectedPlatform = platform;
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+      } catch (e) { console.warn('Could not save platform', e); }
+      // run search
+      searchPlatform(platform);
+    }
+
+    function restoreSelectedPlatform() {
+      try {
+        const raw = localStorage.getItem(STORAGE_KEY);
+        if (!raw) return;
+        const state = JSON.parse(raw);
+        if (!state.selectedPlatform) return;
+        const platform = state.selectedPlatform;
+        const map = {
+          instagram: 'Instagram', facebook: 'Facebook', twitter: 'Twitter', linkedin: 'LinkedIn', reddit: 'Reddit', indeed: 'Indeed', glassdoor: 'Glassdoor', angel: 'AngelList', naukri: 'Naukri', stackoverflow: 'StackOverflow', upwork: 'Upwork', github: 'GitHub', youtube: 'YouTube'
+        };
+        const label = map[platform] || platform;
+        const btn = Array.from(document.querySelectorAll('.platform-button')).find(b => b.textContent.trim() === label);
+        if (btn) btn.classList.add('active');
+      } catch (e) { console.warn('Could not restore platform', e); }
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      loadSearchState();
+      attachPersistenceListeners();
+      // restore UI selections
+      restoreSelectedSkills();
+      restoreSelectedPlatform();
+    });
+  </script>
+</body>
+</html>
