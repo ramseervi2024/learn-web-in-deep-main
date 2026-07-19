@@ -30,7 +30,7 @@ const Hero = () => {
                             <span className="text-xs sm:text-sm font-semibold text-emerald-700 dark:text-emerald-300">Available for Hire</span>
                         </motion.div>
 
-                        <h1 className="text-[clamp(1.05rem,4.6vw,4.5rem)] leading-tight font-bold mb-4 sm:mb-6 tracking-tight whitespace-nowrap">
+                        <h1 className="text-[clamp(1.05rem,4.6vw,4.5rem)] leading-tight font-bold mb-4 sm:mb-6 tracking-tight whitespace-normal break-words max-w-full">
                             Full Stack{' '}
                             <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-emerald-400 bg-clip-text text-transparent">JavaScript</span>{' '}
                             Developer
