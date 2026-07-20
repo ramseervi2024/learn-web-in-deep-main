@@ -8,6 +8,7 @@ import Experience from './components/Experience';
 import Projects from './components/Projects';
 import OutreachOS from './components/OutreachOS';
 import Contact from './components/Contact';
+import Footer from './components/Footer';
 
 function PortfolioShell() {
     return (
@@ -19,15 +20,16 @@ function PortfolioShell() {
                 <Skills />
                 <Experience />
                 <Projects />
-                <OutreachOS />
+                {/* <OutreachOS /> */}
                 <Contact />
             </main>
 
-            <footer className="py-12 border-t border-slate-200 text-center text-slate-500 text-sm dark:border-white/5">
+            {/* <footer className="py-12 border-t border-slate-200 text-center text-slate-500 text-sm dark:border-white/5">
                 <div className="max-w-7xl mx-auto px-5 sm:px-6">
                     <p>© {new Date().getFullYear()} Ramesh Seervi. Built with React & Framer Motion.</p>
                 </div>
-            </footer>
+            </footer> */}
+            <Footer />
         </div>
     );
 }
