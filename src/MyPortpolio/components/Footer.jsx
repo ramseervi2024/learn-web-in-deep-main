@@ -3,10 +3,10 @@ import React from 'react';
 const Footer = () => {
   const footerLinks = [
     { name: 'Portfolio', href: 'https://ramseervi2024.github.io/portfolio/' },
-    { name: 'Copy Paste', href: 'https://ramseervi2024.github.io/copyaste-message.html' },
-    { name: 'Email Sender', href: 'https://ramseervi2024.github.io/email-sender-extension.html' },
-    { name: 'Job Finder', href: 'https://ramseervi2024.github.io/findimmediateJobfromsocialmedia.html' },
-    { name: 'Job Tools', href: 'https://ramseervi2024.github.io/makebeautoolscangejobimmediately.html' },
+    { name: 'Copy Paste', href: 'https://ramseervi2024.github.io/portfolio/copyaste-message.html' },
+    { name: 'Email Sender', href: 'https://ramseervi2024.github.io/portfolio/email-sender-extension.html' },
+    { name: 'Job Finder', href: 'https://ramseervi2024.github.io/portfolio/findimmediateJobfromsocialmedia.html' },
+    { name: 'Job Tools', href: 'https://ramseervi2024.github.io/portfolio/makebeautoolscangejobimmediately.html' },
   ];
 
   return (
