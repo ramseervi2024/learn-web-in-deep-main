@@ -3,22 +3,22 @@ import { motion } from 'framer-motion';
 
 const skillCategories = [
     {
-        title: 'Frontend & Mobile',
-        icon: '🎨',
+        title: 'Backend & Frameworks',
+        icon: '☕',
         color: 'from-blue-500 to-purple-500',
-        skills: ['React Native', 'React.js', 'JavaScript', 'TypeScript', 'HTML5', 'CSS3', 'Tailwind CSS', 'Redux']
+        skills: ['Java 17 / 21', 'Spring Boot 3', 'Spring Cloud', 'Spring Security', 'Hibernate / JPA', 'RESTful APIs', 'Microservices', 'Maven / Gradle']
     },
     {
-        title: 'Backend & Database',
-        icon: '⚙️',
+        title: 'Databases & Messaging',
+        icon: '🗄️',
         color: 'from-emerald-500 to-teal-500',
-        skills: ['Node.js', 'Express.js', 'MongoDB', 'REST APIs', 'JWT Authentication', 'Firebase']
+        skills: ['PostgreSQL', 'MySQL', 'MongoDB', 'Redis Cache', 'Apache Kafka', 'RabbitMQ', 'Flyway', 'SQL Optimization']
     },
     {
-        title: 'Tools & DevOps',
+        title: 'Cloud, DevOps & Tools',
         icon: '🛠️',
         color: 'from-orange-500 to-red-500',
-        skills: ['Git & GitHub', 'AWS', 'Postman', 'Figma', 'Payment Gateway Integration', 'Push Notifications']
+        skills: ['Docker', 'Kubernetes', 'AWS (EC2, S3, RDS)', 'Git & GitHub', 'Postman & Swagger', 'JUnit 5 & Mockito', 'CI/CD Pipelines', 'Linux']
     }
 ];
 
@@ -52,7 +52,7 @@ const Skills = () => {
                     Technical <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-emerald-400 bg-clip-text text-transparent">Proficiency</span>
                 </motion.h2>
                 <p className="text-slate-600 dark:text-slate-300 max-w-2xl mx-auto text-base md:text-lg">
-                    A comprehensive collection of technologies I've mastered and work with daily to build exceptional products.
+                    A comprehensive collection of backend technologies, distributed systems tools, and frameworks I work with daily.
                 </p>
             </div>
 

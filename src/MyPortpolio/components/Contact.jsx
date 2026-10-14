@@ -16,7 +16,7 @@ const Contact = () => {
                 >
                     Let's <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-emerald-400 bg-clip-text text-transparent">Connect</span>
                 </motion.h2>
-                <p className="text-slate-600 dark:text-slate-300 text-base md:text-lg">Have a project in mind or just want to say hi?</p>
+                <p className="text-slate-600 dark:text-slate-300 text-base md:text-lg">Have a backend role, engineering project in mind, or just want to say hi?</p>
             </div>
 
             <div className="grid lg:grid-cols-2 gap-8 md:gap-12 relative">
@@ -87,7 +87,7 @@ const Contact = () => {
                         <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/5 to-teal-500/5" />
                         <div className="relative">
                             <h4 className="font-bold mb-2 text-lg">Open for Opportunities</h4>
-                            <p className="text-sm text-slate-600 dark:text-slate-300">Currently looking for new challenges and interesting projects to contribute to. Available for full-time opportunities.</p>
+                            <p className="text-sm text-slate-600 dark:text-slate-300">Currently open for Java Spring Boot Backend Developer roles and distributed systems projects. Available for full-time opportunities.</p>
                         </div>
                     </motion.div>
                 </motion.div>

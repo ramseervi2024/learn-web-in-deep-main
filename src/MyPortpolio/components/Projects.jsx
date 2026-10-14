@@ -5,116 +5,76 @@ import ProjectCard from './common/ProjectCard';
 
 const projects = [
     {
-        title: 'Bukih - E-commerce',
-        type: 'Web Platform',
-        category: 'Web',
-        description: 'Elegant perfume e-commerce platform with integrated multi-currency wallet.',
-        tech: ['React.js', 'Redux', 'Node.js'],
-        link: 'https://bukih.com/'
-    },
-    {
-        title: 'Ondeen - Event Booking',
-        type: 'Web Platform',
-        category: 'Web',
-        description: 'Event booking platform for browsing and booking events with payment integration.',
-        tech: ['React.js', 'Firebase', 'Payment Gateway'],
-        link: 'https://ondeen.app/'
-    },
-    {
-        title: 'UrExpert - Freelancing Platform',
-        type: 'Web Platform',
-        category: 'Web',
-        description: 'B2B platform for hiring experts, product auctions, and team collaboration.',
-        tech: ['React.js', 'Redux', 'Node.js'],
-        link: 'https://urxprt.com/'
-    },
-    {
-        title: 'MEDirect - Healthcare',
-        type: 'Web Platform',
-        category: 'Web',
-        description: 'Virtual clinics and healthcare platform for remote medical consultations.',
-        tech: ['React.js', 'Firebase', 'Real-time'],
-        link: 'https://medirect.link/'
-    },
-    {
-        title: 'Simplefatoora - Invoice',
-        type: 'Web Platform',
-        category: 'Web',
-        description: 'Invoice management system for businesses with tax compliance features.',
-        tech: ['React.js', 'Node.js', 'MongoDB'],
-        link: 'https://simplefatoora.com/en/'
-    },
-    {
-        title: 'Holiday Homes - Booking',
-        type: 'Web Platform',
-        category: 'Web',
-        description: 'Hotel and homestay booking website with admin panel for property owners.',
-        tech: ['React.js', 'MongoDB', 'Express'],
-        link: 'https://www.holidayhomes.com/'
-    },
-    {
-        title: 'Yourco - Workspace',
-        type: 'Web Platform',
-        category: 'Web',
-        description: 'Workspace management platform for modern businesses and teams.',
-        tech: ['React.js', 'Node.js', 'AWS'],
-        link: 'https://www.yourco.app/'
-    },
-    {
-        title: 'Estaragroup - Corporate',
-        type: 'Web Platform',
-        category: 'Web',
-        description: 'Corporate website for business group with portfolio and services.',
-        tech: ['React.js', 'Tailwind', 'Firebase'],
-        link: 'https://estaragroup.com/'
-    },
-    {
-        title: 'Timeinlive - Productivity',
-        type: 'Mobile App',
-        category: 'Mobile',
-        description: 'Workforce management app for tracking attendance and productivity reports.',
-        tech: ['React Native', 'Real-time DB', 'Firebase'],
+        title: 'Timeinlive - Enterprise Workforce Engine',
+        type: 'Microservices & REST API',
+        category: 'Microservices',
+        description: 'Enterprise workforce microservices with real-time attendance tracking, geo-fencing validation, Spring Security JWT, and automated payroll pipelines.',
+        tech: ['Java 21', 'Spring Boot 3', 'PostgreSQL', 'JWT', 'Redis'],
         link: 'https://play.google.com/store/apps/details?id=timeinlive.smartwork&hl=en_IN'
     },
     {
-        title: 'Ondeen - iOS App',
-        type: 'Mobile App',
-        category: 'Mobile',
-        description: 'Cross-platform iOS app for browsing and booking events with Apple Pay.',
-        tech: ['React Native', 'Firebase', 'Apple Pay'],
-        link: 'https://apps.apple.com/us/app/ondeen/id6740039443'
+        title: 'Ondeen - Event & Booking Microservice',
+        type: 'Distributed System',
+        category: 'Microservices',
+        description: 'Event booking backend handling high-concurrency ticket reservations, payment gateway callbacks, and distributed transactional consistency.',
+        tech: ['Spring Boot', 'Kafka', 'Redis', 'PostgreSQL', 'Docker'],
+        link: 'https://ondeen.app/'
     },
     {
-        title: 'Ondeen Organiser - iOS',
-        type: 'Mobile App',
-        category: 'Mobile',
-        description: 'Event management platform for organizers to create and manage events.',
-        tech: ['React Native', 'Firebase', 'Push Notifications'],
+        title: 'Bukih - Multi-Currency E-Commerce API',
+        type: 'RESTful API Platform',
+        category: 'Backend & APIs',
+        description: 'High-throughput e-commerce backend with multi-currency digital wallet, double-entry ledger accounting, and Stripe payment webhook processing.',
+        tech: ['Java', 'Spring Boot', 'Hibernate/JPA', 'MySQL', 'Stripe'],
+        link: 'https://bukih.com/'
+    },
+    {
+        title: 'UrExpert - B2B Freelance & Consultation API',
+        type: 'Real-Time Backend',
+        category: 'Backend & APIs',
+        description: 'B2B platform backend for verified expert matching, contract milestones, secure escrow payouts, and WebSocket notifications.',
+        tech: ['Spring Boot', 'WebSockets', 'PostgreSQL', 'Redis'],
+        link: 'https://urxprt.com/'
+    },
+    {
+        title: 'MEDirect - Healthcare Telemedicine Service',
+        type: 'HIPAA Compliant API',
+        category: 'Backend & APIs',
+        description: 'Virtual clinical consultation backend with encrypted medical records, doctor scheduling engine, and role-based access control.',
+        tech: ['Spring Boot', 'Spring Security', 'MongoDB', 'Docker'],
+        link: 'https://medirect.link/'
+    },
+    {
+        title: 'Simplefatoora - Invoicing & Tax Engine',
+        type: 'Invoicing Microservice',
+        category: 'Microservices',
+        description: 'E-invoicing compliance service generating tax-compliant PDFs, real-time fiscal validation, and distributed batch export jobs.',
+        tech: ['Spring Boot', 'PostgreSQL', 'MongoDB', 'REST APIs'],
+        link: 'https://simplefatoora.com/en/'
+    },
+    {
+        title: 'Holiday Homes - Property Reservation Engine',
+        type: 'Booking Platform',
+        category: 'Full Stack',
+        description: 'Hotel and homestay reservation backend with dynamic pricing calculation, calendar lock management, and partner portal APIs.',
+        tech: ['Spring Boot', 'MySQL', 'JPA / Hibernate', 'React.js'],
+        link: 'https://www.holidayhomes.com/'
+    },
+    {
+        title: 'Yourco - Workspace Management Cloud',
+        type: 'Cloud Service',
+        category: 'Full Stack',
+        description: 'Scalable workspace resource allocation system with team permission hierarchies, automated usage telemetry, and AWS cloud deployment.',
+        tech: ['Spring Boot', 'AWS EC2/S3', 'Docker', 'PostgreSQL'],
+        link: 'https://www.yourco.app/'
+    },
+    {
+        title: 'Ondeen Organiser - Event Operations System',
+        type: 'Mobile & API Engine',
+        category: 'Full Stack',
+        description: 'Organizers event operations platform with real-time attendee check-in scanners, ticket validation, and push notification relays.',
+        tech: ['Spring Boot API', 'Kafka', 'React Native', 'Firebase'],
         link: 'https://apps.apple.com/us/app/ondeen-organiser/id6740030819'
-    },
-    {
-        title: 'Bukih - iOS App',
-        type: 'Mobile App',
-        category: 'Mobile',
-        description: 'E-commerce mobile app for perfume shopping with wallet integration.',
-        tech: ['React Native', 'Redux', 'Stripe'],
-        link: 'https://apps.apple.com/us/iphone/search?term=bukih'
-    },
-    {
-        title: 'Bukih Driver - Android',
-        type: 'Mobile App',
-        category: 'Mobile',
-        description: 'Delivery driver app for managing orders and navigation.',
-        tech: ['React Native', 'Google Maps', 'Real-time'],
-        link: 'https://play.google.com/store/apps/details?id=com.buikh.driver&hl=en_IN'
-    },
-    {
-        title: 'Eirad Owner - Android',
-        type: 'Mobile App',
-        category: 'Mobile',
-        description: 'Business owner app for managing services and customer requests.',
-        tech: ['React Native', 'Firebase', 'Notifications'],
-        link: 'https://play.google.com/store/apps/details?id=com.eirad&hl=en_IN'
     }
 ];
 
@@ -135,12 +95,12 @@ const Projects = () => {
                 <SectionTitle
                     eyebrow="Projects"
                     title="Featured Projects"
-                    description="A showcase of mobile and web product work, built with reusable components and strong visual polish."
+                    description="A showcase of enterprise backend systems, distributed microservices, and full-stack platforms engineered with Java Spring Boot."
                     align="left"
                 />
 
                 <div className="flex gap-1.5 sm:gap-2 p-1 sm:p-1.5 rounded-xl sm:rounded-2xl bg-slate-100/80 dark:bg-slate-900/50 backdrop-blur-xl border border-slate-200 dark:border-white/10">
-                    {['All', 'Web', 'Mobile'].map((f) => (
+                    {['All', 'Microservices', 'Backend & APIs', 'Full Stack'].map((f) => (
                         <button
                             key={f}
                             onClick={() => setFilter(f)}

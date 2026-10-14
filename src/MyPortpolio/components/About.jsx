@@ -35,7 +35,7 @@ const About = () => {
                         transition={{ delay: 0.3 }}
                         className="absolute -bottom-4 sm:-bottom-6 md:-bottom-8 -right-4 sm:-right-6 md:-right-8 glass p-4 sm:p-5 md:p-6 rounded-xl sm:rounded-2xl bg-gradient-to-br from-blue-500/20 to-purple-500/20 border border-blue-500/30 backdrop-blur-xl hidden md:block"
                     >
-                        <div className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent font-bold text-base sm:text-lg md:text-xl leading-tight">Full Stack Developer<br />& Problem Solver</div>
+                        <div className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent font-bold text-base sm:text-lg md:text-xl leading-tight">Java Backend Developer<br />& Problem Solver</div>
                     </motion.div>
                 </motion.div>
 
@@ -48,19 +48,19 @@ const About = () => {
                 >
                     <SectionTitle
                         eyebrow="About Me"
-                        title={"Passionate About Building High-Performance Products"}
-                        description="I build polished web and mobile experiences with a strong focus on performance, user experience, and scalable architecture."
+                        title={"Passionate About Building High-Performance Backend Systems"}
+                        description="I architect robust, secure, and distributed server-side architectures with a strong focus on high throughput, database optimization, and clean code."
                     />
 
                     <div className="space-y-4 sm:space-y-6 text-slate-600 dark:text-slate-300 leading-relaxed text-sm sm:text-base md:text-lg">
                         <p>
-                            Full Stack JavaScript Developer with <span className="text-slate-900 dark:text-white font-semibold">3.7+ years</span> of experience in building cross-platform mobile applications and responsive web interfaces using React Native, React.js, Node.js, and TypeScript.
+                            Java Spring Boot Developer with <span className="text-slate-900 dark:text-white font-semibold">3.7+ years</span> of hands-on experience designing and deploying production microservices, secure RESTful APIs, and database architectures using Java 17/21, Spring Boot 3, Spring Security, Hibernate/JPA, PostgreSQL, and Redis.
                         </p>
                         <p>
-                            I specialize in developing event management, e-commerce, productivity, healthcare, and service-based platforms with real-time data handling, API integration, payment gateways, and role-based user management.
+                            I specialize in enterprise microservice ecosystems including API Gateways, Service Discovery, distributed caching, asynchronous messaging with Apache Kafka, Docker containerization, and AWS cloud deployments.
                         </p>
                         <p>
-                            My focus is always on creating scalable, user-focused digital products that deliver exceptional user experiences through clean code, modern UI/UX implementation, and performance optimization.
+                            My focus is always on engineering scalable, fault-tolerant backend solutions that deliver exceptional performance through clean layered architecture, database indexing/query tuning, and comprehensive test coverage.
                         </p>
                     </div>
 

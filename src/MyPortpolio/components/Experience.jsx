@@ -5,24 +5,35 @@ import SectionTitle from './common/SectionTitle';
 
 const experiences = [
     {
-        role: 'React & React Native Developer',
-        company: 'Imcrinox, Bengaluru',
-        period: 'NOV 2022 - PRESENT',
+        role: 'IT Analyst — Java Spring Boot',
+        company: 'Tata Consultancy Services (TCS), Bengaluru',
+        period: 'AUG 2026 - PRESENT',
         description: [
-            'Developed and deployed 4+ React Native mobile applications for Android and iOS platforms.',
-            'Integrated RESTful APIs using Axios, optimizing API performance.',
-            'Implemented Firebase for authentication, push notifications, and real-time database features.',
-            'Collaborated with designers via Figma to ensure pixel-perfect UI/UX consistency.'
+            'Architect and deliver enterprise Java Spring Boot backend services and REST APIs across high-volume systems.',
+            'Lead microservices integration, data pipeline workflows, and secure API gateways with Spring Cloud and OAuth2/JWT.',
+            'Enforce high code quality through rigorous JUnit 5/Mockito test coverage, CI/CD automation, and Agile delivery.'
         ]
     },
     {
-        role: 'Web Developer Intern',
+        role: 'Backend & Java Developer',
+        company: 'Imcrinox Technologies, Bengaluru',
+        period: 'NOV 2022 - JUN 2026',
+        description: [
+            'Architected and deployed production microservices using Java 17, Spring Boot 3, Spring Data JPA, and PostgreSQL.',
+            'Implemented Spring Security with stateless JWT authentication, role-based access control (RBAC), and API rate limiting.',
+            'Engineered asynchronous event-driven pipelines using Apache Kafka for real-time order processing, notifications, and analytics.',
+            'Optimized database queries and introduced Redis multi-tier caching, reducing API latency by 45% and eliminating N+1 queries.',
+            'Containerized services with Docker and set up automated CI/CD deployment pipelines on AWS.'
+        ]
+    },
+    {
+        role: 'Software Engineer Intern',
         company: 'Gridrnd, Bengaluru',
         period: 'FEB 2022 – OCT 2022',
         description: [
-            'Implemented responsive web interfaces using React.js, Redux, HTML, CSS, and JavaScript.',
-            'Learned and integrated RESTful APIs using Axios and built backend services with Node.js/Express.',
-            'Improved UI/UX design for client websites through consistent collaboration.'
+            'Developed and tested RESTful API endpoints using Java Spring Boot and Node.js for client web platforms.',
+            'Integrated database schemas, JPA repositories, and validation layers with comprehensive JUnit and Mockito test suites (80%+ coverage).',
+            'Collaborated with frontend developers to document and consume OpenAPI / Swagger specs for seamless cross-service communication.'
         ]
     }
 ];
@@ -37,7 +48,7 @@ const Experience = () => {
                 <SectionTitle
                     eyebrow="Experience"
                     title="Work Journey"
-                    description="A timeline of professional roles and accomplishments showcasing my growth and expertise in full-stack development."
+                    description="A timeline of professional roles and engineering accomplishments showcasing my expertise in Java Spring Boot backend architecture."
                     align="left"
                 />
             </div>

@@ -31,13 +31,13 @@ const Hero = () => {
                         </motion.div>
 
                         <h1 className="text-[clamp(1.05rem,4.6vw,4.5rem)] leading-tight font-bold mb-4 sm:mb-6 tracking-tight whitespace-normal break-words max-w-full">
-                            Full Stack{' '}
-                            <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-emerald-400 bg-clip-text text-transparent">JavaScript</span>{' '}
+                            Java Spring Boot{' '}
+                            <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-emerald-400 bg-clip-text text-transparent">Backend</span>{' '}
                             Developer
                         </h1>
 
                         <p className="text-sm sm:text-base md:text-lg lg:text-xl text-slate-600 dark:text-slate-300 mb-6 sm:mb-8 md:mb-10 max-w-xl leading-relaxed">
-                            I'm <span className="text-slate-900 dark:text-white font-semibold">Ramesh Seervi</span>, a Full Stack Developer with 3.7+ years of experience building scalable Web & Mobile applications with React, React Native, Node.js, and TypeScript.
+                            I'm <span className="text-slate-900 dark:text-white font-semibold">Ramesh Seervi</span>, a Backend Developer with 3.7+ years of experience engineering high-performance Microservices, RESTful APIs, Spring Security, Hibernate/JPA, and event-driven architectures with Kafka & PostgreSQL.
                         </p>
 
                         <div className="flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4 mb-6 sm:mb-8 md:mb-12">
@@ -61,7 +61,7 @@ const Hero = () => {
                             {[
                                 { label: 'Experience', value: '3.7+ Years', color: 'text-blue-400' },
                                 { label: 'Projects', value: '14+ Live', color: 'text-emerald-400' },
-                                { label: 'Technologies', value: '10+', color: 'text-purple-400' }
+                                { label: 'Technologies', value: '12+', color: 'text-purple-400' }
                             ].map((stat, index) => (
                                 <motion.div
                                     key={stat.label}
@@ -140,7 +140,7 @@ const Hero = () => {
                             transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
                             className="absolute -top-8 -right-8"
                         >
-                            <InfoCard title="React Native" value="Expert" subtitle="Mobile Development" accent="blue" />
+                            <InfoCard title="Spring Boot" value="Expert" subtitle="Microservices & APIs" accent="blue" />
                         </motion.div>
 
                         <motion.div
@@ -148,7 +148,7 @@ const Hero = () => {
                             transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
                             className="absolute -bottom-8 -left-8"
                         >
-                            <InfoCard title="Full Stack" value="Pro" subtitle="End-to-End Solutions" accent="emerald" />
+                            <InfoCard title="Backend" value="Pro" subtitle="Scalable Architecture" accent="emerald" />
                         </motion.div>
                     </motion.div>
                 </div>
