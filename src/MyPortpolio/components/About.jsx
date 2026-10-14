@@ -54,7 +54,7 @@ const About = () => {
 
                     <div className="space-y-4 sm:space-y-6 text-slate-600 dark:text-slate-300 leading-relaxed text-sm sm:text-base md:text-lg">
                         <p>
-                            Java Spring Boot Developer with <span className="text-slate-900 dark:text-white font-semibold">3.7+ years</span> of hands-on experience designing and deploying production microservices, secure RESTful APIs, and database architectures using Java 17/21, Spring Boot 3, Spring Security, Hibernate/JPA, PostgreSQL, and Redis.
+                            Java Spring Boot Developer with <span className="text-slate-900 dark:text-white font-semibold">4+ years</span> of hands-on experience designing and deploying production microservices, secure RESTful APIs, and database architectures using Java 17/21, Spring Boot 3, Spring Security, Hibernate/JPA, PostgreSQL, and Redis.
                         </p>
                         <p>
                             I specialize in enterprise microservice ecosystems including API Gateways, Service Discovery, distributed caching, asynchronous messaging with Apache Kafka, Docker containerization, and AWS cloud deployments.

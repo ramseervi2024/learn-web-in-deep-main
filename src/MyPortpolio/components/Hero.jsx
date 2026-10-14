@@ -37,7 +37,7 @@ const Hero = () => {
                         </h1>
 
                         <p className="text-sm sm:text-base md:text-lg lg:text-xl text-slate-600 dark:text-slate-300 mb-6 sm:mb-8 md:mb-10 max-w-xl leading-relaxed">
-                            I'm <span className="text-slate-900 dark:text-white font-semibold">Ramesh Seervi</span>, a Backend Developer with 3.7+ years of experience engineering high-performance Microservices, RESTful APIs, Spring Security, Hibernate/JPA, and event-driven architectures with Kafka & PostgreSQL.
+                            I'm <span className="text-slate-900 dark:text-white font-semibold">Ramesh Seervi</span>, a Backend Developer with 4+ years of experience engineering high-performance Microservices, RESTful APIs, Spring Security, Hibernate/JPA, and event-driven architectures with Kafka & PostgreSQL.
                         </p>
 
                         <div className="flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4 mb-6 sm:mb-8 md:mb-12">
@@ -59,7 +59,7 @@ const Hero = () => {
                         {/* Quick Stats */}
                         <div className="grid grid-cols-3 gap-3 sm:flex sm:flex-wrap sm:gap-6 md:gap-8">
                             {[
-                                { label: 'Experience', value: '3.7+ Years', color: 'text-blue-400' },
+                                { label: 'Experience', value: '4+ Years', color: 'text-blue-400' },
                                 { label: 'Projects', value: '14+ Live', color: 'text-emerald-400' },
                                 { label: 'Technologies', value: '12+', color: 'text-purple-400' }
                             ].map((stat, index) => (

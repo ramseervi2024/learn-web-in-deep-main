@@ -38,7 +38,7 @@ const OutreachOS = () => {
     ];
 
     const interviewQA = [
-        { question: 'Tell us about yourself', answer: 'Full Stack Developer with 3.7+ years of experience building scalable Web & Mobile applications using React Native, React.js, Node.js, and TypeScript. Specialized in event management, e-commerce, healthcare, and service-based platforms with real-time data handling and API integration.' },
+        { question: 'Tell us about yourself', answer: 'Full Stack Developer with 4+ years of experience building scalable Web & Mobile applications using React Native, React.js, Node.js, and TypeScript. Specialized in event management, e-commerce, healthcare, and service-based platforms with real-time data handling and API integration.' },
         { question: 'Why are you looking for a change?', answer: 'Looking for a stable, growth-oriented role where I can contribute to impactful products and work with modern technologies while advancing my career as a Full Stack Developer.' },
         { question: 'Why do you want to join us?', answer: 'I want to join because of the opportunity to work on impactful products, modern tech stack, and clear growth path that aligns with my career goals.' },
         { question: 'Why should we hire you?', answer: 'Hands-on experience delivering live applications to real customers, immediate joiner, strong problem-solving skills, and end-to-end development expertise.' },

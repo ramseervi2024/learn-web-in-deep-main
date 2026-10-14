@@ -5,19 +5,9 @@ import SectionTitle from './common/SectionTitle';
 
 const experiences = [
     {
-        role: 'IT Analyst — Java Spring Boot',
-        company: 'Tata Consultancy Services (TCS), Bengaluru',
-        period: 'AUG 2026 - PRESENT',
-        description: [
-            'Architect and deliver enterprise Java Spring Boot backend services and REST APIs across high-volume systems.',
-            'Lead microservices integration, data pipeline workflows, and secure API gateways with Spring Cloud and OAuth2/JWT.',
-            'Enforce high code quality through rigorous JUnit 5/Mockito test coverage, CI/CD automation, and Agile delivery.'
-        ]
-    },
-    {
         role: 'Backend & Java Developer',
         company: 'Imcrinox Technologies, Bengaluru',
-        period: 'NOV 2022 - JUN 2026',
+        period: 'NOV 2022 - PRESENT',
         description: [
             'Architected and deployed production microservices using Java 17, Spring Boot 3, Spring Data JPA, and PostgreSQL.',
             'Implemented Spring Security with stateless JWT authentication, role-based access control (RBAC), and API rate limiting.',
