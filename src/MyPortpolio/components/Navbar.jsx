@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, Github, Linkedin, Mail, Sun, Moon } from 'lucide-react';
+import { Menu, X, Github, Linkedin, Mail, Phone, Sun, Moon, ArrowUpRight } from 'lucide-react';
 import { useTheme } from '../ThemeContext';
+import { WhatsAppIcon } from './QuickContact';
 
 const navItems = [
     { name: 'Home', href: '#home' },
@@ -54,27 +55,34 @@ const Navbar = () => {
                             ))}
                         </div>
 
-                        <div className="flex items-center gap-1 sm:gap-2">
+                        <div className="flex items-center gap-2 sm:gap-3">
+                            {/* Available Status Badge */}
+                            <div className="hidden lg:flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-600 dark:text-emerald-400 text-xs font-semibold">
+                                <span className="relative flex h-2 w-2">
+                                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                                    <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+                                </span>
+                                <span>Available</span>
+                            </div>
+
+                            {/* Theme Toggle */}
                             <button
                                 type="button"
                                 onClick={toggleTheme}
                                 aria-label={theme === 'dark' ? 'Switch to white theme' : 'Switch to black theme'}
-                                className="p-2 rounded-lg text-slate-500 hover:text-slate-900 hover:bg-slate-100 dark:text-slate-400 dark:hover:text-white dark:hover:bg-white/5 transition-colors"
+                                className="p-2 rounded-full text-slate-500 hover:text-slate-900 hover:bg-slate-100 dark:text-slate-400 dark:hover:text-white dark:hover:bg-white/5 transition-colors"
                             >
                                 {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
                             </button>
 
-                            <div className="hidden md:flex items-center space-x-1">
-                                <a href="https://github.com/ramseervi2024" target="_blank" rel="noopener noreferrer" className="p-2 text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white transition-colors">
-                                    <Github size={20} />
-                                </a>
-                                <a href="https://www.linkedin.com/in/ramesh-seervi-3976802b0" target="_blank" rel="noopener noreferrer" className="p-2 text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white transition-colors">
-                                    <Linkedin size={20} />
-                                </a>
-                                <a href="mailto:ramseervi4321@gmail.com" className="p-2 text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white transition-colors">
-                                    <Mail size={20} />
-                                </a>
-                            </div>
+                            {/* Let's Talk CTA Button */}
+                            <a
+                                href="#contact"
+                                className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-gradient-to-r from-violet-600 to-indigo-600 hover:from-violet-500 hover:to-indigo-500 text-white font-semibold text-xs sm:text-sm shadow-md shadow-indigo-500/25 transition-all transform hover:scale-[1.02]"
+                            >
+                                <span>Let's Talk</span>
+                                <ArrowUpRight size={15} />
+                            </a>
 
                             {/* Mobile Menu Button */}
                             <div className="md:hidden">
@@ -111,11 +119,12 @@ const Navbar = () => {
                                     {item.name}
                                 </a>
                             ))}
-                            <div className="pt-4 mt-4 border-t border-slate-200 dark:border-white/10 flex gap-4">
+                            <div className="pt-4 mt-4 border-t border-slate-200 dark:border-white/10 flex items-center gap-3">
                                 <a
                                     href="https://github.com/ramseervi2024"
                                     target="_blank"
                                     rel="noopener noreferrer"
+                                    title="GitHub"
                                     className="p-2 text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white transition-colors"
                                 >
                                     <Github size={20} />
@@ -124,12 +133,30 @@ const Navbar = () => {
                                     href="https://www.linkedin.com/in/ramesh-seervi-3976802b0"
                                     target="_blank"
                                     rel="noopener noreferrer"
+                                    title="LinkedIn"
                                     className="p-2 text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white transition-colors"
                                 >
                                     <Linkedin size={20} />
                                 </a>
                                 <a
+                                    href="https://wa.me/916360494477?text=Hi%20Ramesh%2C%20I%20saw%20your%20Java%20Spring%20Boot%20portfolio%20and%20would%20like%20to%20connect%21"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    title="WhatsApp"
+                                    className="p-2 text-slate-500 hover:text-emerald-500 dark:text-slate-400 dark:hover:text-emerald-400 transition-colors"
+                                >
+                                    <WhatsAppIcon size={20} />
+                                </a>
+                                <a
+                                    href="tel:+916360494477"
+                                    title="Call"
+                                    className="p-2 text-slate-500 hover:text-blue-500 dark:text-slate-400 dark:hover:text-blue-400 transition-colors"
+                                >
+                                    <Phone size={20} />
+                                </a>
+                                <a
                                     href="mailto:ramseervi4321@gmail.com"
+                                    title="Email"
                                     className="p-2 text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white transition-colors"
                                 >
                                     <Mail size={20} />

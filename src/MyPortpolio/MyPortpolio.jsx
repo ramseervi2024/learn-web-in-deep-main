@@ -9,6 +9,7 @@ import Projects from './components/Projects';
 import OutreachOS from './components/OutreachOS';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
+import QuickContact from './components/QuickContact';
 
 function PortfolioShell() {
     return (
@@ -30,6 +31,7 @@ function PortfolioShell() {
                 </div>
             </footer> */}
             <Footer />
+            <QuickContact />
         </div>
     );
 }

@@ -27,17 +27,18 @@ const Hero = () => {
                             className="inline-flex items-center space-x-1.5 sm:space-x-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-gradient-to-r from-emerald-500/20 to-teal-500/20 border border-emerald-500/30 backdrop-blur-xl mb-6 sm:mb-8"
                         >
                             <span className="w-2 sm:w-2.5 h-2 sm:h-2.5 rounded-full bg-emerald-400 animate-ping" />
-                            <span className="text-xs sm:text-sm font-semibold text-emerald-700 dark:text-emerald-300">Available for Hire</span>
+                            <span className="text-xs sm:text-sm font-semibold text-emerald-700 dark:text-emerald-300">Available for Opportunities</span>
                         </motion.div>
 
-                        <h1 className="text-[clamp(1.05rem,4.6vw,4.5rem)] leading-tight font-bold mb-4 sm:mb-6 tracking-tight whitespace-normal break-words max-w-full">
+                        <h1 className="text-[clamp(1.1rem,4.5vw,4.2rem)] leading-tight font-bold mb-4 sm:mb-6 tracking-tight whitespace-normal break-words max-w-full">
                             Java Spring Boot{' '}
-                            <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-emerald-400 bg-clip-text text-transparent">Backend</span>{' '}
+                            <span className="bg-gradient-to-r from-blue-400 via-indigo-400 to-purple-400 bg-clip-text text-transparent">React.js</span>{' '}
+                            <span className="bg-gradient-to-r from-purple-400 to-emerald-400 bg-clip-text text-transparent">& React Native</span>{' '}
                             Developer
                         </h1>
 
                         <p className="text-sm sm:text-base md:text-lg lg:text-xl text-slate-600 dark:text-slate-300 mb-6 sm:mb-8 md:mb-10 max-w-xl leading-relaxed">
-                            I'm <span className="text-slate-900 dark:text-white font-semibold">Ramesh Seervi</span>, a Backend Developer with 4+ years of experience engineering high-performance Microservices, RESTful APIs, Spring Security, Hibernate/JPA, and event-driven architectures with Kafka & PostgreSQL.
+                            I'm <span className="text-slate-900 dark:text-white font-semibold">Ramesh Seervi</span>, a Full Stack Developer with approximately 4 years of experience building scalable backend microservices, high-performance REST APIs, responsive React.js web apps, and cross-platform React Native mobile applications.
                         </p>
 
                         <div className="flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4 mb-6 sm:mb-8 md:mb-12">
@@ -60,8 +61,8 @@ const Hero = () => {
                         <div className="grid grid-cols-3 gap-3 sm:flex sm:flex-wrap sm:gap-6 md:gap-8">
                             {[
                                 { label: 'Experience', value: '4+ Years', color: 'text-blue-400' },
-                                { label: 'Projects', value: '14+ Live', color: 'text-emerald-400' },
-                                { label: 'Technologies', value: '12+', color: 'text-purple-400' }
+                                { label: 'Projects', value: '14+ Shipped', color: 'text-emerald-400' },
+                                { label: 'Core Stack', value: 'Full Stack', color: 'text-purple-400' }
                             ].map((stat, index) => (
                                 <motion.div
                                     key={stat.label}
@@ -134,13 +135,13 @@ const Hero = () => {
                             </div>
                         </div>
 
-                        {/* Enhanced Floating Stats */}
+                        {/* Enhanced Floating Badges */}
                         <motion.div
                             animate={{ y: [0, 15, 0] }}
                             transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
                             className="absolute -top-8 -right-8"
                         >
-                            <InfoCard title="Spring Boot" value="Expert" subtitle="Microservices & APIs" accent="blue" />
+                            <InfoCard title="Spring Boot" value="Backend" subtitle="Microservices & APIs" accent="blue" />
                         </motion.div>
 
                         <motion.div
@@ -148,7 +149,7 @@ const Hero = () => {
                             transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
                             className="absolute -bottom-8 -left-8"
                         >
-                            <InfoCard title="Backend" value="Pro" subtitle="Scalable Architecture" accent="emerald" />
+                            <InfoCard title="React & Mobile" value="Full Stack" subtitle="Web & React Native" accent="emerald" />
                         </motion.div>
                     </motion.div>
                 </div>

@@ -5,77 +5,85 @@ import ProjectCard from './common/ProjectCard';
 
 const projects = [
     {
-        title: 'Timeinlive - Enterprise Workforce Engine',
-        type: 'Microservices & REST API',
-        category: 'Microservices',
-        description: 'Enterprise workforce microservices with real-time attendance tracking, geo-fencing validation, Spring Security JWT, and automated payroll pipelines.',
-        tech: ['Java 21', 'Spring Boot 3', 'PostgreSQL', 'JWT', 'Redis'],
-        link: 'https://play.google.com/store/apps/details?id=timeinlive.smartwork&hl=en_IN'
-    },
-    {
-        title: 'Ondeen - Event & Booking Microservice',
-        type: 'Distributed System',
-        category: 'Microservices',
-        description: 'Event booking backend handling high-concurrency ticket reservations, payment gateway callbacks, and distributed transactional consistency.',
-        tech: ['Spring Boot', 'Kafka', 'Redis', 'PostgreSQL', 'Docker'],
+        title: 'Ondeen - Event & Booking Platform',
+        type: 'Full Stack & Mobile',
+        category: 'React Native Mobile',
+        description: 'Cross-platform mobile apps for users and organizers with ticket booking, attendee management, Apple Pay, Google Pay, and Spring Boot REST APIs.',
+        tech: ['React Native', 'Java Spring Boot', 'REST APIs', 'MySQL', 'Payment Gateway'],
         link: 'https://ondeen.app/'
     },
     {
-        title: 'Bukih - Multi-Currency E-Commerce API',
-        type: 'RESTful API Platform',
-        category: 'Backend & APIs',
-        description: 'High-throughput e-commerce backend with multi-currency digital wallet, double-entry ledger accounting, and Stripe payment webhook processing.',
-        tech: ['Java', 'Spring Boot', 'Hibernate/JPA', 'MySQL', 'Stripe'],
+        title: 'Bukih App - E-Commerce Platform',
+        type: 'Mobile E-Commerce',
+        category: 'React Native Mobile',
+        description: 'Cross-platform e-commerce app with product browsing, cart, checkout, and Apple Pay, Mada, Visa, and American Express payment integrations.',
+        tech: ['React Native', 'Node.js', 'REST APIs', 'Apple Pay', 'Mada'],
         link: 'https://bukih.com/'
     },
     {
-        title: 'UrExpert - B2B Freelance & Consultation API',
-        type: 'Real-Time Backend',
-        category: 'Backend & APIs',
-        description: 'B2B platform backend for verified expert matching, contract milestones, secure escrow payouts, and WebSocket notifications.',
-        tech: ['Spring Boot', 'WebSockets', 'PostgreSQL', 'Redis'],
+        title: 'Timeinlive - Workforce Management App',
+        type: 'Mobile & Enterprise Backend',
+        category: 'Full Stack',
+        description: 'Productivity and workforce app with real-time attendance tracking, product management, sales reports, and Spring Boot backend services.',
+        tech: ['React Native', 'Java Spring Boot', 'REST APIs', 'MySQL', 'JWT'],
+        link: 'https://play.google.com/store/apps/details?id=timeinlive.smartwork&hl=en_IN'
+    },
+    {
+        title: 'UrExpert - Freelancing & Business Opportunities',
+        type: 'Web Application',
+        category: 'React.js Web',
+        description: 'Freelancing and business marketplace with project listings, part-time jobs, milestone transactions, auctions, and role-based dashboards.',
+        tech: ['React.js', 'Java Spring Boot', 'REST APIs', 'MySQL', 'Redux'],
         link: 'https://urxprt.com/'
     },
     {
-        title: 'MEDirect - Healthcare Telemedicine Service',
-        type: 'HIPAA Compliant API',
-        category: 'Backend & APIs',
-        description: 'Virtual clinical consultation backend with encrypted medical records, doctor scheduling engine, and role-based access control.',
-        tech: ['Spring Boot', 'Spring Security', 'MongoDB', 'Docker'],
-        link: 'https://medirect.link/'
+        title: 'Venderlane - B2B E-Commerce & Vendor Platform',
+        type: 'B2B Enterprise Portal',
+        category: 'Full Stack',
+        description: 'B2B platform connecting vendors and buyers with product catalogs, bulk purchasing, inventory tracking, and role-based permissions.',
+        tech: ['React.js', 'Java Spring Boot', 'REST APIs', 'MySQL', 'Tailwind'],
+        link: 'https://venderlane.com/'
+    },
+    {
+        title: 'Treat-it - Salon & Beauty Booking Platform',
+        type: 'Service Booking Web App',
+        category: 'React.js Web',
+        description: 'Salon and beauty booking platform with service listings, appointment scheduling, user and professional dashboards, and payment flows.',
+        tech: ['React.js', 'Java Spring Boot', 'REST APIs', 'MySQL', 'Bootstrap'],
+        link: 'https://treat-it.com/'
+    },
+    {
+        title: 'Holiday-Home - Hotel & Homestay Platform',
+        type: 'Hospitality Web App',
+        category: 'React.js Web',
+        description: 'Hotel and homestay booking portal with accommodation search, dynamic date filtering, reservation management, and admin controls.',
+        tech: ['React.js', 'Java Spring Boot', 'REST APIs', 'MySQL', 'JPA'],
+        link: 'https://holidayhomes.com/'
     },
     {
         title: 'Simplefatoora - Invoicing & Tax Engine',
-        type: 'Invoicing Microservice',
-        category: 'Microservices',
-        description: 'E-invoicing compliance service generating tax-compliant PDFs, real-time fiscal validation, and distributed batch export jobs.',
-        tech: ['Spring Boot', 'PostgreSQL', 'MongoDB', 'REST APIs'],
+        type: 'Microservices & Backend',
+        category: 'Java Spring Boot',
+        description: 'Automated e-invoicing compliance service with tax-compliant PDF generation, fiscal validation, and asynchronous batch jobs.',
+        tech: ['Java Spring Boot', 'Microservices', 'PostgreSQL', 'Docker', 'REST APIs'],
         link: 'https://simplefatoora.com/en/'
     },
     {
-        title: 'Holiday Homes - Property Reservation Engine',
-        type: 'Booking Platform',
-        category: 'Full Stack',
-        description: 'Hotel and homestay reservation backend with dynamic pricing calculation, calendar lock management, and partner portal APIs.',
-        tech: ['Spring Boot', 'MySQL', 'JPA / Hibernate', 'React.js'],
-        link: 'https://www.holidayhomes.com/'
-    },
-    {
-        title: 'Yourco - Workspace Management Cloud',
-        type: 'Cloud Service',
-        category: 'Full Stack',
-        description: 'Scalable workspace resource allocation system with team permission hierarchies, automated usage telemetry, and AWS cloud deployment.',
-        tech: ['Spring Boot', 'AWS EC2/S3', 'Docker', 'PostgreSQL'],
-        link: 'https://www.yourco.app/'
-    },
-    {
-        title: 'Ondeen Organiser - Event Operations System',
-        type: 'Mobile & API Engine',
-        category: 'Full Stack',
-        description: 'Organizers event operations platform with real-time attendee check-in scanners, ticket validation, and push notification relays.',
-        tech: ['Spring Boot API', 'Kafka', 'React Native', 'Firebase'],
-        link: 'https://apps.apple.com/us/app/ondeen-organiser/id6740030819'
+        title: 'MEDirect - Healthcare Telemedicine Service',
+        type: 'HIPAA Compliant API & Web',
+        category: 'Java Spring Boot',
+        description: 'Telemedicine platform with encrypted patient consultation records, doctor appointment scheduling, and role-based access control.',
+        tech: ['Java Spring Boot', 'React.js', 'Spring Security', 'MongoDB', 'REST APIs'],
+        link: 'https://medirect.link/'
     }
+];
+
+const categories = [
+    { id: 'All', label: 'All' },
+    { id: 'Full Stack', label: 'Full Stack' },
+    { id: 'React Native Mobile', label: 'React Native' },
+    { id: 'React.js Web', label: 'React.js' },
+    { id: 'Java Spring Boot', label: 'Java Spring Boot' }
 ];
 
 const Projects = () => {
@@ -84,6 +92,14 @@ const Projects = () => {
     const filteredProjects = filter === 'All'
         ? projects
         : projects.filter(p => p.category === filter);
+
+    const counts = {
+        'All': projects.length,
+        'Full Stack': projects.filter(p => p.category === 'Full Stack').length,
+        'React Native Mobile': projects.filter(p => p.category === 'React Native Mobile').length,
+        'React.js Web': projects.filter(p => p.category === 'React.js Web').length,
+        'Java Spring Boot': projects.filter(p => p.category === 'Java Spring Boot').length
+    };
 
     return (
         <section id="projects" className="section-container relative">
@@ -95,24 +111,46 @@ const Projects = () => {
                 <SectionTitle
                     eyebrow="Projects"
                     title="Featured Projects"
-                    description="A showcase of enterprise backend systems, distributed microservices, and full-stack platforms engineered with Java Spring Boot."
+                    description="Real-world projects spanning Java Spring Boot backends, responsive React.js web portals, and cross-platform React Native apps."
                     align="left"
                 />
 
-                <div className="flex gap-1.5 sm:gap-2 p-1 sm:p-1.5 rounded-xl sm:rounded-2xl bg-slate-100/80 dark:bg-slate-900/50 backdrop-blur-xl border border-slate-200 dark:border-white/10">
-                    {['All', 'Microservices', 'Backend & APIs', 'Full Stack'].map((f) => (
-                        <button
-                            key={f}
-                            onClick={() => setFilter(f)}
-                            className={`px-3 sm:px-4 md:px-6 py-1.5 sm:py-2 md:py-2.5 rounded-lg sm:rounded-xl text-[10px] sm:text-xs md:text-sm font-semibold transition-all duration-300 ${
-                                filter === f 
-                                    ? 'bg-gradient-to-r from-blue-600 to-purple-600 text-slate-900 dark:text-white shadow-lg shadow-blue-500/25' 
-                                    : 'text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:text-white hover:bg-slate-100 dark:hover:bg-slate-100 dark:bg-white/5'
-                            }`}
-                        >
-                            {f}
-                        </button>
-                    ))}
+                <div className="flex items-center justify-start md:justify-end w-full md:w-auto overflow-x-auto scrollbar-none py-1">
+                    <div className="inline-flex items-center p-1.5 rounded-2xl bg-slate-100/90 dark:bg-slate-900/70 border border-slate-200/80 dark:border-white/10 backdrop-blur-2xl shadow-sm gap-1 shrink-0">
+                        {categories.map((tab) => {
+                            const isActive = filter === tab.id;
+                            return (
+                                <button
+                                    key={tab.id}
+                                    type="button"
+                                    onClick={() => setFilter(tab.id)}
+                                    className={`relative flex items-center gap-2 px-3 sm:px-3.5 py-1.5 sm:py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-300 whitespace-nowrap shrink-0 select-none ${
+                                        isActive
+                                            ? 'text-white'
+                                            : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-200/50 dark:hover:bg-white/5'
+                                    }`}
+                                >
+                                    {isActive && (
+                                        <motion.div
+                                            layoutId="activeFilterPill"
+                                            className="absolute inset-0 bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 rounded-xl shadow-lg shadow-blue-500/30"
+                                            transition={{ type: 'spring', stiffness: 450, damping: 32 }}
+                                        />
+                                    )}
+                                    <span className="relative z-10 whitespace-nowrap">{tab.label}</span>
+                                    <span
+                                        className={`relative z-10 text-[10px] font-bold px-1.5 py-0.5 rounded-full transition-colors duration-200 ${
+                                            isActive
+                                                ? 'bg-white/25 text-white'
+                                                : 'bg-slate-200/80 dark:bg-white/10 text-slate-500 dark:text-slate-400'
+                                        }`}
+                                    >
+                                        {counts[tab.id]}
+                                    </span>
+                                </button>
+                            );
+                        })}
+                    </div>
                 </div>
             </div>
 

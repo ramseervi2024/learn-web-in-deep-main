@@ -5,25 +5,27 @@ import SectionTitle from './common/SectionTitle';
 
 const experiences = [
     {
-        role: 'Backend & Java Developer',
-        company: 'Imcrinox Technologies, Bengaluru',
+        role: 'Software Engineer',
+        company: 'Imcrinox Technologies Pvt. Ltd., Bengaluru',
         period: 'NOV 2022 - PRESENT',
         description: [
-            'Architected and deployed production microservices using Java 17, Spring Boot 3, Spring Data JPA, and PostgreSQL.',
-            'Implemented Spring Security with stateless JWT authentication, role-based access control (RBAC), and API rate limiting.',
-            'Engineered asynchronous event-driven pipelines using Apache Kafka for real-time order processing, notifications, and analytics.',
-            'Optimized database queries and introduced Redis multi-tier caching, reducing API latency by 45% and eliminating N+1 queries.',
-            'Containerized services with Docker and set up automated CI/CD deployment pipelines on AWS.'
+            'Contributed to cross-platform mobile application development using React Native across multiple business and e-commerce applications.',
+            'Developed responsive web applications using React.js, JavaScript, TypeScript, Redux, HTML, and CSS.',
+            'Engineered Java Spring Boot REST APIs, Spring MVC, Spring Data JPA, and Hibernate backend services.',
+            'Implemented application features involving JWT authentication, role-based access control (RBAC), input validation, and global error handling.',
+            'Integrated mobile capabilities including push notifications, deep linking, Google Maps, Apple Pay, and payment gateway workflows.',
+            'Managed database operations and schema design across MySQL, MongoDB, and Firebase.',
+            'Used Git for version control and collaborated with cross-functional teams across Agile sprints, debugging, testing, and production deployments.'
         ]
     },
     {
-        role: 'Software Engineer Intern',
+        role: 'Web Developer Intern',
         company: 'Gridrnd, Bengaluru',
         period: 'FEB 2022 – OCT 2022',
         description: [
-            'Developed and tested RESTful API endpoints using Java Spring Boot and Node.js for client web platforms.',
-            'Integrated database schemas, JPA repositories, and validation layers with comprehensive JUnit and Mockito test suites (80%+ coverage).',
-            'Collaborated with frontend developers to document and consume OpenAPI / Swagger specs for seamless cross-service communication.'
+            'Developed responsive web interfaces using React.js, JavaScript, Redux, HTML5, CSS3, and Bootstrap.',
+            'Integrated backend REST APIs and conducted rigorous endpoint testing using Postman.',
+            'Supported database integration, UI improvements, bug fixes, and feature delivery.'
         ]
     }
 ];
@@ -38,7 +40,7 @@ const Experience = () => {
                 <SectionTitle
                     eyebrow="Experience"
                     title="Work Journey"
-                    description="A timeline of professional roles and engineering accomplishments showcasing my expertise in Java Spring Boot backend architecture."
+                    description="Professional experience across backend services, cross-platform mobile apps, and enterprise web solutions."
                     align="left"
                 />
             </div>
